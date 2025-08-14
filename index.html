@@ -12,7 +12,7 @@
     <!-- Chrome/Android 建議加上 -->
     <meta name="mobile-web-app-capable" content="yes" />
 
-    <title>ClickFun - 點擊樂趣遊戲</title>
+    <title>Click Fun - 點擊樂趣遊戲</title>
 
     <!-- Manifest（相對路徑，便於子資料夾部署） -->
     <link rel="manifest" href="./app.webmanifest" />
@@ -106,8 +106,8 @@
         -webkit-text-size-adjust: 100%;
       }
       .material-symbols-rounded {
-        font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 24;
-        font-family: "Material Symbols Rounded", sans-serif;
+        font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24;
+        font-family: 'Material Symbols Rounded', sans-serif;
         font-size: 22px;
         line-height: 1;
       }
@@ -392,7 +392,7 @@
           0 1px 0 rgba(255, 255, 255, 0.95) inset;
       }
       .header-tps::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         left: -100%;
@@ -420,7 +420,7 @@
         font-size: 0.85rem;
         color: var(--sky-600);
         font-weight: 900;
-        font-family: "Courier New", monospace;
+        font-family: 'Courier New', monospace;
         line-height: 1;
       }
       .header-tps.ultra-speed {
@@ -638,7 +638,7 @@
         display: none;
         min-width: 50px;
         text-align: center;
-        font-family: "Courier New", monospace;
+        font-family: 'Courier New', monospace;
         letter-spacing: 0.3px;
         background: rgba(255, 255, 255, 0.1);
         border-radius: 6px;
@@ -660,7 +660,7 @@
         font-size: var(--font-size-xs);
         color: var(--sky-600);
         font-weight: 900;
-        font-family: "Courier New", monospace;
+        font-family: 'Courier New', monospace;
       }
       .hud-tps.show {
         display: inline-block;
@@ -790,6 +790,11 @@
         transform: scale(0.92);
         transition: transform var(--duration-normal) ease;
         max-width: 90vw;
+      }
+
+      .single-result {
+        max-width: 450px;
+        width: 92vw;
       }
       .modal.show .modal-card {
         transform: scale(1);
@@ -930,7 +935,7 @@
       }
 
       .player-result.winner::before {
-        content: "";
+        content: '';
         position: absolute;
         top: -2px;
         left: -2px;
@@ -1051,7 +1056,28 @@
         font-size: 1.1rem;
         font-weight: 700;
         color: var(--accent);
-        font-family: "Courier New", monospace;
+        font-family: 'Courier New', monospace;
+      }
+
+      .tps-value.high-tps {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--accent) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: tpsGlow 1s ease-in-out infinite alternate;
+      }
+
+      @keyframes tpsGlow {
+        from {
+          filter: drop-shadow(0 0 2px rgba(246, 111, 185, 0.5));
+        }
+        to {
+          filter: drop-shadow(0 0 8px rgba(82, 183, 255, 0.5));
+        }
       }
 
       .vs-divider {
@@ -1270,8 +1296,12 @@
       }
 
       .tps-value {
-        font-family: "Courier New", monospace;
+        font-family: 'Courier New', monospace;
         color: var(--accent);
+      }
+
+      .result-stats .tps-value {
+        font-size: 2rem;
       }
 
       .achievement-section {
@@ -1303,7 +1333,7 @@
       .result-actions {
         display: flex;
         gap: 12px;
-        justify-content: center;
+        justify-content: space-between;
       }
 
       .result-btn {
@@ -1314,6 +1344,9 @@
         font-weight: 700;
         border-radius: 12px;
         transition: all 0.2s ease;
+        flex: 1;
+        justify-content: center;
+        max-width: 160px;
       }
 
       .result-btn:hover {
@@ -1562,7 +1595,7 @@
       .tps-info {
         font-size: 0.75rem;
         color: var(--accent);
-        font-family: "Courier New", monospace;
+        font-family: 'Courier New', monospace;
         margin-top: 2px;
       }
 
@@ -1682,7 +1715,7 @@
         background: linear-gradient(90deg, var(--sky-400), var(--sky-500));
       }
       .toggle::after {
-        content: "";
+        content: '';
         position: absolute;
         top: 3px;
         left: 3px;
@@ -1834,7 +1867,7 @@
               />
             </svg>
           </div>
-          <div class="brand-title">ClickFun</div>
+          <div class="brand-title">Click Fun</div>
           <div class="brand-subtitle">粉色 × 天藍｜點擊樂趣遊戲</div>
         </div>
 
@@ -2199,8 +2232,8 @@
     <script>
       (function () {
         const noop = () => {};
-        ["log", "warn", "error", "info", "debug", "time", "timeEnd"].forEach(
-          (m) => {
+        ['log', 'warn', 'error', 'info', 'debug', 'time', 'timeEnd'].forEach(
+          m => {
             try {
               console[m] = noop;
             } catch (e) {}
@@ -2209,23 +2242,23 @@
       })();
 
       // ===== 版本管理 =====
-      const APP_VERSION = "6.3.0";
+      const APP_VERSION = '6.3.0';
 
       // 版本檢測和自動更新
       async function checkForUpdates() {
-        if ("serviceWorker" in navigator) {
+        if ('serviceWorker' in navigator) {
           try {
             const registration = await navigator.serviceWorker.ready;
             if (registration.active) {
               // 檢查本地存儲的版本
-              const storedVersion = localStorage.getItem("app_version");
+              const storedVersion = localStorage.getItem('app_version');
               if (storedVersion && storedVersion !== APP_VERSION) {
                 console.log(`版本更新：${storedVersion} → ${APP_VERSION}`);
                 // 清除舊版本快取
-                if ("caches" in window) {
+                if ('caches' in window) {
                   const cacheNames = await caches.keys();
                   await Promise.all(
-                    cacheNames.map((cacheName) => {
+                    cacheNames.map(cacheName => {
                       if (cacheName !== `etb-v${APP_VERSION}`) {
                         return caches.delete(cacheName);
                       }
@@ -2233,16 +2266,16 @@
                   );
                 }
                 // 更新版本號
-                localStorage.setItem("app_version", APP_VERSION);
+                localStorage.setItem('app_version', APP_VERSION);
                 // 重新載入頁面以使用新版本
                 window.location.reload();
                 return;
               }
               // 首次安裝或版本相同
-              localStorage.setItem("app_version", APP_VERSION);
+              localStorage.setItem('app_version', APP_VERSION);
             }
           } catch (error) {
-            console.log("版本檢測失敗:", error);
+            console.log('版本檢測失敗:', error);
           }
         }
       }
@@ -2250,7 +2283,7 @@
       // ===== 遊戲狀態 =====
       const GameState = {
         isPlaying: false,
-        mode: "single",
+        mode: 'single',
         timeLeft: 30,
         scores: { single: 0, player1: 0, player2: 0 },
         settings: {
@@ -2259,7 +2292,7 @@
           gameDuration: 30,
           rippleEnabled: true,
           lightningEnabled: true,
-          showTps: true,
+          showTps: true
         },
         pointers: new Map(),
         activePointers: new Map(),
@@ -2272,11 +2305,11 @@
         inputLockUntil: 0,
         ultraSpeedTimeout: null,
         ultraSpeedTimeout1: null,
-        ultraSpeedTimeout2: null,
+        ultraSpeedTimeout2: null
       };
 
       const SPEED_STEP = 0.5; // 每 0.5 TPS 一級，總共 10 級（越高越炫）
-      const tpsToLevel = (tps) =>
+      const tpsToLevel = tps =>
         Math.max(1, Math.min(10, Math.floor(tps / SPEED_STEP) + 1));
 
       // 正確的 TPS 計算函數 - 基於滑動窗口
@@ -2297,9 +2330,9 @@
         if (!GameState.settings.showTps || !GameState.isPlaying) return;
 
         const players =
-          GameState.mode === "single" ? ["single"] : ["player1", "player2"];
+          GameState.mode === 'single' ? ['single'] : ['player1', 'player2'];
 
-        players.forEach((playerId) => {
+        players.forEach(playerId => {
           const realTPS = calculateRealTPS(playerId);
           GameState.tpsEMA[playerId] = realTPS; // 直接使用真實 TPS，不需要 EMA 平滑
 
@@ -2316,7 +2349,7 @@
         offscreen = null,
         dpr = 1;
       const isLowPower =
-        ("connection" in navigator &&
+        ('connection' in navigator &&
           navigator.connection &&
           navigator.connection.saveData) ||
         false;
@@ -2325,13 +2358,13 @@
       function setupWorker() {
         // 防止重複初始化
         if (offscreen || fxWorker) {
-          console.log("Worker already initialized, skipping...");
+          console.log('Worker already initialized, skipping...');
           return;
         }
 
-        fxCanvas = document.getElementById("fxCanvas");
+        fxCanvas = document.getElementById('fxCanvas');
         if (!fxCanvas) {
-          console.error("Canvas initialization failed");
+          console.error('Canvas initialization failed');
           return;
         }
 
@@ -2339,27 +2372,27 @@
 
         try {
           if (
-            "OffscreenCanvas" in window &&
+            'OffscreenCanvas' in window &&
             fxCanvas.transferControlToOffscreen
           ) {
             offscreen = fxCanvas.transferControlToOffscreen();
-            fxWorker = new Worker("./fx.worker.js", { type: "module" });
+            fxWorker = new Worker('./fx.worker.js', { type: 'module' });
             fxWorker.postMessage(
-              { type: "init", canvas: offscreen, dpr, lowPower: isLowPower },
+              { type: 'init', canvas: offscreen, dpr, lowPower: isLowPower },
               [offscreen]
             );
           } else {
-            fxWorker = new Worker("./fx.worker.js", { type: "module" });
-            fxWorker.postMessage({ type: "init-fallback" }, []);
+            fxWorker = new Worker('./fx.worker.js', { type: 'module' });
+            fxWorker.postMessage({ type: 'init-fallback' }, []);
           }
           resizeFx();
           sendSettingsToWorker();
         } catch (error) {
-          console.error("Worker setup failed: [ERROR FILTERED]");
+          console.error('Worker setup failed: [ERROR FILTERED]');
           // 回退到非 OffscreenCanvas 模式
           if (!fxWorker) {
-            fxWorker = new Worker("./fx.worker.js", { type: "module" });
-            fxWorker.postMessage({ type: "init-fallback" }, []);
+            fxWorker = new Worker('./fx.worker.js', { type: 'module' });
+            fxWorker.postMessage({ type: 'init-fallback' }, []);
             resizeFx();
             sendSettingsToWorker();
           }
@@ -2369,29 +2402,29 @@
         const r = fxCanvas.getBoundingClientRect();
         if (offscreen) {
           fxWorker.postMessage({
-            type: "resize",
+            type: 'resize',
             width: r.width,
             height: r.height,
-            dpr,
+            dpr
           });
         } else {
           fxCanvas.width = Math.floor(r.width * dpr);
           fxCanvas.height = Math.floor(r.height * dpr);
           fxWorker.postMessage({
-            type: "resize",
+            type: 'resize',
             width: r.width,
             height: r.height,
-            dpr,
+            dpr
           });
         }
       }
-      window.addEventListener("resize", resizeFx);
+      window.addEventListener('resize', resizeFx);
       function sendSettingsToWorker() {
         fxWorker &&
           fxWorker.postMessage({
-            type: "config",
+            type: 'config',
             rippleEnabled: GameState.settings.rippleEnabled,
-            lightningEnabled: GameState.settings.lightningEnabled,
+            lightningEnabled: GameState.settings.lightningEnabled
           });
       }
 
@@ -2408,12 +2441,12 @@
           try {
             this.audioContext = new (window.AudioContext ||
               window.webkitAudioContext)({
-              latencyHint: "interactive",
-              sampleRate: 44100,
+              latencyHint: 'interactive',
+              sampleRate: 44100
             });
             this.masterGain = this.audioContext.createGain();
             this.masterGain.connect(this.audioContext.destination);
-            if (this.audioContext.state === "suspended")
+            if (this.audioContext.state === 'suspended')
               await this.audioContext.resume();
             const sr = this.audioContext.sampleRate;
             this.sounds.tap = this.renderTap(sr);
@@ -2489,7 +2522,7 @@
         }
         vibrate(ms = 40) {
           if (!GameState.settings.vibrationEnabled) return;
-          if ("vibrate" in navigator) {
+          if ('vibrate' in navigator) {
             try {
               navigator.vibrate(ms);
             } catch (e) {}
@@ -2500,12 +2533,12 @@
       // ===== 儲存管理 =====
       class StorageManager {
         constructor() {
-          this.KEY = "eliteTapBattle_FineLightning_PWA_v3";
+          this.KEY = 'eliteTapBattle_FineLightning_PWA_v3';
           this.loadSettings();
         }
         loadSettings() {
           try {
-            const d = JSON.parse(localStorage.getItem(this.KEY) || "{}");
+            const d = JSON.parse(localStorage.getItem(this.KEY) || '{}');
             if (d.settings) Object.assign(GameState.settings, d.settings);
           } catch (_) {}
         }
@@ -2522,7 +2555,7 @@
             score2,
             maxTPS,
             date: new Date().toISOString(),
-            ts: Date.now(),
+            ts: Date.now()
           };
           d.leaderboard = d.leaderboard || [];
           d.leaderboard.push(rec);
@@ -2533,18 +2566,18 @@
         getLeaderboard(mode = null, limit = 10) {
           const d = this.loadData();
           let r = d.leaderboard || [];
-          if (mode) r = r.filter((x) => x.mode === mode);
+          if (mode) r = r.filter(x => x.mode === mode);
           return r.slice(0, limit);
         }
         clearData() {
-          if (confirm("確定要清除所有遊戲記錄嗎？")) {
+          if (confirm('確定要清除所有遊戲記錄嗎？')) {
             localStorage.removeItem(this.KEY);
-            alert("記錄已清除！");
+            alert('記錄已清除！');
           }
         }
         loadData() {
           try {
-            return JSON.parse(localStorage.getItem(this.KEY) || "{}");
+            return JSON.parse(localStorage.getItem(this.KEY) || '{}');
           } catch (_) {
             return {};
           }
@@ -2553,7 +2586,7 @@
           try {
             localStorage.setItem(this.KEY, JSON.stringify(d));
           } catch (_) {
-            alert("儲存空間已滿，請清除舊記錄！");
+            alert('儲存空間已滿，請清除舊記錄！');
           }
         }
       }
@@ -2562,61 +2595,61 @@
       class AdvancedUIManager {
         constructor() {
           document
-            .getElementById("startSingleBtn")
-            .addEventListener("click", async () => {
+            .getElementById('startSingleBtn')
+            .addEventListener('click', async () => {
               await this.initAudio();
               gameEngine.startSinglePlayer();
             });
           document
-            .getElementById("startDualBtn")
-            .addEventListener("click", async () => {
+            .getElementById('startDualBtn')
+            .addEventListener('click', async () => {
               await this.initAudio();
               gameEngine.startDualPlayer();
             });
           document
-            .getElementById("leaderboardBtn")
-            .addEventListener("click", () => {
-              this.currentLeaderboardMode = "single";
+            .getElementById('leaderboardBtn')
+            .addEventListener('click', () => {
+              this.currentLeaderboardMode = 'single';
               this.currentLeaderboardPage = 1;
-              this.updateLeaderboard("single", 1);
-              this.showModal("leaderboardModal");
+              this.updateLeaderboard('single', 1);
+              this.showModal('leaderboardModal');
               this.updateLeaderboardTabs();
             });
           document
-            .getElementById("settingsBtn")
-            .addEventListener("click", () => {
+            .getElementById('settingsBtn')
+            .addEventListener('click', () => {
               this.showSettings();
             });
 
           document
-            .getElementById("gameExit")
-            .addEventListener("click", () => gameEngine.exitGame());
+            .getElementById('gameExit')
+            .addEventListener('click', () => gameEngine.exitGame());
           document
-            .getElementById("playAgainBtn")
-            .addEventListener("click", () => {
-              this.hideModal("resultModal");
-              if (GameState.mode === "single") gameEngine.startSinglePlayer();
+            .getElementById('playAgainBtn')
+            .addEventListener('click', () => {
+              this.hideModal('resultModal');
+              if (GameState.mode === 'single') gameEngine.startSinglePlayer();
               else gameEngine.startDualPlayer();
             });
           document
-            .getElementById("backToMenuBtn")
-            .addEventListener("click", () => {
-              this.hideModal("resultModal");
+            .getElementById('backToMenuBtn')
+            .addEventListener('click', () => {
+              this.hideModal('resultModal');
               gameEngine.exitGame();
             });
 
           document
-            .getElementById("closeLeaderboardBtn")
-            .addEventListener("click", () =>
-              this.hideModal("leaderboardModal")
+            .getElementById('closeLeaderboardBtn')
+            .addEventListener('click', () =>
+              this.hideModal('leaderboardModal')
             );
           document
-            .getElementById("clearLeaderboardBtn")
-            .addEventListener("click", () => {
-              if (confirm("確定要清除所有記錄嗎？此操作無法復原。")) {
+            .getElementById('clearLeaderboardBtn')
+            .addEventListener('click', () => {
+              if (confirm('確定要清除所有記錄嗎？此操作無法復原。')) {
                 storageManager.clearData();
                 this.updateLeaderboard(
-                  this.currentLeaderboardMode || "single",
+                  this.currentLeaderboardMode || 'single',
                   1
                 );
               }
@@ -2626,15 +2659,15 @@
           this.setupLeaderboardEvents();
 
           document
-            .getElementById("closeSettingsBtn")
-            .addEventListener("click", () => {
+            .getElementById('closeSettingsBtn')
+            .addEventListener('click', () => {
               this.saveSettings();
-              this.hideModal("settingsModal");
+              this.hideModal('settingsModal');
               sendSettingsToWorker();
             });
 
-          document.addEventListener("keydown", (e) => {
-            if (e.code === "Escape" && GameState.isPlaying)
+          document.addEventListener('keydown', e => {
+            if (e.code === 'Escape' && GameState.isPlaying)
               gameEngine.exitGame();
           });
 
@@ -2645,90 +2678,97 @@
           if (!audioManager.isInitialized) await audioManager.init();
         }
         showGameScreen(mode) {
-          document.getElementById("menuScreen").classList.add("hidden");
-          const gs = document.getElementById("gameScreen");
-          gs.classList.add("active");
-          gs.setAttribute("aria-hidden", "false");
-          if (mode === "single") {
-            document.getElementById("singlePlayerArea").style.display = "flex";
-            document.getElementById("dualPlayerArea").style.display = "none";
+          document.getElementById('menuScreen').classList.add('hidden');
+          const gs = document.getElementById('gameScreen');
+          gs.classList.add('active');
+          gs.setAttribute('aria-hidden', 'false');
+          if (mode === 'single') {
+            document.getElementById('singlePlayerArea').style.display = 'flex';
+            document.getElementById('dualPlayerArea').style.display = 'none';
           } else {
-            document.getElementById("singlePlayerArea").style.display = "none";
-            document.getElementById("dualPlayerArea").style.display = "grid";
+            document.getElementById('singlePlayerArea').style.display = 'none';
+            document.getElementById('dualPlayerArea').style.display = 'grid';
           }
         }
         showMenuScreen() {
-          document.getElementById("menuScreen").classList.remove("hidden");
-          const gs = document.getElementById("gameScreen");
-          gs.classList.remove("active");
-          gs.setAttribute("aria-hidden", "true");
+          document.getElementById('menuScreen').classList.remove('hidden');
+          const gs = document.getElementById('gameScreen');
+          gs.classList.remove('active');
+          gs.setAttribute('aria-hidden', 'true');
         }
         updateGameUI() {
-          document.getElementById("gameMode").textContent =
-            GameState.mode === "single" ? "單人挑戰" : "雙人對戰";
-          document.getElementById("hudModeP1").textContent = "雙人對戰";
-          document.getElementById("hudModeP2").textContent = "雙人對戰";
+          document.getElementById('gameMode').textContent =
+            GameState.mode === 'single' ? '單人挑戰' : '雙人對戰';
+          document.getElementById('hudModeP1').textContent = '雙人對戰';
+          document.getElementById('hudModeP2').textContent = '雙人對戰';
           this.applyTpsToggle();
         }
         updateScoreDisplay() {
-          if (GameState.mode === "single") {
-            document.getElementById("singleScore").textContent =
+          if (GameState.mode === 'single') {
+            document.getElementById('singleScore').textContent =
               GameState.scores.single;
           } else {
-            document.getElementById("player1Score").textContent =
+            document.getElementById('player1Score').textContent =
               GameState.scores.player1;
-            document.getElementById("player2Score").textContent =
+            document.getElementById('player2Score').textContent =
               GameState.scores.player2;
           }
         }
         animateScore(playerId) {
           const el = document.getElementById(`${playerId}Score`);
           if (!el) return;
-          el.style.animation = "none";
+          el.style.animation = 'none';
           el.offsetHeight;
-          el.style.animation = "pulse .28s ease-in-out alternate";
+          el.style.animation = 'pulse .28s ease-in-out alternate';
         }
         updateTimer() {
           const t = Math.ceil(GameState.timeLeft);
-          const tEl = document.getElementById("gameTimer");
+          const tEl = document.getElementById('gameTimer');
           tEl.textContent = t;
           if (GameState.timeLeft <= 5 && GameState.timeLeft > 0) {
-            tEl.style.color = "var(--sky-600)";
-            tEl.style.animation = "pulse .5s ease-in-out infinite alternate";
+            tEl.style.color = 'var(--sky-600)';
+            tEl.style.animation = 'pulse .5s ease-in-out infinite alternate';
           } else {
-            tEl.style.color = "var(--primary)";
-            tEl.style.animation = "";
+            tEl.style.color = 'var(--primary)';
+            tEl.style.animation = '';
           }
-          document.getElementById("hudTimerP1").textContent = t;
-          document.getElementById("hudTimerP2").textContent = t;
+          document.getElementById('hudTimerP1').textContent = t;
+          document.getElementById('hudTimerP2').textContent = t;
           this.updateTpsHUD();
         }
         updateTpsHUD() {
           if (!GameState.settings.showTps) return;
-          const p1Wrapper = document.getElementById("hudTpsP1Wrapper"),
-            p2Wrapper = document.getElementById("hudTpsP2Wrapper"),
-            headerTps = document.getElementById("headerTps");
+          const p1Wrapper = document.getElementById('hudTpsP1Wrapper'),
+            p2Wrapper = document.getElementById('hudTpsP2Wrapper'),
+            headerTps = document.getElementById('headerTps');
 
-          if (GameState.mode === "single") {
+          if (GameState.mode === 'single') {
             const tps = GameState.tpsEMA.single;
             const tpsDisplay = Math.min(99999, Math.round(tps * 10) / 10);
-            const valueEl = headerTps.querySelector(".hud-tps-value");
+            const valueEl = headerTps.querySelector('.hud-tps-value');
             valueEl.textContent = tpsDisplay;
+
+            // 添加高 TPS 漸層文字效果
+            if (tps > 30) {
+              valueEl.classList.add('high-tps');
+            } else {
+              valueEl.classList.remove('high-tps');
+            }
 
             // 30TPS以上觸發RGB動畫效果，並至少持續顯示1秒
             if (tps > 30) {
-              headerTps.classList.add("ultra-speed");
+              headerTps.classList.add('ultra-speed');
               // 設置最短顯示時間1秒
               if (GameState.ultraSpeedTimeout) {
                 clearTimeout(GameState.ultraSpeedTimeout);
               }
               GameState.ultraSpeedTimeout = setTimeout(() => {
                 if (GameState.tpsEMA.single <= 30) {
-                  headerTps.classList.remove("ultra-speed");
+                  headerTps.classList.remove('ultra-speed');
                 }
               }, 1000);
             } else if (!GameState.ultraSpeedTimeout) {
-              headerTps.classList.remove("ultra-speed");
+              headerTps.classList.remove('ultra-speed');
             }
           } else {
             const tps1 = GameState.tpsEMA.player1;
@@ -2736,75 +2776,75 @@
             const tps1Display = Math.min(99999, Math.round(tps1 * 10) / 10);
             const tps2Display = Math.min(99999, Math.round(tps2 * 10) / 10);
 
-            const p1 = document.getElementById("hudTpsP1");
-            const p2 = document.getElementById("hudTpsP2");
-            const value1El = p1.querySelector(".hud-tps-value");
-            const value2El = p2.querySelector(".hud-tps-value");
+            const p1 = document.getElementById('hudTpsP1');
+            const p2 = document.getElementById('hudTpsP2');
+            const value1El = p1.querySelector('.hud-tps-value');
+            const value2El = p2.querySelector('.hud-tps-value');
 
             value1El.textContent = tps1Display;
             value2El.textContent = tps2Display;
 
             // Player 1 - 30TPS以上觸發RGB動畫效果，並至少持續顯示1秒
             if (tps1 > 30) {
-              p1Wrapper.classList.add("ultra-speed");
+              p1Wrapper.classList.add('ultra-speed');
               if (GameState.ultraSpeedTimeout1) {
                 clearTimeout(GameState.ultraSpeedTimeout1);
               }
               GameState.ultraSpeedTimeout1 = setTimeout(() => {
                 if (GameState.tpsEMA.player1 <= 30) {
-                  p1Wrapper.classList.remove("ultra-speed");
+                  p1Wrapper.classList.remove('ultra-speed');
                 }
               }, 1000);
             } else if (!GameState.ultraSpeedTimeout1) {
-              p1Wrapper.classList.remove("ultra-speed");
+              p1Wrapper.classList.remove('ultra-speed');
             }
 
             // Player 2 - 30TPS以上觸發RGB動畫效果，並至少持續顯示1秒
             if (tps2 > 30) {
-              p2Wrapper.classList.add("ultra-speed");
+              p2Wrapper.classList.add('ultra-speed');
               if (GameState.ultraSpeedTimeout2) {
                 clearTimeout(GameState.ultraSpeedTimeout2);
               }
               GameState.ultraSpeedTimeout2 = setTimeout(() => {
                 if (GameState.tpsEMA.player2 <= 30) {
-                  p2Wrapper.classList.remove("ultra-speed");
+                  p2Wrapper.classList.remove('ultra-speed');
                 }
               }, 1000);
             } else if (!GameState.ultraSpeedTimeout2) {
-              p2Wrapper.classList.remove("ultra-speed");
+              p2Wrapper.classList.remove('ultra-speed');
             }
           }
         }
         applyTpsToggle() {
-          const el1 = document.getElementById("hudTpsP1Wrapper"),
-            el2 = document.getElementById("hudTpsP2Wrapper"),
-            headerTps = document.getElementById("headerTps");
+          const el1 = document.getElementById('hudTpsP1Wrapper'),
+            el2 = document.getElementById('hudTpsP2Wrapper'),
+            headerTps = document.getElementById('headerTps');
           if (GameState.settings.showTps) {
-            if (el1) el1.classList.add("show");
-            if (el2) el2.classList.add("show");
-            if (headerTps) headerTps.style.display = "flex";
+            if (el1) el1.classList.add('show');
+            if (el2) el2.classList.add('show');
+            if (headerTps) headerTps.style.display = 'flex';
           } else {
-            if (el1) el1.classList.remove("show");
-            if (el2) el2.classList.remove("show");
-            if (headerTps) headerTps.style.display = "none";
+            if (el1) el1.classList.remove('show');
+            if (el2) el2.classList.remove('show');
+            if (headerTps) headerTps.style.display = 'none';
           }
         }
         showResult(r) {
-          const modal = document.getElementById("resultModal");
-          const singleResult = document.getElementById("singleResult");
-          const dualResult = document.getElementById("dualResult");
+          const modal = document.getElementById('resultModal');
+          const singleResult = document.getElementById('singleResult');
+          const dualResult = document.getElementById('dualResult');
 
-          if (GameState.mode === "single") {
+          if (GameState.mode === 'single') {
             // 顯示單人模式結果
-            singleResult.style.display = "block";
-            dualResult.style.display = "none";
+            singleResult.style.display = 'block';
+            dualResult.style.display = 'none';
 
-            const title = document.getElementById("resultTitle");
-            const score = document.getElementById("resultScore");
-            const tpsDiv = document.getElementById("resultTPS");
-            const badge = document.getElementById("achievementBadge");
+            const title = document.getElementById('resultTitle');
+            const score = document.getElementById('resultScore');
+            const tpsDiv = document.getElementById('resultTPS');
+            const badge = document.getElementById('achievementBadge');
 
-            title.textContent = "單人挑戰完成！";
+            title.textContent = '單人挑戰完成！';
             score.textContent = r.score;
             tpsDiv.textContent = (
               Math.round(GameState.maxTPS.single * 10) / 10
@@ -2826,24 +2866,24 @@
             }
           } else {
             // 顯示雙人模式結果
-            singleResult.style.display = "none";
-            dualResult.style.display = "block";
+            singleResult.style.display = 'none';
+            dualResult.style.display = 'block';
 
-            const dualTitle = document.getElementById("dualResultTitle");
-            const dualSubtitle = document.getElementById("dualResultSubtitle");
-            const winnerCrown = document.getElementById("winnerCrown");
+            const dualTitle = document.getElementById('dualResultTitle');
+            const dualSubtitle = document.getElementById('dualResultSubtitle');
+            const winnerCrown = document.getElementById('winnerCrown');
 
-            const player1Result = document.getElementById("player1Result");
-            const player2Result = document.getElementById("player2Result");
-            const player1Medal = document.getElementById("player1Medal");
-            const player2Medal = document.getElementById("player2Medal");
+            const player1Result = document.getElementById('player1Result');
+            const player2Result = document.getElementById('player2Result');
+            const player1Medal = document.getElementById('player1Medal');
+            const player2Medal = document.getElementById('player2Medal');
 
-            const player1ScoreEl = document.getElementById("player1Score");
-            const player2ScoreEl = document.getElementById("player2Score");
-            const player1TPSEl = document.getElementById("player1TPS");
-            const player2TPSEl = document.getElementById("player2TPS");
+            const player1ScoreEl = document.getElementById('player1Score');
+            const player2ScoreEl = document.getElementById('player2Score');
+            const player1TPSEl = document.getElementById('player1TPS');
+            const player2TPSEl = document.getElementById('player2TPS');
 
-            const dualBadge = document.getElementById("dualAchievementBadge");
+            const dualBadge = document.getElementById('dualAchievementBadge');
 
             // 設置分數和TPS
             player1ScoreEl.textContent = r.score;
@@ -2856,30 +2896,30 @@
             ).toFixed(1);
 
             // 重置樣式
-            player1Result.classList.remove("winner");
-            player2Result.classList.remove("winner");
+            player1Result.classList.remove('winner');
+            player2Result.classList.remove('winner');
 
             // 設置獲勝者
             if (r.winner) {
               dualTitle.textContent = `${
-                r.winner === "player1" ? "玩家 1" : "玩家 2"
+                r.winner === 'player1' ? '玩家 1' : '玩家 2'
               } 獲勝！`;
-              dualSubtitle.textContent = "恭喜獲得勝利！";
-              winnerCrown.style.display = "block";
+              dualSubtitle.textContent = '恭喜獲得勝利！';
+              winnerCrown.style.display = 'block';
 
-              if (r.winner === "player1") {
-                player1Result.classList.add("winner");
+              if (r.winner === 'player1') {
+                player1Result.classList.add('winner');
                 player1Medal.innerHTML = '<div class="medal-icon">🥇</div>';
                 player2Medal.innerHTML = '<div class="medal-icon">🥈</div>';
               } else {
-                player2Result.classList.add("winner");
+                player2Result.classList.add('winner');
                 player1Medal.innerHTML = '<div class="medal-icon">🥈</div>';
                 player2Medal.innerHTML = '<div class="medal-icon">🥇</div>';
               }
             } else {
-              dualTitle.textContent = "平手對決！";
-              dualSubtitle.textContent = "勢均力敵的較量！";
-              winnerCrown.style.display = "none";
+              dualTitle.textContent = '平手對決！';
+              dualSubtitle.textContent = '勢均力敵的較量！';
+              winnerCrown.style.display = 'none';
               player1Medal.innerHTML = '<div class="medal-icon">🤝</div>';
               player2Medal.innerHTML = '<div class="medal-icon">🤝</div>';
             }
@@ -2904,74 +2944,74 @@
             }
           }
 
-          modal.classList.add("show");
-          modal.setAttribute("aria-hidden", "false");
+          modal.classList.add('show');
+          modal.setAttribute('aria-hidden', 'false');
         }
         showModal(id) {
           const m = document.getElementById(id);
-          m.classList.add("show");
-          m.setAttribute("aria-hidden", "false");
+          m.classList.add('show');
+          m.setAttribute('aria-hidden', 'false');
         }
         hideModal(id) {
           const m = document.getElementById(id);
-          m.classList.remove("show");
-          m.setAttribute("aria-hidden", "true");
+          m.classList.remove('show');
+          m.setAttribute('aria-hidden', 'true');
         }
         showSettings() {
-          document.getElementById("soundEnabled").checked =
+          document.getElementById('soundEnabled').checked =
             GameState.settings.soundEnabled;
-          document.getElementById("vibrationEnabled").checked =
+          document.getElementById('vibrationEnabled').checked =
             GameState.settings.vibrationEnabled;
-          document.getElementById("gameDuration").value =
+          document.getElementById('gameDuration').value =
             GameState.settings.gameDuration;
-          document.getElementById("rippleEnabled").checked =
+          document.getElementById('rippleEnabled').checked =
             GameState.settings.rippleEnabled;
-          document.getElementById("lightningEnabled").checked =
+          document.getElementById('lightningEnabled').checked =
             GameState.settings.lightningEnabled;
-          document.getElementById("showTps").checked =
+          document.getElementById('showTps').checked =
             GameState.settings.showTps;
-          this.showModal("settingsModal");
+          this.showModal('settingsModal');
         }
         saveSettings() {
           GameState.settings.soundEnabled =
-            document.getElementById("soundEnabled").checked;
+            document.getElementById('soundEnabled').checked;
           GameState.settings.vibrationEnabled =
-            document.getElementById("vibrationEnabled").checked;
+            document.getElementById('vibrationEnabled').checked;
           GameState.settings.gameDuration = parseInt(
-            document.getElementById("gameDuration").value,
+            document.getElementById('gameDuration').value,
             10
           );
           GameState.settings.rippleEnabled =
-            document.getElementById("rippleEnabled").checked;
+            document.getElementById('rippleEnabled').checked;
           GameState.settings.lightningEnabled =
-            document.getElementById("lightningEnabled").checked;
+            document.getElementById('lightningEnabled').checked;
           GameState.settings.showTps =
-            document.getElementById("showTps").checked;
+            document.getElementById('showTps').checked;
           storageManager.saveSettings();
           this.applyTpsToggle();
         }
         loadSettingsUI() {
-          document.getElementById("soundEnabled").checked =
+          document.getElementById('soundEnabled').checked =
             GameState.settings.soundEnabled;
-          document.getElementById("vibrationEnabled").checked =
+          document.getElementById('vibrationEnabled').checked =
             GameState.settings.vibrationEnabled;
-          document.getElementById("gameDuration").value =
+          document.getElementById('gameDuration').value =
             GameState.settings.gameDuration;
-          document.getElementById("rippleEnabled").checked =
+          document.getElementById('rippleEnabled').checked =
             GameState.settings.rippleEnabled;
-          document.getElementById("lightningEnabled").checked =
+          document.getElementById('lightningEnabled').checked =
             GameState.settings.lightningEnabled;
-          document.getElementById("showTps").checked =
+          document.getElementById('showTps').checked =
             GameState.settings.showTps;
           this.applyTpsToggle();
         }
-        updateLeaderboard(mode = "single", page = 1) {
+        updateLeaderboard(mode = 'single', page = 1) {
           const itemsPerPage = 8;
-          const list = document.getElementById("leaderboardList");
-          const currentPageEl = document.getElementById("currentPage");
-          const totalPagesEl = document.getElementById("totalPages");
-          const prevBtn = document.getElementById("prevPageBtn");
-          const nextBtn = document.getElementById("nextPageBtn");
+          const list = document.getElementById('leaderboardList');
+          const currentPageEl = document.getElementById('currentPage');
+          const totalPagesEl = document.getElementById('totalPages');
+          const prevBtn = document.getElementById('prevPageBtn');
+          const nextBtn = document.getElementById('nextPageBtn');
 
           // 獲取指定模式的記錄
           const allRecords = storageManager.getLeaderboard(mode, 100);
@@ -3006,42 +3046,42 @@
           list.innerHTML = records
             .map((record, index) => {
               const globalRank = startIndex + index + 1;
-              const date = new Date(record.date).toLocaleDateString("zh-TW", {
-                month: "short",
-                day: "numeric",
-                hour: "2-digit",
-                minute: "2-digit",
+              const date = new Date(record.date).toLocaleDateString('zh-TW', {
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
               });
 
-              let rankClass = "rank-other";
-              if (globalRank === 1) rankClass = "rank-1";
-              else if (globalRank === 2) rankClass = "rank-2";
-              else if (globalRank === 3) rankClass = "rank-3";
+              let rankClass = 'rank-other';
+              if (globalRank === 1) rankClass = 'rank-1';
+              else if (globalRank === 2) rankClass = 'rank-2';
+              else if (globalRank === 3) rankClass = 'rank-3';
 
               const scoreText =
                 record.score2 != null
                   ? `${record.score} : ${record.score2}`
                   : record.score;
 
-              const tpsText = record.maxTPS ? `最高 TPS: ${record.maxTPS}` : "";
+              const tpsText = record.maxTPS ? `最高 TPS: ${record.maxTPS}` : '';
 
               return `
               <div class="leaderboard-item">
                 <div class="rank-badge ${rankClass}">${globalRank}</div>
                 <div class="player-info">
                   <div class="player-name">${
-                    record.mode === "single" ? "單人挑戰" : "雙人對戰"
+                    record.mode === 'single' ? '單人挑戰' : '雙人對戰'
                   }</div>
                   <div class="player-date">${date}</div>
                 </div>
                 <div class="score-info">
                   <div class="score-value">${scoreText}</div>
-                  ${tpsText ? `<div class="tps-info">${tpsText}</div>` : ""}
+                  ${tpsText ? `<div class="tps-info">${tpsText}</div>` : ''}
                 </div>
               </div>
             `;
             })
-            .join("");
+            .join('');
 
           // 存儲當前狀態
           this.currentLeaderboardMode = mode;
@@ -3050,8 +3090,8 @@
 
         setupLeaderboardEvents() {
           // 標籤切換
-          document.querySelectorAll(".tab-btn").forEach((btn) => {
-            btn.addEventListener("click", () => {
+          document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
               const mode = btn.dataset.mode;
               this.currentLeaderboardMode = mode;
               this.currentLeaderboardPage = 1;
@@ -3062,8 +3102,8 @@
 
           // 分頁按鈕
           document
-            .getElementById("prevPageBtn")
-            .addEventListener("click", () => {
+            .getElementById('prevPageBtn')
+            .addEventListener('click', () => {
               if (this.currentLeaderboardPage > 1) {
                 this.currentLeaderboardPage--;
                 this.updateLeaderboard(
@@ -3074,8 +3114,8 @@
             });
 
           document
-            .getElementById("nextPageBtn")
-            .addEventListener("click", () => {
+            .getElementById('nextPageBtn')
+            .addEventListener('click', () => {
               this.currentLeaderboardPage++;
               this.updateLeaderboard(
                 this.currentLeaderboardMode,
@@ -3085,9 +3125,9 @@
         }
 
         updateLeaderboardTabs() {
-          document.querySelectorAll(".tab-btn").forEach((btn) => {
+          document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.classList.toggle(
-              "active",
+              'active',
               btn.dataset.mode === this.currentLeaderboardMode
             );
           });
@@ -3095,46 +3135,46 @@
 
         // PWA 安裝提示
         setupPWAInstallBanner() {
-          const banner = document.getElementById("installBanner");
-          const title = document.getElementById("installTitle");
-          const hint = document.getElementById("installHint");
-          const btnInstall = document.getElementById("installAction");
-          const btnDismiss = document.getElementById("installDismiss");
-          const DISMISS_KEY = "etb_install_dismiss_v1";
-          if (localStorage.getItem(DISMISS_KEY) === "1") return;
+          const banner = document.getElementById('installBanner');
+          const title = document.getElementById('installTitle');
+          const hint = document.getElementById('installHint');
+          const btnInstall = document.getElementById('installAction');
+          const btnDismiss = document.getElementById('installDismiss');
+          const DISMISS_KEY = 'etb_install_dismiss_v1';
+          if (localStorage.getItem(DISMISS_KEY) === '1') return;
           const isStandalone =
-            window.matchMedia("(display-mode: standalone)").matches ||
+            window.matchMedia('(display-mode: standalone)').matches ||
             window.navigator.standalone;
           if (isStandalone) return;
           const isiOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
           let deferredPrompt = null;
           if (!isiOS) {
-            window.addEventListener("beforeinstallprompt", (e) => {
+            window.addEventListener('beforeinstallprompt', e => {
               e.preventDefault();
               deferredPrompt = e;
-              title.textContent = "安裝 ClickFun";
-              hint.textContent = "支援離線、啟動更快、全螢幕體驗";
-              btnInstall.textContent = "安裝";
-              banner.classList.add("show");
+              title.textContent = '安裝 ClickFun';
+              hint.textContent = '支援離線、啟動更快、全螢幕體驗';
+              btnInstall.textContent = '安裝';
+              banner.classList.add('show');
             });
             btnInstall.onclick = async () => {
               if (!deferredPrompt) return;
               deferredPrompt.prompt();
               const { outcome } = await deferredPrompt.userChoice;
-              if (outcome !== "dismissed") banner.classList.remove("show");
+              if (outcome !== 'dismissed') banner.classList.remove('show');
               deferredPrompt = null;
             };
           } else {
-            title.textContent = "加入主畫面（iOS）";
+            title.textContent = '加入主畫面（iOS）';
             hint.innerHTML =
-              "在 Safari 按 <b>分享</b> → <b>加入到主畫面</b>，即可離線全螢幕遊玩";
-            btnInstall.textContent = "知道了";
-            banner.classList.add("show");
-            btnInstall.onclick = () => banner.classList.remove("show");
+              '在 Safari 按 <b>分享</b> → <b>加入到主畫面</b>，即可離線全螢幕遊玩';
+            btnInstall.textContent = '知道了';
+            banner.classList.add('show');
+            btnInstall.onclick = () => banner.classList.remove('show');
           }
           btnDismiss.onclick = () => {
-            localStorage.setItem(DISMISS_KEY, "1");
-            banner.classList.remove("show");
+            localStorage.setItem(DISMISS_KEY, '1');
+            banner.classList.remove('show');
           };
         }
       }
@@ -3143,27 +3183,27 @@
       class AdvancedInputManager {
         constructor(gameEngine) {
           this.gameEngine = gameEngine;
-          const area = document.getElementById("gameArea");
-          area.addEventListener("pointerdown", this.onDown.bind(this), {
-            passive: false,
+          const area = document.getElementById('gameArea');
+          area.addEventListener('pointerdown', this.onDown.bind(this), {
+            passive: false
           });
-          area.addEventListener("pointermove", this.onMove.bind(this), {
-            passive: false,
+          area.addEventListener('pointermove', this.onMove.bind(this), {
+            passive: false
           });
-          area.addEventListener("pointerup", this.onUp.bind(this), {
-            passive: false,
+          area.addEventListener('pointerup', this.onUp.bind(this), {
+            passive: false
           });
-          area.addEventListener("pointercancel", this.onUp.bind(this), {
-            passive: false,
+          area.addEventListener('pointercancel', this.onUp.bind(this), {
+            passive: false
           });
-          area.addEventListener("contextmenu", (e) => e.preventDefault());
-          area.addEventListener("dblclick", (e) => e.preventDefault());
+          area.addEventListener('contextmenu', e => e.preventDefault());
+          area.addEventListener('dblclick', e => e.preventDefault());
 
           const pump = () => {
             if (fxWorker && GameState.tapQueues.length) {
               fxWorker.postMessage({
-                type: "batch",
-                taps: GameState.tapQueues.splice(0, GameState.tapQueues.length),
+                type: 'batch',
+                taps: GameState.tapQueues.splice(0, GameState.tapQueues.length)
               });
             }
             requestAnimationFrame(pump);
@@ -3181,10 +3221,10 @@
           e.currentTarget.setPointerCapture(id);
 
           let playerId;
-          if (GameState.mode === "single") {
-            playerId = "single";
+          if (GameState.mode === 'single') {
+            playerId = 'single';
           } else {
-            playerId = y < rect.height / 2 ? "player1" : "player2";
+            playerId = y < rect.height / 2 ? 'player1' : 'player2';
           }
 
           GameState.pointers.set(id, { playerId, element: e.currentTarget });
@@ -3220,14 +3260,14 @@
             playerId,
             mode: GameState.mode,
             rippleEligible: rippleOk,
-            ultraSpeed: ultraSpeed,
+            ultraSpeed: ultraSpeed
           });
 
-          audioManager.play("tap", 0.5);
+          audioManager.play('tap', 0.5);
           audioManager.vibrate();
-          if (GameState.mode === "dual") {
+          if (GameState.mode === 'dual') {
             const zone = document.querySelector(`.player-zone.${playerId}`);
-            if (zone) zone.classList.add("active");
+            if (zone) zone.classList.add('active');
           }
         }
         onMove(e) {
@@ -3248,11 +3288,11 @@
             try {
               meta.element.releasePointerCapture(e.pointerId);
             } catch (_) {}
-            if (GameState.mode === "dual") {
+            if (GameState.mode === 'dual') {
               const zone = document.querySelector(
                 `.player-zone.${meta.playerId}`
               );
-              if (zone) zone.classList.remove("active");
+              if (zone) zone.classList.remove('active');
             }
           }
           GameState.pointers.delete(e.pointerId);
@@ -3270,11 +3310,11 @@
         }
         async startSinglePlayer() {
           await this.enterFullscreen();
-          this.startGame("single", 0);
+          this.startGame('single', 0);
         }
         async startDualPlayer() {
           await this.enterFullscreen();
-          this.startGame("dual", 1000);
+          this.startGame('dual', 1000);
         } // 開頭延遲 1 秒
 
         async enterFullscreen() {
@@ -3303,7 +3343,7 @@
             );
           const isTablet = /ipad|android(?!.*mobile)/i.test(userAgent);
           const hasTouchScreen =
-            "ontouchstart" in window || navigator.maxTouchPoints > 0;
+            'ontouchstart' in window || navigator.maxTouchPoints > 0;
           const isSmallScreen = window.innerWidth <= 1024; // 平板尺寸以下
 
           return isMobile || isTablet || (hasTouchScreen && isSmallScreen);
@@ -3315,7 +3355,7 @@
             this.isFullscreen = false;
             return;
           }
-          if (doc.visibilityState !== "visible") {
+          if (doc.visibilityState !== 'visible') {
             this.isFullscreen = false;
             return;
           }
@@ -3349,15 +3389,15 @@
           }
           GameState.tpsUpdateInterval = setInterval(updateAllTPS, 100); // 每100ms更新一次
           GameState.inputLockUntil =
-            performance.now() + (mode === "dual" ? delayMs : 0);
+            performance.now() + (mode === 'dual' ? delayMs : 0);
 
-          const appEl = document.getElementById("app");
-          appEl.classList.toggle("single", mode === "single");
-          appEl.classList.toggle("dual", mode === "dual");
+          const appEl = document.getElementById('app');
+          appEl.classList.toggle('single', mode === 'single');
+          appEl.classList.toggle('dual', mode === 'dual');
 
           document
-            .getElementById("gameHeader")
-            .classList.toggle("hidden", mode === "dual");
+            .getElementById('gameHeader')
+            .classList.toggle('hidden', mode === 'dual');
           uiManager.showGameScreen(mode);
           uiManager.updateGameUI();
           uiManager.updateScoreDisplay();
@@ -3366,8 +3406,8 @@
           const syncActive = () => {
             if (!GameState.isPlaying) return;
             const arr = [];
-            GameState.activePointers.forEach((v) => arr.push(v));
-            fxWorker && fxWorker.postMessage({ type: "active", active: arr });
+            GameState.activePointers.forEach(v => arr.push(v));
+            fxWorker && fxWorker.postMessage({ type: 'active', active: arr });
             setTimeout(syncActive, 66);
           };
           syncActive();
@@ -3375,7 +3415,7 @@
           this.startTime = performance.now() + delayMs;
           this.lastCountdownSecond = null;
 
-          const loop = (ts) => {
+          const loop = ts => {
             if (!GameState.isPlaying) return;
             const elapsed = (ts - this.startTime) / 1000;
             GameState.timeLeft = Math.max(
@@ -3387,7 +3427,7 @@
             if (GameState.timeLeft <= 3 && GameState.timeLeft > 0) {
               const secs = Math.ceil(GameState.timeLeft);
               if (secs !== this.lastCountdownSecond) {
-                audioManager.play("countdown");
+                audioManager.play('countdown');
                 this.lastCountdownSecond = secs;
               }
             }
@@ -3426,17 +3466,17 @@
           }
           const result = this.calculateResult();
           await this.playFireworks(); // 播完煙火再顯示結果
-          audioManager.play("victory", 0.9);
+          audioManager.play('victory', 0.9);
           uiManager.showResult(result);
         }
 
         calculateResult() {
           const r = { hasWinner: false, winner: null, score: 0, score2: 0 };
-          if (GameState.mode === "single") {
+          if (GameState.mode === 'single') {
             r.score = GameState.scores.single;
             r.hasWinner = r.score > 0;
             storageManager.saveScore(
-              "single",
+              'single',
               r.score,
               null,
               GameState.maxTPS.single
@@ -3445,10 +3485,10 @@
             r.score = GameState.scores.player1;
             r.score2 = GameState.scores.player2;
             if (r.score > r.score2) {
-              r.winner = "player1";
+              r.winner = 'player1';
               r.hasWinner = true;
             } else if (r.score2 > r.score) {
-              r.winner = "player2";
+              r.winner = 'player2';
               r.hasWinner = true;
             }
             const maxTPS = Math.max(
@@ -3456,7 +3496,7 @@
               GameState.maxTPS.player2
             );
             storageManager.saveScore(
-              "dual",
+              'dual',
               Math.max(r.score, r.score2),
               Math.min(r.score, r.score2),
               maxTPS
@@ -3466,31 +3506,31 @@
         }
 
         playFireworks() {
-          const container = document.getElementById("fireworkContainer");
+          const container = document.getElementById('fireworkContainer');
           const colors = [
-            "#f66fb9",
-            "#ffb2dc",
-            "#7ccaff",
-            "#52b7ff",
-            "#ffffff",
-            "#ff6b6b",
-            "#4ecdc4",
-            "#45b7d1",
-            "#96ceb4",
-            "#ffeaa7",
-            "#dda0dd",
-            "#ff69b4",
-            "#00ff00",
-            "#ffd700",
-            "#ff4500",
+            '#f66fb9',
+            '#ffb2dc',
+            '#7ccaff',
+            '#52b7ff',
+            '#ffffff',
+            '#ff6b6b',
+            '#4ecdc4',
+            '#45b7d1',
+            '#96ceb4',
+            '#ffeaa7',
+            '#dda0dd',
+            '#ff69b4',
+            '#00ff00',
+            '#ffd700',
+            '#ff4500'
           ];
           const count = 24;
           const duration = 5500;
 
-          return new Promise((resolve) => {
+          return new Promise(resolve => {
             // Add victory screen flash effect
-            document.getElementById("app").style.animation =
-              "victoryFlash 0.8s ease-out";
+            document.getElementById('app').style.animation =
+              'victoryFlash 0.8s ease-out';
 
             for (let i = 0; i < count; i++) {
               setTimeout(() => {
@@ -3515,12 +3555,12 @@
                 }
 
                 // Enhanced audio with random pitch
-                audioManager.play("firework", 0.3 + Math.random() * 0.4);
+                audioManager.play('firework', 0.3 + Math.random() * 0.4);
 
                 // Random victory sound bursts
                 if (Math.random() < 0.3) {
                   setTimeout(
-                    () => audioManager.play("victory", 0.1),
+                    () => audioManager.play('victory', 0.1),
                     Math.random() * 300
                   );
                 }
@@ -3530,12 +3570,12 @@
             // Grand finale
             setTimeout(() => {
               this.createGrandFinale(container, colors);
-              audioManager.play("victory", 0.8);
+              audioManager.play('victory', 0.8);
             }, duration * 0.8);
 
             setTimeout(() => {
-              container.innerHTML = "";
-              document.getElementById("app").style.animation = "";
+              container.innerHTML = '';
+              document.getElementById('app').style.animation = '';
               resolve();
             }, duration + 800);
           });
@@ -3543,14 +3583,14 @@
 
         createBurstFirework(container, cx, cy, colors, particles, maxDist) {
           for (let j = 0; j < particles; j++) {
-            const dot = document.createElement("div");
-            dot.className = "firework";
+            const dot = document.createElement('div');
+            dot.className = 'firework';
             const c = colors[Math.floor(Math.random() * colors.length)];
             dot.style.background = `radial-gradient(circle, ${c}, transparent)`;
             dot.style.boxShadow = `0 0 20px ${c}, 0 0 40px ${c}`;
-            dot.style.left = cx + "px";
-            dot.style.top = cy + "px";
-            dot.style.width = 4 + Math.random() * 6 + "px";
+            dot.style.left = cx + 'px';
+            dot.style.top = cy + 'px';
+            dot.style.width = 4 + Math.random() * 6 + 'px';
             dot.style.height = dot.style.width;
             container.appendChild(dot);
 
@@ -3561,34 +3601,34 @@
             dot
               .animate(
                 [
-                  { transform: "translate(0,0) scale(1)", opacity: 1 },
+                  { transform: 'translate(0,0) scale(1)', opacity: 1 },
                   {
                     transform: `translate(${Math.cos(ang) * dist}px, ${
                       Math.sin(ang) * dist + Math.random() * 50
                     }px) scale(0)`,
-                    opacity: 0,
-                  },
+                    opacity: 0
+                  }
                 ],
                 {
                   duration: dur,
-                  easing: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                  easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                 }
               )
-              .addEventListener("finish", () => dot.remove());
+              .addEventListener('finish', () => dot.remove());
           }
         }
 
         createRingFirework(container, cx, cy, colors, particles, radius) {
           for (let j = 0; j < particles; j++) {
-            const dot = document.createElement("div");
-            dot.className = "firework";
+            const dot = document.createElement('div');
+            dot.className = 'firework';
             const c = colors[Math.floor(Math.random() * colors.length)];
             dot.style.background = c;
             dot.style.boxShadow = `0 0 15px ${c}`;
-            dot.style.left = cx + "px";
-            dot.style.top = cy + "px";
-            dot.style.width = "6px";
-            dot.style.height = "6px";
+            dot.style.left = cx + 'px';
+            dot.style.top = cy + 'px';
+            dot.style.width = '6px';
+            dot.style.height = '6px';
             container.appendChild(dot);
 
             const ang = (j / particles) * Math.PI * 2;
@@ -3597,39 +3637,39 @@
             dot
               .animate(
                 [
-                  { transform: "translate(0,0) scale(1)", opacity: 1 },
+                  { transform: 'translate(0,0) scale(1)', opacity: 1 },
                   {
                     transform: `translate(${Math.cos(ang) * radius}px, ${
                       Math.sin(ang) * radius
                     }px) scale(0.3)`,
                     opacity: 0.8,
-                    offset: 0.7,
+                    offset: 0.7
                   },
                   {
                     transform: `translate(${Math.cos(ang) * radius * 1.2}px, ${
                       Math.sin(ang) * radius * 1.2
                     }px) scale(0)`,
-                    opacity: 0,
-                  },
+                    opacity: 0
+                  }
                 ],
-                { duration: dur, easing: "ease-out" }
+                { duration: dur, easing: 'ease-out' }
               )
-              .addEventListener("finish", () => dot.remove());
+              .addEventListener('finish', () => dot.remove());
           }
         }
 
         createSpiralFirework(container, cx, cy, colors, particles, maxDist) {
           for (let j = 0; j < particles; j++) {
-            const dot = document.createElement("div");
-            dot.className = "firework";
+            const dot = document.createElement('div');
+            dot.className = 'firework';
             const c = colors[Math.floor(Math.random() * colors.length)];
             dot.style.background = `linear-gradient(45deg, ${c}, transparent)`;
             dot.style.boxShadow = `0 0 12px ${c}`;
-            dot.style.left = cx + "px";
-            dot.style.top = cy + "px";
-            dot.style.width = "3px";
-            dot.style.height = "15px";
-            dot.style.borderRadius = "50%";
+            dot.style.left = cx + 'px';
+            dot.style.top = cy + 'px';
+            dot.style.width = '3px';
+            dot.style.height = '15px';
+            dot.style.borderRadius = '50%';
             container.appendChild(dot);
 
             const spiral = j * 0.8;
@@ -3640,34 +3680,34 @@
               .animate(
                 [
                   {
-                    transform: "translate(0,0) rotate(0deg) scale(1)",
-                    opacity: 1,
+                    transform: 'translate(0,0) rotate(0deg) scale(1)',
+                    opacity: 1
                   },
                   {
                     transform: `translate(${Math.cos(spiral) * dist}px, ${
                       Math.sin(spiral) * dist
                     }px) rotate(${(spiral * 180) / Math.PI}deg) scale(0)`,
-                    opacity: 0,
-                  },
+                    opacity: 0
+                  }
                 ],
-                { duration: dur, easing: "ease-out" }
+                { duration: dur, easing: 'ease-out' }
               )
-              .addEventListener("finish", () => dot.remove());
+              .addEventListener('finish', () => dot.remove());
           }
         }
 
         createChainFirework(container, cx, cy, colors, particles, dist) {
           for (let j = 0; j < particles; j++) {
             setTimeout(() => {
-              const dot = document.createElement("div");
-              dot.className = "firework";
+              const dot = document.createElement('div');
+              dot.className = 'firework';
               const c = colors[Math.floor(Math.random() * colors.length)];
               dot.style.background = c;
               dot.style.boxShadow = `0 0 25px ${c}, 0 0 50px ${c}`;
-              dot.style.left = cx + (Math.random() - 0.5) * 100 + "px";
-              dot.style.top = cy + (Math.random() - 0.5) * 100 + "px";
-              dot.style.width = "8px";
-              dot.style.height = "8px";
+              dot.style.left = cx + (Math.random() - 0.5) * 100 + 'px';
+              dot.style.top = cy + (Math.random() - 0.5) * 100 + 'px';
+              dot.style.width = '8px';
+              dot.style.height = '8px';
               container.appendChild(dot);
 
               const ang = Math.random() * Math.PI * 2;
@@ -3676,17 +3716,17 @@
               dot
                 .animate(
                   [
-                    { transform: "translate(0,0) scale(1)", opacity: 1 },
+                    { transform: 'translate(0,0) scale(1)', opacity: 1 },
                     {
                       transform: `translate(${Math.cos(ang) * d}px, ${
                         Math.sin(ang) * d
                       }px) scale(0)`,
-                      opacity: 0,
-                    },
+                      opacity: 0
+                    }
                   ],
-                  { duration: 800, easing: "ease-out" }
+                  { duration: 800, easing: 'ease-out' }
                 )
-                .addEventListener("finish", () => dot.remove());
+                .addEventListener('finish', () => dot.remove());
             }, j * 50);
           }
         }
@@ -3706,34 +3746,34 @@
           // Add confetti shower
           setTimeout(() => {
             for (let i = 0; i < 100; i++) {
-              const confetti = document.createElement("div");
-              confetti.style.position = "absolute";
-              confetti.style.width = "6px";
-              confetti.style.height = "6px";
+              const confetti = document.createElement('div');
+              confetti.style.position = 'absolute';
+              confetti.style.width = '6px';
+              confetti.style.height = '6px';
               confetti.style.background =
                 colors[Math.floor(Math.random() * colors.length)];
-              confetti.style.left = Math.random() * window.innerWidth + "px";
-              confetti.style.top = "-10px";
-              confetti.style.borderRadius = "2px";
+              confetti.style.left = Math.random() * window.innerWidth + 'px';
+              confetti.style.top = '-10px';
+              confetti.style.borderRadius = '2px';
               container.appendChild(confetti);
 
               confetti
                 .animate(
                   [
-                    { transform: "translateY(0) rotate(0deg)", opacity: 1 },
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
                     {
                       transform: `translateY(${
                         window.innerHeight + 50
                       }px) rotate(${Math.random() * 720}deg)`,
-                      opacity: 0,
-                    },
+                      opacity: 0
+                    }
                   ],
                   {
                     duration: 3000 + Math.random() * 2000,
-                    easing: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                   }
                 )
-                .addEventListener("finish", () => confetti.remove());
+                .addEventListener('finish', () => confetti.remove());
             }
           }, 600);
         }
@@ -3771,14 +3811,14 @@
       let audioManager, inputManager, gameEngine, storageManager, uiManager;
       let isInitialized = false;
 
-      document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener('DOMContentLoaded', () => {
         // 防止重複初始化
         if (isInitialized) {
-          console.log("Game already initialized, skipping...");
+          console.log('Game already initialized, skipping...');
           return;
         }
 
-        console.log("Initializing ClickFun...");
+        console.log('Initializing ClickFun...');
 
         try {
           // 檢查版本更新
@@ -3792,28 +3832,28 @@
           setupWorker();
 
           isInitialized = true;
-          console.log("✅ Game initialization complete");
+          console.log('✅ Game initialization complete');
         } catch (error) {
-          console.error("❌ Game initialization failed: [ERROR FILTERED]");
+          console.error('❌ Game initialization failed: [ERROR FILTERED]');
         }
 
-        if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.register("./sw.js").catch(() => {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./sw.js').catch(() => {
             /* 靜默失敗 */
           });
         }
 
         if (
-          "connection" in navigator &&
+          'connection' in navigator &&
           navigator.connection &&
           navigator.connection.saveData === true
         ) {
-          document.documentElement.classList.add("save-data");
+          document.documentElement.classList.add('save-data');
         }
       });
 
       // 全螢幕事件：不要在這裡呼叫 exitGame() 以免遞迴
-      document.addEventListener("fullscreenchange", () => {
+      document.addEventListener('fullscreenchange', () => {
         const isFs = !!(
           document.fullscreenElement || document.webkitFullscreenElement
         );
@@ -3828,8 +3868,8 @@
       (function preventZoom() {
         let last = 0;
         document.addEventListener(
-          "touchend",
-          (e) => {
+          'touchend',
+          e => {
             const now = Date.now();
             if (now - last <= 300) {
               e.preventDefault();
@@ -3838,8 +3878,8 @@
           },
           { passive: false }
         );
-        ["gesturestart", "gesturechange", "gestureend"].forEach((evt) =>
-          document.addEventListener(evt, (e) => e.preventDefault())
+        ['gesturestart', 'gesturechange', 'gestureend'].forEach(evt =>
+          document.addEventListener(evt, e => e.preventDefault())
         );
       })();
     </script>
