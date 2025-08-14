@@ -1,0 +1,21 @@
+{
+  "id": ".",
+  "name": "ClickFun",
+  "short_name": "ClickFun",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f6a8d8",
+  "description": "粉色×天藍｜點擊樂趣遊戲，TPS 計算，支援離線 PWA。",
+  "version": "6.3.0",
+  "icons": [
+    {
+      "src": "./icons/pwa.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "prefer_related_applications": false
+}
