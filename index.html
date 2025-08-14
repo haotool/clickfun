@@ -1220,7 +1220,13 @@
 
         .result-actions {
           flex-direction: column;
-          gap: 8px;
+          gap: 12px;
+          align-items: center;
+        }
+
+        .result-btn {
+          width: 100%;
+          max-width: 280px;
         }
 
         .result-btn {
@@ -1333,7 +1339,8 @@
       .result-actions {
         display: flex;
         gap: 12px;
-        justify-content: space-between;
+        justify-content: center;
+        flex-wrap: wrap;
       }
 
       .result-btn {
@@ -1344,9 +1351,8 @@
         font-weight: 700;
         border-radius: 12px;
         transition: all 0.2s ease;
-        flex: 1;
         justify-content: center;
-        max-width: 160px;
+        min-width: 140px;
       }
 
       .result-btn:hover {
@@ -3809,6 +3815,9 @@
 
       // ===== 初始化 =====
       let audioManager, inputManager, gameEngine, storageManager, uiManager;
+
+      // 暴露到全局作用域以便調試
+      window.GameState = GameState;
       let isInitialized = false;
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -3830,6 +3839,11 @@
           uiManager = new AdvancedUIManager();
           inputManager = new AdvancedInputManager(gameEngine);
           setupWorker();
+
+          // 暴露到全局作用域以便調試
+          window.gameEngine = gameEngine;
+          window.uiManager = uiManager;
+          window.inputManager = inputManager;
 
           isInitialized = true;
           console.log('✅ Game initialization complete');
