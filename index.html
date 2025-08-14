@@ -903,13 +903,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 20px;
-        border-radius: 16px;
+        padding: 16px 12px;
+        border-radius: 12px;
         background: rgba(255, 255, 255, 0.6);
         border: 2px solid rgba(246, 111, 185, 0.1);
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
+        min-width: 0;
       }
 
       .player-result.winner {
@@ -1084,8 +1085,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         background: linear-gradient(
           135deg,
           var(--primary) 0%,
@@ -1094,9 +1095,10 @@
         border-radius: 50%;
         color: white;
         font-weight: 900;
-        font-size: 1.2rem;
-        box-shadow: 0 8px 20px rgba(246, 111, 185, 0.3);
+        font-size: 1rem;
+        box-shadow: 0 6px 15px rgba(246, 111, 185, 0.3);
         animation: vsRotate 4s linear infinite;
+        flex-shrink: 0;
       }
 
       @keyframes vsRotate {
@@ -1162,24 +1164,26 @@
         }
 
         .players-comparison {
-          flex-direction: column;
-          gap: 12px;
-          margin-bottom: 24px;
+          flex-direction: row;
+          gap: 8px;
+          margin-bottom: 20px;
+          align-items: stretch;
         }
 
         .vs-divider {
-          transform: rotate(90deg);
-          width: 45px;
-          height: 45px;
-          font-size: 0.9rem;
-          margin: 8px 0;
+          width: 35px;
+          height: 35px;
+          font-size: 0.8rem;
+          margin: 0;
+          flex-shrink: 0;
+          align-self: center;
         }
 
         .player-result {
-          width: 100%;
-          max-width: 300px;
-          margin: 0 auto;
-          padding: 16px;
+          flex: 1;
+          min-width: 0;
+          padding: 12px 8px;
+          margin: 0;
         }
 
         .medal-icon {
@@ -1191,13 +1195,31 @@
         }
 
         .player-name {
-          font-size: 1.1rem;
-          margin-bottom: 10px;
+          font-size: 1rem;
+          margin-bottom: 8px;
         }
 
         .player-score,
         .player-tps {
-          padding: 6px 10px;
+          padding: 4px 8px;
+          font-size: 0.85rem;
+        }
+
+        .score-value,
+        .tps-value {
+          font-size: 1.1rem;
+        }
+
+        .dual-result-card .result-actions {
+          margin-top: 16px;
+        }
+
+        .dual-result-card .result-btn {
+          padding: 10px 16px;
+          font-size: 0.9rem;
+          min-height: 44px;
+          touch-action: manipulation;
+        }
           font-size: 0.85rem;
         }
 
@@ -2639,6 +2661,20 @@
             });
           document
             .getElementById('backToMenuBtn')
+            .addEventListener('click', () => {
+              this.hideModal('resultModal');
+              gameEngine.exitGame();
+            });
+
+          // 雙人模式按鈕事件監聽器
+          document
+            .getElementById('playAgainDualBtn')
+            .addEventListener('click', () => {
+              this.hideModal('resultModal');
+              gameEngine.startDualPlayer();
+            });
+          document
+            .getElementById('backToMenuDualBtn')
             .addEventListener('click', () => {
               this.hideModal('resultModal');
               gameEngine.exitGame();
