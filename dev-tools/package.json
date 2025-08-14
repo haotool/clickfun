@@ -7,12 +7,21 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:quick": "jest --passWithNoTests --silent",
     "test:e2e": "jest --config=jest.e2e.config.js",
     "serve": "http-server ../ -p 8080 -c-1 --cors",
     "serve:https": "https-localhost -p 8080 -d ../",
     "tps-test": "node tps-test-server.js",
     "clear-cache": "node clear-cache.js",
-    "build-report": "node build-report.js"
+    "build-report": "node build-report.js",
+    "lint": "eslint ../ --ext .js --ignore-path ../.gitignore",
+    "lint:fix": "eslint ../ --ext .js --ignore-path ../.gitignore --fix",
+    "lint:check": "eslint ../ --ext .js --ignore-path ../.gitignore --max-warnings 0",
+    "format": "prettier --write \"../**/*.{js,json,md,yml,yaml}\" --ignore-path ../.gitignore",
+    "format:check": "prettier --check \"../**/*.{js,json,md,yml,yaml}\" --ignore-path ../.gitignore",
+    "quality": "npm run lint:check && npm run format:check && npm run test:quick",
+    "setup-hooks": "node husky-setup.js",
+    "prepare": "cd .. && husky install dev-tools/.husky"
   },
   "devDependencies": {
     "jest": "^29.7.0",
@@ -23,7 +32,12 @@
     "http-server": "^14.1.1",
     "https-localhost": "^4.7.1",
     "express": "^4.18.2",
-    "ws": "^8.14.2"
+    "ws": "^8.14.2",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "husky": "^8.0.3",
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3"
   },
   "jest": {
     "testEnvironment": "node",
