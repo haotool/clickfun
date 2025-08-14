@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClickFun TPS 測試工具</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .header h1 {
+        color: #333;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .header p {
+        color: #666;
+        font-size: 1.1rem;
+      }
+
+      .test-area {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .click-zone {
+        background: linear-gradient(135deg, #f66fb9 0%, #52b7ff 100%);
+        border-radius: 15px;
+        padding: 40px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.1s ease;
+        user-select: none;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .click-zone:active {
+        transform: scale(0.98);
+      }
+
+      .click-zone h3 {
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+
+      .tps-display {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 15px;
+        margin: 10px 0;
+      }
+
+      .tps-value {
+        font-size: 3rem;
+        font-weight: bold;
+        color: white;
+        font-family: "Courier New", monospace;
+      }
+
+      .tps-label {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+        margin-top: 5px;
+      }
+
+      .stats-panel {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      .stat-item {
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .stat-value {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .stat-label {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .controls {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-primary {
+        background: #007bff;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #0056b3;
+      }
+
+      .btn-secondary {
+        background: #6c757d;
+        color: white;
+      }
+
+      .btn-secondary:hover {
+        background: #545b62;
+      }
+
+      .connection-status {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .connected {
+        background: #28a745;
+        color: white;
+      }
+
+      .disconnected {
+        background: #dc3545;
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .test-area {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="connection-status" id="connectionStatus">連接中...</div>
+
+    <div class="container">
+      <div class="header">
+        <h1>🎯 ClickFun TPS 測試工具</h1>
+        <p>測試點擊速度和效能表現</p>
+      </div>
+
+      <div class="test-area">
+        <div class="click-zone" id="clickZone1">
+          <h3>測試區域 A</h3>
+          <div class="tps-display">
+            <div class="tps-value" id="tps1">0.0</div>
+            <div class="tps-label">TPS (每秒點擊)</div>
+          </div>
+          <div class="tps-display">
+            <div class="tps-value" id="clicks1">0</div>
+            <div class="tps-label">總點擊次數</div>
+          </div>
+        </div>
+
+        <div class="click-zone" id="clickZone2">
+          <h3>測試區域 B</h3>
+          <div class="tps-display">
+            <div class="tps-value" id="tps2">0.0</div>
+            <div class="tps-label">TPS (每秒點擊)</div>
+          </div>
+          <div class="tps-display">
+            <div class="tps-value" id="clicks2">0</div>
+            <div class="tps-label">總點擊次數</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn btn-primary" onclick="startTest()">開始測試</button>
+        <button class="btn btn-secondary" onclick="resetTest()">重置</button>
+        <button class="btn btn-secondary" onclick="exportData()">
+          匯出數據
+        </button>
+      </div>
+
+      <div class="stats-panel">
+        <h3 style="margin-bottom: 15px; color: #333">📊 測試統計</h3>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-value" id="maxTPS">0.0</div>
+            <div class="stat-label">最高 TPS</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="avgTPS">0.0</div>
+            <div class="stat-label">平均 TPS</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="totalClicks">0</div>
+            <div class="stat-label">總點擊數</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="testDuration">0</div>
+            <div class="stat-label">測試時長 (秒)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="fps">60</div>
+            <div class="stat-label">FPS</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="latency">0</div>
+            <div class="stat-label">延遲 (ms)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // TPS 測試邏輯
+      class TPSTest {
+        constructor() {
+          this.ws = null;
+          this.isConnected = false;
+          this.testData = {
+            zone1: { clicks: [], tps: 0, totalClicks: 0 },
+            zone2: { clicks: [], tps: 0, totalClicks: 0 },
+          };
+          this.testStartTime = null;
+          this.maxTPS = 0;
+          this.fpsCounter = 0;
+          this.lastFrameTime = performance.now();
+
+          this.initWebSocket();
+          this.initEventListeners();
+          this.startFPSMonitor();
+        }
+
+        initWebSocket() {
+          try {
+            this.ws = new WebSocket("ws://localhost:3001");
+
+            this.ws.onopen = () => {
+              this.isConnected = true;
+              this.updateConnectionStatus();
+              console.log("✅ WebSocket 連接成功");
+            };
+
+            this.ws.onmessage = (event) => {
+              const data = JSON.parse(event.data);
+              this.handleServerMessage(data);
+            };
+
+            this.ws.onclose = () => {
+              this.isConnected = false;
+              this.updateConnectionStatus();
+              console.log("❌ WebSocket 連接關閉");
+
+              // 嘗試重新連接
+              setTimeout(() => this.initWebSocket(), 3000);
+            };
+
+            this.ws.onerror = (error) => {
+              console.error("❌ WebSocket 錯誤:", error);
+            };
+          } catch (error) {
+            console.error("❌ WebSocket 初始化失敗:", error);
+          }
+        }
+
+        initEventListeners() {
+          // 點擊區域事件
+          document
+            .getElementById("clickZone1")
+            .addEventListener("click", (e) => {
+              this.handleClick("zone1", e);
+            });
+
+          document
+            .getElementById("clickZone2")
+            .addEventListener("click", (e) => {
+              this.handleClick("zone2", e);
+            });
+
+          // 多點觸控支援
+          document
+            .getElementById("clickZone1")
+            .addEventListener("touchstart", (e) => {
+              e.preventDefault();
+              for (let touch of e.touches) {
+                this.handleClick("zone1", touch);
+              }
+            });
+
+          document
+            .getElementById("clickZone2")
+            .addEventListener("touchstart", (e) => {
+              e.preventDefault();
+              for (let touch of e.touches) {
+                this.handleClick("zone2", touch);
+              }
+            });
+        }
+
+        handleClick(zone, event) {
+          const now = performance.now();
+          const clickData = {
+            timestamp: now,
+            x: event.clientX || event.pageX,
+            y: event.clientY || event.pageY,
+          };
+
+          this.testData[zone].clicks.push(clickData);
+          this.testData[zone].totalClicks++;
+
+          // 計算 TPS (使用 1 秒滑動窗口)
+          this.calculateTPS(zone);
+
+          // 更新顯示
+          this.updateDisplay(zone);
+
+          // 發送數據到伺服器
+          this.sendTPSData(zone);
+
+          // 測量延遲
+          this.measureLatency(now);
+        }
+
+        calculateTPS(zone) {
+          const now = performance.now();
+          const windowSize = 1000; // 1 秒窗口
+
+          // 移除超過窗口時間的點擊
+          this.testData[zone].clicks = this.testData[zone].clicks.filter(
+            (click) => now - click.timestamp <= windowSize
+          );
+
+          // 計算 TPS
+          const tps = this.testData[zone].clicks.length;
+          this.testData[zone].tps = tps;
+
+          // 更新最高 TPS
+          if (tps > this.maxTPS) {
+            this.maxTPS = tps;
+            document.getElementById("maxTPS").textContent = tps.toFixed(1);
+          }
+        }
+
+        updateDisplay(zone) {
+          const zoneNum = zone === "zone1" ? "1" : "2";
+          document.getElementById(`tps${zoneNum}`).textContent =
+            this.testData[zone].tps.toFixed(1);
+          document.getElementById(`clicks${zoneNum}`).textContent =
+            this.testData[zone].totalClicks;
+
+          // 更新總統計
+          this.updateStats();
+        }
+
+        updateStats() {
+          const totalClicks =
+            this.testData.zone1.totalClicks + this.testData.zone2.totalClicks;
+          const avgTPS =
+            (this.testData.zone1.tps + this.testData.zone2.tps) / 2;
+          const duration = this.testStartTime
+            ? (performance.now() - this.testStartTime) / 1000
+            : 0;
+
+          document.getElementById("totalClicks").textContent = totalClicks;
+          document.getElementById("avgTPS").textContent = avgTPS.toFixed(1);
+          document.getElementById("testDuration").textContent =
+            duration.toFixed(1);
+        }
+
+        sendTPSData(zone) {
+          if (this.ws && this.isConnected) {
+            this.ws.send(
+              JSON.stringify({
+                type: "tps_data",
+                zone: zone,
+                tps: this.testData[zone].tps,
+                totalClicks: this.testData[zone].totalClicks,
+                timestamp: performance.now(),
+                clientId: "tps-test-tool",
+              })
+            );
+          }
+        }
+
+        measureLatency(clickTime) {
+          const renderTime = performance.now();
+          const latency = renderTime - clickTime;
+          document.getElementById("latency").textContent = latency.toFixed(1);
+        }
+
+        startFPSMonitor() {
+          const updateFPS = () => {
+            const now = performance.now();
+            const delta = now - this.lastFrameTime;
+            this.lastFrameTime = now;
+
+            const fps = 1000 / delta;
+            this.fpsCounter = this.fpsCounter * 0.9 + fps * 0.1; // 平滑處理
+
+            document.getElementById("fps").textContent = Math.round(
+              this.fpsCounter
+            );
+
+            requestAnimationFrame(updateFPS);
+          };
+
+          requestAnimationFrame(updateFPS);
+        }
+
+        updateConnectionStatus() {
+          const statusEl = document.getElementById("connectionStatus");
+          if (this.isConnected) {
+            statusEl.textContent = "🟢 已連接";
+            statusEl.className = "connection-status connected";
+          } else {
+            statusEl.textContent = "🔴 未連接";
+            statusEl.className = "connection-status disconnected";
+          }
+        }
+
+        handleServerMessage(data) {
+          switch (data.type) {
+            case "welcome":
+              console.log("📨 伺服器訊息:", data.message);
+              break;
+            case "server_status":
+              console.log(
+                `📊 伺服器狀態: ${data.connectedClients} 個客戶端連接`
+              );
+              break;
+          }
+        }
+      }
+
+      // 全域函數
+      let tpsTest;
+
+      function startTest() {
+        if (!tpsTest) {
+          tpsTest = new TPSTest();
+        }
+        tpsTest.testStartTime = performance.now();
+        console.log("🚀 TPS 測試開始");
+      }
+
+      function resetTest() {
+        if (tpsTest) {
+          tpsTest.testData = {
+            zone1: { clicks: [], tps: 0, totalClicks: 0 },
+            zone2: { clicks: [], tps: 0, totalClicks: 0 },
+          };
+          tpsTest.testStartTime = null;
+          tpsTest.maxTPS = 0;
+
+          // 重置顯示
+          document.getElementById("tps1").textContent = "0.0";
+          document.getElementById("tps2").textContent = "0.0";
+          document.getElementById("clicks1").textContent = "0";
+          document.getElementById("clicks2").textContent = "0";
+          document.getElementById("maxTPS").textContent = "0.0";
+          document.getElementById("avgTPS").textContent = "0.0";
+          document.getElementById("totalClicks").textContent = "0";
+          document.getElementById("testDuration").textContent = "0";
+
+          console.log("🔄 TPS 測試重置");
+        }
+      }
+
+      function exportData() {
+        if (tpsTest) {
+          const data = {
+            timestamp: new Date().toISOString(),
+            testData: tpsTest.testData,
+            maxTPS: tpsTest.maxTPS,
+            duration: tpsTest.testStartTime
+              ? (performance.now() - tpsTest.testStartTime) / 1000
+              : 0,
+          };
+
+          const blob = new Blob([JSON.stringify(data, null, 2)], {
+            type: "application/json",
+          });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `tps-test-${Date.now()}.json`;
+          a.click();
+          URL.revokeObjectURL(url);
+
+          console.log("📁 測試數據已匯出");
+        }
+      }
+
+      // 自動開始測試
+      window.addEventListener("load", () => {
+        startTest();
+      });
+    </script>
+  </body>
+</html>
