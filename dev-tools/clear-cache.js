@@ -3,20 +3,20 @@
  * 用於開發時清理 Service Worker 快取
  */
 
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
 class CacheCleaner {
   constructor() {
     this.cacheNames = [
-      "clickfun-v6.3.0",
-      "workbox-precache",
-      "workbox-runtime",
+      'clickfun-v6.4.0',
+      'workbox-precache',
+      'workbox-runtime'
     ];
   }
 
   async clearBrowserCache() {
-    console.log("🧹 開始清理瀏覽器快取...");
+    console.log('🧹 開始清理瀏覽器快取...');
 
     // 生成清理腳本
     const cleanupScript = `
@@ -57,13 +57,13 @@ class CacheCleaner {
     `;
 
     // 寫入清理腳本檔案
-    const scriptPath = path.join(__dirname, "cache-cleanup.js");
+    const scriptPath = path.join(__dirname, 'cache-cleanup.js');
     fs.writeFileSync(scriptPath, cleanupScript);
 
     console.log(`📝 快取清理腳本已生成: ${scriptPath}`);
-    console.log("💡 使用方法:");
-    console.log("   1. 在瀏覽器開發者工具的 Console 中執行此腳本");
-    console.log("   2. 或在頁面中引入此腳本檔案");
+    console.log('💡 使用方法:');
+    console.log('   1. 在瀏覽器開發者工具的 Console 中執行此腳本');
+    console.log('   2. 或在頁面中引入此腳本檔案');
 
     return scriptPath;
   }
@@ -244,30 +244,30 @@ class CacheCleaner {
 </html>
     `;
 
-    const htmlPath = path.join(__dirname, "cache-cleanup.html");
+    const htmlPath = path.join(__dirname, 'cache-cleanup.html');
     fs.writeFileSync(htmlPath, htmlContent);
 
     console.log(`🌐 快取清理頁面已生成: ${htmlPath}`);
-    console.log("💡 在瀏覽器中開啟此頁面即可使用圖形化清理工具");
+    console.log('💡 在瀏覽器中開啟此頁面即可使用圖形化清理工具');
 
     return htmlPath;
   }
 
   async run() {
-    console.log("🚀 ClickFun PWA 快取清理工具");
-    console.log("================================");
+    console.log('🚀 ClickFun PWA 快取清理工具');
+    console.log('================================');
 
     try {
       await this.clearBrowserCache();
       this.generateCleanupHTML();
 
-      console.log("");
-      console.log("✅ 快取清理工具準備完成！");
-      console.log("📁 生成的檔案:");
-      console.log("   - cache-cleanup.js (腳本檔案)");
-      console.log("   - cache-cleanup.html (圖形化工具)");
+      console.log('');
+      console.log('✅ 快取清理工具準備完成！');
+      console.log('📁 生成的檔案:');
+      console.log('   - cache-cleanup.js (腳本檔案)');
+      console.log('   - cache-cleanup.html (圖形化工具)');
     } catch (error) {
-      console.error("❌ 快取清理工具執行失敗:", error);
+      console.error('❌ 快取清理工具執行失敗:', error);
     }
   }
 }

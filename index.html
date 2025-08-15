@@ -2270,7 +2270,7 @@
       })();
 
       // ===== 版本管理 =====
-      const APP_VERSION = '6.3.0';
+      const APP_VERSION = '6.4.0';
 
       // 版本檢測和自動更新
       async function checkForUpdates() {
@@ -2287,7 +2287,8 @@
                   const cacheNames = await caches.keys();
                   await Promise.all(
                     cacheNames.map(cacheName => {
-                      if (cacheName !== `etb-v${APP_VERSION}`) {
+                      if (cacheName !== `clickfun-v${APP_VERSION}`) {
+                        console.log(`清除舊快取: ${cacheName}`);
                         return caches.delete(cacheName);
                       }
                     })

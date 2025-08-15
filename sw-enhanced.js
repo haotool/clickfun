@@ -3,7 +3,7 @@
  * 基於最佳實踐的 PWA Service Worker 實作
  */
 
-const SW_VERSION = 'clickfun-enhanced-v1.0.0';
+const SW_VERSION = 'clickfun-enhanced-v1.1.0';
 const APP_VERSION = '6.4.0';
 
 // 快取策略配置
