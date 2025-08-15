@@ -1962,7 +1962,9 @@
             id="singlePlayerArea"
             style="display: none"
           >
-            <div class="player-name">開始點擊挑戰！</div>
+            <div class="player-name" id="encouragementText">
+              點擊開始你的挑戰！
+            </div>
             <div class="score-display" id="singleScore">0</div>
           </div>
 
@@ -2268,6 +2270,62 @@
         `${SW_ENHANCED_VERSION}-images`
       ];
 
+      // ===== 鼓勵文字系統 =====
+      const ENCOURAGEMENT_MESSAGES = [
+        // 1-5 TPS: 新手鼓勵
+        { minTPS: 1, maxTPS: 2, message: '不錯的開始！手指正在熱身中 🔥' },
+        { minTPS: 2, maxTPS: 3, message: '感覺到節奏了嗎？繼續保持！ 🎵' },
+        { minTPS: 3, maxTPS: 4, message: '你的手指開始跳舞了！💃' },
+        { minTPS: 4, maxTPS: 5, message: '穩定的節奏，就像心跳一樣！❤️' },
+        { minTPS: 5, maxTPS: 6, message: '手指靈活度 +1！繼續加油！✨' },
+
+        // 6-15 TPS: 進階鼓勵
+        { minTPS: 6, maxTPS: 8, message: '哇！你的手指有魔法嗎？🪄' },
+        { minTPS: 8, maxTPS: 10, message: '這速度讓螢幕都開始發燙了！🔥' },
+        { minTPS: 10, maxTPS: 12, message: '手指變成閃電了！⚡' },
+        { minTPS: 12, maxTPS: 15, message: '你是點擊界的鋼琴家！🎹' },
+        { minTPS: 15, maxTPS: 18, message: '手速快到模糊了！👻' },
+
+        // 16-30 TPS: 高手級鼓勵
+        { minTPS: 18, maxTPS: 20, message: '這是人類的極限嗎？！🚀' },
+        { minTPS: 20, maxTPS: 22, message: '手指已經突破音速！💨' },
+        { minTPS: 22, maxTPS: 25, message: '你的手指是渦輪增壓的嗎？🏎️' },
+        { minTPS: 25, maxTPS: 28, message: '連蜂鳥都自嘆不如！🐦' },
+        { minTPS: 28, maxTPS: 30, message: '手指變成光速了！💫' },
+
+        // 31-50 TPS: 超人級鼓勵
+        { minTPS: 30, maxTPS: 35, message: '你確定不是機器人嗎？🤖' },
+        { minTPS: 35, maxTPS: 40, message: '手指已經進入超次元空間！🌌' },
+        { minTPS: 40, maxTPS: 45, message: '這速度連閃電都追不上！⚡⚡' },
+        { minTPS: 45, maxTPS: 50, message: '你的手指違反了物理定律！🧪' },
+        { minTPS: 50, maxTPS: 55, message: '手指已經超越時空限制！⏰' },
+
+        // 51-70 TPS: 神級鼓勵
+        { minTPS: 55, maxTPS: 60, message: '這是傳說中的神之手速！👑' },
+        { minTPS: 60, maxTPS: 65, message: '你的手指擁有量子糾纏能力！⚛️' },
+        { minTPS: 65, maxTPS: 70, message: '手指已經達到宇宙級頻率！🌟' },
+        { minTPS: 70, maxTPS: 75, message: '連時間都為你的速度停止！⏸️' },
+        { minTPS: 75, maxTPS: 80, message: '你的手指創造了新的維度！🔮' },
+
+        // 81-100 TPS: 終極鼓勵
+        { minTPS: 80, maxTPS: 85, message: '手指已經成為純能量體！💥' },
+        { minTPS: 85, maxTPS: 90, message: '你重新定義了「快」這個字！📚' },
+        { minTPS: 90, maxTPS: 95, message: '手指速度已經無法用科學解釋！🔬' },
+        { minTPS: 95, maxTPS: 100, message: '你就是點擊宇宙的創造者！🌍' },
+        { minTPS: 100, maxTPS: Infinity, message: '傳說中的點擊之神降臨！👼' }
+      ];
+
+      // 獲取對應 TPS 的鼓勵文字
+      function getEncouragementMessage(tps) {
+        for (const msg of ENCOURAGEMENT_MESSAGES) {
+          if (tps >= msg.minTPS && tps < msg.maxTPS) {
+            return msg.message;
+          }
+        }
+        return ENCOURAGEMENT_MESSAGES[ENCOURAGEMENT_MESSAGES.length - 1]
+          .message;
+      }
+
       // 版本檢測和自動更新
       async function checkForUpdates() {
         if ('serviceWorker' in navigator) {
@@ -2314,6 +2372,7 @@
       // ===== 遊戲狀態 =====
       const GameState = {
         isPlaying: false,
+        hasStarted: false, // 是否已經開始計時
         mode: 'single',
         timeLeft: 30,
         scores: { single: 0, player1: 0, player2: 0 },
@@ -2625,6 +2684,7 @@
       // ===== UI 管理 =====
       class AdvancedUIManager {
         constructor() {
+          this.encouragementTimeout = null;
           document
             .getElementById('startSingleBtn')
             .addEventListener('click', async () => {
@@ -2730,6 +2790,12 @@
           if (mode === 'single') {
             document.getElementById('singlePlayerArea').style.display = 'flex';
             document.getElementById('dualPlayerArea').style.display = 'none';
+            // 重置鼓勵文字
+            const encouragementEl =
+              document.getElementById('encouragementText');
+            if (encouragementEl) {
+              encouragementEl.textContent = '點擊開始你的挑戰！';
+            }
           } else {
             document.getElementById('singlePlayerArea').style.display = 'none';
             document.getElementById('dualPlayerArea').style.display = 'grid';
@@ -2780,6 +2846,29 @@
           document.getElementById('hudTimerP1').textContent = t;
           document.getElementById('hudTimerP2').textContent = t;
           this.updateTpsHUD();
+        }
+
+        updateEncouragementText(currentTPS) {
+          const textEl = document.getElementById('encouragementText');
+          if (!textEl) return;
+
+          const message = getEncouragementMessage(currentTPS);
+
+          // 只有在文字改變時才更新，並顯示至少1秒
+          if (textEl.textContent !== message) {
+            textEl.textContent = message;
+
+            // 添加閃爍效果
+            textEl.style.animation = 'none';
+            textEl.offsetHeight; // 強制重繪
+            textEl.style.animation = 'pulse 0.5s ease-in-out';
+
+            // 確保顯示至少1秒
+            clearTimeout(this.encouragementTimeout);
+            this.encouragementTimeout = setTimeout(() => {
+              // 1秒後可以更新為新的文字
+            }, 1000);
+          }
         }
         updateTpsHUD() {
           if (!GameState.settings.showTps) return;
@@ -3289,10 +3378,22 @@
           const tier = tpsToLevel(currentTPS);
           GameState.lastTapTime[playerId] = now;
 
+          // 單人模式第一次點擊時開始計時
+          if (GameState.mode === 'single' && !GameState.hasStarted) {
+            GameState.hasStarted = true;
+            this.gameEngine.startTime = now; // 重設開始時間
+            console.log('🎮 遊戲計時開始！');
+          }
+
           GameState.activePointers.set(id, { x, y, playerId, tier });
           GameState.scores[playerId]++;
           uiManager.updateScoreDisplay();
           uiManager.animateScore(playerId);
+
+          // 單人模式更新鼓勵文字
+          if (GameState.mode === 'single') {
+            uiManager.updateEncouragementText(currentTPS);
+          }
 
           // 水波紋觸發條件：每秒點擊 > 20 且每 3 次觸發一次
           const rippleOk =
@@ -3421,6 +3522,7 @@
           if (GameState.isPlaying) return;
           GameState.mode = mode;
           GameState.isPlaying = true;
+          GameState.hasStarted = false; // 重置開始狀態
           GameState.timeLeft = GameState.settings.gameDuration;
           GameState.scores = { single: 0, player1: 0, player2: 0 };
           GameState.pointers.clear();
@@ -3465,11 +3567,15 @@
 
           const loop = ts => {
             if (!GameState.isPlaying) return;
-            const elapsed = (ts - this.startTime) / 1000;
-            GameState.timeLeft = Math.max(
-              0,
-              GameState.settings.gameDuration - Math.max(0, elapsed)
-            );
+
+            // 只有在遊戲已開始時才計時
+            if (GameState.hasStarted) {
+              const elapsed = (ts - this.startTime) / 1000;
+              GameState.timeLeft = Math.max(
+                0,
+                GameState.settings.gameDuration - Math.max(0, elapsed)
+              );
+            }
             uiManager.updateTimer();
 
             if (GameState.timeLeft <= 3 && GameState.timeLeft > 0) {
