@@ -1085,30 +1085,19 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
-        border-radius: 50%;
-        color: white;
+        width: auto;
+        height: auto;
         font-weight: 900;
-        font-size: 1rem;
-        box-shadow: 0 6px 15px rgba(246, 111, 185, 0.3);
-        animation: vsRotate 4s linear infinite;
+        font-size: 0.9rem;
         flex-shrink: 0;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
       }
 
-      @keyframes vsRotate {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
+
 
       .dual-achievement-section {
         text-align: center;
@@ -1171,10 +1160,10 @@
         }
 
         .vs-divider {
-          width: 35px;
-          height: 35px;
-          font-size: 0.8rem;
-          margin: 0;
+          width: auto;
+          height: auto;
+          font-size: 0.75rem;
+          margin: 0 4px;
           flex-shrink: 0;
           align-self: center;
         }
