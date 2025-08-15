@@ -3032,6 +3032,7 @@
             document.getElementById('showTps').checked;
           storageManager.saveSettings();
           this.applyTpsToggle();
+          sendSettingsToWorker();
         }
         loadSettingsUI() {
           document.getElementById('soundEnabled').checked =
