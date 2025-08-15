@@ -1241,20 +1241,17 @@
         }
 
         .result-actions {
-          flex-direction: column;
-          gap: 12px;
+          flex-direction: row;
+          gap: 8px;
+          justify-content: space-between;
           align-items: center;
         }
 
         .result-btn {
-          width: 100%;
-          max-width: 280px;
-        }
-
-        .result-btn {
-          width: 100%;
-          justify-content: center;
-          padding: 12px 16px;
+          flex: 1;
+          max-width: 140px;
+          padding: 10px 12px;
+          font-size: 0.85rem;
         }
       }
 
@@ -2087,11 +2084,11 @@
                 <div class="player-stats">
                   <div class="player-score">
                     <span class="score-label">得分</span>
-                    <span class="score-value" id="player1Score">0</span>
+                    <span class="score-value" id="player1ResultScore">0</span>
                   </div>
                   <div class="player-tps">
                     <span class="tps-label">最高 TPS</span>
-                    <span class="tps-value" id="player1TPS">0</span>
+                    <span class="tps-value" id="player1ResultTPS">0</span>
                   </div>
                 </div>
               </div>
@@ -2110,11 +2107,11 @@
                 <div class="player-stats">
                   <div class="player-score">
                     <span class="score-label">得分</span>
-                    <span class="score-value" id="player2Score">0</span>
+                    <span class="score-value" id="player2ResultScore">0</span>
                   </div>
                   <div class="player-tps">
                     <span class="tps-label">最高 TPS</span>
-                    <span class="tps-value" id="player2TPS">0</span>
+                    <span class="tps-value" id="player2ResultTPS">0</span>
                   </div>
                 </div>
               </div>
@@ -2921,10 +2918,12 @@
             const player1Medal = document.getElementById('player1Medal');
             const player2Medal = document.getElementById('player2Medal');
 
-            const player1ScoreEl = document.getElementById('player1Score');
-            const player2ScoreEl = document.getElementById('player2Score');
-            const player1TPSEl = document.getElementById('player1TPS');
-            const player2TPSEl = document.getElementById('player2TPS');
+            const player1ScoreEl =
+              document.getElementById('player1ResultScore');
+            const player2ScoreEl =
+              document.getElementById('player2ResultScore');
+            const player1TPSEl = document.getElementById('player1ResultTPS');
+            const player2TPSEl = document.getElementById('player2ResultTPS');
 
             const dualBadge = document.getElementById('dualAchievementBadge');
 
