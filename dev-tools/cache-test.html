@@ -190,16 +190,24 @@
       async function clearOldCaches() {
         try {
           const cacheNames = await caches.keys();
-          const currentCacheName = `clickfun-v${APP_VERSION}`;
+          const currentCachePatterns = [
+            `clickfun-v${APP_VERSION}`,
+            'clickfun-enhanced-v1.1.0-app-shell',
+            'clickfun-enhanced-v1.1.0-static',
+            'clickfun-enhanced-v1.1.0-dynamic',
+            'clickfun-enhanced-v1.1.0-images'
+          ];
 
-          log(`🗑️ 清除舊快取 (保留: ${currentCacheName})...`);
+          log(`🗑️ 清除舊快取 (保留當前版本快取)...`);
 
           let clearedCount = 0;
           for (const cacheName of cacheNames) {
-            if (cacheName !== currentCacheName) {
+            if (!currentCachePatterns.includes(cacheName)) {
               await caches.delete(cacheName);
               log(`  🗑️ 已清除: ${cacheName}`);
               clearedCount++;
+            } else {
+              log(`  ✅ 保留: ${cacheName}`);
             }
           }
 

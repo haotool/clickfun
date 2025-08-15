@@ -2257,6 +2257,16 @@
 
       // ===== 版本管理 =====
       const APP_VERSION = '6.4.0';
+      const SW_ENHANCED_VERSION = 'clickfun-enhanced-v1.1.0';
+
+      // 當前版本的所有快取名稱模式
+      const CURRENT_CACHE_PATTERNS = [
+        `clickfun-v${APP_VERSION}`,
+        `${SW_ENHANCED_VERSION}-app-shell`,
+        `${SW_ENHANCED_VERSION}-static`,
+        `${SW_ENHANCED_VERSION}-dynamic`,
+        `${SW_ENHANCED_VERSION}-images`
+      ];
 
       // 版本檢測和自動更新
       async function checkForUpdates() {
@@ -2273,9 +2283,15 @@
                   const cacheNames = await caches.keys();
                   await Promise.all(
                     cacheNames.map(cacheName => {
-                      if (cacheName !== `clickfun-v${APP_VERSION}`) {
+                      // 檢查是否為當前版本的快取
+                      const isCurrentVersion =
+                        CURRENT_CACHE_PATTERNS.includes(cacheName);
+
+                      if (!isCurrentVersion) {
                         console.log(`清除舊快取: ${cacheName}`);
                         return caches.delete(cacheName);
+                      } else {
+                        console.log(`保留當前快取: ${cacheName}`);
                       }
                     })
                   );
