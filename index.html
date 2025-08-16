@@ -91,7 +91,7 @@
     <!-- 字體預載入 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
+
     <!-- Material Symbols（設定完整齒輪 icon） -->
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
@@ -503,12 +503,10 @@
         font-weight: 600;
         visibility: hidden;
       }
-      
+
       .fonts-ready .material-symbols-rounded {
         visibility: visible;
       }
-
-
 
       .app {
         position: fixed;
@@ -2277,7 +2275,7 @@
           overflow-y: auto;
           -webkit-overflow-scrolling: touch;
         }
-        
+
         /* 只在橫幅出現時才加大 padding-bottom */
         .has-install-banner .menu-screen {
           padding-bottom: calc(max(env(safe-area-inset-bottom), 16px) + 80px);
@@ -4790,9 +4788,10 @@
         ) {
           document.documentElement.classList.add('save-data');
         }
-        
+
         // 字體載入檢測，避免首屏看到英文
-        document.fonts.load('1em "Material Symbols Rounded"')
+        document.fonts
+          .load('1em "Material Symbols Rounded"')
           .then(() => document.documentElement.classList.add('fonts-ready'))
           .catch(() => {
             // 如果載入失敗，3秒後顯示圖標避免永久隱藏
