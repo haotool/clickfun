@@ -1,3 +1,24 @@
+# 📋 更新記錄
+
+所有重要變更都會記錄在此文件中。
+
+## [3.0.0](https://github.com/haotool/clickfun/compare/v2.1.0...v3.0.0) (2025-08-16)
+
+### ⚠ BREAKING CHANGES
+
+* **infrastructure:** 建置流程從靜態檔案改為 Vite，需要使用 npm run build 替代之前的手動複製
+
+### Bug Fixes
+
+* **config:** 修復 semantic-release ES 模組載入問題 ([9613c0f](https://github.com/haotool/clickfun/commit/9613c0fe2755c2af1552e05ae292b4cf4c1f589e))
+* **deps:** 修復 ESLint 依賴問題並自動修復格式錯誤 ([2b489a4](https://github.com/haotool/clickfun/commit/2b489a41d02cae07fbc86ba05d476989b61c2ff4))
+* **deps:** 安裝 semantic-release 缺失的 conventional-changelog 依賴 ([168f052](https://github.com/haotool/clickfun/commit/168f0520b497acaa1571f1684642f9bd59d52b32))
+
+### Features
+
+* **infrastructure:** 實作基於 Context7 最佳實踐的現代化 PWA 和測試框架升級 ([82062fb](https://github.com/haotool/clickfun/commit/82062fb168da1f72873dc3b1a09e4da2aa89461f))
+* **lighthouse:** 達成Lighthouse全100分完美優化 v7.2.0 ([7377f88](https://github.com/haotool/clickfun/commit/7377f88779f7de8e24b1cad7dd74ac037ae4afdc))
+
 ## [7.2.0] - 2025-08-16
 
 ### ✨ 新功能
