@@ -2221,6 +2221,24 @@
           padding: 6px 12px;
           min-width: 50px;
         }
+        
+        /* 手機端模態窗口優化 */
+        .modal {
+          padding: 20px 16px;
+          align-items: flex-start;
+          padding-top: max(env(safe-area-inset-top), 40px);
+          padding-bottom: max(env(safe-area-inset-bottom), 40px);
+        }
+        .modal-card {
+          max-height: calc(100vh - 80px);
+          width: calc(100vw - 32px);
+          margin: 0;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        #gameInfoModal .modal-card {
+          padding: 20px 16px;
+        }
         .header-tps .hud-tps-label {
           font-size: 0.55rem;
         }
@@ -2346,13 +2364,13 @@
             <span class="material-symbols-rounded" aria-hidden="true">leaderboard</span>
             排行榜
           </button>
-          <button class="menu-btn menu-btn-secondary" id="gameInfoBtn" aria-label="遊戲說明">
-            <span class="material-symbols-rounded" aria-hidden="true">info</span>
-            遊戲說明
-          </button>
           <button class="menu-btn menu-btn-secondary" id="settingsBtn" aria-label="遊戲設定">
             <span class="material-symbols-rounded" aria-hidden="true">settings</span>
             遊戲設定
+          </button>
+          <button class="menu-btn menu-btn-secondary" id="gameInfoBtn" aria-label="遊戲說明">
+            <span class="material-symbols-rounded" aria-hidden="true">info</span>
+            遊戲說明
           </button>
         </div>
       </div>
@@ -2678,9 +2696,9 @@
         </div>
       </div>
 
-      <!-- 遊戲說明 -->
-      <div class="modal" id="gameInfoModal" aria-hidden="true" role="dialog">
-        <div class="modal-card" style="max-width: 90vw; width: 720px; text-align: left">
+              <!-- 遊戲說明 -->
+        <div class="modal" id="gameInfoModal" aria-hidden="true" role="dialog">
+          <div class="modal-card" style="max-width: 90vw; width: 720px; max-height: 90vh; overflow-y: auto; text-align: left">
           <h2 class="title-gradient">遊戲說明</h2>
 
           <div style="margin-top: 20px">
@@ -2890,9 +2908,9 @@
             </div>
           </div>
 
-          <div style="display: flex; justify-content: center; margin-top: 24px">
-            <button class="btn btn-primary" id="closeGameInfoBtn">開始遊戲</button>
-          </div>
+                      <div style="display: flex; justify-content: center; margin-top: 24px; padding-bottom: 20px">
+              <button class="btn btn-primary" id="closeGameInfoBtn">開始遊戲</button>
+            </div>
         </div>
       </div>
 
