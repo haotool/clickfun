@@ -7,6 +7,15 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"
     />
     <meta name="theme-color" content="#f6a8d8" />
+
+    <!-- 安全性設定 [context7:/joshbuchea/head:2025-08-17] -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:; img-src 'self' data: blob:; font-src 'self' data:;"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="x-dns-prefetch-control" content="off" />
+
     <!-- iOS 仍需要下面這個，Chrome 可能會提示 deprecated，但不影響功能 -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <!-- Chrome/Android 建議加上 -->
@@ -62,6 +71,17 @@
 
     <!-- Manifest（相對路徑，便於子資料夾部署） -->
     <link rel="manifest" href="./app.webmanifest" />
+
+    <!-- AI 搜尋引擎資源檔案 -->
+    <link rel="alternate" type="text/plain" href="./llms.txt" title="LLMS Resource File" />
+    <meta name="llms-resource" content="./llms.txt" />
+    <meta name="ai-answers-api" content="./api/answers.json" />
+
+    <!-- 多語言支援 [context7:/amannn/next-intl:2025-08-17] -->
+    <link rel="alternate" hreflang="zh-TW" href="https://haotool.github.io/clickfun/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://haotool.github.io/clickfun/zh-cn/" />
+    <link rel="alternate" hreflang="en" href="https://haotool.github.io/clickfun/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://haotool.github.io/clickfun/" />
 
     <!-- Favicon：用內嵌 SVG，避免 favicon.ico 404 -->
     <link
@@ -151,6 +171,96 @@
           "target": "https://haotool.github.io/clickfun/",
           "name": "開始遊戲"
         }
+      }
+    </script>
+
+    <!-- FAQ Structured Data for Answer Engine Optimization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "ClickFun 是什麼？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ClickFun 是一款免費的線上點擊遊戲，採用 PWA 技術支援離線遊戲體驗。提供精確的 TPS (每秒點擊次數) 計算系統，讓您測試和提升點擊速度。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "如何開始遊戲？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "開啟瀏覽器訪問 ClickFun 網站，點擊「單人挑戰模式」或「雙人對戰模式」即可立即開始遊戲，無需下載安裝任何軟體。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "什麼是 TPS 計算？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "TPS 是 Taps Per Second (每秒點擊次數) 的縮寫，ClickFun 提供精確的 TPS 計算系統，即時顯示您的點擊速度表現，幫助您挑戰極限。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "支援哪些裝置？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ClickFun 完美支援手機、平板、電腦等多種裝置，採用響應式設計確保在任何螢幕尺寸下都能提供最佳遊戲體驗。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "什麼是 PWA 離線功能？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PWA (Progressive Web App) 技術讓 ClickFun 支援離線遊戲，即使沒有網路連線也能繼續遊戲，並可安裝到裝置主畫面像原生 App 一樣使用。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "遊戲完全免費嗎？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "是的，ClickFun 完全免費，無需註冊或登入，無隱藏費用，也沒有廣告干擾，讓您專注享受純粹的點擊樂趣。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "如何提升點擊速度？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "建議使用食指快速點擊，保持手部放鬆，找到節奏感。練習時可從短時間開始，逐漸增加持續時間，定期查看 TPS 統計來追蹤進步。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "雙人對戰如何進行？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "選擇雙人對戰模式，兩位玩家可在同一螢幕上競賽，左右分屏設計，即時顯示雙方點擊數和 TPS，增加競爭樂趣和互動性。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "有排行榜功能嗎？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "有的，ClickFun 提供本地排行榜功能，記錄您的最佳成績，支援單人模式和雙人對戰模式的分別排名，激勵您不斷挑戰更高分數。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "資料會被保存嗎？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "所有遊戲記錄和設定都保存在您的裝置本地，確保隱私安全。即使離線也能查看歷史成績，PWA 技術確保資料不會遺失。"
+            }
+          }
+        ]
       }
     </script>
 
@@ -471,6 +581,80 @@
         display: grid;
         gap: var(--space-4);
         width: min(90vw, 360px);
+      }
+      .features-section {
+        max-width: min(95vw, 800px);
+        margin: 2rem auto 0;
+        padding: 2rem 1rem;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: var(--radius-2xl);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .features-title,
+      .why-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 60%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .feature-grid {
+        display: grid;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      @media (min-width: 768px) {
+        .feature-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      .feature-item {
+        text-align: center;
+        padding: 1rem;
+      }
+      .feature-heading {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+        color: var(--text-primary);
+      }
+      .feature-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: var(--text-secondary);
+        margin: 0;
+      }
+      .why-choose {
+        text-align: center;
+        margin-top: 2rem;
+      }
+      .benefits-list {
+        display: grid;
+        gap: 0.8rem;
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 0;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (min-width: 600px) {
+        .benefits-list {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+      }
+      .benefits-list li {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        text-align: left;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 255, 255, 0.05);
       }
       .menu-btn {
         display: flex;
@@ -2147,12 +2331,8 @@
               />
             </svg>
           </div>
-          <h1 class="brand-title">ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲</h1>
-          <div class="brand-subtitle">粉色 × 天藍配色 | TPS計算 | 離線支援</div>
-          
-          <div class="product-description">
-            <p>ClickFun 是一款創新的免費點擊遊戲，採用先進的 PWA 技術支援離線遊戲體驗。精確的 TPS (每秒點擊次數) 計算系統，讓您測試和提升點擊速度。獨特的粉色×天藍漸層配色設計，提供跨平台的優質遊戲體驗，支援手機、平板、電腦多種裝置，無需下載安裝即可立即開始遊戲。</p>
-          </div>
+          <h1 class="brand-title">ClickFun</h1>
+          <div class="brand-subtitle">點擊樂趣遊戲</div>
         </div>
 
         <div class="menu-buttons">
@@ -2167,6 +2347,10 @@
           <button class="menu-btn menu-btn-secondary" id="leaderboardBtn" aria-label="排行榜">
             <span class="material-symbols-rounded" aria-hidden="true">leaderboard</span>
             排行榜
+          </button>
+          <button class="menu-btn menu-btn-secondary" id="gameInfoBtn" aria-label="遊戲說明">
+            <span class="material-symbols-rounded" aria-hidden="true">info</span>
+            遊戲說明
           </button>
           <button class="menu-btn menu-btn-secondary" id="settingsBtn" aria-label="遊戲設定">
             <span class="material-symbols-rounded" aria-hidden="true">settings</span>
@@ -2247,7 +2431,9 @@
         <!-- 單人模式結果 -->
         <div class="modal-card result-card single-result" id="singleResult">
           <div class="result-header">
-            <div class="trophy-icon">🏆</div>
+            <div class="trophy-icon">
+              <span class="material-symbols-rounded" style="font-size: 48px; color: #ffd700;">trophy</span>
+            </div>
             <h2 class="result-title" id="resultTitle">遊戲結束！</h2>
             <div class="result-subtitle">恭喜完成挑戰！</div>
           </div>
@@ -2265,7 +2451,9 @@
 
           <div class="achievement-section">
             <div class="achievement-badge" id="achievementBadge">
-              <div class="badge-icon">⚡</div>
+              <div class="badge-icon">
+                <span class="material-symbols-rounded">bolt</span>
+              </div>
               <div class="badge-text">點擊大師</div>
             </div>
           </div>
@@ -2285,7 +2473,9 @@
         <!-- 雙人模式結果 -->
         <div class="modal-card dual-result-card" id="dualResult" style="display: none">
           <div class="dual-result-header">
-            <div class="winner-crown" id="winnerCrown">👑</div>
+            <div class="winner-crown" id="winnerCrown">
+              <span class="material-symbols-rounded" style="font-size: 48px; color: #ffd700;">crown</span>
+            </div>
             <h2 class="dual-result-title" id="dualResultTitle">對戰結果</h2>
             <div class="dual-result-subtitle" id="dualResultSubtitle">激烈的對決！</div>
           </div>
@@ -2293,7 +2483,9 @@
           <div class="players-comparison">
             <div class="player-result player1-result" id="player1Result">
               <div class="player-medal" id="player1Medal">
-                <div class="medal-icon">🥈</div>
+                <div class="medal-icon">
+                  <span class="material-symbols-rounded" style="font-size: 48px; color: #c0c0c0;">military_tech</span>
+                </div>
               </div>
               <div class="player-info">
                 <div class="player-name">玩家 1</div>
@@ -2316,7 +2508,9 @@
 
             <div class="player-result player2-result" id="player2Result">
               <div class="player-medal" id="player2Medal">
-                <div class="medal-icon">🥈</div>
+                <div class="medal-icon">
+                  <span class="material-symbols-rounded" style="font-size: 48px; color: #c0c0c0;">military_tech</span>
+                </div>
               </div>
               <div class="player-info">
                 <div class="player-name">玩家 2</div>
@@ -2336,7 +2530,9 @@
 
           <div class="dual-achievement-section">
             <div class="dual-achievement-badge" id="dualAchievementBadge">
-              <div class="badge-icon">⚔️</div>
+              <div class="badge-icon">
+                <span class="material-symbols-rounded">swords</span>
+              </div>
               <div class="badge-text">激戰高手</div>
             </div>
           </div>
@@ -2358,7 +2554,10 @@
       <div class="modal" id="leaderboardModal" aria-hidden="true" role="dialog">
         <div class="modal-card leaderboard-card">
           <div class="leaderboard-header">
-            <h2 class="leaderboard-title">🏆 排行榜</h2>
+            <h2 class="leaderboard-title">
+              <span class="material-symbols-rounded" style="color: #ffd700; margin-right: 8px;">trophy</span>
+              排行榜
+            </h2>
             <div class="leaderboard-tabs">
               <button class="tab-btn active" data-mode="single" data-time="all">單人模式</button>
               <button class="tab-btn" data-mode="dual" data-time="all">雙人對戰</button>
@@ -2467,6 +2666,90 @@
           </div>
           <div style="display: flex; justify-content: center; margin-top: 18px">
             <button class="btn btn-primary" id="closeSettingsBtn">儲存設定</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 遊戲說明 -->
+      <div class="modal" id="gameInfoModal" aria-hidden="true" role="dialog">
+        <div class="modal-card" style="max-width: 90vw; width: 720px; text-align: left">
+          <h2 class="title-gradient">遊戲說明</h2>
+          
+          <div style="margin-top: 20px;">
+            <h3 style="color: var(--primary); margin-bottom: 16px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
+              <span class="material-symbols-rounded">flash_on</span>
+              遊戲特色
+            </h3>
+            
+            <div style="display: grid; gap: 16px; margin-bottom: 24px;">
+              <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: rgba(246, 111, 185, 0.05); border-radius: 8px;">
+                <span class="material-symbols-rounded" style="color: var(--accent); font-size: 20px;">speed</span>
+                <div>
+                  <h4 style="margin: 0 0 4px 0; color: var(--text-primary); font-weight: 600;">TPS 精確計算</h4>
+                  <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.4;">專業的每秒點擊次數 (TPS) 計算系統，精確測量您的點擊速度表現，助您挑戰極限。</p>
+                </div>
+              </div>
+              
+              <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: rgba(82, 183, 255, 0.05); border-radius: 8px;">
+                <span class="material-symbols-rounded" style="color: var(--primary); font-size: 20px;">offline_bolt</span>
+                <div>
+                  <h4 style="margin: 0 0 4px 0; color: var(--text-primary); font-weight: 600;">PWA 離線支援</h4>
+                  <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.4;">採用先進的 PWA 技術，支援離線遊戲，無需網路連線也能享受流暢的遊戲體驗。</p>
+                </div>
+              </div>
+              
+              <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: rgba(246, 111, 185, 0.05); border-radius: 8px;">
+                <span class="material-symbols-rounded" style="color: var(--accent); font-size: 20px;">palette</span>
+                <div>
+                  <h4 style="margin: 0 0 4px 0; color: var(--text-primary); font-weight: 600;">美觀設計</h4>
+                  <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.4;">獨特的粉色×天藍漸層配色設計，現代化的使用者介面，帶來視覺享受。</p>
+                </div>
+              </div>
+              
+              <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: rgba(82, 183, 255, 0.05); border-radius: 8px;">
+                <span class="material-symbols-rounded" style="color: var(--primary); font-size: 20px;">devices</span>
+                <div>
+                  <h4 style="margin: 0 0 4px 0; color: var(--text-primary); font-weight: 600;">跨平台相容</h4>
+                  <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.4;">完美支援手機、平板、電腦等多種裝置，無需下載安裝，開啟瀏覽器即可開始遊戲。</p>
+                </div>
+              </div>
+            </div>
+            
+            <h3 style="color: var(--primary); margin-bottom: 16px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
+              <span class="material-symbols-rounded">star</span>
+              為什麼選擇 ClickFun？
+            </h3>
+            
+            <div style="display: grid; gap: 8px; margin-bottom: 24px;">
+              <div style="display: flex; align-items: center; gap: 12px; padding: 8px;">
+                <span class="material-symbols-rounded" style="color: var(--accent); font-size: 18px;">check_circle</span>
+                <span style="color: var(--text-primary); font-size: 0.9rem;">完全免費，無需註冊或登入</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px; padding: 8px;">
+                <span class="material-symbols-rounded" style="color: var(--accent); font-size: 18px;">flash_on</span>
+                <span style="color: var(--text-primary); font-size: 0.9rem;">即時載入，無需等待下載</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px; padding: 8px;">
+                <span class="material-symbols-rounded" style="color: var(--accent); font-size: 18px;">analytics</span>
+                <span style="color: var(--text-primary); font-size: 0.9rem;">詳細統計，追蹤遊戲表現</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px; padding: 8px;">
+                <span class="material-symbols-rounded" style="color: var(--accent); font-size: 18px;">trophy</span>
+                <span style="color: var(--text-primary); font-size: 0.9rem;">排行榜功能，與好友競爭</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px; padding: 8px;">
+                <span class="material-symbols-rounded" style="color: var(--accent); font-size: 18px;">group</span>
+                <span style="color: var(--text-primary); font-size: 0.9rem;">雙人對戰，增加互動樂趣</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px; padding: 8px;">
+                <span class="material-symbols-rounded" style="color: var(--accent); font-size: 18px;">sync</span>
+                <span style="color: var(--text-primary); font-size: 0.9rem;">跨裝置同步，隨時隨地遊戲</span>
+              </div>
+            </div>
+          </div>
+          
+          <div style="display: flex; justify-content: center; margin-top: 24px">
+            <button class="btn btn-primary" id="closeGameInfoBtn">開始遊戲</button>
           </div>
         </div>
       </div>
@@ -2625,7 +2908,9 @@
         toast.className = 'version-update-toast';
         toast.innerHTML = `
           <div class="toast-content">
-            <div class="toast-icon">🎉</div>
+            <div class="toast-icon">
+              <span class="material-symbols-rounded" style="color: #ffd700;">celebration</span>
+            </div>
             <div class="toast-text">
               <div class="toast-title">版本更新檢測到！</div>
               <div class="toast-subtitle">從 v${oldVersion} 更新至 v${newVersion}</div>
@@ -2968,6 +3253,9 @@
           document.getElementById('settingsBtn').addEventListener('click', () => {
             this.showSettings();
           });
+          document.getElementById('gameInfoBtn').addEventListener('click', () => {
+            this.showModal('gameInfoModal');
+          });
 
           document
             .getElementById('gameExit')
@@ -3013,6 +3301,9 @@
             this.saveSettings();
             this.hideModal('settingsModal');
             sendSettingsToWorker();
+          });
+          document.getElementById('closeGameInfoBtn').addEventListener('click', () => {
+            this.hideModal('gameInfoModal');
           });
 
           document.addEventListener('keydown', e => {
@@ -3224,16 +3515,16 @@
             // 根據成績設置成就徽章
             if (GameState.maxTPS.single >= 50) {
               badge.innerHTML =
-                '<div class="badge-icon">🚀</div><div class="badge-text">超音速大師</div>';
+                '<div class="badge-icon"><span class="material-symbols-rounded">rocket_launch</span></div><div class="badge-text">超音速大師</div>';
             } else if (GameState.maxTPS.single >= 30) {
               badge.innerHTML =
-                '<div class="badge-icon">⚡</div><div class="badge-text">閃電快手</div>';
+                '<div class="badge-icon"><span class="material-symbols-rounded">bolt</span></div><div class="badge-text">閃電快手</div>';
             } else if (GameState.maxTPS.single >= 20) {
               badge.innerHTML =
-                '<div class="badge-icon">🔥</div><div class="badge-text">點擊高手</div>';
+                '<div class="badge-icon"><span class="material-symbols-rounded">local_fire_department</span></div><div class="badge-text">點擊高手</div>';
             } else {
               badge.innerHTML =
-                '<div class="badge-icon">⭐</div><div class="badge-text">初露鋒芒</div>';
+                '<div class="badge-icon"><span class="material-symbols-rounded">star</span></div><div class="badge-text">初露鋒芒</div>';
             }
           } else {
             // 顯示雙人模式結果
@@ -3274,35 +3565,35 @@
 
               if (r.winner === 'player1') {
                 player1Result.classList.add('winner');
-                player1Medal.innerHTML = '<div class="medal-icon">🥇</div>';
-                player2Medal.innerHTML = '<div class="medal-icon">🥈</div>';
+                player1Medal.innerHTML = '<div class="medal-icon"><span class="material-symbols-rounded" style="font-size: 48px; color: #ffd700;">military_tech</span></div>';
+                player2Medal.innerHTML = '<div class="medal-icon"><span class="material-symbols-rounded" style="font-size: 48px; color: #c0c0c0;">military_tech</span></div>';
               } else {
                 player2Result.classList.add('winner');
-                player1Medal.innerHTML = '<div class="medal-icon">🥈</div>';
-                player2Medal.innerHTML = '<div class="medal-icon">🥇</div>';
+                player1Medal.innerHTML = '<div class="medal-icon"><span class="material-symbols-rounded" style="font-size: 48px; color: #c0c0c0;">military_tech</span></div>';
+                player2Medal.innerHTML = '<div class="medal-icon"><span class="material-symbols-rounded" style="font-size: 48px; color: #ffd700;">military_tech</span></div>';
               }
             } else {
               dualTitle.textContent = '平手對決！';
               dualSubtitle.textContent = '勢均力敵的較量！';
               winnerCrown.style.display = 'none';
-              player1Medal.innerHTML = '<div class="medal-icon">🤝</div>';
-              player2Medal.innerHTML = '<div class="medal-icon">🤝</div>';
+              player1Medal.innerHTML = '<div class="medal-icon"><span class="material-symbols-rounded" style="font-size: 48px; color: var(--accent);">handshake</span></div>';
+              player2Medal.innerHTML = '<div class="medal-icon"><span class="material-symbols-rounded" style="font-size: 48px; color: var(--accent);">handshake</span></div>';
             }
 
             // 設置成就徽章
             const maxTPS = Math.max(GameState.maxTPS.player1, GameState.maxTPS.player2);
             if (maxTPS >= 50) {
               dualBadge.innerHTML =
-                '<div class="badge-icon">👑</div><div class="badge-text">對戰王者</div>';
+                '<div class="badge-icon"><span class="material-symbols-rounded">crown</span></div><div class="badge-text">對戰王者</div>';
             } else if (maxTPS >= 30) {
               dualBadge.innerHTML =
-                '<div class="badge-icon">⚔️</div><div class="badge-text">激戰高手</div>';
+                '<div class="badge-icon"><span class="material-symbols-rounded">swords</span></div><div class="badge-text">激戰高手</div>';
             } else if (maxTPS >= 20) {
               dualBadge.innerHTML =
-                '<div class="badge-icon">🔥</div><div class="badge-text">點擊達人</div>';
+                '<div class="badge-icon"><span class="material-symbols-rounded">local_fire_department</span></div><div class="badge-text">點擊達人</div>';
             } else {
               dualBadge.innerHTML =
-                '<div class="badge-icon">🤝</div><div class="badge-text">友誼第一</div>';
+                '<div class="badge-icon"><span class="material-symbols-rounded">handshake</span></div><div class="badge-text">友誼第一</div>';
             }
           }
 
@@ -3375,7 +3666,9 @@
           if (records.length === 0) {
             list.innerHTML = `
               <div class="empty-leaderboard">
-                <div class="empty-icon">🏆</div>
+                <div class="empty-icon">
+                  <span class="material-symbols-rounded" style="font-size: 48px; opacity: 0.5;">trophy</span>
+                </div>
                 <div class="empty-text">暫無記錄</div>
                 <div class="empty-hint">開始遊戲來創造你的第一個記錄吧！</div>
               </div>
