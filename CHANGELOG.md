@@ -3,6 +3,22 @@
 
 ### Bug Fixes
 
+* **scripts:** correct version update logic in update-version.js ([d13367d](https://github.com/haotool/clickfun/commit/d13367d60a8626c9644998b7fee8f1e85ba4ff77))
+* **ui:** 完美解決底部空隙與圖標顯示問題，優化按鈕體驗 v7.1.4 ([0bace4b](https://github.com/haotool/clickfun/commit/0bace4b5ea7cfa65b5dc378c6bda1e8e06e40310))
+* **ui:** 恢復icon中空格式並完美修正手機界面對稱性 v7.1.2 ([b4137fa](https://github.com/haotool/clickfun/commit/b4137fa09ed42cc38a485dfefad1542bb1066d92))
+* **ui:** 清理多餘空白與優化字體載入，提升界面整體美觀 ([1c0cf74](https://github.com/haotool/clickfun/commit/1c0cf749e3e8f812f2819599b7b59c28568de209))
+
+
+### Features
+
+* **ui:** 恢復中空圖標優雅風格同時保留可愛遊戲字體 v7.1.3 ([200f6c5](https://github.com/haotool/clickfun/commit/200f6c57b598e3afc714819b863bcf8d762f778d))
+* **ui:** 重大UI/UX改進 - 可愛遊戲字體、粗體優化、完美佈局對齊 v7.1.2 ([283cbba](https://github.com/haotool/clickfun/commit/283cbba803991a22621108103167d9e795b5ed4f))
+
+# [2.1.0](https://github.com/haotool/clickfun/compare/v2.0.1...v2.1.0) (2025-08-16)
+
+
+### Bug Fixes
+
 * **ui:** 完美解決底部空隙與圖標顯示問題，優化按鈕體驗 v7.1.4 ([0bace4b](https://github.com/haotool/clickfun/commit/0bace4b5ea7cfa65b5dc378c6bda1e8e06e40310))
 * **ui:** 恢復icon中空格式並完美修正手機界面對稱性 v7.1.2 ([b4137fa](https://github.com/haotool/clickfun/commit/b4137fa09ed42cc38a485dfefad1542bb1066d92))
 
