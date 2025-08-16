@@ -1,3 +1,19 @@
+# [1.2.0](https://github.com/haotool/clickfun/compare/v1.1.0...v1.2.0) (2025-08-16)
+
+
+### Bug Fixes
+
+* **ci:** 修復 Jest 配置問題，移除無效的 isolateModules 選項 ([afa62b0](https://github.com/haotool/clickfun/commit/afa62b0876b94af9c39e919bda3c2ed3e1ef693d))
+
+
+### Features
+
+* **ai-seo:** 實施完整 AI SEO 優化策略 ([8da14b9](https://github.com/haotool/clickfun/commit/8da14b9c46ccc3b75df66e9bbb8fb46e12506021))
+* **tech-seo:** 完成技術SEO實施總結報告 - 達成100分滿分 ([9fb9748](https://github.com/haotool/clickfun/commit/9fb9748d2f67f7fa16f92e480ad8357e8c6b2577))
+* **tech-seo:** 完成技術SEO架構師專屬工作區建立與品質審計 ([1c8b54d](https://github.com/haotool/clickfun/commit/1c8b54dc7e5514c71a08adc6cdbfa5c3194faaa6))
+* 完成 v7.1.2 AI SEO 全面實施與團隊架構 ([49b3f32](https://github.com/haotool/clickfun/commit/49b3f3225234bca18970f4960301ea52ccb7fd7b))
+* 新增排行榜時間分類功能和完整PWA圖標系統 ([787aa4a](https://github.com/haotool/clickfun/commit/787aa4a845c13fd73e07509da6bcc7eba16a96be))
+
 ## [7.1.2] - 2025-08-16
 
 ### ✨ 新功能
