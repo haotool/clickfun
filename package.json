@@ -47,12 +47,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/azlife-eth/clickfun.git"
+    "url": "https://github.com/haotool/clickfun.git"
   },
   "bugs": {
-    "url": "https://github.com/azlife-eth/clickfun/issues"
+    "url": "https://github.com/haotool/clickfun/issues"
   },
-  "homepage": "https://github.com/azlife-eth/clickfun#readme",
+  "homepage": "https://github.com/haotool/clickfun#readme",
   "devDependencies": {
     "@babel/core": "^7.28.3",
     "@babel/plugin-transform-modules-commonjs": "^7.27.1",
