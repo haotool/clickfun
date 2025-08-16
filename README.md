@@ -34,7 +34,7 @@
   <img src="https://img.shields.io/badge/PWA-Ready-4CAF50?style=flat-square&logo=pwa&logoColor=white" alt="PWA Ready">
   <img src="https://img.shields.io/badge/Mobile-Optimized-2196F3?style=flat-square&logo=mobile-alt&logoColor=white" alt="Mobile Optimized">
   <img src="https://img.shields.io/badge/Performance-60fps-FF9800?style=flat-square&logo=speedtest&logoColor=white" alt="Performance">
-  <img src="https://img.shields.io/badge/Version-v7.1.0-E91E63?style=flat-square&logo=semantic-release&logoColor=white" alt="Version">
+  <img src="https://img.shields.io/badge/Version-v7.1.1-E91E63?style=flat-square&logo=semantic-release&logoColor=white" alt="Version">
 </p>
 
 <p>
