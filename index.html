@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover"
     />
     <meta
       http-equiv="Content-Security-Policy"
@@ -88,21 +88,7 @@
       href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="%23f66fb9"/><stop offset="1" stop-color="%2352b7ff"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(%23g)"/><path d="M32 6l6 16 17 2-13 10 4 16-14-8-14 8 4-16L9 24l17-2z" fill="white"/></svg>'
     />
 
-    <!-- 字體預載入 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Material Symbols（設定完整齒輪 icon） -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- 可愛遊戲風格字體 -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
-      rel="stylesheet"
-    />
+    
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -378,6 +364,23 @@
     </script>
 
     <style>
+      /* 自託管字體定義 */
+      @font-face {
+        font-family: 'Material Symbols Rounded';
+        src: url('./fonts/MaterialSymbolsRounded.woff2') format('woff2');
+        font-weight: 100 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Fredoka One';
+        src: url('./fonts/FredokaOne-400.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
       :root {
         --pink-50: #fff1f8;
         --pink-100: #ffe6f3;
@@ -409,7 +412,7 @@
         --bg-secondary: var(--gray-50);
         --bg-tertiary: var(--gray-100);
         --text-primary: var(--gray-900);
-        --text-secondary: var(--gray-400);
+        --text-secondary: var(--gray-600);
 
         --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.08);
         --shadow-xl: 0 20px 45px rgba(246, 111, 185, 0.28);
@@ -543,19 +546,19 @@
         -webkit-text-size-adjust: 100%;
       }
       .material-symbols-rounded {
+        font-family: 'Material Symbols Rounded';
+        font-weight: 600;
+        font-style: normal;
+        font-size: 22px;
+        line-height: 1;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
         font-variation-settings:
           'FILL' 0,
           'wght' 600,
           'GRAD' 0,
           'opsz' 24;
-        font-family: 'Material Symbols Rounded', 'Material Icons', sans-serif;
-        font-size: 22px;
-        line-height: 1;
-        font-display: swap;
-        display: inline-block;
-        vertical-align: middle;
-        text-align: center;
-        font-weight: 600;
         visibility: hidden;
       }
 
@@ -625,7 +628,7 @@
         }
       }
       .brand-title {
-        font-family: 'Fredoka One', cursive;
+        font-family: 'Fredoka One', system-ui, -apple-system, sans-serif;
         font-size: 2.2rem;
         font-weight: 400;
         letter-spacing: 0.02em;
