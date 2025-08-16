@@ -1,7 +1,7 @@
 /// <reference lib="webworker" />
 
-const SW_VERSION = 'clickfun-v7.1.4';
-const APP_VERSION = '7.1.4';
+const SW_VERSION = 'clickfun-v7.2.0';
+const APP_VERSION = '7.2.0';
 const APP_SHELL = ['./', './index.html', './app.webmanifest', './fx.worker.js', './icons/pwa.svg'];
 
 self.addEventListener('install', event => {
