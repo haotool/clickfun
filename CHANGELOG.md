@@ -1,3 +1,68 @@
+## [7.1.2] - 2025-08-16
+
+### ✨ 新功能
+
+- 版本號自動化更新系統
+- 語義化版本控制
+- PWA 自動版本檢測
+
+### 🔧 技術改進
+
+- 整合 semantic-release
+- 自動化版本管理
+- 統一版本號格式
+
+---
+
+## [7.1.2] - 2025-08-16
+
+### 🔄 全域域名更新
+
+- **檔案覆蓋**: 更新 index.html、sitemap.xml、robots.txt、llms.txt 等核心檔案
+- **文檔同步**: 同步更新所有 SEO 策略文檔中的域名引用
+
+### 🎯 完整 AI SEO 實施
+
+- **GEO 優化**: 實施 Generative Engine Optimization 針對生成式 AI 引擎
+- **AEO 整合**: Answer Engine Optimization 讓 AI 問答系統正確推薦
+- **AIO 策略**: AI-Informed Optimization 基於 AI 洞察優化內容
+- **LLMO 實施**: Large Language Model Optimization 完整實作
+
+### 📊 全面 SEO 策略文檔
+
+- **BDD 測試場景**: 42 個詳細的 SEO 驗收測試場景
+- **關鍵字策略**: 3 層關鍵字布局規劃 (品牌詞、主要詞、長尾詞)
+- **搜尋引擎提交指南**: Google、Bing、AI 搜尋引擎完整指引
+- **實施檢查清單**: 100% 完成度的 SEO 實施追蹤
+
+### 🤖 AI 搜尋友善優化
+
+- **llms.txt 實施**: 為大型語言模型提供結構化資訊指引
+- **結構化數據**: 雙重 JSON-LD Schema (WebApplication + VideoGame)
+- **AI 問答格式**: FAQ 結構化數據與 AI 友善內容架構
+- **推薦系統優化**: 確保在 ChatGPT、Perplexity、Claude 中正確被推薦
+
+### 📱 Meta 標籤完善
+
+- **Open Graph 完整**: 社交媒體分享優化，包含所有必要屬性
+- **Twitter Cards**: 大圖卡片格式，提升 Twitter 分享效果
+- **PWA Meta 標籤**: Apple、Microsoft 專用標籤完整支援
+- **語言地區標記**: 正確的 zh-TW 語系設定
+
+### 🌐 搜尋引擎基礎設施
+
+- **sitemap.xml**: 完整的 XML 網站地圖，包含所有重要頁面
+- **robots.txt**: 搜尋引擎爬蟲指引，包含 AI 爬蟲特殊許可
+- **canonical URL**: 標準化網址，避免重複內容問題
+- **Lighthouse 100**: SEO 評分滿分準備就緒
+
+### 📋 專業 SEO 工作流
+
+- **5 人專業團隊**: 建立完整的 SEO 專家角色分配
+- **並行開發架構**: Git worktree 分支管理與協作流程
+- **品質保證系統**: 嚴格的程式碼品質與 SEO 標準
+- **技術債控制**: 最低技術債，高度可維護性設計
+
 ## [7.1.1] - 2025-08-16
 
 ### ✨ 新功能
@@ -45,10 +110,9 @@
 
 # [1.1.0](https://github.com/haotool/clickfun/compare/v1.0.2...v1.1.0) (2025-08-16)
 
-
 ### Features
 
-* 建立完整的自動化最佳實踐落地系統 ([fd69438](https://github.com/haotool/clickfun/commit/fd694386edc1fa6077c2f44782562e42991c6585))
+- 建立完整的自動化最佳實踐落地系統 ([fd69438](https://github.com/haotool/clickfun/commit/fd694386edc1fa6077c2f44782562e42991c6585))
 
 ## [1.0.2](https://github.com/haotool/clickfun/compare/v1.0.1...v1.0.2) (2025-08-16)
 

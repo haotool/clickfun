@@ -73,3 +73,28 @@ screenshots/
 # 本地開發伺服器
 server.log
 .local-server/
+
+# 隱私保護：防止洩漏系統路徑和個人資訊
+# lighthouse-*.json (已清理過的可以保留)
+lighthouse-*.html
+lighthouse-*.report
+*-report.json
+*.report.json
+audit-*.json
+performance-*.json
+
+# 防止任何可能包含完整路徑的檔案
+**/*Users/*
+**/*file:///*
+**/file-protocol-*
+
+# 系統特定的臨時檔案
+*.local
+*.user
+*.machine
+*.hostname
+
+# CI/CD 和測試報告中可能洩漏路徑的檔案
+test-results.json
+e2e-results.json
+performance-results.json

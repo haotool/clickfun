@@ -519,6 +519,16 @@ git push origin feature/amazing-feature
 
 ## 📜 變更記錄
 
+### v7.1.2 (2025-08-16)
+
+- 🔄 **全域域名更新**: 完成所有檔案從 s123104.github.io 到 haotool.github.io 的遷移
+- 🎯 **完整 AI SEO 實施**: 新增 GEO、AEO、AIO、LLMO 等新型 AI 搜尋引擎優化
+- 📊 **全面 SEO 策略文檔**: 建立完整的 docs/seo/ 目錄包含 BDD 測試場景
+- 🤖 **AI 搜尋友善優化**: 實施 llms.txt、結構化數據、AI 問答格式
+- 📱 **Meta 標籤完善**: 新增 Open Graph、Twitter Cards、完整 JSON-LD Schema
+- 🌐 **搜尋引擎就緒**: 完成 sitemap.xml、robots.txt、canonical URL 設定
+- 📋 **專業 SEO 工作流**: 建立 5 人專業 SEO 團隊並行開發架構
+
 ### v7.1.0 (2025-08-16)
 
 - 🏆 **排行榜時間分類功能**：新增三種遊戲時間（15秒、30秒、60秒）對應的排行榜分類
