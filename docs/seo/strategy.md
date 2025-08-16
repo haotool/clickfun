@@ -2,7 +2,7 @@
 
 ## 1. 目標與定位
 
-- 品牌關鍵字：Click Fun、clickfun、ClickFun、Click-Fun
+- 品牌關鍵字：Click Fun、clickfun、Click Fun、Click-Fun
 - 核心主題：點擊遊戲、放置點擊、Clicker Game、Idle Clicker、網頁點擊遊戲
 - 差異化：PWA、離線可玩、零門檻即玩、極速載入、可分享競榜
 

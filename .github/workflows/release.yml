@@ -18,7 +18,7 @@ jobs:
   quality:
     name: 🔍 品質檢查
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: 📥 檢出程式碼
         uses: actions/checkout@v4
@@ -48,7 +48,7 @@ jobs:
     name: 🎯 發布新版本
     runs-on: ubuntu-latest
     needs: quality
-    
+
     steps:
       - name: 📥 檢出程式碼
         uses: actions/checkout@v4

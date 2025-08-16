@@ -11,7 +11,7 @@
 
 ### 核心目標
 
-建立全面的 AI 搜尋引擎測試自動化系統，確保 ClickFun 在主要 AI 平台中維持最佳可見度和推薦準確性。
+建立全面的 AI 搜尋引擎測試自動化系統，確保 Click Fun 在主要 AI 平台中維持最佳可見度和推薦準確性。
 
 ### 測試覆蓋範圍
 
@@ -45,7 +45,7 @@ AI_Testing_Coverage:
 ```javascript
 /**
  * ChatGPT 推薦測試套件
- * 測試 ClickFun 在 ChatGPT 中的推薦表現
+ * 測試 Click Fun 在 ChatGPT 中的推薦表現
  */
 class ChatGPTRecommendationTest {
   constructor() {
@@ -63,7 +63,7 @@ class ChatGPTRecommendationTest {
     ];
 
     this.expectedKeywords = [
-      'ClickFun',
+      'Click Fun',
       '點擊遊戲',
       'PWA',
       'TPS',
@@ -90,7 +90,7 @@ class ChatGPTRecommendationTest {
         query,
         timestamp: new Date().toISOString(),
         response_time: endTime - startTime,
-        mentioned: this.checkClickFunMention(response),
+        mentioned: this.checkClick FunMention(response),
         position: this.getMentionPosition(response),
         context: this.extractMentionContext(response),
         accuracy: this.checkDescriptionAccuracy(response),
@@ -111,13 +111,13 @@ class ChatGPTRecommendationTest {
   }
 
   /**
-   * 檢查 ClickFun 是否被提及
+   * 檢查 Click Fun 是否被提及
    * @param {string} response - AI 回應內容
    * @returns {boolean} 是否提及
    */
-  checkClickFunMention(response) {
+  checkClick FunMention(response) {
     const mentionPatterns = [
-      /ClickFun/gi,
+      /Click Fun/gi,
       /Click Fun/gi,
       /clickfun/gi,
       /點擊樂趣/gi,
@@ -136,7 +136,7 @@ class ChatGPTRecommendationTest {
     const recommendations = this.parseRecommendations(response);
 
     for (let i = 0; i < recommendations.length; i++) {
-      if (this.checkClickFunMention(recommendations[i])) {
+      if (this.checkClick FunMention(recommendations[i])) {
         return i + 1;
       }
     }
@@ -272,10 +272,10 @@ class PerplexitySourceTest {
   checkCitation(response) {
     const citationPatterns = [
       /haotool\.github\.io\/clickfun/gi,
-      /ClickFun.*技術/gi,
-      /PWA.*ClickFun/gi,
-      /\[.*ClickFun.*\]/gi,
-      /來源.*ClickFun/gi,
+      /Click Fun.*技術/gi,
+      /PWA.*Click Fun/gi,
+      /\[.*Click Fun.*\]/gi,
+      /來源.*Click Fun/gi,
     ];
 
     return citationPatterns.some(pattern => pattern.test(response));
@@ -369,11 +369,11 @@ class ClaudeTechnicalTest {
    */
   checkExampleMention(response) {
     const examplePatterns = [
-      /ClickFun.*案例/gi,
-      /例如.*ClickFun/gi,
-      /ClickFun.*展示/gi,
-      /實例.*ClickFun/gi,
-      /ClickFun.*實現/gi,
+      /Click Fun.*案例/gi,
+      /例如.*Click Fun/gi,
+      /Click Fun.*展示/gi,
+      /實例.*Click Fun/gi,
+      /Click Fun.*實現/gi,
     ];
 
     return examplePatterns.some(pattern => pattern.test(response));
@@ -385,13 +385,13 @@ class ClaudeTechnicalTest {
    * @returns {string} 認知等級
    */
   checkProfessionalRecognition(response) {
-    if (/ClickFun.*業界領先|標杆|優秀案例/gi.test(response)) {
+    if (/Click Fun.*業界領先|標杆|優秀案例/gi.test(response)) {
       return 'Industry Leader';
-    } else if (/ClickFun.*專業|高品質|企業級/gi.test(response)) {
+    } else if (/Click Fun.*專業|高品質|企業級/gi.test(response)) {
       return 'Professional Grade';
-    } else if (/ClickFun.*不錯|良好|可用/gi.test(response)) {
+    } else if (/Click Fun.*不錯|良好|可用/gi.test(response)) {
       return 'Good Quality';
-    } else if (/ClickFun/gi.test(response)) {
+    } else if (/Click Fun/gi.test(response)) {
       return 'Basic Recognition';
     } else {
       return 'No Recognition';

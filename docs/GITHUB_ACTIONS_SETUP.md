@@ -1,6 +1,6 @@
 # 🚀 GitHub Actions 自動發布設置指南
 
-本指南將幫助您設置 ClickFun 專案的 GitHub Actions 自動發布流程。
+本指南將幫助您設置 Click Fun 專案的 GitHub Actions 自動發布流程。
 
 ## 📋 前置需求
 

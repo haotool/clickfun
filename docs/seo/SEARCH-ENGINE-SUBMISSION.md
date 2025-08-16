@@ -191,7 +191,7 @@
   }
   gtag('js', new Date());
   gtag('config', 'GA_MEASUREMENT_ID', {
-    page_title: 'ClickFun - 點擊樂趣遊戲',
+    page_title: 'Click Fun - 點擊樂趣遊戲',
     page_location: 'https://haotool.github.io/clickfun/',
     content_group1: 'Games',
     content_group2: 'PWA',
@@ -271,7 +271,7 @@
 
 ```yaml
 daily_tracking:
-  - 'ClickFun'
+  - 'Click Fun'
   - 'Click Fun'
 
 weekly_tracking:

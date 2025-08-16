@@ -1,9 +1,9 @@
 /**
- * ClickFun 基本功能測試
+ * Click Fun 基本功能測試
  * 測試遊戲的核心功能是否正常運作
  */
 
-describe('ClickFun 基本功能測試', () => {
+describe('Click Fun 基本功能測試', () => {
   let gameState;
 
   beforeEach(() => {

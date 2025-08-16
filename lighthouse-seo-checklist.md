@@ -12,7 +12,7 @@
 ### 1. Document has a `<title>` element ✅
 
 ```html
-<title>ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲</title>
+<title>Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲</title>
 ```
 
 - **狀態**: ✅ 完成
@@ -24,7 +24,7 @@
 ```html
 <meta
   name="description"
-  content="ClickFun 是最好玩的點擊速度測試遊戲！支援PWA離線遊戲、多種遊戲模式、即時排行榜。免費線上遊戲，測試您的點擊速度，挑戰TPS極限，粉色主題界面，支援手機和電腦。"
+  content="Click Fun 是最好玩的點擊速度測試遊戲！支援PWA離線遊戲、多種遊戲模式、即時排行榜。免費線上遊戲，測試您的點擊速度，挑戰TPS極限，粉色主題界面，支援手機和電腦。"
 />
 ```
 
@@ -105,7 +105,7 @@ Crawl-delay: 1
 
 ```html
 <!-- 所有圖片都有 alt 屬性 -->
-<meta property="og:image:alt" content="ClickFun 點擊遊戲 - 粉色主題遊戲界面截圖" />
+<meta property="og:image:alt" content="Click Fun 點擊遊戲 - 粉色主題遊戲界面截圖" />
 ```
 
 - **狀態**: ✅ 完成
@@ -187,8 +187,8 @@ Crawl-delay: 1
 1. **PWA Meta 標籤**
 
    ```html
-   <meta name="application-name" content="ClickFun" />
-   <meta name="apple-mobile-web-app-title" content="ClickFun" />
+   <meta name="application-name" content="Click Fun" />
+   <meta name="apple-mobile-web-app-title" content="Click Fun" />
    <meta name="theme-color" content="#f6a8d8" />
    ```
 
@@ -196,7 +196,7 @@ Crawl-delay: 1
 
    ```html
    <meta property="og:type" content="website" />
-   <meta property="og:title" content="ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲" />
+   <meta property="og:title" content="Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲" />
    <meta property="og:description" content="..." />
    <meta property="og:url" content="https://haotool.github.io/clickfun/" />
    ```
@@ -205,7 +205,7 @@ Crawl-delay: 1
 
    ```html
    <meta name="twitter:card" content="summary_large_image" />
-   <meta name="twitter:title" content="ClickFun - 點擊樂趣遊戲" />
+   <meta name="twitter:title" content="Click Fun - 點擊樂趣遊戲" />
    ```
 
 4. **AI SEO 支援**
@@ -257,7 +257,7 @@ Crawl-delay: 1
 3. **Schema 驗證**: Schema.org Validator
 4. **社交媒體**: Facebook Debugger, Twitter Card Validator
 
-**結論**: 基於程式碼分析，ClickFun 已達到 Lighthouse SEO 98-100 分的準備狀態！
+**結論**: 基於程式碼分析，Click Fun 已達到 Lighthouse SEO 98-100 分的準備狀態！
 
 ---
 

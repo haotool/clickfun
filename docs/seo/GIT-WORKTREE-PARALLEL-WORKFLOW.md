@@ -453,7 +453,7 @@ cat > "team-status-dashboard.html" << 'EOF'
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ClickFun SEO 團隊並行開發狀態</title>
+    <title>Click Fun SEO 團隊並行開發狀態</title>
     <meta http-equiv="refresh" content="30">
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
@@ -465,7 +465,7 @@ cat > "team-status-dashboard.html" << 'EOF'
     </style>
 </head>
 <body>
-    <h1>🏢 ClickFun SEO 團隊並行開發狀態</h1>
+    <h1>🏢 Click Fun SEO 團隊並行開發狀態</h1>
     <div class="timestamp">最後更新: $(date)</div>
 
     <div class="team-card status-good">

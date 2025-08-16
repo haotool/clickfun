@@ -301,7 +301,7 @@ class DevTools {
    */
   showHelp() {
     console.log(`
-🚀 ClickFun 開發工具
+🚀 Click Fun 開發工具
 
 使用方法:
   npm run dev:start      # 啟動快速開發模式

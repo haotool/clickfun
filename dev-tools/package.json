@@ -1,7 +1,7 @@
 {
   "name": "clickfun-dev-tools",
   "version": "7.0.0",
-  "description": "ClickFun 開發工具與測試套件",
+  "description": "Click Fun 開發工具與測試套件",
   "private": true,
   "scripts": {
     "test": "jest",

@@ -1,4 +1,4 @@
-# ClickFun 點擊樂趣遊戲 - Robots.txt
+# Click Fun 點擊樂趣遊戲 - Robots.txt
 # 生成時間: 2025-08-16T18:25:36+08:00
 # 網站: https://haotool.github.io/clickfun/
 

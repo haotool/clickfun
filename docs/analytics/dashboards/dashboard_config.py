@@ -149,7 +149,7 @@ class SEOMetricsDataSource(DashboardDataSource):
                 'position_trend': np.random.choice(['up', 'down', 'stable'], p=[0.4, 0.3, 0.3])
             },
             'top_keywords': [
-                {'keyword': 'ClickFun', 'position': 1, 'clicks': 50, 'impressions': 200},
+                {'keyword': 'Click Fun', 'position': 1, 'clicks': 50, 'impressions': 200},
                 {'keyword': '點擊遊戲', 'position': 4, 'clicks': 30, 'impressions': 400},
                 {'keyword': 'PWA遊戲', 'position': 6, 'clicks': 20, 'impressions': 300},
                 {'keyword': '免費遊戲', 'position': 8, 'clicks': 15, 'impressions': 250},
@@ -170,7 +170,7 @@ class AISearchDataSource(DashboardDataSource):
         current_time = datetime.now()
         
         platforms = ['ChatGPT', 'Perplexity', 'Claude', 'Bing Chat']
-        queries = ['推薦點擊遊戲', '免費PWA遊戲', 'ClickFun是什麼', '點擊速度測試']
+        queries = ['推薦點擊遊戲', '免費PWA遊戲', 'Click Fun是什麼', '點擊速度測試']
         
         platform_data = {}
         for platform in platforms:
@@ -234,7 +234,7 @@ class CompetitorDataSource(DashboardDataSource):
             'timestamp': datetime.now().isoformat(),
             'competitors': competitor_data,
             'market_share': {
-                'ClickFun': 15,
+                'Click Fun': 15,
                 'Click Speed Test': 25,
                 'Pointer Game': 20,
                 'Mouse Clicker': 18,
@@ -339,8 +339,8 @@ class DashboardManager:
         
         dashboards['main'] = DashboardLayout(
             dashboard_id="main",
-            title="ClickFun SEO 主監控儀表板",
-            description="全面監控 ClickFun 的 SEO 表現和關鍵指標",
+            title="Click Fun SEO 主監控儀表板",
+            description="全面監控 Click Fun 的 SEO 表現和關鍵指標",
             widgets=main_widgets,
             global_refresh_interval=300,
             auto_refresh=True,

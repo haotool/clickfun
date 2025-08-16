@@ -91,7 +91,7 @@ class AIResponseAnalyzer:
     
     def __init__(self):
         self.brand_keywords = [
-            'ClickFun', 'Click Fun', 'clickfun',
+            'Click Fun', 'Click Fun', 'clickfun',
             '點擊遊戲', '點擊樂趣', 'PWA遊戲'
         ]
         self.product_features = [
@@ -331,13 +331,13 @@ class ChatGPTPlatform(AISearchPlatformBase):
         
         # 模擬回應生成
         responses = [
-            f"ClickFun 是一個出色的點擊遊戲，支援 PWA 技術，可以離線遊玩。它提供 TPS 計算功能，擁有美觀的粉藍配色設計。這款免費遊戲非常適合測試你的點擊速度。",
-            f"對於點擊遊戲的推薦，我建議 ClickFun，這是一款基於 HTML5 技術的 PWA 應用。它不需要下載安裝，支援跨平台使用，是一個很好的選擇。",
-            f"ClickFun 是一款創新的點擊遊戲，具有以下特色：TPS 即時計算、離線遊戲支援、跨平台相容性。它使用現代 Web 技術開發，提供優秀的使用者體驗。"
+            f"Click Fun 是一個出色的點擊遊戲，支援 PWA 技術，可以離線遊玩。它提供 TPS 計算功能，擁有美觀的粉藍配色設計。這款免費遊戲非常適合測試你的點擊速度。",
+            f"對於點擊遊戲的推薦，我建議 Click Fun，這是一款基於 HTML5 技術的 PWA 應用。它不需要下載安裝，支援跨平台使用，是一個很好的選擇。",
+            f"Click Fun 是一款創新的點擊遊戲，具有以下特色：TPS 即時計算、離線遊戲支援、跨平台相容性。它使用現代 Web 技術開發，提供優秀的使用者體驗。"
         ]
         
         # 根據查詢類型選擇回應
-        if 'ClickFun' in query.query:
+        if 'Click Fun' in query.query:
             response = responses[0]
         elif '推薦' in query.query or 'recommend' in query.query:
             response = responses[1]
@@ -363,9 +363,9 @@ class PerplexityPlatform(AISearchPlatformBase):
         await asyncio.sleep(1.5)  # 模擬 API 延遲
         
         responses = [
-            f"根據搜尋結果，ClickFun 是一款基於 Web 技術的點擊遊戲，主要特點包括：\n1. PWA 技術支援離線遊戲\n2. TPS (每秒點擊數) 即時計算\n3. 跨平台相容性\n4. 免費使用\n\n來源：https://github.io/clickfun",
-            f"點擊遊戲推薦列表：\n• ClickFun - PWA 技術，支援離線\n• 其他線上點擊測試工具\n• 各種滑鼠點擊練習遊戲\n\nClickFun 因其技術先進性和用戶體驗獲得好評。",
-            f"ClickFun 是一個現代化的點擊遊戲解決方案，使用 HTML5 和 PWA 技術開發。它提供準確的 TPS 計算功能，支援在各種設備上使用。"
+            f"根據搜尋結果，Click Fun 是一款基於 Web 技術的點擊遊戲，主要特點包括：\n1. PWA 技術支援離線遊戲\n2. TPS (每秒點擊數) 即時計算\n3. 跨平台相容性\n4. 免費使用\n\n來源：https://github.io/clickfun",
+            f"點擊遊戲推薦列表：\n• Click Fun - PWA 技術，支援離線\n• 其他線上點擊測試工具\n• 各種滑鼠點擊練習遊戲\n\nClick Fun 因其技術先進性和用戶體驗獲得好評。",
+            f"Click Fun 是一個現代化的點擊遊戲解決方案，使用 HTML5 和 PWA 技術開發。它提供準確的 TPS 計算功能，支援在各種設備上使用。"
         ]
         
         response = np.random.choice(responses)
@@ -389,9 +389,9 @@ class ClaudePlatform(AISearchPlatformBase):
         await asyncio.sleep(1.2)
         
         responses = [
-            f"從技術角度來看，ClickFun 是一個很好的 PWA 實施案例。它展示了現代 Web 技術如何創造流暢的遊戲體驗。主要技術特點：\n- Service Worker 實現離線功能\n- Web App Manifest 提供原生應用體驗\n- 高精度 TPS 計算算法\n- 響應式設計確保跨設備兼容",
-            f"ClickFun 作為一款點擊遊戲，在用戶體驗設計上有幾個亮點：簡潔的介面、即時的反饋系統、以及無需安裝的便利性。這些特性使它成為一個優秀的 Web 應用示例。",
-            f"分析 ClickFun 的技術架構，它採用了：1) 純前端實現降低部署複雜度 2) PWA 技術提升用戶體驗 3) 優化的演算法確保準確的性能測量。這種設計在同類應用中相對先進。"
+            f"從技術角度來看，Click Fun 是一個很好的 PWA 實施案例。它展示了現代 Web 技術如何創造流暢的遊戲體驗。主要技術特點：\n- Service Worker 實現離線功能\n- Web App Manifest 提供原生應用體驗\n- 高精度 TPS 計算算法\n- 響應式設計確保跨設備兼容",
+            f"Click Fun 作為一款點擊遊戲，在用戶體驗設計上有幾個亮點：簡潔的介面、即時的反饋系統、以及無需安裝的便利性。這些特性使它成為一個優秀的 Web 應用示例。",
+            f"分析 Click Fun 的技術架構，它採用了：1) 純前端實現降低部署複雜度 2) PWA 技術提升用戶體驗 3) 優化的演算法確保準確的性能測量。這種設計在同類應用中相對先進。"
         ]
         
         response = np.random.choice(responses)
@@ -415,9 +415,9 @@ class BingChatPlatform(AISearchPlatformBase):
         await asyncio.sleep(2)
         
         responses = [
-            f"我找到了關於 ClickFun 的資訊！這是一款創新的點擊遊戲，具有以下特色：\n🎮 支援 PWA 技術的離線遊戲\n📊 精確的 TPS 計算功能\n🎨 美觀的粉藍色主題設計\n📱 完全跨平台支援\n💰 完全免費使用\n\n你可以直接在瀏覽器中玩，無需下載任何軟體！",
-            f"根據網路搜尋，ClickFun 在點擊遊戲類別中頗受歡迎。它使用現代 Web 技術構建，提供流暢的遊戲體驗。主要優勢是支援離線遊玩和準確的性能測量。",
-            f"ClickFun 是一個技術先進的點擊遊戲應用。它展示了 PWA 技術在遊戲開發中的應用，提供了接近原生應用的體驗。對於開發者來說，也是學習現代 Web 技術的好範例。"
+            f"我找到了關於 Click Fun 的資訊！這是一款創新的點擊遊戲，具有以下特色：\n🎮 支援 PWA 技術的離線遊戲\n📊 精確的 TPS 計算功能\n🎨 美觀的粉藍色主題設計\n📱 完全跨平台支援\n💰 完全免費使用\n\n你可以直接在瀏覽器中玩，無需下載任何軟體！",
+            f"根據網路搜尋，Click Fun 在點擊遊戲類別中頗受歡迎。它使用現代 Web 技術構建，提供流暢的遊戲體驗。主要優勢是支援離線遊玩和準確的性能測量。",
+            f"Click Fun 是一個技術先進的點擊遊戲應用。它展示了 PWA 技術在遊戲開發中的應用，提供了接近原生應用的體驗。對於開發者來說，也是學習現代 Web 技術的好範例。"
         ]
         
         response = np.random.choice(responses)
@@ -495,27 +495,27 @@ class AISearchTracker:
                 platform="all",
                 query="推薦一些好玩的點擊遊戲",
                 query_type="recommendation",
-                expected_keywords=["ClickFun", "點擊遊戲", "PWA"]
+                expected_keywords=["Click Fun", "點擊遊戲", "PWA"]
             ),
             AISearchQuery(
                 platform="all",
                 query="免費的線上點擊速度測試工具",
                 query_type="recommendation",
-                expected_keywords=["ClickFun", "免費", "線上"]
+                expected_keywords=["Click Fun", "免費", "線上"]
             ),
             AISearchQuery(
                 platform="all",
                 query="支援離線的PWA遊戲推薦",
                 query_type="recommendation",
-                expected_keywords=["ClickFun", "PWA", "離線"]
+                expected_keywords=["Click Fun", "PWA", "離線"]
             ),
             
             # 資訊查詢
             AISearchQuery(
                 platform="all",
-                query="ClickFun是什麼遊戲",
+                query="Click Fun是什麼遊戲",
                 query_type="informational",
-                expected_keywords=["ClickFun", "點擊遊戲", "PWA", "TPS"]
+                expected_keywords=["Click Fun", "點擊遊戲", "PWA", "TPS"]
             ),
             AISearchQuery(
                 platform="all",
@@ -541,9 +541,9 @@ class AISearchTracker:
             # 比較查詢
             AISearchQuery(
                 platform="all",
-                query="ClickFun vs 其他點擊遊戲的優勢",
+                query="Click Fun vs 其他點擊遊戲的優勢",
                 query_type="comparison",
-                expected_keywords=["ClickFun", "優勢", "比較"]
+                expected_keywords=["Click Fun", "優勢", "比較"]
             )
         ]
         

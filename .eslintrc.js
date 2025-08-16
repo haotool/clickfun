@@ -1,5 +1,5 @@
 /**
- * ESLint 配置文件 - ClickFun 專案
+ * ESLint 配置文件 - Click Fun 專案
  * 基於現代 JavaScript 最佳實踐
  */
 

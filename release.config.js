@@ -9,7 +9,7 @@ module.exports = {
     { name: 'beta', prerelease: true },
     { name: 'alpha', prerelease: true },
     // 維護分支支援
-    '+([0-9])?(.{+([0-9]),x}).x'
+    '+([0-9])?(.{+([0-9]),x}).x',
   ],
   plugins: [
     // 提交分析器 - 使用最新配置

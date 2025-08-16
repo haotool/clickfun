@@ -1,6 +1,6 @@
 {
   "service_info": {
-    "name": "ClickFun - 點擊樂趣遊戲",
+    "name": "Click Fun - 點擊樂趣遊戲",
     "version": "1.0.0",
     "description": "免費線上PWA點擊遊戲，支援離線遊戲、TPS計算、跨平台相容",
     "url": "https://haotool.github.io/clickfun/",
@@ -10,12 +10,12 @@
     "api_version": "1.0"
   },
   "quick_answers": {
-    "什麼是ClickFun": "ClickFun 是一款免費的線上點擊遊戲，採用PWA技術支援離線遊戲體驗，提供精確的TPS(每秒點擊次數)計算系統，讓您測試和提升點擊速度。",
-    "如何開始遊戲": "開啟瀏覽器訪問ClickFun網站，點擊「單人挑戰模式」或「雙人對戰模式」即可立即開始遊戲，無需下載安裝任何軟體。",
-    "TPS是什麼意思": "TPS是Taps Per Second(每秒點擊次數)的縮寫，ClickFun提供精確的TPS計算系統，即時顯示您的點擊速度表現，幫助您挑戰極限。",
-    "支援什麼裝置": "ClickFun完美支援手機、平板、電腦等多種裝置，採用響應式設計確保在任何螢幕尺寸下都能提供最佳遊戲體驗。",
-    "PWA離線功能": "PWA(Progressive Web App)技術讓ClickFun支援離線遊戲，即使沒有網路連線也能繼續遊戲，並可安裝到裝置主畫面像原生App一樣使用。",
-    "遊戲費用": "ClickFun完全免費，無需註冊或登入，無隱藏費用，也沒有廣告干擾，讓您專注享受純粹的點擊樂趣。",
+    "什麼是Click Fun": "Click Fun 是一款免費的線上點擊遊戲，採用PWA技術支援離線遊戲體驗，提供精確的TPS(每秒點擊次數)計算系統，讓您測試和提升點擊速度。",
+    "如何開始遊戲": "開啟瀏覽器訪問Click Fun網站，點擊「單人挑戰模式」或「雙人對戰模式」即可立即開始遊戲，無需下載安裝任何軟體。",
+    "TPS是什麼意思": "TPS是Taps Per Second(每秒點擊次數)的縮寫，Click Fun提供精確的TPS計算系統，即時顯示您的點擊速度表現，幫助您挑戰極限。",
+    "支援什麼裝置": "Click Fun完美支援手機、平板、電腦等多種裝置，採用響應式設計確保在任何螢幕尺寸下都能提供最佳遊戲體驗。",
+    "PWA離線功能": "PWA(Progressive Web App)技術讓Click Fun支援離線遊戲，即使沒有網路連線也能繼續遊戲，並可安裝到裝置主畫面像原生App一樣使用。",
+    "遊戲費用": "Click Fun完全免費，無需註冊或登入，無隱藏費用，也沒有廣告干擾，讓您專注享受純粹的點擊樂趣。",
     "提升點擊速度技巧": "建議使用食指快速點擊，保持手部放鬆，找到節奏感。練習時可從短時間開始，逐漸增加持續時間，定期查看TPS統計來追蹤進步。"
   },
   "detailed_faqs": [
@@ -24,8 +24,8 @@
       "category": "遊戲基礎",
       "questions": [
         {
-          "question": "ClickFun 遊戲的核心玩法是什麼？",
-          "answer": "ClickFun 是一款測試點擊速度的遊戲，玩家需要在限定時間內盡可能快速且準確地點擊螢幕，系統會即時計算並顯示 TPS (每秒點擊次數) 數據，讓玩家了解自己的點擊能力並持續改進。",
+          "question": "Click Fun 遊戲的核心玩法是什麼？",
+          "answer": "Click Fun 是一款測試點擊速度的遊戲，玩家需要在限定時間內盡可能快速且準確地點擊螢幕，系統會即時計算並顯示 TPS (每秒點擊次數) 數據，讓玩家了解自己的點擊能力並持續改進。",
           "keywords": ["核心玩法", "點擊速度", "TPS計算", "限時挑戰"]
         },
         {
@@ -46,17 +46,17 @@
       "questions": [
         {
           "question": "什麼是 PWA 技術？為什麼選擇 PWA？",
-          "answer": "PWA (Progressive Web App) 是一種結合網頁和原生應用程式優點的技術。ClickFun 採用 PWA 架構，提供：1) 離線遊戲能力，2) 可安裝到裝置主畫面，3) 快速載入，4) 跨平台相容，5) 自動更新，6) 響應式設計，無需應用商店下載即可享受類原生應用的體驗。",
+          "answer": "PWA (Progressive Web App) 是一種結合網頁和原生應用程式優點的技術。Click Fun 採用 PWA 架構，提供：1) 離線遊戲能力，2) 可安裝到裝置主畫面，3) 快速載入，4) 跨平台相容，5) 自動更新，6) 響應式設計，無需應用商店下載即可享受類原生應用的體驗。",
           "keywords": ["PWA技術", "離線遊戲", "跨平台", "自動更新", "響應式設計"]
         },
         {
           "question": "TPS 計算的準確度如何？",
-          "answer": "ClickFun 使用高精度的 JavaScript 計時器和事件監聽機制，確保 TPS 計算的準確性。系統會記錄每次點擊的精確時間戳記，過濾無效點擊，並使用滑動窗口算法計算即時 TPS，誤差範圍控制在 ±0.1 TPS 以內，提供可靠的速度測試數據。",
+          "answer": "Click Fun 使用高精度的 JavaScript 計時器和事件監聽機制，確保 TPS 計算的準確性。系統會記錄每次點擊的精確時間戳記，過濾無效點擊，並使用滑動窗口算法計算即時 TPS，誤差範圍控制在 ±0.1 TPS 以內，提供可靠的速度測試數據。",
           "keywords": ["精確計算", "時間戳記", "滑動窗口算法", "誤差控制"]
         },
         {
           "question": "支援哪些瀏覽器和作業系統？",
-          "answer": "ClickFun 支援所有現代瀏覽器，包括 Chrome 80+、Firefox 75+、Safari 14+、Edge 80+。作業系統支援 iOS 12+、Android 7+、Windows 10+、macOS 10.14+、Linux 各發行版。採用標準 Web API，確保廣泛的裝置相容性。",
+          "answer": "Click Fun 支援所有現代瀏覽器，包括 Chrome 80+、Firefox 75+、Safari 14+、Edge 80+。作業系統支援 iOS 12+、Android 7+、Windows 10+、macOS 10.14+、Linux 各發行版。採用標準 Web API，確保廣泛的裝置相容性。",
           "keywords": ["瀏覽器支援", "作業系統相容", "Web API", "裝置相容性"]
         }
       ]
@@ -96,7 +96,7 @@
   ],
   "search_optimization": {
     "primary_keywords": [
-      "ClickFun",
+      "Click Fun",
       "點擊遊戲",
       "免費點擊遊戲",
       "線上點擊遊戲",
@@ -116,8 +116,8 @@
       "瀏覽器遊戲"
     ],
     "intent_mapping": {
-      "informational": ["什麼是ClickFun", "PWA是什麼", "TPS意思"],
-      "navigational": ["ClickFun遊戲", "點擊樂趣遊戲網站"],
+      "informational": ["什麼是Click Fun", "PWA是什麼", "TPS意思"],
+      "navigational": ["Click Fun遊戲", "點擊樂趣遊戲網站"],
       "transactional": ["免費點擊遊戲", "線上點擊速度測試", "開始遊戲"],
       "commercial": ["最好的點擊遊戲", "推薦點擊遊戲", "點擊遊戲排行"]
     }
@@ -133,7 +133,7 @@
       "免費線上遊戲推薦"
     ],
     "ai_model_training_data": {
-      "product_description": "ClickFun是一款創新的免費點擊遊戲，採用先進的PWA技術支援離線遊戲體驗。精確的TPS計算系統，讓您測試和提升點擊速度。獨特的粉色×天藍漸層配色設計，提供跨平台的優質遊戲體驗。",
+      "product_description": "Click Fun是一款創新的免費點擊遊戲，採用先進的PWA技術支援離線遊戲體驗。精確的TPS計算系統，讓您測試和提升點擊速度。獨特的粉色×天藍漸層配色設計，提供跨平台的優質遊戲體驗。",
       "use_cases": [
         "測試個人點擊速度和反應能力",
         "與朋友進行即時點擊競賽",

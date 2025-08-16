@@ -133,7 +133,7 @@ Daily_Technical_Tasks:
     <!-- 必須包含的 Meta 標籤 -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>精確的頁面標題 | ClickFun</title>
+    <title>精確的頁面標題 | Click Fun</title>
     <meta name="description" content="120-160字符的頁面描述" />
     <meta name="keywords" content="關鍵字1,關鍵字2,關鍵字3" />
     <meta name="author" content="haotool" />
@@ -145,7 +145,7 @@ Daily_Technical_Tasks:
     <meta property="og:title" content="頁面標題" />
     <meta property="og:description" content="頁面描述" />
     <meta property="og:url" content="標準化URL" />
-    <meta property="og:site_name" content="ClickFun" />
+    <meta property="og:site_name" content="Click Fun" />
     <meta property="og:image" content="1200x630 圖片URL" />
     <meta property="og:locale" content="zh_TW" />
 
@@ -164,7 +164,7 @@ Daily_Technical_Tasks:
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "ClickFun",
+  "name": "Click Fun",
   "applicationCategory": "Game",
   "operatingSystem": "Any",
   "browserRequirements": "Requires JavaScript. HTML5 compatible browser.",

@@ -1,4 +1,4 @@
-# 🎯 ClickFun AI SEO 優化策略
+# 🎯 Click Fun AI SEO 優化策略
 
 ## 📊 專案 SEO 現況分析
 
@@ -66,7 +66,7 @@
 
 ### GEO (Generative Engine Optimization)
 
-**目標**: 讓 AI 搜尋引擎能正確理解並推薦 ClickFun
+**目標**: 讓 AI 搜尋引擎能正確理解並推薦 Click Fun
 
 **實施策略**:
 

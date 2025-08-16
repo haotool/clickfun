@@ -145,7 +145,7 @@ class GoogleSearchConsoleCollector(DataCollectorBase):
                     impressions=np.random.randint(500, 2000),
                     ctr=np.random.uniform(0.02, 0.15),
                     position=np.random.uniform(3, 15),
-                    keywords=['點擊遊戲', 'ClickFun', 'PWA遊戲', '免費遊戲'],
+                    keywords=['點擊遊戲', 'Click Fun', 'PWA遊戲', '免費遊戲'],
                     pages=['/index.html', '/game', '/about'],
                     devices={'desktop': 60, 'mobile': 35, 'tablet': 5},
                     countries={'TW': 70, 'US': 15, 'JP': 10, 'other': 5}
@@ -254,7 +254,7 @@ class AISearchCollector(DataCollectorBase):
             metrics = []
             
             platforms = ['ChatGPT', 'Perplexity', 'Claude', 'Bing Chat']
-            queries = ['推薦點擊遊戲', '免費PWA遊戲', 'ClickFun是什麼']
+            queries = ['推薦點擊遊戲', '免費PWA遊戲', 'Click Fun是什麼']
             
             for platform in platforms:
                 for query in queries:
@@ -317,7 +317,7 @@ class SEODataCollectionManager:
                     },
                     'ai_search': {
                         'platforms': ['ChatGPT', 'Perplexity', 'Claude', 'Bing Chat'],
-                        'test_queries': ['推薦點擊遊戲', '免費PWA遊戲', 'ClickFun是什麼']
+                        'test_queries': ['推薦點擊遊戲', '免費PWA遊戲', 'Click Fun是什麼']
                     },
                     'collection_interval': 3600,  # 1 小時
                     'storage_format': 'parquet'

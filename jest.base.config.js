@@ -1,5 +1,5 @@
 /**
- * Jest 基礎配置 - ClickFun 專案
+ * Jest 基礎配置 - Click Fun 專案
  * 基於 Context7 最佳實踐的共享配置
  * [context7:jestjs/jest:2025-08-16T18:26:00+08:00]
  * 版本: 2025.8.16
@@ -7,7 +7,7 @@
 
 export default {
   // 專案顯示名稱
-  displayName: 'ClickFun Tests',
+  displayName: 'Click Fun Tests',
 
   // 測試環境
   testEnvironment: 'node',
@@ -31,10 +31,10 @@ export default {
 
   // 忽略的文件
   testPathIgnorePatterns: [
-    '/node_modules/', 
-    '/dev-tools/', 
+    '/node_modules/',
+    '/dev-tools/',
     '/team-worktrees/',
-    '.*\\.e2e\\.test\\.js$'
+    '.*\\.e2e\\.test\\.js$',
   ],
 
   // 模組文件擴展名

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * ClickFun 專案設置腳本
+ * Click Fun 專案設置腳本
  * 自動安裝依賴並設置 Git Hooks
  */
 
@@ -9,7 +9,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const _path = require('path');
 
-console.log('🚀 ClickFun 專案設置開始...\n');
+console.log('🚀 Click Fun 專案設置開始...\n');
 
 // 檢查 Node.js 版本
 function checkNodeVersion() {
@@ -83,7 +83,7 @@ function checkVersionConsistency() {
 
 // 顯示完成訊息
 function showCompletionMessage() {
-  console.log('\n🎉 ClickFun 專案設置完成！');
+  console.log('\n🎉 Click Fun 專案設置完成！');
   console.log('\n📋 可用的命令:');
   console.log('   npm start          - 啟動開發伺服器');
   console.log('   npm run check-version    - 檢查版本號一致性');

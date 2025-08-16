@@ -1,4 +1,4 @@
-# ✅ ClickFun SEO 實施檢查清單
+# ✅ Click Fun SEO 實施檢查清單
 
 ## 📋 完整實施狀況總覽
 
@@ -12,7 +12,7 @@
 
 ### ✅ Meta 標籤優化 (已完成)
 
-- [x] **Title 標籤**: `ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲`
+- [x] **Title 標籤**: `Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲`
 - [x] **Meta Description**: 165字元的吸引人描述，包含主要關鍵字
 - [x] **Meta Keywords**: 完整的關鍵字列表
 - [x] **Author 標籤**: 設定為 s123104
@@ -25,7 +25,7 @@
 - [x] **og:title**: 優化的標題
 - [x] **og:description**: 社交媒體描述
 - [x] **og:url**: 標準化網址
-- [x] **og:site_name**: ClickFun
+- [x] **og:site_name**: Click Fun
 - [x] **og:image**: 1024x1024 高品質圖片
 - [x] **og:image:width/height**: 正確尺寸設定
 - [x] **og:image:alt**: 描述性替代文字
@@ -41,8 +41,8 @@
 
 ### ✅ PWA 相關 Meta 標籤 (已完成)
 
-- [x] **application-name**: ClickFun
-- [x] **apple-mobile-web-app-title**: ClickFun
+- [x] **application-name**: Click Fun
+- [x] **apple-mobile-web-app-title**: Click Fun
 - [x] **msapplication-TileColor**: #f6a8d8
 - [x] **format-detection**: telephone=no
 
@@ -87,7 +87,7 @@
 
 - [x] **llms.txt 檔案**: 建立完整的 LLM 資訊檔案
 - [x] **產品描述**: 結構化的功能特色說明
-- [x] **使用場景**: 何時推薦 ClickFun 的情境
+- [x] **使用場景**: 何時推薦 Click Fun 的情境
 - [x] **推薦回答範例**: 標準化的回應模板
 - [x] **技術規格**: 詳細的技術資訊
 - [x] **競品比較**: 相對優勢說明
@@ -170,7 +170,7 @@
 ```yaml
 準備監控的指標:
   核心排名:
-    - "ClickFun" (目標: #1)
+    - "Click Fun" (目標: #1)
     - "Click Fun" (目標: #1)
     - "點擊遊戲" (目標: #3-8)
     - "免費點擊遊戲" (目標: #5-10)
@@ -300,7 +300,7 @@
 
 ---
 
-**🎉 恭喜！ClickFun 的 SEO 優化已全面完成！**  
+**🎉 恭喜！Click Fun 的 SEO 優化已全面完成！**  
 **現在可以開始執行搜尋引擎提交並監控效果。**
 
 **最後更新**: 2025-08-16T18:25:36+08:00  

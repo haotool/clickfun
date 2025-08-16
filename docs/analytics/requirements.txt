@@ -1,4 +1,4 @@
-# ClickFun SEO 數據分析平台 - Python 依賴包
+# Click Fun SEO 數據分析平台 - Python 依賴包
 # 建立時間: 2025-08-17T02:03:06+08:00
 # 負責人: 數據狂人 (Data Ninja Master)
 # 版本: v1.0.0

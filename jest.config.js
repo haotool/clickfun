@@ -1,5 +1,5 @@
 /**
- * Jest 配置文件 - ClickFun 主專案
+ * Jest 配置文件 - Click Fun 主專案
  * 基於 Context7 最佳實踐配置
  * [context7:jestjs/jest:2025-08-16T18:26:00+08:00]
  * 版本: 2025.8.16

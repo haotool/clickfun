@@ -60,7 +60,7 @@ Primary_Responsibilities:
 # 每日關鍵字表現監控
 def morning_keyword_analysis():
     target_keywords = {
-        'tier1_brand': ['ClickFun', 'Click Fun', 'clickfun遊戲'],
+        'tier1_brand': ['Click Fun', 'Click Fun', 'clickfun遊戲'],
         'tier2_primary': ['點擊遊戲', '免費點擊遊戲', '線上點擊遊戲', 'PWA遊戲'],
         'tier3_longtail': ['免費線上點擊速度測試遊戲', '支援離線的點擊遊戲', 'TPS計算遊戲']
     }
@@ -154,7 +154,7 @@ Content_Strategy_Morning_Tasks:
 ```yaml
 Brand_Keywords_Strategy:
   primary_brand:
-    - "ClickFun": 月搜尋量 50, 競爭度: 極低
+    - "Click Fun": 月搜尋量 50, 競爭度: 極低
     - "Click Fun": 月搜尋量 100, 競爭度: 低
     - "clickfun遊戲": 月搜尋量 30, 競爭度: 低
 
@@ -267,22 +267,22 @@ Competitor_Content_Analysis:
 ### 公式 1: 功能導向型
 
 [主關鍵字] - [獨特價值] | [品牌名稱]
-範例: ClickFun - 免費線上點擊遊戲 | PWA離線支援
+範例: Click Fun - 免費線上點擊遊戲 | PWA離線支援
 
 ### 公式 2: 問題解決型
 
 如何 [動作] [主關鍵字] - [解決方案] | [品牌名稱]
-範例: 如何測試點擊速度 - 精確TPS計算工具 | ClickFun
+範例: 如何測試點擊速度 - 精確TPS計算工具 | Click Fun
 
 ### 公式 3: 比較優勢型
 
 最佳 [類別] [主關鍵字] - [差異化優勢] | [品牌名稱]
-範例: 最佳PWA點擊遊戲 - 離線支援免安裝 | ClickFun
+範例: 最佳PWA點擊遊戲 - 離線支援免安裝 | Click Fun
 
 ### 公式 4: 數字權威型
 
 [數字] 個 [主關鍵字] [特性] - [時間/效果] | [品牌名稱]
-範例: 5分鐘精通點擊遊戲 - 從新手到高手 | ClickFun
+範例: 5分鐘精通點擊遊戲 - 從新手到高手 | Click Fun
 ```
 
 #### Meta Description 撰寫標準
@@ -303,11 +303,11 @@ Competitor_Content_Analysis:
 
 ### 實際範例
 
-ClickFun 是免費的線上點擊遊戲，支援 PWA 離線遊戲、精確 TPS 計算，美觀的粉藍配色設計。立即開始測試你的點擊速度，無需下載安裝！
+Click Fun 是免費的線上點擊遊戲，支援 PWA 離線遊戲、精確 TPS 計算，美觀的粉藍配色設計。立即開始測試你的點擊速度，無需下載安裝！
 
 ### 多語言版本
 
-English: ClickFun - Free online click game with PWA offline support, accurate TPS calculation, and beautiful pink-blue design. Start testing your click speed now!
+English: Click Fun - Free online click game with PWA offline support, accurate TPS calculation, and beautiful pink-blue design. Start testing your click speed now!
 ```
 
 ### 內容結構最佳化
@@ -316,9 +316,9 @@ English: ClickFun - Free online click game with PWA offline support, accurate TP
 
 ```html
 <!-- 標準頁面結構 -->
-<h1>ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲</h1>
+<h1>Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲</h1>
 
-<h2>什麼是 ClickFun？</h2>
+<h2>什麼是 Click Fun？</h2>
 <h3>核心功能特色</h3>
 <h4>TPS 計算系統</h4>
 <h4>PWA 離線支援</h4>
@@ -486,12 +486,12 @@ Weekly_Content_Assessment:
 Title_AB_Testing:
   test_scenarios:
     scenario_a:
-      title: 'ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲'
+      title: 'Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲'
       description: '強調功能完整性'
       target_metric: '點擊率'
 
     scenario_b:
-      title: '免費點擊遊戲 ClickFun | 精確TPS計算離線遊戲'
+      title: '免費點擊遊戲 Click Fun | 精確TPS計算離線遊戲'
       description: '強調核心特色'
       target_metric: '轉換率'
 
@@ -506,9 +506,9 @@ Title_AB_Testing:
 
 ```yaml
 Description_AB_Testing:
-  version_a: 'ClickFun 是免費的線上點擊遊戲，支援 PWA 離線遊戲、TPS 計算、粉藍配色設計。立即開始你的點擊樂趣挑戰！'
+  version_a: 'Click Fun 是免費的線上點擊遊戲，支援 PWA 離線遊戲、TPS 計算、粉藍配色設計。立即開始你的點擊樂趣挑戰！'
 
-  version_b: '測試你的點擊速度！ClickFun 提供精確 TPS 計算，支援離線遊戲，美觀設計。免安裝立即開始遊戲。'
+  version_b: '測試你的點擊速度！Click Fun 提供精確 TPS 計算，支援離線遊戲，美觀設計。免安裝立即開始遊戲。'
 
   hypothesis: '強調互動性和即時性的描述將提升點擊率'
   measurement: '14天 CTR 對比分析'

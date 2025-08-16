@@ -1,4 +1,4 @@
-# 📊 ClickFun 每日關鍵字晨間分析報告
+# 📊 Click Fun 每日關鍵字晨間分析報告
 
 **分析時間**: 2025-08-17T02:03:01+08:00  
 **分析師**: 文案高手 (Content Master Pro)  
@@ -13,7 +13,7 @@
 ```yaml
 Brand_Keywords_Status:
   primary_targets:
-    - keyword: 'ClickFun'
+    - keyword: 'Click Fun'
       search_volume: '10-50/月'
       competition: '極低'
       current_ranking: '未收錄' # 需要 Google Search Console 驗證
@@ -39,7 +39,7 @@ Brand_Keywords_Status:
 
 ✅ **已完成的優化項目**:
 
-- Meta Title: `ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲`
+- Meta Title: `Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲`
 - Meta Description: 包含完整品牌詞變體
 - JSON-LD Schema: 品牌名稱標準化
 - Open Graph: 社交媒體品牌一致性
@@ -156,7 +156,7 @@ Longtail_Opportunities:
 1. **缺乏主要 H1 標題**
    - 問題: 頁面沒有明確的 H1 主標題
    - 影響: SEO 信號不強，搜尋引擎難以理解頁面主題
-   - 建議: 添加 `<h1>ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲</h1>`
+   - 建議: 添加 `<h1>Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲</h1>`
 
 2. **品牌標題層級不當**
    - 當前: 使用 div class="brand-title"
@@ -198,7 +198,7 @@ Immediate_Actions:
   p0_critical:
     - action: '添加主要 H1 標題'
       target: '首屏顯著位置'
-      content: 'ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲'
+      content: 'Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲'
       expected_impact: '提升主關鍵字 SEO 信號'
 
     - action: '建立產品描述段落'
@@ -233,7 +233,7 @@ Weekly_Goals:
 ```yaml
 Success_Metrics:
   brand_keywords:
-    - "ClickFun" 排名目標: #1 (2週內)
+    - "Click Fun" 排名目標: #1 (2週內)
     - "Click Fun" 排名目標: #1 (2週內)
     - 品牌詞點擊率目標: ≥ 60%
 

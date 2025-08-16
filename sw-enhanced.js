@@ -1,5 +1,5 @@
 /**
- * ClickFun Enhanced Service Worker
+ * Click Fun Enhanced Service Worker
  * 基於最佳實踐的 PWA Service Worker 實作
  */
 
@@ -406,4 +406,4 @@ async function checkForUpdates() {
   }
 }
 
-console.log(`🎮 ClickFun Enhanced Service Worker ${SW_VERSION} 已載入`);
+console.log(`🎮 Click Fun Enhanced Service Worker ${SW_VERSION} 已載入`);

@@ -68,12 +68,12 @@ Additional_Metrics:
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <title>ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲</title>
+    <title>Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲</title>
 </head>
 <body>
     <!-- ✅ 關鍵內容優先 -->
     <main class="game-container">
-        <h1>ClickFun 點擊遊戲</h1>
+        <h1>Click Fun 點擊遊戲</h1>
         <button class="click-button" id="clickBtn">開始點擊</button>
         <div class="stats">TPS: <span id="tps">0</span></div>
     </main>
@@ -89,7 +89,7 @@ Additional_Metrics:
 ```html
 <!-- ✅ 圖片最佳化 -->
 <img src="icon.webp" 
-     alt="ClickFun 圖示"
+     alt="Click Fun 圖示"
      width="64" 
      height="64"
      loading="lazy"
@@ -99,7 +99,7 @@ Additional_Metrics:
 <picture>
     <source media="(min-width: 800px)" srcset="hero-large.webp">
     <source media="(min-width: 400px)" srcset="hero-medium.webp">
-    <img src="hero-small.webp" alt="ClickFun 遊戲截圖" loading="lazy">
+    <img src="hero-small.webp" alt="Click Fun 遊戲截圖" loading="lazy">
 </picture>
 
 <!-- ✅ 背景圖片優化 -->
@@ -293,7 +293,7 @@ Image_Optimization:
         image-1024.jpg 1024w
     ">
     <img src="image-640.jpg" 
-         alt="ClickFun 遊戲界面"
+         alt="Click Fun 遊戲界面"
          loading="lazy"
          decoding="async"
          width="640"

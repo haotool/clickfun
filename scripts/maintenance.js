@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * ClickFun 專案維護監控腳本
+ * Click Fun 專案維護監控腳本
  * 監控系統狀態並提供維護建議
  */
 
@@ -9,7 +9,7 @@ const fs = require('fs');
 const _path = require('path');
 const { execSync } = require('child_process');
 
-console.log('🔧 ClickFun 專案維護監控開始...\n');
+console.log('🔧 Click Fun 專案維護監控開始...\n');
 
 // 檢查專案健康狀態
 function checkProjectHealth() {

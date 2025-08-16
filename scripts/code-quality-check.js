@@ -336,7 +336,7 @@ async function main() {
       case 'help':
       default:
         console.log(`
-🔍 ClickFun 程式碼品質檢查工具
+🔍 Click Fun 程式碼品質檢查工具
 
 使用方法:
   npm run code-quality:check      # 執行完整品質檢查

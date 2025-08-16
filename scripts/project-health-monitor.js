@@ -186,7 +186,7 @@ const healthChecks = {
 
 // 執行健康檢查
 function runHealthCheck() {
-  console.log(`${colors.bright}${colors.cyan}🔍 ClickFun 專案健康檢查${colors.reset}\n`);
+  console.log(`${colors.bright}${colors.cyan}🔍 Click Fun 專案健康檢查${colors.reset}\n`);
 
   let totalScore = 0;
   let totalWeight = 0;

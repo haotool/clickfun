@@ -20,7 +20,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "ClickFun",
+  "name": "Click Fun",
   "description": "免費線上點擊遊戲，支援PWA離線遊戲、TPS計算功能",
   "url": "https://haotool.github.io/clickfun/",
   "applicationCategory": "Game",
@@ -42,9 +42,9 @@
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "@id": "https://haotool.github.io/clickfun/",
-  "name": "ClickFun",
+  "name": "Click Fun",
   "alternateName": ["Click Fun", "clickfun", "點擊樂趣"],
-  "description": "ClickFun 是免費線上點擊遊戲，支援 PWA 離線遊戲、TPS 即時計算、跨平台相容。現代化粉藍配色設計，提供最佳點擊體驗。",
+  "description": "Click Fun 是免費線上點擊遊戲，支援 PWA 離線遊戲、TPS 即時計算、跨平台相容。現代化粉藍配色設計，提供最佳點擊體驗。",
   "url": "https://haotool.github.io/clickfun/",
   "sameAs": [
     "https://github.com/haotool/clickfun"
@@ -132,7 +132,7 @@
     {
       "@type": "ImageObject",
       "url": "https://haotool.github.io/clickfun/icons/screenshot-main.png",
-      "description": "ClickFun 主介面截圖",
+      "description": "Click Fun 主介面截圖",
       "width": "1200",
       "height": "800"
     },
@@ -150,7 +150,7 @@
     "url": "https://haotool.github.io/clickfun/icons/og-image-1200x630.png",
     "width": "1200",
     "height": "630",
-    "description": "ClickFun 遊戲標誌和介面預覽"
+    "description": "Click Fun 遊戲標誌和介面預覽"
   },
   
   "potentialAction": {
@@ -198,7 +198,7 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://haotool.github.io/clickfun/#website",
-  "name": "ClickFun - 點擊樂趣遊戲",
+  "name": "Click Fun - 點擊樂趣遊戲",
   "alternateName": "Click Fun Game",
   "url": "https://haotool.github.io/clickfun/",
   "description": "免費線上點擊遊戲網站，提供最佳的點擊體驗和 PWA 功能",
@@ -250,18 +250,18 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "什麼是 ClickFun？",
+      "name": "什麼是 Click Fun？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "ClickFun 是一款免費線上點擊遊戲，支援 PWA 離線遊戲功能，具備 TPS 即時計算、現代化介面設計，可在各種設備上運行。"
+        "text": "Click Fun 是一款免費線上點擊遊戲，支援 PWA 離線遊戲功能，具備 TPS 即時計算、現代化介面設計，可在各種設備上運行。"
       }
     },
     {
       "@type": "Question", 
-      "name": "如何安裝 ClickFun PWA？",
+      "name": "如何安裝 Click Fun PWA？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "在支援的瀏覽器中訪問 ClickFun，瀏覽器會自動提示安裝選項。點擊地址欄的安裝圖示或使用瀏覽器選單中的「安裝應用程式」選項。"
+        "text": "在支援的瀏覽器中訪問 Click Fun，瀏覽器會自動提示安裝選項。點擊地址欄的安裝圖示或使用瀏覽器選單中的「安裝應用程式」選項。"
       }
     },
     {
@@ -269,15 +269,15 @@
       "name": "TPS 是什麼意思？",
       "acceptedAnswer": {
         "@type": "Answer", 
-        "text": "TPS 代表 Taps Per Second（每秒點擊次數），是衡量點擊速度的指標。ClickFun 提供即時 TPS 計算，幫助您了解點擊表現。"
+        "text": "TPS 代表 Taps Per Second（每秒點擊次數），是衡量點擊速度的指標。Click Fun 提供即時 TPS 計算，幫助您了解點擊表現。"
       }
     },
     {
       "@type": "Question",
-      "name": "ClickFun 支援哪些平台？", 
+      "name": "Click Fun 支援哪些平台？", 
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "ClickFun 支援所有現代網頁瀏覽器，包括 Chrome、Firefox、Safari、Edge，同時支援 Android、iOS 行動裝置，具備完整的響應式設計。"
+        "text": "Click Fun 支援所有現代網頁瀏覽器，包括 Chrome、Firefox、Safari、Edge，同時支援 Android、iOS 行動裝置，具備完整的響應式設計。"
       }
     },
     {
@@ -293,7 +293,7 @@
       "name": "如何提升點擊速度？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "建議使用食指快速連續點擊，保持手腕穩定，選擇適合的滑鼠或觸控設備。ClickFun 的即時 TPS 顯示能幫助您監控和改善表現。"
+        "text": "建議使用食指快速連續點擊，保持手腕穩定，選擇適合的滑鼠或觸控設備。Click Fun 的即時 TPS 顯示能幫助您監控和改善表現。"
       }
     }
   ],
@@ -444,7 +444,7 @@ echo "🎯 Schema.org 驗證完成"
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "ClickFun"
+  "name": "Click Fun"
 }
 </script>
 
@@ -490,14 +490,14 @@ Optimization_Strategies:
 // ❌ 錯誤
 {
   "@type": "Game",  // 不是有效的 Schema.org 類型
-  "name": "ClickFun"
+  "name": "Click Fun"
 }
 
 // ✅ 正確
 {
   "@type": "WebApplication",
   "applicationCategory": "Game",
-  "name": "ClickFun"
+  "name": "Click Fun"
 }
 ```
 
@@ -507,13 +507,13 @@ Optimization_Strategies:
 // ❌ 錯誤 - WebApplication 缺少關鍵屬性
 {
   "@type": "WebApplication",
-  "name": "ClickFun"
+  "name": "Click Fun"
 }
 
 // ✅ 正確 - 包含必要屬性
 {
   "@type": "WebApplication", 
-  "name": "ClickFun",
+  "name": "Click Fun",
   "description": "點擊遊戲描述",
   "url": "https://haotool.github.io/clickfun/",
   "applicationCategory": "Game"

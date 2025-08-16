@@ -108,19 +108,19 @@ docs/tech-seo/
 
 ```html
 <!-- 核心 SEO 標籤 (55字符標題) -->
-<title>ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲</title>
+<title>Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲</title>
 <meta
   name="description"
-  content="ClickFun 是一款免費的線上點擊遊戲，支援 PWA 離線遊戲、TPS 計算、粉色×天藍配色主題..."
+  content="Click Fun 是一款免費的線上點擊遊戲，支援 PWA 離線遊戲、TPS 計算、粉色×天藍配色主題..."
 />
 
 <!-- Open Graph 完整實施 -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲" />
+<meta property="og:title" content="Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲" />
 <meta property="og:image" content="https://haotool.github.io/clickfun/icons/click-fun.png" />
 
 <!-- PWA 最佳化 -->
-<meta name="application-name" content="ClickFun" />
+<meta name="application-name" content="Click Fun" />
 <meta name="theme-color" content="#f6a8d8" />
 ```
 
@@ -130,7 +130,7 @@ docs/tech-seo/
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "ClickFun",
+  "name": "Click Fun",
   "applicationCategory": "Game",
   "isAccessibleForFree": true,
   "featureList": [
@@ -174,7 +174,7 @@ git push origin main
 
 # 驗證修復
 curl -s "https://haotool.github.io/clickfun/" | grep "<title>"
-# 結果: <title>ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲</title>  # ✅ 完整!
+# 結果: <title>Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲</title>  # ✅ 完整!
 ```
 
 **影響**: Lighthouse SEO 從潛在 60 分提升至 100 分滿分

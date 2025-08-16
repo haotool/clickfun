@@ -472,7 +472,7 @@ class ReportGenerator:
         {% endif %}
         
         <div class="footer">
-            <p>數據狂人 (Data Ninja Master) | ClickFun SEO 分析系統 | {{ report_date }}</p>
+            <p>數據狂人 (Data Ninja Master) | Click Fun SEO 分析系統 | {{ report_date }}</p>
         </div>
     </div>
 </body>
@@ -664,10 +664,10 @@ async def main():
     
     # 配置報告
     config = ReportConfig(
-        title="ClickFun SEO 每日分析報告",
+        title="Click Fun SEO 每日分析報告",
         subtitle="數據驅動的 SEO 效果監控與優化建議",
         author="數據狂人 (Data Ninja Master)",
-        department="ClickFun SEO 團隊",
+        department="Click Fun SEO 團隊",
         report_type="daily",
         template_name="daily_report.html",
         output_format="html",

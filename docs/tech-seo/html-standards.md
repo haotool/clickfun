@@ -5,7 +5,7 @@
 **建立時間**: 2025-08-17T01:57:37+08:00  
 **負責人**: 鐵漢阿強 (Iron Man Strong)  
 **版本**: v1.0.0  
-**適用範圍**: ClickFun 專案技術 SEO 實施  
+**適用範圍**: Click Fun 專案技術 SEO 實施  
 **標準來源**: [Context7:HTML HEAD Guide](https://github.com/joshbuchea/head)
 
 ---
@@ -26,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- 頁面標題 - SEO 核心要素 -->
-    <title>ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲</title>
+    <title>Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲</title>
     
     <!-- 後續所有其他 head 元素 -->
 </head>
@@ -44,8 +44,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- ✅ SEO 核心標籤 -->
-<meta name="description" content="ClickFun 是免費線上點擊遊戲，支援 PWA 離線遊戲、TPS 計算，提供粉藍配色的現代化點擊體驗。立即開始測試您的點擊速度！">
-<meta name="keywords" content="點擊遊戲,ClickFun,Click Fun,PWA遊戲,免費遊戲,線上遊戲,TPS計算,點擊速度">
+<meta name="description" content="Click Fun 是免費線上點擊遊戲，支援 PWA 離線遊戲、TPS 計算，提供粉藍配色的現代化點擊體驗。立即開始測試您的點擊速度！">
+<meta name="keywords" content="點擊遊戲,Click Fun,Click Fun,PWA遊戲,免費遊戲,線上遊戲,TPS計算,點擊速度">
 <meta name="author" content="haotool">
 
 <!-- ✅ 搜尋引擎指令 -->
@@ -59,7 +59,7 @@
 <meta name="theme-color" content="#f6a8d8">
 
 <!-- ✅ 應用程式名稱 -->
-<meta name="application-name" content="ClickFun">
+<meta name="application-name" content="Click Fun">
 ```
 
 ---
@@ -71,17 +71,17 @@
 ```html
 <!-- ✅ 完整的 Open Graph 實施 -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲">
+<meta property="og:title" content="Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲">
 <meta property="og:description" content="免費線上點擊遊戲，支援PWA離線遊戲、TPS計算功能。現代化粉藍配色設計，跨平台相容，立即體驗最佳點擊樂趣！">
 <meta property="og:url" content="https://haotool.github.io/clickfun/">
-<meta property="og:site_name" content="ClickFun">
+<meta property="og:site_name" content="Click Fun">
 <meta property="og:locale" content="zh_TW">
 
 <!-- ✅ 社交媒體圖片 (1200x630 最佳尺寸) -->
 <meta property="og:image" content="https://haotool.github.io/clickfun/icons/og-image-1200x630.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="ClickFun 點擊遊戲介面預覽 - 粉藍配色的現代化點擊體驗">
+<meta property="og:image:alt" content="Click Fun 點擊遊戲介面預覽 - 粉藍配色的現代化點擊體驗">
 
 <!-- ✅ 應用程式特定標籤 -->
 <meta property="og:type" content="website">
@@ -93,10 +93,10 @@
 ```html
 <!-- ✅ Twitter Cards 完整實施 -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲">
+<meta name="twitter:title" content="Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲">
 <meta name="twitter:description" content="免費線上點擊遊戲，支援PWA離線遊戲、TPS計算。現代化設計，跨平台相容！">
 <meta name="twitter:image" content="https://haotool.github.io/clickfun/icons/twitter-card-1200x630.png">
-<meta name="twitter:image:alt" content="ClickFun 點擊遊戲介面 - 美觀的粉藍配色點擊體驗">
+<meta name="twitter:image:alt" content="Click Fun 點擊遊戲介面 - 美觀的粉藍配色點擊體驗">
 
 <!-- ✅ 如有 Twitter 帳號可加入 -->
 <!-- <meta name="twitter:site" content="@clickfun_game"> -->
@@ -111,7 +111,7 @@
 
 ```html
 <!-- ✅ iOS PWA 優化 -->
-<meta name="apple-mobile-web-app-title" content="ClickFun">
+<meta name="apple-mobile-web-app-title" content="Click Fun">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 

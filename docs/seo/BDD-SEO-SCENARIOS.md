@@ -1,4 +1,4 @@
-# 🎭 ClickFun SEO BDD 場景設計
+# 🎭 Click Fun SEO BDD 場景設計
 
 ## 📋 BDD (Behaviour Driven Development) SEO 測試場景
 
@@ -19,14 +19,14 @@ Feature: Meta Description 優化
   以便搜尋引擎能正確理解頁面內容
 
   Background:
-    Given 用戶訪問 ClickFun 主頁面
+    Given 用戶訪問 Click Fun 主頁面
 
   Scenario: Meta Description 存在且符合最佳實踐
     When 頁面載入完成
     Then 應該存在 meta description 標籤
     And description 長度應該在 120-160 字符之間
     And description 應該包含主要關鍵字 "點擊遊戲"
-    And description 應該包含品牌名稱 "ClickFun"
+    And description 應該包含品牌名稱 "Click Fun"
     And description 應該具有吸引力的行動呼籲
 
   Scenario: Meta Keywords 設置
@@ -41,21 +41,21 @@ Feature: Meta Description 優化
 ```gherkin
 Feature: Open Graph 社交媒體優化
   作為一個社交媒體使用者
-  我想要分享 ClickFun 遊戲連結時
+  我想要分享 Click Fun 遊戲連結時
   能顯示正確的預覽圖片和描述
 
   Scenario: Facebook Open Graph 標籤
-    Given 用戶在 Facebook 分享 ClickFun 連結
+    Given 用戶在 Facebook 分享 Click Fun 連結
     When Facebook 爬蟲掃描頁面
-    Then 應該存在 og:title 標籤且內容為 "ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲"
+    Then 應該存在 og:title 標籤且內容為 "Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲"
     And 應該存在 og:description 標籤且長度在 65-90 字符之間
     And 應該存在 og:image 標籤且圖片尺寸為 1200x630
     And 應該存在 og:type 標籤且值為 "website"
     And 應該存在 og:url 標籤且為正確的 canonical URL
-    And 應該存在 og:site_name 標籤且值為 "ClickFun"
+    And 應該存在 og:site_name 標籤且值為 "Click Fun"
 
   Scenario: Twitter Cards 標籤
-    Given 用戶在 Twitter 分享 ClickFun 連結
+    Given 用戶在 Twitter 分享 Click Fun 連結
     When Twitter 爬蟲掃描頁面
     Then 應該存在 twitter:card 標籤且值為 "summary_large_image"
     And 應該存在 twitter:title 標籤
@@ -73,15 +73,15 @@ Feature: Open Graph 社交媒體優化
 ```gherkin
 Feature: JSON-LD WebApplication 結構化數據
   作為一個搜尋引擎爬蟲
-  我需要理解 ClickFun 是什麼類型的應用程式
+  我需要理解 Click Fun 是什麼類型的應用程式
   以便在搜尋結果中正確展示
 
   Scenario: WebApplication Schema 完整性
-    Given 搜尋引擎爬蟲訪問 ClickFun 頁面
+    Given 搜尋引擎爬蟲訪問 Click Fun 頁面
     When 爬蟲解析 JSON-LD 數據
     Then 應該存在 JSON-LD script 標籤
     And @type 應該為 "WebApplication"
-    And name 應該為 "ClickFun"
+    And name 應該為 "Click Fun"
     And description 應該描述遊戲功能
     And url 應該為主要網域
     And applicationCategory 應該為 "Game"
@@ -103,7 +103,7 @@ Feature: JSON-LD WebApplication 結構化數據
 ```gherkin
 Feature: Organization Schema 標記
   作為一個品牌資訊查詢者
-  我想要了解 ClickFun 的開發者資訊
+  我想要了解 Click Fun 的開發者資訊
   以便建立信任感
 
   Scenario: 開發者組織資訊
@@ -123,13 +123,13 @@ Feature: Organization Schema 標記
 ```gherkin
 Feature: AI 搜尋引擎內容理解
   作為一個 AI 語言模型
-  我需要正確理解 ClickFun 的功能特色
+  我需要正確理解 Click Fun 的功能特色
   以便向用戶做出準確推薦
 
   Scenario: ChatGPT 點擊遊戲詢問回應
     Given 用戶向 ChatGPT 詢問 "推薦一些好玩的點擊遊戲"
     When ChatGPT 搜尋相關資訊
-    Then ClickFun 應該出現在推薦列表中
+    Then Click Fun 應該出現在推薦列表中
     And 描述應該正確提及 "PWA 支援離線遊戲"
     And 描述應該提及 "TPS 計算功能"
     And 描述應該提及 "粉色×天藍配色主題"
@@ -137,7 +137,7 @@ Feature: AI 搜尋引擎內容理解
   Scenario: Perplexity 搜尋結果驗證
     Given 用戶在 Perplexity 搜尋 "免費線上點擊遊戲"
     When Perplexity 生成回答
-    Then ClickFun 應該被包含在結果中
+    Then Click Fun 應該被包含在結果中
     And 應該正確引用官方網站 URL
     And 應該提及主要功能特色
 ```
@@ -205,7 +205,7 @@ Feature: Canonical URL 重複內容處理
   以避免重複內容問題
 
   Scenario: 主頁面 Canonical URL
-    Given 用戶訪問 ClickFun 任何變體 URL
+    Given 用戶訪問 Click Fun 任何變體 URL
     When 頁面載入完成
     Then 應該存在 canonical link 標籤
     And canonical URL 應該指向主要域名
@@ -227,7 +227,7 @@ Feature: Lighthouse SEO 評分優化
   以確保搜尋引擎友好性
 
   Scenario: Lighthouse SEO 100分檢查
-    Given Lighthouse 工具掃描 ClickFun 主頁
+    Given Lighthouse 工具掃描 Click Fun 主頁
     When SEO 檢查完成
     Then SEO 評分應該為 100/100
     And 應該通過 "Document has a meta description" 檢查
@@ -238,7 +238,7 @@ Feature: Lighthouse SEO 評分優化
     And 應該通過 "Links have descriptive text" 檢查
 
   Scenario: Core Web Vitals 指標
-    Given 用戶在真實環境中訪問 ClickFun
+    Given 用戶在真實環境中訪問 Click Fun
     When 效能指標被測量
     Then LCP (Largest Contentful Paint) 應該 < 2.5 秒
     And FID (First Input Delay) 應該 < 100 毫秒
@@ -270,7 +270,7 @@ Feature: PWA 特有的 SEO 優化
     And display 模式應該適合遊戲 (standalone)
 
   Scenario: Apple 特定 Meta 標籤
-    Given iOS 用戶訪問 ClickFun
+    Given iOS 用戶訪問 Click Fun
     When Safari 解析頁面標籤
     Then 應該存在 apple-mobile-web-app-title
     And 應該存在 apple-mobile-web-app-capable
@@ -291,7 +291,7 @@ Feature: Search Console 監控設置
   以便持續優化策略
 
   Scenario: 搜尋引擎提交驗證
-    Given ClickFun 網站已部署
+    Given Click Fun 網站已部署
     When 向 Google Search Console 提交
     Then 網站驗證應該成功
     And sitemap 提交應該成功
@@ -302,7 +302,7 @@ Feature: Search Console 監控設置
   Scenario: 關鍵字排名監控
     Given 目標關鍵字已設定
     When 搜尋引擎排名被追蹤 (1週後)
-    Then "ClickFun" 應該在前3名
+    Then "Click Fun" 應該在前3名
     And "點擊遊戲" 應該進入前50名
     And "免費點擊遊戲" 應該進入前30名
     And 品牌詞點擊率應該 > 50%

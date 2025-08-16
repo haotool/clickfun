@@ -1,4 +1,4 @@
-# 🚨 ClickFun 技術 SEO 緊急審計報告
+# 🚨 Click Fun 技術 SEO 緊急審計報告
 
 ## 📋 審計資訊
 
@@ -26,9 +26,9 @@
 
 **開發版本應有內容**:
 ```html
-<title>ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲</title>
-<meta name="description" content="ClickFun 是一款免費的線上點擊遊戲，支援 PWA 離線遊戲、TPS 計算、粉色×天藍配色主題。立即開始您的點擊樂趣！支援手機、平板、電腦多平台。" />
-<meta name="keywords" content="點擊遊戲,Click Fun,ClickFun,免費遊戲,PWA遊戲,線上遊戲,TPS計算,點擊速度,手機遊戲,離線遊戲" />
+<title>Click Fun - 點擊樂趣遊戲 | 免費線上PWA遊戲</title>
+<meta name="description" content="Click Fun 是一款免費的線上點擊遊戲，支援 PWA 離線遊戲、TPS 計算、粉色×天藍配色主題。立即開始您的點擊樂趣！支援手機、平板、電腦多平台。" />
+<meta name="keywords" content="點擊遊戲,Click Fun,Click Fun,免費遊戲,PWA遊戲,線上遊戲,TPS計算,點擊速度,手機遊戲,離線遊戲" />
 <!-- + 完整的 Open Graph 和 Twitter Cards -->
 ```
 
@@ -108,7 +108,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "ClickFun",
+  "name": "Click Fun",
   "alternateName": "Click Fun",
   "description": "完整描述存在",
   "applicationCategory": "Game",

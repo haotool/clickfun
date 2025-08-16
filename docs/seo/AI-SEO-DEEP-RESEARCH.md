@@ -5,7 +5,7 @@
 **研究時間**: 2025-08-16T18:25:36+08:00  
 **研究範圍**: AEO、AIO、GEO、LLMO 等新型 AI 搜尋引擎優化技術  
 **資料來源**: Context7、Rankscale AI、Web Search、最新技術文檔  
-**專案應用**: ClickFun 點擊遊戲 AI SEO 優化策略
+**專案應用**: Click Fun 點擊遊戲 AI SEO 優化策略
 
 ---
 
@@ -41,7 +41,7 @@ GEO_Optimization:
     - 時效性標記和更新頻率
 ```
 
-#### ClickFun 應用實例
+#### Click Fun 應用實例
 
 - ✅ **已實施**: 完整的 JSON-LD WebApplication + VideoGame Schema
 - ✅ **已實施**: llms.txt 提供結構化遊戲資訊
@@ -82,7 +82,7 @@ GEO_Optimization:
 - 避免過長或過短的內容片段
 ```
 
-#### ClickFun 應用成果
+#### Click Fun 應用成果
 
 - ✅ **FAQ 結構**: docs/seo/templates/schema-faq.jsonld
 - ✅ **問答格式**: BDD 測試場景包含 42 個問答對
@@ -138,7 +138,7 @@ Answers-JSON: https://haotool.github.io/clickfun/api/answers.json
 Sitemap: https://haotool.github.io/clickfun/sitemap.xml
 
 # 產品資訊
-Product-Name: ClickFun
+Product-Name: Click Fun
 Product-Category: Click Game, PWA Game
 Product-Description: 免費線上點擊遊戲，支援PWA離線遊戲、TPS計算
 Product-Features: 離線支援, TPS計算, 跨平台, 粉藍配色
@@ -150,7 +150,7 @@ Product-Features: 離線支援, TPS計算, 跨平台, 粉藍配色
 - **結構化描述**: 清晰的產品特色和功能說明
 - **標準化術語**: 一致的技術詞彙使用
 
-#### ClickFun LLMO 實施狀況
+#### Click Fun LLMO 實施狀況
 
 - ✅ **llms.txt 完整**: 包含產品描述、功能列表、聯繫資訊
 - ✅ **推薦模板**: 提供標準化的產品推薦回答
@@ -202,7 +202,7 @@ Rankscale_Best_Practices:
 
 ---
 
-## 🔬 ClickFun AI SEO 優化建議
+## 🔬 Click Fun AI SEO 優化建議
 
 ### 立即執行項目
 
