@@ -1,6 +1,6 @@
 {
   "name": "clickfun",
-  "version": "7.1.3",
+  "version": "7.1.4",
   "description": "A fun click-based game with PWA support and automated versioning",
   "type": "module",
   "main": "index.html",
