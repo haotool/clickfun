@@ -5,7 +5,7 @@ module.exports = {
   branches: [
     'main',
     { name: 'beta', prerelease: true },
-    { name: 'alpha', prerelease: true }
+    { name: 'alpha', prerelease: true },
   ],
   plugins: [
     '@semantic-release/commit-analyzer',
@@ -13,18 +13,18 @@ module.exports = {
     [
       '@semantic-release/changelog',
       {
-        changelogFile: 'CHANGELOG.md'
-      }
+        changelogFile: 'CHANGELOG.md',
+      },
     ],
     [
       '@semantic-release/exec',
       {
         prepareCmd: 'npm run update-version-files',
-        publishCmd: 'npm run post-publish'
-      }
+        publishCmd: 'npm run post-publish',
+      },
     ],
     '@semantic-release/git',
-    '@semantic-release/github'
+    '@semantic-release/github',
   ],
   preset: 'conventionalcommits',
   tagFormat: 'v${version}',
@@ -37,14 +37,14 @@ module.exports = {
     { type: 'perf', release: 'patch' },
     { type: 'test', release: 'patch' },
     { type: 'chore', release: 'patch' },
-    { breaking: true, release: 'major' }
+    { breaking: true, release: 'major' },
   ],
   parserOpts: {
-    noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES']
+    noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES'],
   },
   writerOpts: {
     groupBy: 'type',
     commitGroupsSort: 'title',
-    commitsSort: 'header'
-  }
+    commitsSort: 'header',
+  },
 };

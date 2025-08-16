@@ -16,8 +16,8 @@ module.exports = {
         'perf', // 效能優化
         'ci', // CI/CD 配置
         'build', // 建置系統
-        'revert' // 回退提交
-      ]
+        'revert', // 回退提交
+      ],
     ],
     'type-case': [2, 'always', 'lower-case'],
     'type-empty': [2, 'never'],
@@ -28,7 +28,7 @@ module.exports = {
     'body-leading-blank': [1, 'always'],
     'body-max-line-length': [2, 'always', 100],
     'footer-leading-blank': [1, 'always'],
-    'footer-max-line-length': [2, 'always', 100]
+    'footer-max-line-length': [2, 'always', 100],
   },
   // 自訂解析器以支援中文字符
   parserPreset: {
@@ -44,16 +44,16 @@ module.exports = {
         'fixed',
         'resolve',
         'resolves',
-        'resolved'
+        'resolved',
       ],
       issuePrefixes: ['#'],
       noteKeywords: ['BREAKING CHANGE', '重大變更'],
       fieldPattern: /^-(.*?)-$/,
       revertPattern: /^Revert\s"([\s\S]*)"\s*This reverts commit (\w*)\./,
       revertCorrespondence: ['header', 'hash'],
-      warn: function () {},
+      warn () {},
       mergePattern: null,
-      mergeCorrespondence: null
-    }
-  }
+      mergeCorrespondence: null,
+    },
+  },
 };

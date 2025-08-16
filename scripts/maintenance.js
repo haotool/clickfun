@@ -19,9 +19,17 @@ function checkProjectHealth() {
     { name: 'package.json', path: 'package.json', required: true },
     { name: 'release.config.js', path: 'release.config.js', required: true },
     { name: 'Git Hooks', path: '.husky/pre-commit', required: true },
-    { name: 'GitHub Actions', path: '.github/workflows/release.yml', required: true },
-    { name: '版本管理文檔', path: 'docs/VERSION_MANAGEMENT.md', required: true },
-    { name: 'CHANGELOG', path: 'CHANGELOG.md', required: true }
+    {
+      name: 'GitHub Actions',
+      path: '.github/workflows/release.yml',
+      required: true,
+    },
+    {
+      name: '版本管理文檔',
+      path: 'docs/VERSION_MANAGEMENT.md',
+      required: true,
+    },
+    { name: 'CHANGELOG', path: 'CHANGELOG.md', required: true },
   ];
 
   let allHealthy = true;
@@ -99,7 +107,9 @@ function checkGitStatus() {
       console.log('   ✅ Git 工作區乾淨');
     } else {
       console.log('   ⚠️  Git 工作區有未提交的變更');
-      console.log('      建議執行 git add . && git commit -m "chore: 更新專案狀態"');
+      console.log(
+        '      建議執行 git add . && git commit -m "chore: 更新專案狀態"',
+      );
     }
 
     return true;
@@ -149,27 +159,32 @@ function provideMaintenanceSuggestions(results) {
   console.log('\n🔧 維護建議');
   console.log('=' * 30);
 
-  if (!results[0]) { // 專案健康檢查失敗
+  if (!results[0]) {
+    // 專案健康檢查失敗
     console.log('1. 檢查缺失的必需檔案');
     console.log('2. 重新執行 npm run setup');
   }
 
-  if (!results[1]) { // 依賴檢查失敗
+  if (!results[1]) {
+    // 依賴檢查失敗
     console.log('1. 執行 npm install 安裝依賴');
     console.log('2. 檢查 package.json 配置');
   }
 
-  if (!results[2]) { // 版本號不一致
+  if (!results[2]) {
+    // 版本號不一致
     console.log('1. 執行 npm run update-version-files');
     console.log('2. 檢查所有檔案的版本號');
   }
 
-  if (!results[3]) { // Git 狀態問題
+  if (!results[3]) {
+    // Git 狀態問題
     console.log('1. 提交未保存的變更');
     console.log('2. 檢查 Git 配置');
   }
 
-  if (!results[4]) { // PWA 功能問題
+  if (!results[4]) {
+    // PWA 功能問題
     console.log('1. 檢查 Service Worker 配置');
     console.log('2. 驗證版本檢測邏輯');
   }
@@ -189,7 +204,7 @@ function main() {
     checkDependencies(),
     checkVersionConsistency(),
     checkGitStatus(),
-    checkPWAFunctionality()
+    checkPWAFunctionality(),
   ];
 
   generateMaintenanceReport(results);

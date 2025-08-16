@@ -25,7 +25,7 @@ class ProjectHealthMonitor {
       versionConsistency: { status: 'pending', details: [] },
       codeQuality: { status: 'pending', details: [] },
       performance: { status: 'pending', details: [] },
-      security: { status: 'pending', details: [] }
+      security: { status: 'pending', details: [] },
     };
   }
 
@@ -59,13 +59,13 @@ class ProjectHealthMonitor {
     try {
       // 檢查是否有 package-lock.json
       const lockFileExists = fs.existsSync(
-        path.join(this.projectRoot, 'package-lock.json')
+        path.join(this.projectRoot, 'package-lock.json'),
       );
 
       if (!lockFileExists) {
         this.results.dependencies.status = 'warning';
         this.results.dependencies.details.push(
-          '缺少 package-lock.json，建議執行 npm install'
+          '缺少 package-lock.json，建議執行 npm install',
         );
       }
 
@@ -73,14 +73,14 @@ class ProjectHealthMonitor {
       try {
         const outdatedOutput = execSync('npm outdated --json', {
           cwd: this.projectRoot,
-          encoding: 'utf8'
+          encoding: 'utf8',
         });
         const outdated = JSON.parse(outdatedOutput);
 
         if (Object.keys(outdated).length > 0) {
           this.results.dependencies.status = 'warning';
           this.results.dependencies.details.push(
-            `發現 ${Object.keys(outdated).length} 個過期依賴`
+            `發現 ${Object.keys(outdated).length} 個過期依賴`,
           );
         } else {
           this.results.dependencies.status = 'success';
@@ -96,14 +96,14 @@ class ProjectHealthMonitor {
       try {
         const auditOutput = execSync('npm audit --json', {
           cwd: this.projectRoot,
-          encoding: 'utf8'
+          encoding: 'utf8',
         });
         const audit = JSON.parse(auditOutput);
 
         if (audit.metadata.vulnerabilities.total > 0) {
           this.results.dependencies.status = 'error';
           this.results.dependencies.details.push(
-            `發現 ${audit.metadata.vulnerabilities.total} 個安全漏洞`
+            `發現 ${audit.metadata.vulnerabilities.total} 個安全漏洞`,
           );
         } else {
           this.results.dependencies.details.push('未發現安全漏洞');
@@ -126,7 +126,7 @@ class ProjectHealthMonitor {
     try {
       const checkVersionOutput = execSync('npm run check-version', {
         cwd: this.projectRoot,
-        encoding: 'utf8'
+        encoding: 'utf8',
       });
 
       if (checkVersionOutput.includes('✅ 所有檔案版本號檢查通過')) {
@@ -135,13 +135,13 @@ class ProjectHealthMonitor {
       } else {
         this.results.versionConsistency.status = 'error';
         this.results.versionConsistency.details.push(
-          '版本號不一致，請執行 npm run update-version-files'
+          '版本號不一致，請執行 npm run update-version-files',
         );
       }
     } catch (error) {
       this.results.versionConsistency.status = 'error';
       this.results.versionConsistency.details.push(
-        `版本檢查失敗: ${error.message}`
+        `版本檢查失敗: ${error.message}`,
       );
     }
   }
@@ -155,14 +155,14 @@ class ProjectHealthMonitor {
     try {
       // 檢查 ESLint 配置
       const eslintConfigExists = fs.existsSync(
-        path.join(this.projectRoot, '.eslintrc.js')
+        path.join(this.projectRoot, '.eslintrc.js'),
       );
 
       if (eslintConfigExists) {
         try {
           execSync('npx eslint . --ext .js,.jsx,.ts,.tsx', {
             cwd: this.projectRoot,
-            stdio: 'pipe'
+            stdio: 'pipe',
           });
           this.results.codeQuality.status = 'success';
           this.results.codeQuality.details.push('ESLint 檢查通過');
@@ -177,7 +177,7 @@ class ProjectHealthMonitor {
 
       // 檢查 Prettier 配置
       const prettierConfigExists = fs.existsSync(
-        path.join(this.projectRoot, '.prettierrc')
+        path.join(this.projectRoot, '.prettierrc'),
       );
       if (prettierConfigExists) {
         this.results.codeQuality.details.push('Prettier 配置已設定');
@@ -187,7 +187,7 @@ class ProjectHealthMonitor {
     } catch (error) {
       this.results.codeQuality.status = 'error';
       this.results.codeQuality.details.push(
-        `程式碼品質檢查失敗: ${error.message}`
+        `程式碼品質檢查失敗: ${error.message}`,
       );
     }
   }
@@ -207,19 +207,19 @@ class ProjectHealthMonitor {
       if (indexHtmlSizeKB > 500) {
         this.results.performance.status = 'warning';
         this.results.performance.details.push(
-          `主頁面檔案過大: ${indexHtmlSizeKB}KB`
+          `主頁面檔案過大: ${indexHtmlSizeKB}KB`,
         );
       } else {
         this.results.performance.status = 'success';
         this.results.performance.details.push(
-          `主頁面檔案大小正常: ${indexHtmlSizeKB}KB`
+          `主頁面檔案大小正常: ${indexHtmlSizeKB}KB`,
         );
       }
 
       // 檢查 Service Worker 配置
       const swExists = fs.existsSync(path.join(this.projectRoot, 'sw.js'));
       const swEnhancedExists = fs.existsSync(
-        path.join(this.projectRoot, 'sw-enhanced.js')
+        path.join(this.projectRoot, 'sw-enhanced.js'),
       );
 
       if (swExists && swEnhancedExists) {
@@ -253,7 +253,7 @@ class ProjectHealthMonitor {
 
       // 檢查 .gitignore
       const gitignoreExists = fs.existsSync(
-        path.join(this.projectRoot, '.gitignore')
+        path.join(this.projectRoot, '.gitignore'),
       );
       if (gitignoreExists) {
         this.results.security.details.push('.gitignore 已配置');
@@ -305,7 +305,7 @@ class ProjectHealthMonitor {
       { key: 'versionConsistency', name: '版本一致性', icon: '🔍' },
       { key: 'codeQuality', name: '程式碼品質', icon: '📝' },
       { key: 'performance', name: '效能指標', icon: '⚡' },
-      { key: 'security', name: '安全性', icon: '🔒' }
+      { key: 'security', name: '安全性', icon: '🔒' },
     ];
 
     let totalScore = 0;
@@ -319,7 +319,7 @@ class ProjectHealthMonitor {
 
       console.log(`\n${category.icon} ${category.name} ${icon}`);
       console.log(
-        `   狀態: ${this.getStatusText(result.status)} (${score}/100)`
+        `   狀態: ${this.getStatusText(result.status)} (${score}/100)`,
       );
 
       result.details.forEach(detail => {
@@ -330,9 +330,9 @@ class ProjectHealthMonitor {
     const overallScore = Math.round((totalScore / maxScore) * 100);
     const overallStatus = this.getOverallStatus(overallScore);
 
-    console.log('\n' + '='.repeat(50));
+    console.log(`\n${'='.repeat(50)}`);
     console.log(
-      `🏆 總體健康分數: ${overallScore}/100 ${this.getStatusIcon(overallStatus)}`
+      `🏆 總體健康分數: ${overallScore}/100 ${this.getStatusIcon(overallStatus)}`,
     );
     console.log(`📈 專案狀態: ${this.getStatusText(overallStatus)}`);
   }
@@ -391,7 +391,7 @@ class ProjectHealthMonitor {
       success: 100,
       warning: 70,
       error: 30,
-      pending: 0
+      pending: 0,
     };
     return scores[status] || 0;
   }
@@ -404,7 +404,7 @@ class ProjectHealthMonitor {
       success: '✅',
       warning: '⚠️',
       error: '❌',
-      pending: '⏳'
+      pending: '⏳',
     };
     return icons[status] || '❓';
   }
@@ -417,7 +417,7 @@ class ProjectHealthMonitor {
       success: '優秀',
       warning: '良好',
       error: '需要改進',
-      pending: '待檢查'
+      pending: '待檢查',
     };
     return texts[status] || '未知';
   }

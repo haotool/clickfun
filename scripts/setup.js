@@ -57,10 +57,11 @@ function setupGitHooks() {
 
     // 設置 pre-commit hook
     if (!fs.existsSync('.husky/pre-commit')) {
-      execSync('npx husky add .husky/pre-commit "npm run check-version"', { stdio: 'inherit' });
+      execSync('npx husky add .husky/pre-commit "npm run check-version"', {
+        stdio: 'inherit',
+      });
       console.log('✅ Pre-commit hook 設置完成');
     }
-
   } catch (error) {
     console.error('❌ Git Hooks 設置失敗:', error.message);
     console.log('   請手動執行: npx husky install');
@@ -122,5 +123,5 @@ module.exports = {
   checkNodeVersion,
   installDependencies,
   setupGitHooks,
-  checkVersionConsistency
+  checkVersionConsistency,
 };

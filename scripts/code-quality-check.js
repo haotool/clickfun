@@ -23,7 +23,7 @@ class CodeQualityChecker {
     this.results = {
       eslint: { status: 'pending', details: [] },
       prettier: { status: 'pending', details: [] },
-      overall: { status: 'pending', score: 0 }
+      overall: { status: 'pending', score: 0 },
     };
   }
 
@@ -55,7 +55,7 @@ class CodeQualityChecker {
       const eslintOutput = execSync('npx eslint . --ext .js,.jsx,.ts,.tsx', {
         cwd: this.projectRoot,
         encoding: 'utf8',
-        stdio: 'pipe'
+        stdio: 'pipe',
       });
 
       if (eslintOutput.trim() === '') {
@@ -65,7 +65,7 @@ class CodeQualityChecker {
         this.results.eslint.status = 'warning';
         const issues = eslintOutput.split('\n').filter(line => line.trim());
         this.results.eslint.details.push(
-          `⚠️  發現 ${issues.length} 個 ESLint 問題`
+          `⚠️  發現 ${issues.length} 個 ESLint 問題`,
         );
         this.results.eslint.details.push('詳細問題:');
         issues.forEach(issue => {
@@ -88,7 +88,7 @@ class CodeQualityChecker {
       } else {
         this.results.eslint.status = 'error';
         this.results.eslint.details.push(
-          `❌ ESLint 執行失敗: ${error.message}`
+          `❌ ESLint 執行失敗: ${error.message}`,
         );
       }
     }
@@ -119,7 +119,7 @@ class CodeQualityChecker {
         const prettierOutput = execSync('npx prettier --check .', {
           cwd: this.projectRoot,
           encoding: 'utf8',
-          stdio: 'pipe'
+          stdio: 'pipe',
         });
 
         this.results.prettier.status = 'success';
@@ -127,13 +127,13 @@ class CodeQualityChecker {
       } catch (error) {
         this.results.prettier.status = 'warning';
         this.results.prettier.details.push(
-          '⚠️  發現格式化問題，建議執行 npx prettier --write .'
+          '⚠️  發現格式化問題，建議執行 npx prettier --write .',
         );
       }
     } catch (error) {
       this.results.prettier.status = 'error';
       this.results.prettier.details.push(
-        `❌ Prettier 檢查失敗: ${error.message}`
+        `❌ Prettier 檢查失敗: ${error.message}`,
       );
     }
   }
@@ -166,7 +166,7 @@ class CodeQualityChecker {
       success: 100,
       warning: 70,
       error: 30,
-      pending: 0
+      pending: 0,
     };
     return scores[status] || 0;
   }
@@ -209,12 +209,12 @@ class CodeQualityChecker {
 
     // 整體評分
     const overallIcon = this.getStatusIcon(this.results.overall.status);
-    console.log('\n' + '='.repeat(50));
+    console.log(`\n${'='.repeat(50)}`);
     console.log(
-      `🏆 整體品質分數: ${this.results.overall.score}/100 ${overallIcon}`
+      `🏆 整體品質分數: ${this.results.overall.score}/100 ${overallIcon}`,
     );
     console.log(
-      `📈 程式碼品質狀態: ${this.getStatusText(this.results.overall.status)}`
+      `📈 程式碼品質狀態: ${this.getStatusText(this.results.overall.status)}`,
     );
   }
 
@@ -229,14 +229,14 @@ class CodeQualityChecker {
 
     if (this.results.eslint.status === 'error') {
       recommendations.push(
-        '🔧 修復 ESLint 錯誤: npx eslint . --ext .js,.jsx,.ts,.tsx --fix'
+        '🔧 修復 ESLint 錯誤: npx eslint . --ext .js,.jsx,.ts,.tsx --fix',
       );
       recommendations.push('📝 檢查 ESLint 配置檔案');
     }
 
     if (this.results.eslint.status === 'warning') {
       recommendations.push(
-        '🔧 修復 ESLint 警告: npx eslint . --ext .js,.jsx,.ts,.tsx --fix'
+        '🔧 修復 ESLint 警告: npx eslint . --ext .js,.jsx,.ts,.tsx --fix',
       );
       recommendations.push('📋 檢查並修復程式碼風格問題');
     }
@@ -271,7 +271,7 @@ class CodeQualityChecker {
       success: '✅',
       warning: '⚠️',
       error: '❌',
-      pending: '⏳'
+      pending: '⏳',
     };
     return icons[status] || '❓';
   }
@@ -284,7 +284,7 @@ class CodeQualityChecker {
       success: '優秀',
       warning: '良好',
       error: '需要改進',
-      pending: '待檢查'
+      pending: '待檢查',
     };
     return texts[status] || '未知';
   }
@@ -298,7 +298,7 @@ class CodeQualityChecker {
     try {
       execSync('npx eslint . --ext .js,.jsx,.ts,.tsx --fix', {
         cwd: this.projectRoot,
-        stdio: 'inherit'
+        stdio: 'inherit',
       });
       console.log('✅ ESLint 自動修復完成');
     } catch (error) {
@@ -315,7 +315,7 @@ class CodeQualityChecker {
     try {
       execSync('npx prettier --write .', {
         cwd: this.projectRoot,
-        stdio: 'inherit'
+        stdio: 'inherit',
       });
       console.log('✅ 程式碼自動格式化完成');
     } catch (error) {

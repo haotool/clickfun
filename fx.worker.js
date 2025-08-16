@@ -18,7 +18,7 @@ const TIER = {
     halo: 18,
     particles: 2,
     branch: 0,
-    rings: 0
+    rings: 0,
   },
   2: {
     color: '#ffd9ef',
@@ -28,7 +28,7 @@ const TIER = {
     halo: 20,
     particles: 3,
     branch: 0,
-    rings: 0
+    rings: 0,
   },
   3: {
     color: '#ffb2dc',
@@ -38,7 +38,7 @@ const TIER = {
     halo: 22,
     particles: 4,
     branch: 1,
-    rings: 0
+    rings: 0,
   },
   4: {
     color: '#ff94d0',
@@ -48,7 +48,7 @@ const TIER = {
     halo: 24,
     particles: 5,
     branch: 1,
-    rings: 1
+    rings: 1,
   },
   5: {
     color: '#f66fb9',
@@ -58,7 +58,7 @@ const TIER = {
     halo: 26,
     particles: 6,
     branch: 1,
-    rings: 1
+    rings: 1,
   },
   6: {
     color: '#d9efff',
@@ -68,7 +68,7 @@ const TIER = {
     halo: 28,
     particles: 7,
     branch: 2,
-    rings: 1
+    rings: 1,
   },
   7: {
     color: '#9ed9ff',
@@ -78,7 +78,7 @@ const TIER = {
     halo: 30,
     particles: 8,
     branch: 2,
-    rings: 2
+    rings: 2,
   },
   8: {
     color: '#7ccaff',
@@ -88,7 +88,7 @@ const TIER = {
     halo: 32,
     particles: 9,
     branch: 2,
-    rings: 2
+    rings: 2,
   },
   9: {
     color: '#52b7ff',
@@ -98,7 +98,7 @@ const TIER = {
     halo: 34,
     particles: 11,
     branch: 3,
-    rings: 3
+    rings: 3,
   },
   10: {
     color: '#ffffff',
@@ -108,8 +108,8 @@ const TIER = {
     halo: 38,
     particles: 13,
     branch: 3,
-    rings: 3
-  }
+    rings: 3,
+  },
 };
 
 const trail = { single: [], player1: [], player2: [] }; // {x,y,ts,tier}
@@ -133,7 +133,7 @@ function getPinkBlueColor(time, offset = 0) {
     { r: 246, g: 111, b: 185 }, // 粉紅 #f66fb9
     { r: 255, g: 255, b: 255 }, // 白色 #ffffff
     { r: 82, g: 183, b: 255 }, // 粉藍 #52b7ff
-    { r: 246, g: 111, b: 185 } // 回到粉紅
+    { r: 246, g: 111, b: 185 }, // 回到粉紅
   ];
 
   const index = phase * (colors.length - 1);
@@ -171,14 +171,15 @@ function addTap(t) {
     y: t.y,
     ts: now,
     tier: t.tier,
-    ultraSpeed: t.ultraSpeed || false
+    ultraSpeed: t.ultraSpeed || false,
   });
   const cutoff = now - TRAIL_WINDOW;
   while (
     arr.length > 0 &&
     (arr.length > TRAIL_MAX_POINTS || arr[0].ts < cutoff)
-  )
-  {arr.shift();}
+  ) {
+    arr.shift();
+  }
 
   // 漂浮數字（雙人上方玩家鏡像）
   labels.push({
@@ -187,14 +188,17 @@ function addTap(t) {
     start: now,
     txt: String(increaseScore(t.playerId)),
     color: TIER[t.tier].color,
-    mirror: t.mode === 'dual' && t.playerId === 'player1'
+    mirror: t.mode === 'dual' && t.playerId === 'player1',
   });
-  if (labels.length > 60) {labels.splice(0, labels.length - 60);}
+  if (labels.length > 60) {
+    labels.splice(0, labels.length - 60);
+  }
 
   // 節流的水波紋（只在超高速速率 eligible 才加入）
   if (config.rippleEnabled && t.rippleEligible) {
-    if (ripples.length >= RIPPLE_MAX)
-    {ripples.splice(0, ripples.length - RIPPLE_MAX + 1);}
+    if (ripples.length >= RIPPLE_MAX) {
+      ripples.splice(0, ripples.length - RIPPLE_MAX + 1);
+    }
     ripples.push({ x: t.x, y: t.y, start: now, tier: t.tier });
   }
 }
@@ -204,18 +208,24 @@ function increaseScore(p) {
 }
 
 function drawLightning() {
-  if (!config.lightningEnabled) {return;}
+  if (!config.lightningEnabled) {
+    return;
+  }
   const cutoff = performance.now() - TRAIL_WINDOW;
   for (const key of Object.keys(trail)) {
-    const pts = trail[key].filter((p) => p.ts >= cutoff);
-    if (pts.length < 2) {continue;}
+    const pts = trail[key].filter(p => p.ts >= cutoff);
+    if (pts.length < 2) {
+      continue;
+    }
     for (let i = 0; i < pts.length - 1; i++) {
       const a = pts[i],
         b = pts[i + 1];
       const dx = b.x - a.x,
         dy = b.y - a.y,
         len = Math.hypot(dx, dy);
-      if (len < 6) {continue;}
+      if (len < 6) {
+        continue;
+      }
       const nx = dx / len,
         ny = dy / len,
         px = -ny,
@@ -226,7 +236,7 @@ function drawLightning() {
       const width = 1.1 * ((c1.widthMul + c2.widthMul) / 2);
       const amp = Math.min(
         28,
-        len * 0.042 * ((c1.jitterMul + c2.jitterMul) / 2) * (lowPower ? 0.8 : 1)
+        len * 0.042 * ((c1.jitterMul + c2.jitterMul) / 2) * (lowPower ? 0.8 : 1),
       );
       const N =
         (lowPower ? 8 : 12) + Math.floor(((a.tier + b.tier) / 2 - 1) * 0.5);
@@ -242,7 +252,9 @@ function drawLightning() {
       // 外光暈
       ctx.beginPath();
       ctx.moveTo(pts2[0].x, pts2[0].y);
-      for (let k = 1; k < pts2.length; k++) {ctx.lineTo(pts2[k].x, pts2[k].y);}
+      for (let k = 1; k < pts2.length; k++) {
+        ctx.lineTo(pts2[k].x, pts2[k].y);
+      }
       ctx.strokeStyle = `rgba(255,255,255,${0.12 + (c1.glow + c2.glow) / 2})`;
       ctx.lineWidth = width + 1.2;
       ctx.stroke();
@@ -269,7 +281,9 @@ function drawLightning() {
 
       ctx.beginPath();
       ctx.moveTo(pts2[0].x, pts2[0].y);
-      for (let k = 1; k < pts2.length; k++) {ctx.lineTo(pts2[k].x, pts2[k].y);}
+      for (let k = 1; k < pts2.length; k++) {
+        ctx.lineTo(pts2[k].x, pts2[k].y);
+      }
       ctx.strokeStyle = grad;
       ctx.lineWidth = isUltraSpeed ? width * 1.5 : width;
       ctx.stroke();
@@ -289,7 +303,7 @@ function drawLightning() {
           ctx.moveTo(base.x, base.y);
           ctx.lineTo(
             base.x + -ny * dir * blen + nx * jitter,
-            base.y + nx * dir * blen + ny * jitter
+            base.y + nx * dir * blen + ny * jitter,
           );
           ctx.strokeStyle = bidx % 2 ? c1.color : c2.color;
           ctx.globalAlpha = 0.7;
@@ -310,7 +324,9 @@ function drawRipples(now) {
     const rings = conf.rings;
     for (let i = 0; i < rings; i++) {
       const p = Math.min(1, t + i * 0.08);
-      if (p <= 0) {continue;}
+      if (p <= 0) {
+        continue;
+      }
       const r = (30 + rp.tier * 10) * p * (1 + i * 0.3);
       ctx.beginPath();
       ctx.arc(rp.x, rp.y, r, 0, Math.PI * 2);
@@ -320,7 +336,9 @@ function drawRipples(now) {
       ctx.stroke();
       ctx.globalAlpha = 1;
     }
-    if (t < 1) {next.push(rp);}
+    if (t < 1) {
+      next.push(rp);
+    }
   }
   ripples.length = 0;
   ripples.push(...next);
@@ -329,8 +347,8 @@ function drawHalos() {
   for (const p of active) {
     const halo = TIER[p.tier].halo;
     const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, halo);
-    grd.addColorStop(0, TIER[p.tier].color + 'cc');
-    grd.addColorStop(1, TIER[p.tier].color + '00');
+    grd.addColorStop(0, `${TIER[p.tier].color}cc`);
+    grd.addColorStop(1, `${TIER[p.tier].color}00`);
     ctx.fillStyle = grd;
     ctx.beginPath();
     ctx.arc(p.x, p.y, halo, 0, Math.PI * 2);
@@ -352,7 +370,9 @@ function drawLabels(now) {
     ctx.globalAlpha = 0.9 - 0.9 * t;
     ctx.fillText(lb.txt, lb.x, y);
     ctx.restore();
-    if (t < 1) {next.push(lb);}
+    if (t < 1) {
+      next.push(lb);
+    }
   }
   labels.length = 0;
   labels.push(...next);
@@ -361,7 +381,9 @@ function drawLabels(now) {
 let lastFrame = 0,
   targetFps = 60;
 function draw(ts) {
-  if (!ctx) {return;}
+  if (!ctx) {
+    return;
+  }
   const now = performance.now();
   if (now - lastFrame < 1000 / targetFps) {
     requestAnimationFrame(draw);
@@ -371,14 +393,18 @@ function draw(ts) {
 
   ctx.clearRect(0, 0, width, height);
   drawHalos();
-  if (config.lightningEnabled) {drawLightning();}
-  if (config.rippleEnabled) {drawRipples(now);}
+  if (config.lightningEnabled) {
+    drawLightning();
+  }
+  if (config.rippleEnabled) {
+    drawRipples(now);
+  }
   drawLabels(now);
 
   requestAnimationFrame(draw);
 }
 
-self.addEventListener('message', (e) => {
+self.addEventListener('message', e => {
   const data = e.data;
   if (data.type === 'init') {
     canvas = data.canvas;
@@ -404,9 +430,9 @@ self.addEventListener('message', (e) => {
   }
 });
 
-const requestAnimationFrame = (fn) => {
+const requestAnimationFrame = fn => {
   return (
     self.requestAnimationFrame ||
-    ((cb) => setTimeout(() => cb(performance.now()), 1000 / 60))
+    (cb => setTimeout(() => cb(performance.now()), 1000 / 60))
   )(fn);
 };

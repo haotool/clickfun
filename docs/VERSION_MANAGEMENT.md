@@ -56,17 +56,17 @@ npm run release
 
 ### 提交類型
 
-| 類型 | 說明 | 版本影響 |
-|------|------|----------|
-| `feat:` | 新功能 | MINOR |
-| `fix:` | 錯誤修復 | PATCH |
-| `docs:` | 文檔更新 | PATCH |
-| `style:` | 程式碼格式調整 | PATCH |
-| `refactor:` | 程式碼重構 | PATCH |
-| `perf:` | 效能改善 | PATCH |
-| `test:` | 測試相關 | PATCH |
-| `chore:` | 建置程序或輔助工具的變動 | PATCH |
-| `BREAKING CHANGE:` | 破壞性變更 | MAJOR |
+| 類型               | 說明                     | 版本影響 |
+| ------------------ | ------------------------ | -------- |
+| `feat:`            | 新功能                   | MINOR    |
+| `fix:`             | 錯誤修復                 | PATCH    |
+| `docs:`            | 文檔更新                 | PATCH    |
+| `style:`           | 程式碼格式調整           | PATCH    |
+| `refactor:`        | 程式碼重構               | PATCH    |
+| `perf:`            | 效能改善                 | PATCH    |
+| `test:`            | 測試相關                 | PATCH    |
+| `chore:`           | 建置程序或輔助工具的變動 | PATCH    |
+| `BREAKING CHANGE:` | 破壞性變更               | MAJOR    |
 
 ### 提交訊息格式
 

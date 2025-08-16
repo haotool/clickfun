@@ -20,35 +20,33 @@ console.log(`📦 預期版本: v${expectedVersion}\n`);
 const filesToCheck = [
   {
     path: 'index.html',
-    patterns: [
-      { name: 'APP_VERSION', regex: /const APP_VERSION = '([^']+)'/ }
-    ]
+    patterns: [{ name: 'APP_VERSION', regex: /const APP_VERSION = '([^']+)'/ }],
   },
   {
     path: 'sw.js',
     patterns: [
       { name: 'SW_VERSION', regex: /const SW_VERSION = 'clickfun-v([^']+)'/ },
-      { name: 'APP_VERSION', regex: /const APP_VERSION = '([^']+)'/ }
-    ]
+      { name: 'APP_VERSION', regex: /const APP_VERSION = '([^']+)'/ },
+    ],
   },
   {
     path: 'sw-enhanced.js',
-    patterns: [
-      { name: 'APP_VERSION', regex: /const APP_VERSION = '([^']+)'/ }
-    ]
+    patterns: [{ name: 'APP_VERSION', regex: /const APP_VERSION = '([^']+)'/ }],
   },
   {
     path: 'app.webmanifest',
-    patterns: [
-      { name: 'version', regex: /"version": "([^"]+)"/ }
-    ]
+    patterns: [{ name: 'version', regex: /"version": "([^"]+)"/ }],
   },
   {
     path: 'README.md',
     patterns: [
-      { name: 'Version Badge', regex: /\[!\[Version\]\(https:\/\/img\.shields\.io\/badge\/Version-v([^)]+)-ff69b4\.svg\)\]\(\.\)/ }
-    ]
-  }
+      {
+        name: 'Version Badge',
+        regex:
+          /\[!\[Version\]\(https:\/\/img\.shields\.io\/badge\/Version-v([^)]+)-ff69b4\.svg\)\]\(\.\)/,
+      },
+    ],
+  },
 ];
 
 // 檢查檔案版本號
@@ -71,7 +69,9 @@ function checkFileVersion(filePath, patterns) {
         if (foundVersion === expectedVersion) {
           console.log(`✅ ${filePath} - ${pattern.name}: v${foundVersion}`);
         } else {
-          console.log(`❌ ${filePath} - ${pattern.name}: v${foundVersion} (預期: v${expectedVersion})`);
+          console.log(
+            `❌ ${filePath} - ${pattern.name}: v${foundVersion} (預期: v${expectedVersion})`,
+          );
           allMatch = false;
         }
       } else {

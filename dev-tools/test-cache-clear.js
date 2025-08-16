@@ -29,7 +29,7 @@ class CacheClearTester {
       'clickfun-v7.0.0',
       'clickfun-v7.0.0',
       'clickfun-v6.1.0',
-      'old-cache-test'
+      'old-cache-test',
     ];
 
     for (const cacheName of testCaches) {
@@ -43,7 +43,7 @@ class CacheClearTester {
     this.testResults.push({
       test: '創建測試快取',
       passed: createdCaches.length === testCaches.length,
-      details: `創建了 ${createdCaches.length}/${testCaches.length} 個快取`
+      details: `創建了 ${createdCaches.length}/${testCaches.length} 個快取`,
     });
   }
 
@@ -61,7 +61,7 @@ class CacheClearTester {
     this.testResults.push({
       test: '版本更新檢測',
       passed: needsUpdate,
-      details: `舊版本: ${storedVersion}, 新版本: ${currentVersion}`
+      details: `舊版本: ${storedVersion}, 新版本: ${currentVersion}`,
     });
   }
 
@@ -74,14 +74,14 @@ class CacheClearTester {
     // 執行快取清除邏輯
     const currentCacheName = 'clickfun-v7.0.0';
     const cachesToDelete = beforeCaches.filter(
-      name => name !== currentCacheName
+      name => name !== currentCacheName,
     );
 
     await Promise.all(
       cachesToDelete.map(async cacheName => {
         console.log(`清除快取: ${cacheName}`);
         return caches.delete(cacheName);
-      })
+      }),
     );
 
     const afterCaches = await caches.keys();
@@ -92,7 +92,7 @@ class CacheClearTester {
     this.testResults.push({
       test: '快取清除',
       passed: clearedCount > 0,
-      details: `清除了 ${clearedCount} 個舊快取，剩餘 ${afterCaches.length} 個`
+      details: `清除了 ${clearedCount} 個舊快取，剩餘 ${afterCaches.length} 個`,
     });
   }
 
@@ -106,7 +106,9 @@ class CacheClearTester {
       console.log(`${index + 1}. ${result.test}: ${status}`);
       console.log(`   詳情: ${result.details}`);
 
-      if (result.passed) {passedTests++;}
+      if (result.passed) {
+        passedTests++;
+      }
     });
 
     console.log('='.repeat(50));

@@ -22,7 +22,7 @@ function testVersionConsistency() {
     const filesToCheck = [
       { path: 'index.html', pattern: /const APP_VERSION = '([^']+)'/ },
       { path: 'sw.js', pattern: /const APP_VERSION = '([^']+)'/ },
-      { path: 'app.webmanifest', pattern: /"version": "([^"]+)"/ }
+      { path: 'app.webmanifest', pattern: /"version": "([^"]+)"/ },
     ];
 
     let allMatch = true;
@@ -62,12 +62,13 @@ function testServiceWorkerConfig() {
     const swEnhanced = fs.readFileSync('sw-enhanced.js', 'utf8');
 
     // 檢查版本檢測邏輯
-    const hasVersionCheck = swEnhanced.includes('checkVersionUpdate') ||
-                           swEnhanced.includes('VERSION_CHECK');
+    const hasVersionCheck =
+      swEnhanced.includes('checkVersionUpdate') ||
+      swEnhanced.includes('VERSION_CHECK');
 
     // 檢查快取清理邏輯
-    const hasCacheCleanup = swEnhanced.includes('clickfun-v') &&
-                           swEnhanced.includes('delete');
+    const hasCacheCleanup =
+      swEnhanced.includes('clickfun-v') && swEnhanced.includes('delete');
 
     if (hasVersionCheck) {
       console.log('   ✅ 版本檢測邏輯已實現');
@@ -96,13 +97,15 @@ function testVersionUpdateStyles() {
     const indexHtml = fs.readFileSync('index.html', 'utf8');
 
     // 檢查 CSS 樣式
-    const hasToastStyles = indexHtml.includes('.version-update-toast') &&
-                           indexHtml.includes('slideInRight') &&
-                           indexHtml.includes('bounce');
+    const hasToastStyles =
+      indexHtml.includes('.version-update-toast') &&
+      indexHtml.includes('slideInRight') &&
+      indexHtml.includes('bounce');
 
     // 檢查 JavaScript 函數
-    const hasToastFunction = indexHtml.includes('showVersionUpdateToast') &&
-                            indexHtml.includes('版本更新檢測到');
+    const hasToastFunction =
+      indexHtml.includes('showVersionUpdateToast') &&
+      indexHtml.includes('版本更新檢測到');
 
     if (hasToastStyles) {
       console.log('   ✅ 版本更新提示樣式已實現');
@@ -131,8 +134,8 @@ function testSettingsVersionDisplay() {
     const indexHtml = fs.readFileSync('index.html', 'utf8');
 
     // 檢查版本顯示區塊
-    const hasVersionDisplay = indexHtml.includes('當前版本') &&
-                              indexHtml.includes('v${APP_VERSION}');
+    const hasVersionDisplay =
+      indexHtml.includes('當前版本') && indexHtml.includes('v${APP_VERSION}');
 
     if (hasVersionDisplay) {
       console.log('   ✅ 設定介面版本顯示已實現');
@@ -174,7 +177,7 @@ function runTests() {
     testVersionConsistency(),
     testServiceWorkerConfig(),
     testVersionUpdateStyles(),
-    testSettingsVersionDisplay()
+    testSettingsVersionDisplay(),
   ];
 
   generateTestReport(results);

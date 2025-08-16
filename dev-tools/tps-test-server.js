@@ -31,35 +31,35 @@ const wss = new WebSocket.Server({ server });
 // 儲存連接的客戶端
 const clients = new Set();
 
-wss.on('connection', (ws) => {
+wss.on('connection', ws => {
   console.log('📱 新的 TPS 測試客戶端連接');
   clients.add(ws);
 
-  ws.on('message', (message) => {
+  ws.on('message', message => {
     try {
       const data = JSON.parse(message);
 
       // 處理不同類型的訊息
       switch (data.type) {
-      case 'tps_data':
+        case 'tps_data':
         // 廣播 TPS 數據給所有連接的客戶端
-        broadcastToClients({
-          type: 'tps_update',
-          tps: data.tps,
-          timestamp: Date.now(),
-          clientId: data.clientId
-        });
-        break;
+          broadcastToClients({
+            type: 'tps_update',
+            tps: data.tps,
+            timestamp: Date.now(),
+            clientId: data.clientId,
+          });
+          break;
 
-      case 'performance_data':
+        case 'performance_data':
         // 處理效能數據
-        console.log(`📈 效能數據: FPS=${data.fps}, 記憶體=${data.memory}MB`);
-        break;
+          console.log(`📈 效能數據: FPS=${data.fps}, 記憶體=${data.memory}MB`);
+          break;
 
-      case 'test_result':
+        case 'test_result':
         // 處理測試結果
-        console.log(`✅ 測試結果: ${data.testName} - ${data.result}`);
-        break;
+          console.log(`✅ 測試結果: ${data.testName} - ${data.result}`);
+          break;
       }
     } catch (error) {
       console.error('❌ 訊息解析錯誤:', error);
@@ -76,15 +76,15 @@ wss.on('connection', (ws) => {
     JSON.stringify({
       type: 'welcome',
       message: 'TPS 測試伺服器連接成功',
-      timestamp: Date.now()
-    })
+      timestamp: Date.now(),
+    }),
   );
 });
 
 // 廣播訊息給所有客戶端
 function broadcastToClients(data) {
   const message = JSON.stringify(data);
-  clients.forEach((client) => {
+  clients.forEach(client => {
     if (client.readyState === WebSocket.OPEN) {
       client.send(message);
     }
@@ -97,7 +97,7 @@ setInterval(() => {
     type: 'server_status',
     connectedClients: clients.size,
     uptime: process.uptime(),
-    timestamp: Date.now()
+    timestamp: Date.now(),
   });
 }, 5000);
 
@@ -109,11 +109,11 @@ process.on('SIGINT', () => {
   broadcastToClients({
     type: 'server_shutdown',
     message: '伺服器即將關閉',
-    timestamp: Date.now()
+    timestamp: Date.now(),
   });
 
   // 關閉所有 WebSocket 連接
-  clients.forEach((client) => {
+  clients.forEach(client => {
     client.close();
   });
 

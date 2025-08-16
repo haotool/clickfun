@@ -11,113 +11,112 @@ import js from '@eslint/js';
 import globals from 'globals';
 
 export default [
-  // 全域忽略模式
+  // Global ignore patterns
   {
     ignores: [
-      'node_modules/',
-      'dist/',
-      'build/',
-      'coverage/',
+      'node_modules/**',
+      'dist/**',
+      'build/**',
+      'coverage/**',
       '*.min.js',
-      'sw.js',
-      'sw-enhanced.js'
-    ]
+      '*.bundle.js',
+      'dev-tools/cache-test.html',
+      'dev-tools/tps-test.html',
+    ],
   },
 
-  // 全域配置
+  // Global language options and globals
   {
     languageOptions: {
-      ecmaVersion: 'latest',
+      ecmaVersion: 2024,
       sourceType: 'module',
       globals: {
         ...globals.browser,
         ...globals.node,
-
-        // 遊戲相關全域變數
-        GameState: 'readonly',
-        audioManager: 'readonly',
-        inputManager: 'readonly',
-        gameEngine: 'readonly',
-        storageManager: 'readonly',
-        uiManager: 'readonly',
-
-        // PWA 相關全域變數
-        APP_VERSION: 'readonly',
-        SW_ENHANCED_VERSION: 'readonly',
-        CURRENT_CACHE_PATTERNS: 'readonly',
-
-        // 開發工具全域變數
-        console: 'readonly'
-      }
-    }
+        ...globals.es2021,
+      },
+    },
+    linterOptions: {
+      noInlineConfig: false,
+      reportUnusedDisableDirectives: 'warn',
+    },
   },
 
-  // JavaScript 檔案配置
+  // JavaScript/JSX file configuration
   {
     files: ['**/*.js', '**/*.jsx'],
     ...js.configs.recommended,
     rules: {
       // 程式碼品質規則
-      'no-unused-vars': [
-        'warn',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_'
-        }
-      ],
+      'no-console': 'warn', // 開發工具中允許 console
+      'no-unused-vars': ['warn', {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      }],
       'no-undef': 'error',
-      'no-console': 'warn',
-      'prefer-const': 'error',
-      'no-var': 'error',
 
-      // 程式碼風格規則
-      indent: ['error', 2],
-      quotes: ['error', 'single'],
-      semi: ['error', 'always'],
-      'comma-dangle': ['error', 'never'],
+      // 格式規則
+      'indent': ['error', 2, { 'SwitchCase': 1 }],
+      'quotes': ['error', 'single', { 'avoidEscape': true }],
+      'semi': ['error', 'always'],
+      'comma-dangle': ['error', 'always-multiline'],
       'no-trailing-spaces': 'error',
       'eol-last': 'error',
 
-      // 最佳實踐規則
-      eqeqeq: ['error', 'always'],
-      curly: ['error', 'all'],
+      // 最佳實踐
+      'prefer-const': 'error',
+      'no-var': 'error',
+      'object-shorthand': 'error',
+      'prefer-template': 'error',
+      'template-curly-spacing': 'error',
+
+      // 錯誤防護
+      'curly': ['error', 'all'],
+      'eqeqeq': ['error', 'always'],
       'no-eval': 'error',
       'no-implied-eval': 'error',
       'no-new-func': 'error',
-      'no-script-url': 'error',
-
-      // 效能相關規則
-      'no-loop-func': 'error',
-      'no-new-object': 'error',
-      'no-new-wrappers': 'error'
-    }
+    },
   },
 
-  // 測試檔案配置
+  // Test file configuration overrides
   {
-    files: ['**/*.test.js', '**/*.spec.js', 'tests/**/*.js'],
+    files: ['**/*.test.js', '**/*.spec.js', 'tests/**/*.js', 'dev-tools/jest.setup.js'],
     languageOptions: {
       globals: {
         ...globals.jest,
-        ...globals.mocha
-      }
+        ...globals.mocha,
+        ...globals.jasmine,
+        'page': 'readonly',
+        'browser': 'readonly',
+      },
     },
     rules: {
-      'no-console': 'off',
-      'no-undef': 'off'
-    }
+      'no-console': 'off', // 測試檔案中允許 console
+      'no-undef': 'off', // 測試環境變數由 globals 提供
+    },
   },
 
-  // 設定檔案配置
+  // Config file configuration overrides
   {
-    files: ['*.config.js', '*.config.mjs'],
+    files: ['*.config.js', '*.config.mjs', 'eslint.config.js'],
     languageOptions: {
       globals: {
-        ...globals.node
-      }
+        ...globals.node,
+      },
     },
     rules: {
-      'no-console': 'off'
-    }
-  }
+      'no-console': 'off', // 配置檔案中允許 console
+    },
+  },
+
+  // Development tools configuration
+  {
+    files: ['dev-tools/**/*.js', 'scripts/**/*.js'],
+    rules: {
+      'no-console': 'off', // 開發工具中允許 console
+      'no-unused-vars': 'warn', // 開發工具中放寬未使用變數檢查
+    },
+  },
 ];

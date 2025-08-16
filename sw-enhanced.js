@@ -15,7 +15,7 @@ const CACHE_CONFIG = {
   STATIC_RESOURCES: ['./app.webmanifest'],
 
   // 動態內容 - 網路優先
-  DYNAMIC_CONTENT: ['/api/', '/data/']
+  DYNAMIC_CONTENT: ['/api/', '/data/'],
 };
 
 // 快取名稱
@@ -23,7 +23,7 @@ const CACHE_NAMES = {
   APP_SHELL: `${SW_VERSION}-app-shell`,
   STATIC: `${SW_VERSION}-static`,
   DYNAMIC: `${SW_VERSION}-dynamic`,
-  IMAGES: `${SW_VERSION}-images`
+  IMAGES: `${SW_VERSION}-images`,
 };
 
 // 所有快取名稱列表
@@ -54,7 +54,7 @@ self.addEventListener('install', event => {
         console.error('❌ Service Worker 安裝失敗:', error);
         throw error;
       }
-    })()
+    })(),
   );
 });
 
@@ -72,7 +72,10 @@ self.addEventListener('activate', event => {
         const deletePromises = cacheNames
           .filter(cacheName => {
             // 保留當前版本快取，刪除其他版本
-            if (cacheName.startsWith('clickfun-v') && cacheName !== SW_VERSION) {
+            if (
+              cacheName.startsWith('clickfun-v') &&
+              cacheName !== SW_VERSION
+            ) {
               console.log(`🗑️ 刪除舊版本快取: ${cacheName}`);
               return true;
             }
@@ -92,12 +95,12 @@ self.addEventListener('activate', event => {
         await notifyClients({
           type: 'SW_UPDATED',
           version: SW_VERSION,
-          appVersion: APP_VERSION
+          appVersion: APP_VERSION,
         });
       } catch (error) {
         console.error('❌ Service Worker 激活失敗:', error);
       }
-    })()
+    })(),
   );
 });
 
@@ -139,7 +142,7 @@ self.addEventListener('message', event => {
     case 'GET_VERSION':
       event.ports[0].postMessage({
         version: SW_VERSION,
-        appVersion: APP_VERSION
+        appVersion: APP_VERSION,
       });
       break;
 
@@ -154,17 +157,17 @@ self.addEventListener('message', event => {
         event.ports[0].postMessage({ hasUpdate });
       });
       break;
-      
+
     case 'VERSION_CHECK':
       const currentVersion = event.data.version;
       const storedVersion = event.data.storedVersion;
-      
+
       if (currentVersion !== storedVersion) {
         // 發送版本更新通知
         event.ports[0].postMessage({
           type: 'VERSION_UPDATE',
           oldVersion: storedVersion,
-          newVersion: currentVersion
+          newVersion: currentVersion,
         });
       }
       break;
@@ -175,7 +178,7 @@ self.addEventListener('message', event => {
  * 推送通知處理
  */
 self.addEventListener('push', event => {
-  if (!event.data) return;
+  if (!event.data) {return;}
 
   const data = event.data.json();
   const options = {
@@ -187,13 +190,13 @@ self.addEventListener('push', event => {
     actions: [
       {
         action: 'open',
-        title: '開啟遊戲'
+        title: '開啟遊戲',
       },
       {
         action: 'close',
-        title: '關閉'
-      }
-    ]
+        title: '關閉',
+      },
+    ],
   };
 
   event.waitUntil(self.registration.showNotification(data.title, options));
@@ -290,7 +293,7 @@ async function handleImageRequest(request) {
     // 回退到預設圖片
     return new Response('', {
       status: 200,
-      headers: { 'Content-Type': 'image/svg+xml' }
+      headers: { 'Content-Type': 'image/svg+xml' },
     });
   }
 }
@@ -322,7 +325,7 @@ async function handleDynamicRequest(request) {
     // 最終回退
     return new Response('離線中', {
       status: 503,
-      headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+      headers: { 'Content-Type': 'text/plain; charset=utf-8' },
     });
   }
 }
@@ -335,7 +338,7 @@ async function handleDynamicRequest(request) {
 function isAppShellRequest(request) {
   const url = new URL(request.url);
   return CACHE_CONFIG.APP_SHELL.some(
-    path => url.pathname === path || url.pathname === path.replace('./', '/')
+    path => url.pathname === path || url.pathname === path.replace('./', '/'),
   );
 }
 

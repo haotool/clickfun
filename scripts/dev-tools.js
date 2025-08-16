@@ -62,11 +62,11 @@ class DevTools {
       'semantic-release',
       '@semantic-release/changelog',
       '@semantic-release/git',
-      '@semantic-release/github'
+      '@semantic-release/github',
     ];
 
     const missingDeps = requiredDevDeps.filter(
-      dep => !packageJson.devDependencies?.[dep]
+      dep => !packageJson.devDependencies?.[dep],
     );
 
     if (missingDeps.length > 0) {
@@ -76,7 +76,7 @@ class DevTools {
       try {
         execSync(`npm install --save-dev ${missingDeps.join(' ')}`, {
           cwd: this.projectRoot,
-          stdio: 'inherit'
+          stdio: 'inherit',
         });
         console.log('✅ 開發依賴安裝完成');
       } catch (error) {
@@ -96,7 +96,7 @@ class DevTools {
     return new Promise((resolve, reject) => {
       this.devServer = spawn('python3', ['-m', 'http.server', '8000'], {
         cwd: this.projectRoot,
-        stdio: 'pipe'
+        stdio: 'pipe',
       });
 
       this.devServer.stdout.on('data', data => {
@@ -142,8 +142,8 @@ class DevTools {
         ['-m', 'http.server', port.toString()],
         {
           cwd: this.projectRoot,
-          stdio: 'pipe'
-        }
+          stdio: 'pipe',
+        },
       );
 
       this.devServer.stdout.on('data', data => {
@@ -170,7 +170,7 @@ class DevTools {
       'index.html',
       'sw.js',
       'sw-enhanced.js',
-      'app.webmanifest'
+      'app.webmanifest',
     ];
 
     filesToWatch.forEach(file => {
@@ -244,19 +244,19 @@ class DevTools {
       // 檢查版本一致性
       execSync('npm run check-version', {
         cwd: this.projectRoot,
-        stdio: 'inherit'
+        stdio: 'inherit',
       });
 
       // 執行測試
       execSync('npm run test-pwa', {
         cwd: this.projectRoot,
-        stdio: 'inherit'
+        stdio: 'inherit',
       });
 
       // 健康檢查
       execSync('npm run health-check', {
         cwd: this.projectRoot,
-        stdio: 'inherit'
+        stdio: 'inherit',
       });
 
       console.log('✅ 快速建置完成！');
@@ -286,7 +286,7 @@ class DevTools {
       // 清理 npm 快取
       execSync('npm cache clean --force', {
         cwd: this.projectRoot,
-        stdio: 'inherit'
+        stdio: 'inherit',
       });
 
       console.log('✅ 快取清理完成');

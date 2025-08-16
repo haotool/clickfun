@@ -91,6 +91,7 @@ clickfun/
 ### 版本號追蹤
 
 自動同步以下檔案的版本號：
+
 - `package.json` (主要來源)
 - `index.html` (APP_VERSION)
 - `sw.js` (Service Worker)

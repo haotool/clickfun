@@ -5,7 +5,7 @@ const path = require('path');
 jest.setTimeout(30000);
 
 // 全域測試工具函數
-global.sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+global.sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 global.waitForElement = async (page, selector, timeout = 5000) => {
   try {
@@ -17,13 +17,13 @@ global.waitForElement = async (page, selector, timeout = 5000) => {
   }
 };
 
-global.getGameState = async (page) => {
+global.getGameState = async page => {
   return await page.evaluate(() => {
     return {
       isGameActive: window.gameState?.isActive || false,
       currentScore: window.gameState?.score || 0,
       currentTPS: window.gameState?.tps || 0,
-      gameMode: window.gameState?.mode || 'single'
+      gameMode: window.gameState?.mode || 'single',
     };
   });
 };
@@ -52,7 +52,7 @@ afterEach(async () => {
       const screenshotPath = path.join(
         __dirname,
         'screenshots',
-        `${jasmine.currentSpec.description}.png`
+        `${jasmine.currentSpec.description}.png`,
       );
       await page.screenshot({ path: screenshotPath, fullPage: true });
     }

@@ -11,7 +11,7 @@ class CacheCleaner {
     this.cacheNames = [
       'clickfun-v7.0.0',
       'workbox-precache',
-      'workbox-runtime'
+      'workbox-runtime',
     ];
   }
 

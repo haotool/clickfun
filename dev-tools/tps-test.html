@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
@@ -12,8 +12,8 @@
       }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         min-height: 100vh;
         padding: 20px;
@@ -84,7 +84,7 @@
         font-size: 3rem;
         font-weight: bold;
         color: white;
-        font-family: "Courier New", monospace;
+        font-family: 'Courier New', monospace;
       }
 
       .tps-label {
@@ -274,7 +274,7 @@
           this.isConnected = false;
           this.testData = {
             zone1: { clicks: [], tps: 0, totalClicks: 0 },
-            zone2: { clicks: [], tps: 0, totalClicks: 0 },
+            zone2: { clicks: [], tps: 0, totalClicks: 0 }
           };
           this.testStartTime = null;
           this.maxTPS = 0;
@@ -288,15 +288,15 @@
 
         initWebSocket() {
           try {
-            this.ws = new WebSocket("ws://localhost:3001");
+            this.ws = new WebSocket('ws://localhost:3001');
 
             this.ws.onopen = () => {
               this.isConnected = true;
               this.updateConnectionStatus();
-              console.log("✅ WebSocket 連接成功");
+              console.log('✅ WebSocket 連接成功');
             };
 
-            this.ws.onmessage = (event) => {
+            this.ws.onmessage = event => {
               const data = JSON.parse(event.data);
               this.handleServerMessage(data);
             };
@@ -304,50 +304,46 @@
             this.ws.onclose = () => {
               this.isConnected = false;
               this.updateConnectionStatus();
-              console.log("❌ WebSocket 連接關閉");
+              console.log('❌ WebSocket 連接關閉');
 
               // 嘗試重新連接
               setTimeout(() => this.initWebSocket(), 3000);
             };
 
-            this.ws.onerror = (error) => {
-              console.error("❌ WebSocket 錯誤:", error);
+            this.ws.onerror = error => {
+              console.error('❌ WebSocket 錯誤:', error);
             };
           } catch (error) {
-            console.error("❌ WebSocket 初始化失敗:", error);
+            console.error('❌ WebSocket 初始化失敗:', error);
           }
         }
 
         initEventListeners() {
           // 點擊區域事件
-          document
-            .getElementById("clickZone1")
-            .addEventListener("click", (e) => {
-              this.handleClick("zone1", e);
-            });
+          document.getElementById('clickZone1').addEventListener('click', e => {
+            this.handleClick('zone1', e);
+          });
 
-          document
-            .getElementById("clickZone2")
-            .addEventListener("click", (e) => {
-              this.handleClick("zone2", e);
-            });
+          document.getElementById('clickZone2').addEventListener('click', e => {
+            this.handleClick('zone2', e);
+          });
 
           // 多點觸控支援
           document
-            .getElementById("clickZone1")
-            .addEventListener("touchstart", (e) => {
+            .getElementById('clickZone1')
+            .addEventListener('touchstart', e => {
               e.preventDefault();
               for (let touch of e.touches) {
-                this.handleClick("zone1", touch);
+                this.handleClick('zone1', touch);
               }
             });
 
           document
-            .getElementById("clickZone2")
-            .addEventListener("touchstart", (e) => {
+            .getElementById('clickZone2')
+            .addEventListener('touchstart', e => {
               e.preventDefault();
               for (let touch of e.touches) {
-                this.handleClick("zone2", touch);
+                this.handleClick('zone2', touch);
               }
             });
         }
@@ -357,7 +353,7 @@
           const clickData = {
             timestamp: now,
             x: event.clientX || event.pageX,
-            y: event.clientY || event.pageY,
+            y: event.clientY || event.pageY
           };
 
           this.testData[zone].clicks.push(clickData);
@@ -382,7 +378,7 @@
 
           // 移除超過窗口時間的點擊
           this.testData[zone].clicks = this.testData[zone].clicks.filter(
-            (click) => now - click.timestamp <= windowSize
+            click => now - click.timestamp <= windowSize
           );
 
           // 計算 TPS
@@ -392,12 +388,12 @@
           // 更新最高 TPS
           if (tps > this.maxTPS) {
             this.maxTPS = tps;
-            document.getElementById("maxTPS").textContent = tps.toFixed(1);
+            document.getElementById('maxTPS').textContent = tps.toFixed(1);
           }
         }
 
         updateDisplay(zone) {
-          const zoneNum = zone === "zone1" ? "1" : "2";
+          const zoneNum = zone === 'zone1' ? '1' : '2';
           document.getElementById(`tps${zoneNum}`).textContent =
             this.testData[zone].tps.toFixed(1);
           document.getElementById(`clicks${zoneNum}`).textContent =
@@ -416,9 +412,9 @@
             ? (performance.now() - this.testStartTime) / 1000
             : 0;
 
-          document.getElementById("totalClicks").textContent = totalClicks;
-          document.getElementById("avgTPS").textContent = avgTPS.toFixed(1);
-          document.getElementById("testDuration").textContent =
+          document.getElementById('totalClicks').textContent = totalClicks;
+          document.getElementById('avgTPS').textContent = avgTPS.toFixed(1);
+          document.getElementById('testDuration').textContent =
             duration.toFixed(1);
         }
 
@@ -426,12 +422,12 @@
           if (this.ws && this.isConnected) {
             this.ws.send(
               JSON.stringify({
-                type: "tps_data",
+                type: 'tps_data',
                 zone: zone,
                 tps: this.testData[zone].tps,
                 totalClicks: this.testData[zone].totalClicks,
                 timestamp: performance.now(),
-                clientId: "tps-test-tool",
+                clientId: 'tps-test-tool'
               })
             );
           }
@@ -440,7 +436,7 @@
         measureLatency(clickTime) {
           const renderTime = performance.now();
           const latency = renderTime - clickTime;
-          document.getElementById("latency").textContent = latency.toFixed(1);
+          document.getElementById('latency').textContent = latency.toFixed(1);
         }
 
         startFPSMonitor() {
@@ -452,7 +448,7 @@
             const fps = 1000 / delta;
             this.fpsCounter = this.fpsCounter * 0.9 + fps * 0.1; // 平滑處理
 
-            document.getElementById("fps").textContent = Math.round(
+            document.getElementById('fps').textContent = Math.round(
               this.fpsCounter
             );
 
@@ -463,22 +459,22 @@
         }
 
         updateConnectionStatus() {
-          const statusEl = document.getElementById("connectionStatus");
+          const statusEl = document.getElementById('connectionStatus');
           if (this.isConnected) {
-            statusEl.textContent = "🟢 已連接";
-            statusEl.className = "connection-status connected";
+            statusEl.textContent = '🟢 已連接';
+            statusEl.className = 'connection-status connected';
           } else {
-            statusEl.textContent = "🔴 未連接";
-            statusEl.className = "connection-status disconnected";
+            statusEl.textContent = '🔴 未連接';
+            statusEl.className = 'connection-status disconnected';
           }
         }
 
         handleServerMessage(data) {
           switch (data.type) {
-            case "welcome":
-              console.log("📨 伺服器訊息:", data.message);
+            case 'welcome':
+              console.log('📨 伺服器訊息:', data.message);
               break;
-            case "server_status":
+            case 'server_status':
               console.log(
                 `📊 伺服器狀態: ${data.connectedClients} 個客戶端連接`
               );
@@ -495,29 +491,29 @@
           tpsTest = new TPSTest();
         }
         tpsTest.testStartTime = performance.now();
-        console.log("🚀 TPS 測試開始");
+        console.log('🚀 TPS 測試開始');
       }
 
       function resetTest() {
         if (tpsTest) {
           tpsTest.testData = {
             zone1: { clicks: [], tps: 0, totalClicks: 0 },
-            zone2: { clicks: [], tps: 0, totalClicks: 0 },
+            zone2: { clicks: [], tps: 0, totalClicks: 0 }
           };
           tpsTest.testStartTime = null;
           tpsTest.maxTPS = 0;
 
           // 重置顯示
-          document.getElementById("tps1").textContent = "0.0";
-          document.getElementById("tps2").textContent = "0.0";
-          document.getElementById("clicks1").textContent = "0";
-          document.getElementById("clicks2").textContent = "0";
-          document.getElementById("maxTPS").textContent = "0.0";
-          document.getElementById("avgTPS").textContent = "0.0";
-          document.getElementById("totalClicks").textContent = "0";
-          document.getElementById("testDuration").textContent = "0";
+          document.getElementById('tps1').textContent = '0.0';
+          document.getElementById('tps2').textContent = '0.0';
+          document.getElementById('clicks1').textContent = '0';
+          document.getElementById('clicks2').textContent = '0';
+          document.getElementById('maxTPS').textContent = '0.0';
+          document.getElementById('avgTPS').textContent = '0.0';
+          document.getElementById('totalClicks').textContent = '0';
+          document.getElementById('testDuration').textContent = '0';
 
-          console.log("🔄 TPS 測試重置");
+          console.log('🔄 TPS 測試重置');
         }
       }
 
@@ -529,25 +525,25 @@
             maxTPS: tpsTest.maxTPS,
             duration: tpsTest.testStartTime
               ? (performance.now() - tpsTest.testStartTime) / 1000
-              : 0,
+              : 0
           };
 
           const blob = new Blob([JSON.stringify(data, null, 2)], {
-            type: "application/json",
+            type: 'application/json'
           });
           const url = URL.createObjectURL(blob);
-          const a = document.createElement("a");
+          const a = document.createElement('a');
           a.href = url;
           a.download = `tps-test-${Date.now()}.json`;
           a.click();
           URL.revokeObjectURL(url);
 
-          console.log("📁 測試數據已匯出");
+          console.log('📁 測試數據已匯出');
         }
       }
 
       // 自動開始測試
-      window.addEventListener("load", () => {
+      window.addEventListener('load', () => {
         startTest();
       });
     </script>

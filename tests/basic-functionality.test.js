@@ -13,7 +13,7 @@ describe('ClickFun 基本功能測試', () => {
       tps: 0,
       isActive: false,
       mode: 'single',
-      timeLeft: 30
+      timeLeft: 30,
     };
   });
 

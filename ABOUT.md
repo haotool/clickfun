@@ -139,7 +139,11 @@ document.addEventListener(
   --primary-pink: #f66fb9; /* 主要粉色 */
   --accent-blue: #52b7ff; /* 強調藍色 */
   --success-gold: #ffd700; /* 成功金色 */
-  --gradient-magic: linear-gradient(45deg, var(--primary-pink), var(--accent-blue));
+  --gradient-magic: linear-gradient(
+    45deg,
+    var(--primary-pink),
+    var(--accent-blue)
+  );
 }
 ```
 

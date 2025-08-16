@@ -38,10 +38,7 @@ describe('ClickFun E2E 測試', () => {
       const titleElement = await page.$('.brand-title');
       expect(titleElement).toBeTruthy();
 
-      const titleText = await page.$eval(
-        '.brand-title',
-        (el) => el.textContent
-      );
+      const titleText = await page.$eval('.brand-title', el => el.textContent);
       expect(titleText).toContain('ClickFun');
     });
   });
@@ -54,7 +51,7 @@ describe('ClickFun E2E 測試', () => {
       // 等待遊戲畫面載入
       const gameScreenExists = await waitForElement(
         page,
-        '.game-screen.active'
+        '.game-screen.active',
       );
       expect(gameScreenExists).toBe(true);
     });
@@ -141,8 +138,8 @@ describe('ClickFun E2E 測試', () => {
     });
 
     test('應該設定正確的 theme-color', async () => {
-      const themeColor = await page.$eval('meta[name="theme-color"]', (el) =>
-        el.getAttribute('content')
+      const themeColor = await page.$eval('meta[name="theme-color"]', el =>
+        el.getAttribute('content'),
       );
 
       expect(themeColor).toBeTruthy();

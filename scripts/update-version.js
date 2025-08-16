@@ -20,34 +20,53 @@ const filesToUpdate = [
   {
     path: 'index.html',
     patterns: [
-      { regex: /const APP_VERSION = '[\d.]+';/, replacement: `const APP_VERSION = '${newVersion}';` }
-    ]
+      {
+        regex: /const APP_VERSION = '[\d.]+';/,
+        replacement: `const APP_VERSION = '${newVersion}';`,
+      },
+    ],
   },
   {
     path: 'sw.js',
     patterns: [
-      { regex: /const SW_VERSION = 'clickfun-v[\d.]+';/, replacement: `const SW_VERSION = 'clickfun-v${newVersion}';` },
-      { regex: /const APP_VERSION = '[\d.]+';/, replacement: `const APP_VERSION = '${newVersion}';` }
-    ]
+      {
+        regex: /const SW_VERSION = 'clickfun-v[\d.]+';/,
+        replacement: `const SW_VERSION = 'clickfun-v${newVersion}';`,
+      },
+      {
+        regex: /const APP_VERSION = '[\d.]+';/,
+        replacement: `const APP_VERSION = '${newVersion}';`,
+      },
+    ],
   },
   {
     path: 'sw-enhanced.js',
     patterns: [
-      { regex: /const APP_VERSION = '[\d.]+';/, replacement: `const APP_VERSION = '${newVersion}';` }
-    ]
+      {
+        regex: /const APP_VERSION = '[\d.]+';/,
+        replacement: `const APP_VERSION = '${newVersion}';`,
+      },
+    ],
   },
   {
     path: 'app.webmanifest',
     patterns: [
-      { regex: /"version": "[\d.]+"/, replacement: `"version": "${newVersion}"` }
-    ]
+      {
+        regex: /"version": "[\d.]+"/,
+        replacement: `"version": "${newVersion}"`,
+      },
+    ],
   },
   {
     path: 'README.md',
     patterns: [
-      { regex: /\[!\[Version\]\(https:\/\/img\.shields\.io\/badge\/Version-v[\d.]+-ff69b4\.svg\)\]\(\.\)/, replacement: `[![Version](https://img.shields.io/badge/Version-v${newVersion}-ff69b4.svg)](.)` }
-    ]
-  }
+      {
+        regex:
+          /\[!\[Version\]\(https:\/\/img\.shields\.io\/badge\/Version-v[\d.]+-ff69b4\.svg\)\]\(\.\)/,
+        replacement: `[![Version](https://img.shields.io/badge/Version-v${newVersion}-ff69b4.svg)](.)`,
+      },
+    ],
+  },
 ];
 
 // 更新檔案版本號

@@ -15,7 +15,7 @@ module.exports = {
   env: {
     browser: true,
     es2024: true,
-    node: true
+    node: true,
   },
 
   // 解析器選項
@@ -23,8 +23,8 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
 
   // 全域變數
@@ -43,7 +43,7 @@ module.exports = {
     CURRENT_CACHE_PATTERNS: 'readonly',
 
     // 開發工具全域變數
-    console: 'readonly'
+    console: 'readonly',
   },
 
   // 規則配置
@@ -53,8 +53,8 @@ module.exports = {
       'warn',
       {
         argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_'
-      }
+        varsIgnorePattern: '^_',
+      },
     ],
     'no-undef': 'error',
     'no-console': 'warn',
@@ -86,7 +86,7 @@ module.exports = {
     // 安全性規則
     'no-implied-eval': 'error',
     'no-new-func': 'error',
-    'no-script-url': 'error'
+    'no-script-url': 'error',
   },
 
   // 覆蓋特定檔案的規則
@@ -96,23 +96,23 @@ module.exports = {
       files: ['**/*.test.js', '**/*.spec.js', 'tests/**/*.js'],
       env: {
         jest: true,
-        mocha: true
+        mocha: true,
       },
       rules: {
         'no-console': 'off',
-        'no-undef': 'off'
-      }
+        'no-undef': 'off',
+      },
     },
     {
       // 設定檔案使用較寬鬆的規則
       files: ['*.config.js', '*.config.mjs'],
       env: {
-        node: true
+        node: true,
       },
       rules: {
-        'no-console': 'off'
-      }
-    }
+        'no-console': 'off',
+      },
+    },
   ],
 
   // 忽略特定檔案
@@ -123,6 +123,6 @@ module.exports = {
     'coverage/',
     '*.min.js',
     'sw.js',
-    'sw-enhanced.js'
-  ]
+    'sw-enhanced.js',
+  ],
 };

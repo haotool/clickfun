@@ -6,5 +6,5 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testTimeout: 30000,
   collectCoverageFrom: ['../*.js', '!../sw.js'],
-  coverageDirectory: 'coverage-e2e'
+  coverageDirectory: 'coverage-e2e',
 };
