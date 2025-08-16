@@ -1,7 +1,7 @@
 /// <reference lib="webworker" />
 /* eslint-disable no-restricted-globals */
-const SW_VERSION = 'clickfun-v6.4.0';
-const APP_VERSION = '6.4.0';
+const SW_VERSION = 'clickfun-v7.0.0';
+const APP_VERSION = '7.0.0';
 const APP_SHELL = [
   './',
   './index.html',

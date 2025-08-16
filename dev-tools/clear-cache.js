@@ -9,7 +9,7 @@ const path = require('path');
 class CacheCleaner {
   constructor() {
     this.cacheNames = [
-      'clickfun-v6.4.0',
+      'clickfun-v7.0.0',
       'workbox-precache',
       'workbox-runtime'
     ];

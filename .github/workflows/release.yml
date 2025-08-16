@@ -1,0 +1,57 @@
+name: 🚀 自動發布
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release:
+    name: 🎯 發布新版本
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 檢出程式碼
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      
+      - name: 🟢 設定 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+      
+      - name: 📦 安裝依賴
+        run: npm ci
+      
+      - name: 🧪 執行測試
+        run: npm test
+      
+      - name: 🔨 建置專案
+        run: npm run build
+      
+      - name: 🚀 發布新版本
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
+      
+      - name: 📝 更新版本號檔案
+        run: npm run update-version-files
+      
+      - name: 🔄 提交版本更新
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git diff --staged --quiet || git commit -m "chore: 自動更新版本號檔案 [skip ci]"
+          git push

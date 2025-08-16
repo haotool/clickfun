@@ -1,5 +1,5 @@
 // Jest 測試環境設定
-const path = require("path");
+const path = require('path');
 
 // 設定測試超時時間
 jest.setTimeout(30000);
@@ -23,14 +23,14 @@ global.getGameState = async (page) => {
       isGameActive: window.gameState?.isActive || false,
       currentScore: window.gameState?.score || 0,
       currentTPS: window.gameState?.tps || 0,
-      gameMode: window.gameState?.mode || "single",
+      gameMode: window.gameState?.mode || 'single'
     };
   });
 };
 
 // 測試前後清理
 beforeEach(async () => {
-  if (typeof page !== "undefined") {
+  if (typeof page !== 'undefined') {
     // 清除 localStorage
     await page.evaluate(() => {
       localStorage.clear();
@@ -38,12 +38,12 @@ beforeEach(async () => {
     });
 
     // 重新載入頁面確保乾淨狀態
-    await page.reload({ waitUntil: "networkidle0" });
+    await page.reload({ waitUntil: 'networkidle0' });
   }
 });
 
 afterEach(async () => {
-  if (typeof page !== "undefined") {
+  if (typeof page !== 'undefined') {
     // 截圖用於除錯（測試失敗時）
     if (
       jasmine.currentSpec &&
@@ -51,7 +51,7 @@ afterEach(async () => {
     ) {
       const screenshotPath = path.join(
         __dirname,
-        "screenshots",
+        'screenshots',
         `${jasmine.currentSpec.description}.png`
       );
       await page.screenshot({ path: screenshotPath, fullPage: true });

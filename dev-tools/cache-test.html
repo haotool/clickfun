@@ -130,7 +130,7 @@
 
     <script src="test-cache-clear.js"></script>
     <script>
-      const APP_VERSION = '6.4.0';
+      const APP_VERSION = '7.0.0';
 
       function log(message, type = 'info') {
         const timestamp = new Date().toLocaleTimeString();
@@ -164,8 +164,8 @@
       async function createTestCaches() {
         try {
           const testCaches = [
-            'clickfun-v6.3.0',
-            'clickfun-v6.2.0',
+            'clickfun-v7.0.0',
+'clickfun-v7.0.0',
             'clickfun-v6.1.0',
             'old-test-cache'
           ];
@@ -238,7 +238,7 @@
       }
 
       function simulateVersionUpdate() {
-        const oldVersion = '6.3.0';
+        const oldVersion = '7.0.0';
         localStorage.setItem('app_version', oldVersion);
         log(`🔄 模擬版本更新: ${oldVersion} → ${APP_VERSION}`);
         log('💡 重新載入頁面以觸發版本檢測', 'info');

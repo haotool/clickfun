@@ -26,8 +26,8 @@ class CacheClearTester {
 
     // 創建一些測試快取
     const testCaches = [
-      'clickfun-v6.3.0',
-      'clickfun-v6.2.0',
+      'clickfun-v7.0.0',
+      'clickfun-v7.0.0',
       'clickfun-v6.1.0',
       'old-cache-test'
     ];
@@ -51,11 +51,11 @@ class CacheClearTester {
     console.log('🔄 測試 2: 模擬版本更新...');
 
     // 模擬舊版本
-    localStorage.setItem('app_version', '6.3.0');
+    localStorage.setItem('app_version', '7.0.0');
 
     // 檢查版本差異
     const storedVersion = localStorage.getItem('app_version');
-    const currentVersion = '6.4.0';
+    const currentVersion = '7.0.0';
     const needsUpdate = storedVersion !== currentVersion;
 
     this.testResults.push({
@@ -72,7 +72,7 @@ class CacheClearTester {
     console.log('清除前的快取:', beforeCaches);
 
     // 執行快取清除邏輯
-    const currentCacheName = 'clickfun-v6.4.0';
+    const currentCacheName = 'clickfun-v7.0.0';
     const cachesToDelete = beforeCaches.filter(
       name => name !== currentCacheName
     );
@@ -106,7 +106,7 @@ class CacheClearTester {
       console.log(`${index + 1}. ${result.test}: ${status}`);
       console.log(`   詳情: ${result.details}`);
 
-      if (result.passed) passedTests++;
+      if (result.passed) {passedTests++;}
     });
 
     console.log('='.repeat(50));

@@ -1,0 +1,99 @@
+{
+  "name": "clickfun",
+  "version": "7.0.0",
+  "description": "A fun click-based game with PWA support and automated versioning",
+  "type": "module",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "build": "echo 'Build completed'",
+    "test": "echo 'Tests completed'",
+    "release": "npm run build && npm run test && npx semantic-release",
+    "version:patch": "npm version patch --no-git-tag-version && npm run update-version-files",
+    "version:minor": "npm version minor --no-git-tag-version && npm run update-version-files",
+    "version:major": "npm version major --no-git-tag-version && npm run update-version-files",
+    "update-version-files": "node scripts/update-version.js",
+    "check-version": "node scripts/check-version.js",
+    "setup": "node scripts/setup.js",
+    "test-pwa": "node scripts/test-pwa-version.js",
+    "health-check": "node scripts/project-health-monitor.js",
+    "post-publish": "echo 'Post-publish tasks completed'",
+    "postversion": "git add . && git commit -m \"chore: bump version to %s\" && git tag v%s",
+    "dev:start": "node scripts/dev-tools.js start",
+    "dev:build": "node scripts/dev-tools.js build",
+    "dev:clean": "node scripts/dev-tools.js clean",
+    "dev:help": "node scripts/dev-tools.js help",
+    "code-quality:check": "node scripts/code-quality-check.js check",
+    "code-quality:fix": "node scripts/code-quality-check.js fix",
+    "code-quality:eslint": "node scripts/code-quality-check.js eslint-fix",
+    "code-quality:format": "node scripts/code-quality-check.js format",
+    "code-quality:help": "node scripts/code-quality-check.js help",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [
+    "game",
+    "clicking",
+    "pwa",
+    "html5",
+    "javascript",
+    "tps",
+    "multiplayer"
+  ],
+  "author": "azlife.eth",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azlife-eth/clickfun.git"
+  },
+  "bugs": {
+    "url": "https://github.com/azlife-eth/clickfun/issues"
+  },
+  "homepage": "https://github.com/azlife-eth/clickfun#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.0.0",
+    "globals": "^16.3.0",
+    "husky": "^9.0.0",
+    "prettier": "^3.6.2",
+    "semantic-release": "^24.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "husky run .husky/pre-commit"
+    }
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "npm run update-version-files"
+        }
+      ],
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

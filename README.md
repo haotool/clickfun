@@ -5,7 +5,7 @@
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-brightgreen.svg)](.)
 [![Mobile Optimized](https://img.shields.io/badge/Mobile-Optimized-blue.svg)](.)
 [![Performance](https://img.shields.io/badge/Performance-60fps-orange.svg)](.)
-[![Version](https://img.shields.io/badge/Version-v6.4.0-ff69b4.svg)](.)
+[![Version](https://img.shields.io/badge/Version-v7.0.0-ff69b4.svg)](.)
 [![Audio Effects](https://img.shields.io/badge/Audio%20Effects-Enabled-52b7ff.svg)](.)
 [![Touch Support](https://img.shields.io/badge/Multi--Touch-Supported-f66fb9.svg)](.)
 
@@ -67,6 +67,52 @@ npx serve .
 # 然後開啟瀏覽器訪問
 http://localhost:8080
 ```
+
+### 版本管理
+
+本專案採用語義化版本控制 (Semantic Versioning) 和自動化版本管理系統。
+
+#### 快速版本更新
+
+```bash
+# 修訂版本 (7.0.0 → 7.0.1)
+npm run version:patch
+
+# 次版本 (7.0.0 → 7.1.0)
+npm run version:minor
+
+# 主版本 (7.0.0 → 8.0.0)
+npm run version:major
+```
+
+#### 版本號檢查
+
+```bash
+# 檢查所有檔案版本號一致性
+npm run check-version
+
+# 手動更新所有檔案版本號
+npm run update-version-files
+```
+
+#### 自動發布
+
+```bash
+# 執行完整發布流程
+npm run release
+```
+
+#### 提交訊息規範
+
+- `feat:` - 新功能 (觸發 MINOR 版本更新)
+- `fix:` - 錯誤修復 (觸發 PATCH 版本更新)
+- `docs:` - 文檔更新 (觸發 PATCH 版本更新)
+- `style:` - 程式碼格式調整 (觸發 PATCH 版本更新)
+- `refactor:` - 程式碼重構 (觸發 PATCH 版本更新)
+- `perf:` - 效能改善 (觸發 PATCH 版本更新)
+- `test:` - 測試相關 (觸發 PATCH 版本更新)
+- `chore:` - 建置程序或輔助工具的變動 (觸發 PATCH 版本更新)
+- `BREAKING CHANGE:` - 破壞性變更 (觸發 MAJOR 版本更新)
 
 ### PWA 安裝
 

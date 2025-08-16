@@ -3,8 +3,8 @@
  * 基於最佳實踐的 PWA Service Worker 實作
  */
 
-const SW_VERSION = 'clickfun-enhanced-v1.1.0';
-const APP_VERSION = '6.4.0';
+const SW_VERSION = `clickfun-v${APP_VERSION}`;
+const APP_VERSION = '7.0.0';
 
 // 快取策略配置
 const CACHE_CONFIG = {
@@ -70,11 +70,16 @@ self.addEventListener('activate', event => {
         // 清理舊版本快取
         const cacheNames = await caches.keys();
         const deletePromises = cacheNames
-          .filter(cacheName => !ALL_CACHE_NAMES.includes(cacheName))
-          .map(cacheName => {
-            console.log(`🗑️ 刪除舊快取: ${cacheName}`);
-            return caches.delete(cacheName);
-          });
+          .filter(cacheName => {
+            // 保留當前版本快取，刪除其他版本
+            if (cacheName.startsWith('clickfun-v') && cacheName !== SW_VERSION) {
+              console.log(`🗑️ 刪除舊版本快取: ${cacheName}`);
+              return true;
+            }
+            // 保留其他非版本相關快取
+            return !ALL_CACHE_NAMES.includes(cacheName);
+          })
+          .map(cacheName => caches.delete(cacheName));
 
         await Promise.all(deletePromises);
 
@@ -148,6 +153,20 @@ self.addEventListener('message', event => {
       checkForUpdates().then(hasUpdate => {
         event.ports[0].postMessage({ hasUpdate });
       });
+      break;
+      
+    case 'VERSION_CHECK':
+      const currentVersion = event.data.version;
+      const storedVersion = event.data.storedVersion;
+      
+      if (currentVersion !== storedVersion) {
+        // 發送版本更新通知
+        event.ports[0].postMessage({
+          type: 'VERSION_UPDATE',
+          oldVersion: storedVersion,
+          newVersion: currentVersion
+        });
+      }
       break;
   }
 });
