@@ -18,6 +18,7 @@ export default [
       'dist/**',
       'build/**',
       'coverage/**',
+      'team-worktrees/**', // 排除多工作區目錄
       '*.min.js',
       '*.bundle.js',
       'dev-tools/cache-test.html',

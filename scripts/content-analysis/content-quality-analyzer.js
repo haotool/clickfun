@@ -37,7 +37,7 @@ class ContentQualityAnalyzer {
   // 從 HTML 提取純文字內容
   extractTextFromHTML(htmlContent) {
     // 移除 script, style, head 標籤內容
-    let textContent = htmlContent
+    const textContent = htmlContent
       .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
       .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
       .replace(/<head[^>]*>[\s\S]*?<\/head>/gi, '')
@@ -83,7 +83,7 @@ class ContentQualityAnalyzer {
       positions.push({
         start: match.index,
         end: regex.lastIndex,
-        relativePosition: (position * 100).toFixed(1) + '%',
+        relativePosition: `${(position * 100).toFixed(1)}%`,
       });
     }
 
@@ -106,12 +106,12 @@ class ContentQualityAnalyzer {
     let readabilityScore = 100;
 
     // 句子長度懲罰 (理想: 15-25 字)
-    if (avgWordsPerSentence > 25) readabilityScore -= (avgWordsPerSentence - 25) * 2;
-    if (avgWordsPerSentence < 10) readabilityScore -= (10 - avgWordsPerSentence) * 3;
+    if (avgWordsPerSentence > 25) {readabilityScore -= (avgWordsPerSentence - 25) * 2;}
+    if (avgWordsPerSentence < 10) {readabilityScore -= (10 - avgWordsPerSentence) * 3;}
 
     // 字符複雜度 (理想: 2-4 字符/詞)
-    if (avgCharsPerWord > 5) readabilityScore -= (avgCharsPerWord - 5) * 5;
-    if (avgCharsPerWord < 1.5) readabilityScore -= (1.5 - avgCharsPerWord) * 8;
+    if (avgCharsPerWord > 5) {readabilityScore -= (avgCharsPerWord - 5) * 5;}
+    if (avgCharsPerWord < 1.5) {readabilityScore -= (1.5 - avgCharsPerWord) * 8;}
 
     // 句子變化性獎勵
     readabilityScore += sentenceLengthVariety * 10;
@@ -137,7 +137,7 @@ class ContentQualityAnalyzer {
 
   // 計算句子長度變化性
   calculateSentenceLengthVariety(sentences) {
-    if (sentences.length < 2) return 0;
+    if (sentences.length < 2) {return 0;}
 
     const lengths = sentences.map(s => s.trim().length);
     const avgLength = lengths.reduce((a, b) => a + b) / lengths.length;
@@ -155,11 +155,11 @@ class ContentQualityAnalyzer {
 
   // 可讀性等級
   getReadabilityGrade(score) {
-    if (score >= 90) return 'A+：極佳可讀性';
-    if (score >= 80) return 'A：優秀可讀性';
-    if (score >= 70) return 'B：良好可讀性';
-    if (score >= 60) return 'C：普通可讀性';
-    if (score >= 50) return 'D：需要改進';
+    if (score >= 90) {return 'A+：極佳可讀性';}
+    if (score >= 80) {return 'A：優秀可讀性';}
+    if (score >= 70) {return 'B：良好可讀性';}
+    if (score >= 60) {return 'C：普通可讀性';}
+    if (score >= 50) {return 'D：需要改進';}
     return 'F：可讀性不佳';
   }
 
@@ -180,7 +180,7 @@ class ContentQualityAnalyzer {
   // 分析 Title 標籤
   analyzeTitleTag(htmlContent) {
     const titleMatch = htmlContent.match(/<title[^>]*>(.*?)<\/title>/i);
-    if (!titleMatch) return { score: 0, issues: ['缺少 title 標籤'] };
+    if (!titleMatch) {return { score: 0, issues: ['缺少 title 標籤'] };}
 
     const title = titleMatch[1].trim();
     const issues = [];
@@ -197,7 +197,7 @@ class ContentQualityAnalyzer {
 
     // 檢查是否包含主要關鍵字
     const hasMainKeyword = this.targetKeywords.tier1.some(keyword =>
-      title.toLowerCase().includes(keyword.toLowerCase())
+      title.toLowerCase().includes(keyword.toLowerCase()),
     );
     if (!hasMainKeyword) {
       issues.push('標題未包含主要品牌關鍵字');
@@ -210,9 +210,9 @@ class ContentQualityAnalyzer {
   // 分析 Meta Description
   analyzeMetaDescription(htmlContent) {
     const metaMatch = htmlContent.match(
-      /<meta[^>]+name=['"](description|Description)['"]+[^>]+content=['"]([^'"]*)['"]/i
+      /<meta[^>]+name=['"](description|Description)['"]+[^>]+content=['"]([^'"]*)['"]/i,
     );
-    if (!metaMatch) return { score: 0, issues: ['缺少 meta description'] };
+    if (!metaMatch) {return { score: 0, issues: ['缺少 meta description'] };}
 
     const description = metaMatch[2].trim();
     const issues = [];
@@ -284,7 +284,7 @@ class ContentQualityAnalyzer {
   analyzeInternalLinks(htmlContent) {
     const allLinks = htmlContent.match(/<a[^>]+href=['"][^'"]*['"][^>]*>/gi) || [];
     const internalLinks = allLinks.filter(
-      link => !link.includes('http') || link.includes('haotool.github.io/clickfun')
+      link => !link.includes('http') || link.includes('haotool.github.io/clickfun'),
     );
 
     const issues = [];
@@ -359,7 +359,7 @@ class ContentQualityAnalyzer {
   analyzeStructuredData(htmlContent) {
     const jsonLdScripts =
       htmlContent.match(
-        /<script[^>]*type=['"](application\/ld\+json|application\/json)['"]*[^>]*>[\s\S]*?<\/script>/gi
+        /<script[^>]*type=['"](application\/ld\+json|application\/json)['"]*[^>]*>[\s\S]*?<\/script>/gi,
       ) || [];
     const issues = [];
     let score = 100;
@@ -472,7 +472,7 @@ class ContentQualityAnalyzer {
           recommendations.push({
             priority: data.score < 50 ? 'high' : 'medium',
             category: 'seo',
-            issue: issue,
+            issue,
             suggestion: this.getSEOSuggestion(metric, issue),
           });
         });
@@ -527,15 +527,15 @@ class ContentQualityAnalyzer {
       timeZone: 'Asia/Taipei',
     });
 
-    let markdown = `# Click Fun 內容品質分析報告\n\n`;
+    let markdown = '# Click Fun 內容品質分析報告\n\n';
     markdown += `**分析時間**: ${timestamp}\n`;
     markdown += `**檔案路徑**: ${report.file_path}\n`;
     markdown += `**總體評分**: ${report.overall_score}/100\n\n`;
 
     // 總覽
-    markdown += `## 📊 評分總覽\n\n`;
-    markdown += `| 項目 | 評分 | 等級 |\n`;
-    markdown += `|------|------|------|\n`;
+    markdown += '## 📊 評分總覽\n\n';
+    markdown += '| 項目 | 評分 | 等級 |\n';
+    markdown += '|------|------|------|\n';
     markdown += `| 可讀性 | ${report.readability_analysis.score}/100 | ${report.readability_analysis.grade} |\n`;
     markdown += `| 標題優化 | ${report.seo_metrics.titleOptimization.score}/100 | - |\n`;
     markdown += `| Meta 描述 | ${report.seo_metrics.metaDescription.score}/100 | - |\n`;
@@ -543,11 +543,11 @@ class ContentQualityAnalyzer {
     markdown += `| 結構化數據 | ${report.seo_metrics.structuredData.score}/100 | - |\n\n`;
 
     // 關鍵字分析
-    markdown += `## 🎯 關鍵字分析\n\n`;
+    markdown += '## 🎯 關鍵字分析\n\n';
     Object.keys(report.keyword_analysis).forEach(tier => {
       markdown += `### ${tier.toUpperCase()} 關鍵字\n\n`;
-      markdown += `| 關鍵字 | 出現次數 | 密度 | 狀態 |\n`;
-      markdown += `|--------|----------|------|------|\n`;
+      markdown += '| 關鍵字 | 出現次數 | 密度 | 狀態 |\n';
+      markdown += '|--------|----------|------|------|\n';
 
       Object.keys(report.keyword_analysis[tier]).forEach(keyword => {
         const data = report.keyword_analysis[tier][keyword];
@@ -559,18 +559,18 @@ class ContentQualityAnalyzer {
               : '❌ 過高';
         markdown += `| ${keyword} | ${data.count} | ${data.density}% | ${status} |\n`;
       });
-      markdown += `\n`;
+      markdown += '\n';
     });
 
     // 可讀性詳情
-    markdown += `## 📖 可讀性分析\n\n`;
+    markdown += '## 📖 可讀性分析\n\n';
     markdown += `- **總句數**: ${report.readability_analysis.details.totalSentences}\n`;
     markdown += `- **總詞數**: ${report.readability_analysis.details.totalWords}\n`;
     markdown += `- **平均句長**: ${report.readability_analysis.details.avgWordsPerSentence} 詞/句\n`;
     markdown += `- **詞彙多樣性**: ${report.readability_analysis.details.vocabularyDiversity}\n\n`;
 
     // 優化建議
-    markdown += `## 💡 優化建議\n\n`;
+    markdown += '## 💡 優化建議\n\n';
     const priorityEmojis = { high: '🔴', medium: '🟡', low: '🟢' };
 
     ['high', 'medium', 'low'].forEach(priority => {
