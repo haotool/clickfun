@@ -3568,6 +3568,15 @@
           const loop = ts => {
             if (!GameState.isPlaying) return;
 
+            // 在雙人模式中，於預定開始時間自動啟動計時（避免永不倒數）
+            if (
+              GameState.mode === 'dual' &&
+              !GameState.hasStarted &&
+              ts >= this.startTime
+            ) {
+              GameState.hasStarted = true;
+            }
+
             // 只有在遊戲已開始時才計時
             if (GameState.hasStarted) {
               const elapsed = (ts - this.startTime) / 1000;
