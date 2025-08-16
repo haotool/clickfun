@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/haotool/clickfun/compare/v2.0.0...v2.0.1) (2025-08-16)
+
+
+### Bug Fixes
+
+* **fonts-ui:** 修正Material Icons載入問題並優化手機界面間距 v7.1.2 ([d76016c](https://github.com/haotool/clickfun/commit/d76016c380842950fa102a719548df2283badd03))
+
 # [2.0.0](https://github.com/haotool/clickfun/compare/v1.2.0...v2.0.0) (2025-08-16)
 
 

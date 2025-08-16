@@ -96,6 +96,9 @@
     <!-- 字體預載入 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- 可愛遊戲風格字體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -483,16 +486,17 @@
       .material-symbols-rounded {
         font-variation-settings:
           'FILL' 0,
-          'wght' 400,
+          'wght' 600,
           'GRAD' 0,
           'opsz' 24;
         font-family: 'Material Symbols Rounded', 'Material Icons', sans-serif;
-        font-size: 22px;
+        font-size: 20px;
         line-height: 1;
         font-display: swap;
         display: inline-block;
         vertical-align: middle;
         text-align: center;
+        font-weight: 600;
       }
 
       /* 字體載入失敗時的 fallback 樣式 */
@@ -562,13 +566,15 @@
         }
       }
       .brand-title {
-        font-size: 2.4rem;
-        font-weight: 900;
-        letter-spacing: -0.02em;
+        font-family: 'Fredoka One', cursive;
+        font-size: 2.2rem;
+        font-weight: 400;
+        letter-spacing: 0.02em;
         background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 60%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 0px rgba(255,255,255,0.3);
       }
       .brand-subtitle {
         color: var(--text-secondary);
@@ -2254,9 +2260,9 @@
 
                 /* 手機端主選單間距優化 */
         .menu-screen {
-          height: calc(100vh - 100px) !important;
-          padding-top: 4vh;
-          padding-bottom: 100px;
+          height: calc(100vh - 90px) !important;
+          padding-top: 3vh;
+          padding-bottom: 90px;
           justify-content: center;
           display: flex;
           flex-direction: column;
@@ -2266,12 +2272,23 @@
         }
         
         .brand {
-          margin-bottom: 2vh;
+          margin-bottom: 1.5vh;
           flex-shrink: 0;
         }
         
+        .brand-title {
+          font-size: 2rem !important;
+          margin-bottom: 0.2rem;
+        }
+        
+        .brand-subtitle {
+          font-size: 0.85rem !important;
+          font-weight: 600;
+          margin-top: 0.2rem;
+        }
+        
         .menu-buttons {
-          gap: 1.5vh;
+          gap: 1.2vh;
           max-width: 320px;
           width: 90vw;
           flex-shrink: 0;
@@ -2281,13 +2298,20 @@
         }
         
         .menu-btn {
-          padding: 12px 18px;
-          font-size: 0.9rem;
+          padding: 10px 16px;
+          font-size: 0.85rem;
+          font-weight: 600;
           width: 100%;
           max-width: 320px;
-          min-height: 52px;
+          min-height: 48px;
         }
         
+        .menu-btn .material-symbols-rounded {
+          font-size: 18px;
+          font-weight: 700;
+          margin-right: 8px;
+        }
+
         /* 確保PWA橫幅不影響主內容 */
         .install-banner {
           position: fixed !important;
@@ -2296,7 +2320,18 @@
           right: 0;
           z-index: 100;
           height: auto;
-          max-height: 80px;
+          max-height: 75px;
+          padding: 12px 16px;
+        }
+        
+        .install-banner .title {
+          font-weight: 700 !important;
+          font-size: 0.9rem;
+        }
+        
+        .install-banner .hint {
+          font-size: 0.75rem !important;
+          font-weight: 500;
         }
         .header-tps .hud-tps-label {
           font-size: 0.55rem;
