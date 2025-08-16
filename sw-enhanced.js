@@ -54,7 +54,7 @@ self.addEventListener('install', event => {
         console.error('❌ Service Worker 安裝失敗:', error);
         throw error;
       }
-    })()
+    })(),
   );
 });
 
@@ -97,7 +97,7 @@ self.addEventListener('activate', event => {
       } catch (error) {
         console.error('❌ Service Worker 激活失敗:', error);
       }
-    })()
+    })(),
   );
 });
 
@@ -337,7 +337,7 @@ async function handleDynamicRequest(request) {
 function isAppShellRequest(request) {
   const url = new URL(request.url);
   return CACHE_CONFIG.APP_SHELL.some(
-    path => url.pathname === path || url.pathname === path.replace('./', '/')
+    path => url.pathname === path || url.pathname === path.replace('./', '/'),
   );
 }
 

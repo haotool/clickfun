@@ -22,13 +22,13 @@ AI_Testing_Coverage:
     - Perplexity AI
     - Claude (Anthropic)
     - Bing Chat (Microsoft)
-    
+
   secondary_platforms:
     - Google Bard/Gemini
     - Character.AI
     - You.com
     - Phind
-    
+
   emerging_platforms:
     - Google SGE
     - Meta AI
@@ -50,21 +50,26 @@ AI_Testing_Coverage:
 class ChatGPTRecommendationTest {
   constructor() {
     this.testQueries = [
-      "推薦一些好玩的點擊遊戲",
-      "免費的線上點擊速度測試工具",
-      "支援離線的PWA遊戲推薦", 
-      "手機上可以玩的點擊遊戲",
-      "如何測試自己的點擊速度",
-      "最佳瀏覽器遊戲推薦 2025",
-      "好玩的HTML5小遊戲",
-      "不用下載的免費遊戲",
-      "PWA 技術最佳實踐案例",
-      "現代點擊遊戲有哪些特色"
+      '推薦一些好玩的點擊遊戲',
+      '免費的線上點擊速度測試工具',
+      '支援離線的PWA遊戲推薦',
+      '手機上可以玩的點擊遊戲',
+      '如何測試自己的點擊速度',
+      '最佳瀏覽器遊戲推薦 2025',
+      '好玩的HTML5小遊戲',
+      '不用下載的免費遊戲',
+      'PWA 技術最佳實踐案例',
+      '現代點擊遊戲有哪些特色',
     ];
-    
+
     this.expectedKeywords = [
-      "ClickFun", "點擊遊戲", "PWA", "TPS", 
-      "離線", "免費", "haotool.github.io"
+      'ClickFun',
+      '點擊遊戲',
+      'PWA',
+      'TPS',
+      '離線',
+      '免費',
+      'haotool.github.io',
     ];
   }
 
@@ -75,12 +80,12 @@ class ChatGPTRecommendationTest {
    */
   async testSingleQuery(query) {
     const startTime = Date.now();
-    
+
     try {
       // 模擬 ChatGPT API 呼叫
       const response = await this.queryChatGPT(query);
       const endTime = Date.now();
-      
+
       const result = {
         query,
         timestamp: new Date().toISOString(),
@@ -91,16 +96,16 @@ class ChatGPTRecommendationTest {
         accuracy: this.checkDescriptionAccuracy(response),
         keywords_found: this.findKeywords(response),
         response_length: response.length,
-        raw_response: response
+        raw_response: response,
       };
-      
+
       return result;
     } catch (error) {
       return {
         query,
         timestamp: new Date().toISOString(),
         error: error.message,
-        success: false
+        success: false,
       };
     }
   }
@@ -116,9 +121,9 @@ class ChatGPTRecommendationTest {
       /Click Fun/gi,
       /clickfun/gi,
       /點擊樂趣/gi,
-      /haotool\.github\.io\/clickfun/gi
+      /haotool\.github\.io\/clickfun/gi,
     ];
-    
+
     return mentionPatterns.some(pattern => pattern.test(response));
   }
 
@@ -129,13 +134,13 @@ class ChatGPTRecommendationTest {
    */
   getMentionPosition(response) {
     const recommendations = this.parseRecommendations(response);
-    
+
     for (let i = 0; i < recommendations.length; i++) {
       if (this.checkClickFunMention(recommendations[i])) {
         return i + 1;
       }
     }
-    
+
     return 0; // 未提及
   }
 
@@ -152,16 +157,16 @@ class ChatGPTRecommendationTest {
       { pattern: /免費|free/gi, points: 15 },
       { pattern: /粉色|天藍|配色/gi, points: 10 },
       { pattern: /跨平台|cross-platform/gi, points: 10 },
-      { pattern: /Lighthouse|100分/gi, points: 10 }
+      { pattern: /Lighthouse|100分/gi, points: 10 },
     ];
-    
+
     let totalScore = 0;
     accuracyChecks.forEach(check => {
       if (check.pattern.test(response)) {
         totalScore += check.points;
       }
     });
-    
+
     return Math.min(totalScore, 100);
   }
 
@@ -171,15 +176,15 @@ class ChatGPTRecommendationTest {
    */
   async runFullTestSuite() {
     const results = [];
-    
+
     for (const query of this.testQueries) {
       const result = await this.testSingleQuery(query);
       results.push(result);
-      
+
       // 避免 API 限制，加入延遲
       await this.delay(2000);
     }
-    
+
     return this.generateReport(results);
   }
 
@@ -191,18 +196,18 @@ class ChatGPTRecommendationTest {
   generateReport(results) {
     const successfulTests = results.filter(r => !r.error);
     const mentionedTests = successfulTests.filter(r => r.mentioned);
-    
+
     return {
       test_date: new Date().toISOString(),
       total_queries: this.testQueries.length,
       successful_tests: successfulTests.length,
       mention_count: mentionedTests.length,
-      mention_rate: (mentionedTests.length / successfulTests.length * 100).toFixed(2) + '%',
+      mention_rate: ((mentionedTests.length / successfulTests.length) * 100).toFixed(2) + '%',
       average_position: this.calculateAveragePosition(mentionedTests),
       average_accuracy: this.calculateAverageAccuracy(mentionedTests),
       top_performing_queries: this.getTopQueries(mentionedTests),
       improvement_opportunities: this.identifyImprovements(results),
-      detailed_results: results
+      detailed_results: results,
     };
   }
 }
@@ -218,16 +223,16 @@ class ChatGPTRecommendationTest {
 class PerplexitySourceTest {
   constructor() {
     this.technicalQueries = [
-      "PWA 遊戲開發最佳實踐",
-      "點擊遊戲 TPS 計算原理",
-      "HTML5 遊戲效能優化",
-      "現代 Web 遊戲技術棧",
-      "離線遊戲實施方案",
-      "Lighthouse 100分網站案例",
-      "漸進式網頁應用程式範例",
-      "跨平台Web遊戲開發",
-      "Service Worker 遊戲應用",
-      "點擊速度測試工具比較"
+      'PWA 遊戲開發最佳實踐',
+      '點擊遊戲 TPS 計算原理',
+      'HTML5 遊戲效能優化',
+      '現代 Web 遊戲技術棧',
+      '離線遊戲實施方案',
+      'Lighthouse 100分網站案例',
+      '漸進式網頁應用程式範例',
+      '跨平台Web遊戲開發',
+      'Service Worker 遊戲應用',
+      '點擊速度測試工具比較',
     ];
   }
 
@@ -239,7 +244,7 @@ class PerplexitySourceTest {
   async testTechnicalQuery(query) {
     try {
       const response = await this.queryPerplexity(query);
-      
+
       return {
         query,
         timestamp: new Date().toISOString(),
@@ -248,13 +253,13 @@ class PerplexitySourceTest {
         technical_accuracy: this.evaluateTechnicalAccuracy(response),
         authority_recognition: this.checkAuthorityRecognition(response),
         source_quality: this.evaluateSourceQuality(response),
-        recommendations: this.extractRecommendations(response)
+        recommendations: this.extractRecommendations(response),
       };
     } catch (error) {
       return {
         query,
         error: error.message,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
     }
   }
@@ -270,9 +275,9 @@ class PerplexitySourceTest {
       /ClickFun.*技術/gi,
       /PWA.*ClickFun/gi,
       /\[.*ClickFun.*\]/gi,
-      /來源.*ClickFun/gi
+      /來源.*ClickFun/gi,
     ];
-    
+
     return citationPatterns.some(pattern => pattern.test(response));
   }
 
@@ -283,24 +288,24 @@ class PerplexitySourceTest {
    */
   evaluateTechnicalAccuracy(response) {
     const technicalPoints = [
-      { term: "Progressive Web App", weight: 15 },
-      { term: "Service Worker", weight: 15 },
-      { term: "TPS計算", weight: 15 },
-      { term: "Lighthouse", weight: 10 },
-      { term: "離線支援", weight: 10 },
-      { term: "跨平台", weight: 10 },
-      { term: "HTML5", weight: 10 },
-      { term: "效能優化", weight: 10 },
-      { term: "響應式設計", weight: 5 }
+      { term: 'Progressive Web App', weight: 15 },
+      { term: 'Service Worker', weight: 15 },
+      { term: 'TPS計算', weight: 15 },
+      { term: 'Lighthouse', weight: 10 },
+      { term: '離線支援', weight: 10 },
+      { term: '跨平台', weight: 10 },
+      { term: 'HTML5', weight: 10 },
+      { term: '效能優化', weight: 10 },
+      { term: '響應式設計', weight: 5 },
     ];
-    
+
     let score = 0;
     technicalPoints.forEach(point => {
       if (response.includes(point.term)) {
         score += point.weight;
       }
     });
-    
+
     return Math.min(score, 100);
   }
 }
@@ -316,16 +321,16 @@ class PerplexitySourceTest {
 class ClaudeTechnicalTest {
   constructor() {
     this.expertQueries = [
-      "分析現代 PWA 遊戲的技術實現",
-      "評估點擊遊戲的使用者體驗設計",
-      "比較不同 Web 遊戲技術方案", 
-      "探討遊戲效能優化策略",
-      "現代 JavaScript 遊戲開發趨勢",
-      "Web Workers 在遊戲中的應用",
-      "PWA 技術在遊戲領域的創新",
-      "前端效能監控最佳實踐",
-      "跨平台Web應用開發挑戰",
-      "Service Worker 離線策略設計"
+      '分析現代 PWA 遊戲的技術實現',
+      '評估點擊遊戲的使用者體驗設計',
+      '比較不同 Web 遊戲技術方案',
+      '探討遊戲效能優化策略',
+      '現代 JavaScript 遊戲開發趨勢',
+      'Web Workers 在遊戲中的應用',
+      'PWA 技術在遊戲領域的創新',
+      '前端效能監控最佳實踐',
+      '跨平台Web應用開發挑戰',
+      'Service Worker 離線策略設計',
     ];
   }
 
@@ -337,7 +342,7 @@ class ClaudeTechnicalTest {
   async testExpertQuery(query) {
     try {
       const response = await this.queryClaude(query);
-      
+
       return {
         query,
         timestamp: new Date().toISOString(),
@@ -346,13 +351,13 @@ class ClaudeTechnicalTest {
         professional_recognition: this.checkProfessionalRecognition(response),
         implementation_accuracy: this.checkImplementationDetails(response),
         innovation_recognition: this.checkInnovationMention(response),
-        recommendation_quality: this.evaluateRecommendationQuality(response)
+        recommendation_quality: this.evaluateRecommendationQuality(response),
       };
     } catch (error) {
       return {
         query,
         error: error.message,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
     }
   }
@@ -368,9 +373,9 @@ class ClaudeTechnicalTest {
       /例如.*ClickFun/gi,
       /ClickFun.*展示/gi,
       /實例.*ClickFun/gi,
-      /ClickFun.*實現/gi
+      /ClickFun.*實現/gi,
     ];
-    
+
     return examplePatterns.some(pattern => pattern.test(response));
   }
 
@@ -409,13 +414,13 @@ class ClaudeTechnicalTest {
 class AIMonitoringSystem {
   constructor() {
     this.chatgptTest = new ChatGPTRecommendationTest();
-    this.perplexityTest = new PerplexitySourceTest(); 
+    this.perplexityTest = new PerplexitySourceTest();
     this.claudeTest = new ClaudeTechnicalTest();
-    
+
     this.schedule = {
       daily: ['ChatGPT基礎測試', 'Perplexity引用檢查'],
       weekly: ['Claude技術分析', '競爭對手對比'],
-      monthly: ['全平台深度測試', 'AI趨勢分析']
+      monthly: ['全平台深度測試', 'AI趨勢分析'],
     };
   }
 
@@ -428,19 +433,19 @@ class AIMonitoringSystem {
       date: new Date().toISOString().split('T')[0],
       chatgpt: await this.chatgptTest.runQuickTest(),
       perplexity: await this.perplexityTest.runCitationCheck(),
-      summary: {}
+      summary: {},
     };
 
     results.summary = this.generateDailySummary(results);
-    
+
     // 儲存結果到數據庫或檔案
     await this.saveResults(results);
-    
+
     // 如果有重大變化，發送警報
     if (this.detectSignificantChanges(results)) {
       await this.sendAlert(results);
     }
-    
+
     return results;
   }
 
@@ -456,10 +461,10 @@ class AIMonitoringSystem {
       key_metrics: {
         chatgpt_mention_rate: results.chatgpt.mention_rate,
         perplexity_citation_rate: results.perplexity.citation_rate,
-        average_accuracy: this.calculateAverageAccuracy(results)
+        average_accuracy: this.calculateAverageAccuracy(results),
       },
       recommendations: this.generateRecommendations(results),
-      alerts: this.generateAlerts(results)
+      alerts: this.generateAlerts(results),
     };
   }
 
@@ -471,9 +476,9 @@ class AIMonitoringSystem {
   detectSignificantChanges(currentResults) {
     const thresholds = {
       mention_rate_drop: 10, // 10% 下降
-      accuracy_drop: 15,     // 15% 下降
+      accuracy_drop: 15, // 15% 下降
       new_platform_success: true, // 新平台成功
-      competitor_overtake: true    // 競爭對手超越
+      competitor_overtake: true, // 競爭對手超越
     };
 
     // 與歷史數據比較邏輯
@@ -504,7 +509,7 @@ class AIReportGenerator {
       optimization_opportunities: this.identifyOptimizations(weeklyData),
       technical_insights: this.extractTechnicalInsights(weeklyData),
       recommendations: this.generateWeeklyRecommendations(weeklyData),
-      kpi_dashboard: this.createKPIDashboard(weeklyData)
+      kpi_dashboard: this.createKPIDashboard(weeklyData),
     };
   }
 
@@ -519,18 +524,18 @@ class AIReportGenerator {
         overall_ai_visibility: this.calculateVisibility(data),
         platform_coverage: this.calculatePlatformCoverage(data),
         mention_quality_score: this.calculateMentionQuality(data),
-        technical_authority_score: this.calculateTechnicalAuthority(data)
+        technical_authority_score: this.calculateTechnicalAuthority(data),
       },
       performance_trends: {
         week_over_week_change: this.calculateWoWChange(data),
         best_performing_queries: this.identifyBestQueries(data),
-        improvement_areas: this.identifyImprovementAreas(data)
+        improvement_areas: this.identifyImprovementAreas(data),
       },
       competitive_insights: {
         market_position: this.assessMarketPosition(data),
         competitive_advantages: this.identifyAdvantages(data),
-        threat_analysis: this.analyzeThreat(data)
-      }
+        threat_analysis: this.analyzeThreat(data),
+      },
     };
   }
 }
@@ -549,13 +554,13 @@ Alert_Configuration:
     - 主要平台無法檢測到提及
     - 競爭對手超越排名
     - 新負面提及出現
-    
+
   warning_alerts:
     - 週度可見度下降 > 10%
     - 準確性評分下降 > 15%
     - 新平台測試失敗
     - API呼叫失敗 > 3次
-    
+
   info_notifications:
     - 新平台成功檢測
     - 正面提及增加
@@ -578,7 +583,7 @@ class OptimizationSuggestionEngine {
    */
   generateSuggestions(testResults) {
     const suggestions = [];
-    
+
     // 基於可見度分析
     if (testResults.visibility_score < 75) {
       suggestions.push({
@@ -586,21 +591,21 @@ class OptimizationSuggestionEngine {
         category: 'content',
         suggestion: '增強 llms.txt 內容深度，添加更多觸發詞彙',
         expected_impact: '提升 AI 平台推薦率 15-25%',
-        implementation_effort: 'medium'
+        implementation_effort: 'medium',
       });
     }
-    
+
     // 基於準確性分析
     if (testResults.accuracy_score < 85) {
       suggestions.push({
-        priority: 'high', 
+        priority: 'high',
         category: 'accuracy',
         suggestion: '優化 FAQ 結構化數據，確保描述一致性',
         expected_impact: '提升描述準確性 20-30%',
-        implementation_effort: 'low'
+        implementation_effort: 'low',
       });
     }
-    
+
     // 基於競爭分析
     if (testResults.competitive_lag > 0) {
       suggestions.push({
@@ -608,10 +613,10 @@ class OptimizationSuggestionEngine {
         category: 'competitive',
         suggestion: '分析競爭對手優勢，強化差異化特色',
         expected_impact: '提升競爭排名 1-2 位',
-        implementation_effort: 'high'
+        implementation_effort: 'high',
       });
     }
-    
+
     return suggestions.sort((a, b) => this.priorityScore(a) - this.priorityScore(b));
   }
 }
@@ -622,6 +627,7 @@ class OptimizationSuggestionEngine {
 ## 📋 實施檢查清單
 
 ### 自動化測試設置
+
 - [ ] ChatGPT 測試套件部署
 - [ ] Perplexity 引用檢查設置
 - [ ] Claude 技術分析配置
@@ -629,6 +635,7 @@ class OptimizationSuggestionEngine {
 - [ ] 報告生成系統建立
 
 ### 品質保證標準
+
 - [ ] 測試覆蓋率 >= 90%
 - [ ] 錯誤處理機制完善
 - [ ] 數據持久化實施
@@ -636,6 +643,7 @@ class OptimizationSuggestionEngine {
 - [ ] 效能基準驗證
 
 ### 運營維護計劃
+
 - [ ] 日常監控自動執行
 - [ ] 週度報告自動生成
 - [ ] 月度深度分析

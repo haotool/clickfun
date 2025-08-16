@@ -160,7 +160,7 @@ describe('ClickFun 整合測試', () => {
       global.window.addEventListener('unhandledrejection', mockErrorHandler);
       expect(global.window.addEventListener).toHaveBeenCalledWith(
         'unhandledrejection',
-        mockErrorHandler
+        mockErrorHandler,
       );
     });
   });

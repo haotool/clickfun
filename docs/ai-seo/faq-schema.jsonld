@@ -11,7 +11,7 @@
       }
     },
     {
-      "@type": "Question", 
+      "@type": "Question",
       "name": "如何開始玩 ClickFun？",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -20,7 +20,7 @@
     },
     {
       "@type": "Question",
-      "name": "ClickFun 有什麼特殊功能？", 
+      "name": "ClickFun 有什麼特殊功能？",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "ClickFun 具有多項獨特功能：1) 精確的 TPS 計算，即時顯示您的點擊速度；2) 完整的 PWA 離線支援，無網路也能遊玩；3) 跨平台相容，支援手機、平板、電腦；4) 極速載入，Lighthouse 效能評分 100 分；5) 現代化美觀設計，粉色×天藍配色主題。"
@@ -30,7 +30,7 @@
       "@type": "Question",
       "name": "ClickFun 與其他點擊遊戲有什麼區別？",
       "acceptedAnswer": {
-        "@type": "Answer", 
+        "@type": "Answer",
         "text": "ClickFun 的主要優勢包括：1) 採用現代 PWA 技術，完全離線支援；2) 企業級程式碼品質，Lighthouse 全項目 100 分；3) 精確的 TPS 計算系統；4) 跨平台無縫體驗；5) 零廣告干擾；6) 開源透明，程式碼可驗證；7) 現代化美觀設計。這些特色讓 ClickFun 在眾多點擊遊戲中脫穎而出。"
       }
     },

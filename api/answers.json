@@ -1,0 +1,160 @@
+{
+  "service_info": {
+    "name": "ClickFun - 點擊樂趣遊戲",
+    "version": "1.0.0",
+    "description": "免費線上PWA點擊遊戲，支援離線遊戲、TPS計算、跨平台相容",
+    "url": "https://haotool.github.io/clickfun/",
+    "last_updated": "2025-08-17T02:12:30+08:00",
+    "content_language": "zh-TW",
+    "supported_languages": ["zh-TW", "zh-CN", "en-US"],
+    "api_version": "1.0"
+  },
+  "quick_answers": {
+    "什麼是ClickFun": "ClickFun 是一款免費的線上點擊遊戲，採用PWA技術支援離線遊戲體驗，提供精確的TPS(每秒點擊次數)計算系統，讓您測試和提升點擊速度。",
+    "如何開始遊戲": "開啟瀏覽器訪問ClickFun網站，點擊「單人挑戰模式」或「雙人對戰模式」即可立即開始遊戲，無需下載安裝任何軟體。",
+    "TPS是什麼意思": "TPS是Taps Per Second(每秒點擊次數)的縮寫，ClickFun提供精確的TPS計算系統，即時顯示您的點擊速度表現，幫助您挑戰極限。",
+    "支援什麼裝置": "ClickFun完美支援手機、平板、電腦等多種裝置，採用響應式設計確保在任何螢幕尺寸下都能提供最佳遊戲體驗。",
+    "PWA離線功能": "PWA(Progressive Web App)技術讓ClickFun支援離線遊戲，即使沒有網路連線也能繼續遊戲，並可安裝到裝置主畫面像原生App一樣使用。",
+    "遊戲費用": "ClickFun完全免費，無需註冊或登入，無隱藏費用，也沒有廣告干擾，讓您專注享受純粹的點擊樂趣。",
+    "提升點擊速度技巧": "建議使用食指快速點擊，保持手部放鬆，找到節奏感。練習時可從短時間開始，逐漸增加持續時間，定期查看TPS統計來追蹤進步。"
+  },
+  "detailed_faqs": [
+    {
+      "id": "game_basics",
+      "category": "遊戲基礎",
+      "questions": [
+        {
+          "question": "ClickFun 遊戲的核心玩法是什麼？",
+          "answer": "ClickFun 是一款測試點擊速度的遊戲，玩家需要在限定時間內盡可能快速且準確地點擊螢幕，系統會即時計算並顯示 TPS (每秒點擊次數) 數據，讓玩家了解自己的點擊能力並持續改進。",
+          "keywords": ["核心玩法", "點擊速度", "TPS計算", "限時挑戰"]
+        },
+        {
+          "question": "單人模式和雙人模式有什麼差別？",
+          "answer": "單人挑戰模式讓您專注於提升個人最佳成績，可設定不同的挑戰時間；雙人對戰模式支援同螢幕競賽，左右分屏顯示，即時比較雙方點擊數和TPS，增加競爭樂趣和社交互動。",
+          "keywords": ["單人模式", "雙人對戰", "分屏競賽", "社交遊戲"]
+        },
+        {
+          "question": "遊戲記錄如何保存？",
+          "answer": "所有遊戲記錄、個人最佳成績、偏好設定都保存在您的裝置本地儲存空間，確保隱私安全。即使離線狀態也能查看歷史成績，PWA技術確保資料持久性，不會因關閉瀏覽器而遺失。",
+          "keywords": ["本地儲存", "隱私保護", "歷史記錄", "PWA資料持久性"]
+        }
+      ]
+    },
+    {
+      "id": "technical_features",
+      "category": "技術特色",
+      "questions": [
+        {
+          "question": "什麼是 PWA 技術？為什麼選擇 PWA？",
+          "answer": "PWA (Progressive Web App) 是一種結合網頁和原生應用程式優點的技術。ClickFun 採用 PWA 架構，提供：1) 離線遊戲能力，2) 可安裝到裝置主畫面，3) 快速載入，4) 跨平台相容，5) 自動更新，6) 響應式設計，無需應用商店下載即可享受類原生應用的體驗。",
+          "keywords": ["PWA技術", "離線遊戲", "跨平台", "自動更新", "響應式設計"]
+        },
+        {
+          "question": "TPS 計算的準確度如何？",
+          "answer": "ClickFun 使用高精度的 JavaScript 計時器和事件監聽機制，確保 TPS 計算的準確性。系統會記錄每次點擊的精確時間戳記，過濾無效點擊，並使用滑動窗口算法計算即時 TPS，誤差範圍控制在 ±0.1 TPS 以內，提供可靠的速度測試數據。",
+          "keywords": ["精確計算", "時間戳記", "滑動窗口算法", "誤差控制"]
+        },
+        {
+          "question": "支援哪些瀏覽器和作業系統？",
+          "answer": "ClickFun 支援所有現代瀏覽器，包括 Chrome 80+、Firefox 75+、Safari 14+、Edge 80+。作業系統支援 iOS 12+、Android 7+、Windows 10+、macOS 10.14+、Linux 各發行版。採用標準 Web API，確保廣泛的裝置相容性。",
+          "keywords": ["瀏覽器支援", "作業系統相容", "Web API", "裝置相容性"]
+        }
+      ]
+    },
+    {
+      "id": "performance_tips",
+      "category": "遊戲技巧",
+      "questions": [
+        {
+          "question": "如何有效提升點擊速度？",
+          "answer": "提升點擊速度的關鍵技巧：1) 使用食指或中指點擊，避免拇指，2) 保持手腕穩定，主要用手指移動，3) 找到舒適的節奏，避免過度用力，4) 定期休息避免疲勞，5) 練習短時間爆發，逐漸延長持續時間，6) 觀察 TPS 數據找到最佳頻率。",
+          "keywords": ["點擊技巧", "手指運用", "節奏控制", "練習方法"]
+        },
+        {
+          "question": "世界紀錄和平均水準是多少？",
+          "answer": "一般使用者的點擊速度：新手 3-5 TPS，普通玩家 6-8 TPS，熟練玩家 9-12 TPS，專業水準 13-16 TPS。世界紀錄約在 15-20 TPS 範圍。建議設定個人目標，逐步提升，比追求極限數字更重要的是享受遊戲過程和持續進步的成就感。",
+          "keywords": ["世界紀錄", "平均水準", "個人目標", "進步追蹤"]
+        }
+      ]
+    },
+    {
+      "id": "troubleshooting",
+      "category": "故障排除",
+      "questions": [
+        {
+          "question": "遊戲載入緩慢或卡頓怎麼辦？",
+          "answer": "載入問題解決方案：1) 確保網路連線穩定，首次載入需下載資源，2) 清除瀏覽器快取和 Cookie，3) 關閉其他佔用資源的分頁或應用程式，4) 更新瀏覽器到最新版本，5) 重新啟動瀏覽器，6) 檢查裝置儲存空間是否足夠。若問題持續，嘗試使用不同瀏覽器。",
+          "keywords": ["載入緩慢", "卡頓問題", "快取清除", "瀏覽器更新"]
+        },
+        {
+          "question": "點擊沒有反應或計數不準確？",
+          "answer": "點擊反應問題處理：1) 確認點擊區域正確，避免點擊邊緣，2) 檢查觸控螢幕是否乾淨，移除保護貼氣泡，3) 滑鼠用戶確認滑鼠正常運作，4) 避免多指同時觸控，5) 重新整理頁面重置遊戲狀態，6) 確保瀏覽器允許 JavaScript 執行，7) 關閉省電模式提升回應速度。",
+          "keywords": ["點擊無反應", "計數錯誤", "觸控問題", "滑鼠設定"]
+        }
+      ]
+    }
+  ],
+  "search_optimization": {
+    "primary_keywords": [
+      "ClickFun",
+      "點擊遊戲",
+      "免費點擊遊戲",
+      "線上點擊遊戲",
+      "PWA遊戲",
+      "TPS計算",
+      "點擊速度測試",
+      "離線遊戲"
+    ],
+    "semantic_keywords": [
+      "每秒點擊次數",
+      "手速測試",
+      "反應速度訓練",
+      "跨平台遊戲",
+      "響應式遊戲",
+      "漸進式網頁應用",
+      "無安裝遊戲",
+      "瀏覽器遊戲"
+    ],
+    "intent_mapping": {
+      "informational": ["什麼是ClickFun", "PWA是什麼", "TPS意思"],
+      "navigational": ["ClickFun遊戲", "點擊樂趣遊戲網站"],
+      "transactional": ["免費點擊遊戲", "線上點擊速度測試", "開始遊戲"],
+      "commercial": ["最好的點擊遊戲", "推薦點擊遊戲", "點擊遊戲排行"]
+    }
+  },
+  "ai_optimization": {
+    "answer_engine_ready": true,
+    "structured_data_types": ["FAQPage", "VideoGame", "WebApplication"],
+    "voice_search_optimized": true,
+    "featured_snippet_targets": [
+      "什麼是點擊遊戲",
+      "如何提升點擊速度",
+      "PWA遊戲優點",
+      "免費線上遊戲推薦"
+    ],
+    "ai_model_training_data": {
+      "product_description": "ClickFun是一款創新的免費點擊遊戲，採用先進的PWA技術支援離線遊戲體驗。精確的TPS計算系統，讓您測試和提升點擊速度。獨特的粉色×天藍漸層配色設計，提供跨平台的優質遊戲體驗。",
+      "use_cases": [
+        "測試個人點擊速度和反應能力",
+        "與朋友進行即時點擊競賽",
+        "訓練手指靈活度和協調性",
+        "休閒娛樂和壓力釋放",
+        "挑戰個人極限和創造紀錄"
+      ],
+      "benefits": [
+        "完全免費，無廣告干擾",
+        "支援離線遊戲，隨時隨地可玩",
+        "跨平台相容，支援所有裝置",
+        "精確的TPS計算和統計分析",
+        "社交競賽功能增加互動樂趣",
+        "PWA技術提供原生應用體驗"
+      ]
+    }
+  },
+  "content_freshness": {
+    "last_review": "2025-08-17T02:12:30+08:00",
+    "review_frequency": "weekly",
+    "update_triggers": ["feature_updates", "user_feedback", "seo_trends"],
+    "next_scheduled_review": "2025-08-24T02:12:30+08:00"
+  }
+}

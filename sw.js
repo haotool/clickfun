@@ -14,7 +14,7 @@ self.addEventListener('install', event => {
         /* 忽略個別加載失敗 */
       }
       await self.skipWaiting();
-    })()
+    })(),
   );
 });
 
@@ -24,7 +24,7 @@ self.addEventListener('activate', event => {
       const keys = await caches.keys();
       await Promise.all(keys.map(k => (k !== SW_VERSION ? caches.delete(k) : null)));
       await self.clients.claim();
-    })()
+    })(),
   );
 });
 
@@ -79,7 +79,7 @@ self.addEventListener('fetch', event => {
             headers: { 'Content-Type': 'text/plain; charset=utf-8' },
           })
         );
-      })()
+      })(),
     );
   } else {
     // 外部資源：直接網路（避免把外掛資源塞進快取）

@@ -24,11 +24,14 @@ module.exports = {
     // 程式碼品質
     'no-console': 'warn',
     'no-debugger': 'error',
-    'no-unused-vars': ['error', {
-      argsIgnorePattern: '^_',
-      varsIgnorePattern: '^_',
-      caughtErrorsIgnorePattern: '^_',
-    }],
+    'no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
     'prefer-const': 'error',
     'no-var': 'error',
     'comma-dangle': ['error', 'always-multiline'],
@@ -78,11 +81,14 @@ module.exports = {
       },
       rules: {
         'no-console': 'off',
-        'no-unused-vars': ['error', {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_|^path$',
-          caughtErrorsIgnorePattern: '^_',
-        }],
+        'no-unused-vars': [
+          'error',
+          {
+            argsIgnorePattern: '^_',
+            varsIgnorePattern: '^_|^path$',
+            caughtErrorsIgnorePattern: '^_',
+          },
+        ],
       },
     },
     {
@@ -97,12 +103,5 @@ module.exports = {
     },
   ],
 
-  ignorePatterns: [
-    'node_modules/',
-    'dist/',
-    'build/',
-    'coverage/',
-    '*.min.js',
-    'team-worktrees/',
-  ],
+  ignorePatterns: ['node_modules/', 'dist/', 'build/', 'coverage/', '*.min.js', 'team-worktrees/'],
 };
