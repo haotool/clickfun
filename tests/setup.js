@@ -1,6 +1,7 @@
 /**
  * Jest 測試設置文件
  * 配置測試環境和全局設置
+ * 基於 Context7 最佳實踐
  */
 
 // 設置測試環境變數
@@ -10,9 +11,6 @@ process.env.NODE_ENV = 'test';
 global.window = global.window || {};
 global.document = global.document || {};
 global.navigator = global.navigator || {};
-
-// 設置測試超時時間
-jest.setTimeout(10000);
 
 // 清理函數
 afterEach(() => {

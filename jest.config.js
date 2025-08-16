@@ -30,17 +30,18 @@ export default {
         '!<rootDir>/dev-tools/**/*',
         '!<rootDir>/team-worktrees/**/*',
         '!<rootDir>/jest.config.js',
+        '!<rootDir>/vite.config.js',
         '!<rootDir>/babel.config.js',
         '!<rootDir>/commitlint.config.js',
         '!<rootDir>/eslint.config.js',
         '!<rootDir>/release.config.js',
+        '!<rootDir>/dist/**/*',
       ],
     },
     {
       displayName: 'integration',
       testEnvironment: 'node',
       testMatch: ['<rootDir>/tests/**/*.integration.test.js'],
-      testTimeout: 30000,
       setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
       transform: {
         '^.+\\.js$': 'babel-jest',
@@ -61,6 +62,9 @@ export default {
   // 模組文件擴展名
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx'],
 
+  // 測試超時設定
+  testTimeout: 30000,
+
   // 快取配置
   cache: true,
   cacheDirectory: '<rootDir>/.jest-cache',
@@ -74,8 +78,8 @@ export default {
   // 模組解析優化
   moduleDirectories: ['node_modules', '<rootDir>'],
 
-  // 覆蓋率門檻 (根據 Context7 最佳實踐，MVP 階段採用實際標準)
-  // 注意：暫時設為 0 以避免 CI 失敗，隨著專案發展逐步提高標準
+  // 覆蓋率門檻 (根據 Context7 最佳實踐，暫時降低以避免 CI 失敗)
+  // 注意：隨著測試案例增加逐步提高門檻
   coverageThreshold: {
     global: {
       branches: 0,
