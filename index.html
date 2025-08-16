@@ -2847,7 +2847,11 @@
           document.getElementById('clearLeaderboardBtn').addEventListener('click', () => {
             if (confirm('確定要清除所有記錄嗎？此操作無法復原。')) {
               storageManager.clearData();
-              this.updateLeaderboard(this.currentLeaderboardMode || 'single', 1, this.currentLeaderboardDuration || 'all');
+              this.updateLeaderboard(
+                this.currentLeaderboardMode || 'single',
+                1,
+                this.currentLeaderboardDuration || 'all'
+              );
             }
           });
 
@@ -3299,13 +3303,21 @@
           document.getElementById('prevPageBtn').addEventListener('click', () => {
             if (this.currentLeaderboardPage > 1) {
               this.currentLeaderboardPage--;
-              this.updateLeaderboard(this.currentLeaderboardMode, this.currentLeaderboardPage, this.currentLeaderboardDuration);
+              this.updateLeaderboard(
+                this.currentLeaderboardMode,
+                this.currentLeaderboardPage,
+                this.currentLeaderboardDuration
+              );
             }
           });
 
           document.getElementById('nextPageBtn').addEventListener('click', () => {
             this.currentLeaderboardPage++;
-            this.updateLeaderboard(this.currentLeaderboardMode, this.currentLeaderboardPage, this.currentLeaderboardDuration);
+            this.updateLeaderboard(
+              this.currentLeaderboardMode,
+              this.currentLeaderboardPage,
+              this.currentLeaderboardDuration
+            );
           });
         }
 
