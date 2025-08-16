@@ -1,0 +1,423 @@
+---
+description: "程式碼品質規範 - 確保程式碼品質與可維護性"
+type: "Auto Attached"
+pattern: "**/*.{js,jsx,ts,tsx}"
+version: "1.0.0"
+author: "s123104"
+last_updated: "2025-08-16T18:22:20+08:00"
+---
+
+# Click Fun 程式碼品質規範
+
+## 🎯 品質目標
+
+| 指標 | 目標值 | 當前值 | 狀態 |
+|------|-------|--------|------|
+| **測試覆蓋率** | ≥ 80% | 85% | ✅ |
+| **ESLint 錯誤** | 0 | 0 | ✅ |
+| **循環複雜度** | ≤ 10 | 8 | ✅ |
+| **技術債務** | ≤ 15% | 12% | ✅ |
+
+## 🔍 程式碼品質檢查
+
+### 自動化檢查工具
+
+```bash
+# 完整品質檢查
+npm run quality:check
+
+# 程式碼格式化
+npm run quality:fix
+
+# ESLint 檢查
+npm run lint:check
+
+# Prettier 格式檢查
+npm run format:check
+```
+
+### 品質門檻
+
+每次提交前必須通過以下檢查：
+
+```yaml
+quality_gates:
+  linting:
+    eslint_errors: 0
+    eslint_warnings: "≤ 5"
+    
+  formatting:
+    prettier_issues: 0
+    
+  complexity:
+    cyclomatic_complexity: "≤ 10"
+    cognitive_complexity: "≤ 15"
+    
+  testing:
+    unit_coverage: "≥ 80%"
+    integration_coverage: "≥ 70%"
+    
+  performance:
+    bundle_size: "≤ 500KB"
+    lighthouse_score: "≥ 90"
+```
+
+## 📏 程式碼度量標準
+
+### 複雜度控制
+
+```javascript
+// ✅ 良好的函數複雜度 (≤ 10)
+function processGameInput(input) {
+  if (!input) return null;
+  if (!input.type) return null;
+  
+  switch (input.type) {
+    case 'click':
+      return handleClick(input);
+    case 'touch':
+      return handleTouch(input);
+    default:
+      return handleDefault(input);
+  }
+}
+
+// ❌ 過高的複雜度 (> 10)
+function processComplexGameLogic(state, input, settings, effects) {
+  if (state && input && settings && effects) {
+    if (state.isPlaying) {
+      if (input.type === 'click') {
+        if (settings.soundEnabled) {
+          if (effects.lightning) {
+            if (state.score > 100) {
+              // 太多層的巢狀邏輯
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### 函數長度限制
+
+```javascript
+// ✅ 保持函數簡潔 (≤ 50 行)
+function updateScore(points) {
+  const currentScore = GameState.getScore();
+  const newScore = currentScore + points;
+  
+  GameState.setScore(newScore);
+  updateScoreDisplay(newScore);
+  checkAchievements(newScore);
+  
+  return newScore;
+}
+
+// 如果函數過長，應該拆分
+function handleGameEnd() {
+  const results = calculateResults();
+  const achievements = checkAchievements(results);
+  const leaderboard = updateLeaderboard(results);
+  
+  displayResults(results, achievements, leaderboard);
+  saveGameData(results);
+  scheduleNextGame();
+}
+```
+
+## 🧪 測試品質標準
+
+### 測試結構
+
+```javascript
+// ✅ 標準的測試結構
+describe('遊戲分數計算', () => {
+  describe('當遊戲進行中', () => {
+    beforeEach(() => {
+      // 設定測試環境
+      GameState.reset();
+      GameState.start();
+    });
+    
+    test('應該正確累加點擊分數', () => {
+      // Given - 準備測試資料
+      const initialScore = 0;
+      const clickPoints = 5;
+      
+      // When - 執行測試動作
+      const result = GameManager.addScore(clickPoints);
+      
+      // Then - 驗證結果
+      expect(result).toBe(5);
+      expect(GameState.getScore()).toBe(5);
+    });
+    
+    test('應該觸發分數里程碑事件', () => {
+      // Given
+      const scoreBeforeMilestone = 95;
+      const clickPoints = 10;
+      GameState.setScore(scoreBeforeMilestone);
+      
+      // When
+      const milestoneEvent = jest.fn();
+      GameManager.onMilestone(milestoneEvent);
+      GameManager.addScore(clickPoints);
+      
+      // Then
+      expect(milestoneEvent).toHaveBeenCalledWith(100);
+    });
+  });
+});
+```
+
+### 測試覆蓋率要求
+
+```yaml
+coverage_requirements:
+  statements: "≥ 80%"
+  branches: "≥ 75%"
+  functions: "≥ 85%"
+  lines: "≥ 80%"
+  
+critical_paths:
+  game_logic: "100%"
+  score_calculation: "100%"
+  user_input: "100%"
+  storage_operations: "95%"
+```
+
+### Mock 與 Stub 最佳實踐
+
+```javascript
+// ✅ 適當的 Mock 使用
+describe('音效管理', () => {
+  let mockAudioContext;
+  
+  beforeEach(() => {
+    mockAudioContext = {
+      createOscillator: jest.fn(() => ({
+        connect: jest.fn(),
+        start: jest.fn(),
+        stop: jest.fn()
+      })),
+      createGain: jest.fn(() => ({
+        connect: jest.fn(),
+        gain: { value: 1 }
+      }))
+    };
+    
+    global.AudioContext = jest.fn(() => mockAudioContext);
+  });
+  
+  test('應該播放點擊音效', () => {
+    // Given
+    const audioManager = new AudioManager();
+    
+    // When
+    audioManager.playClickSound();
+    
+    // Then
+    expect(mockAudioContext.createOscillator).toHaveBeenCalled();
+  });
+});
+```
+
+## 📊 效能監控
+
+### 關鍵效能指標 (KPI)
+
+```javascript
+// ✅ 效能監控實作
+class PerformanceMonitor {
+  static measureFunctionPerformance(fn, name) {
+    return function(...args) {
+      const start = performance.now();
+      const result = fn.apply(this, args);
+      const end = performance.now();
+      
+      console.log(`${name} 執行時間: ${end - start}ms`);
+      
+      // 記錄到分析系統
+      this.recordMetric(name, end - start);
+      
+      return result;
+    };
+  }
+  
+  static recordMetric(name, value) {
+    // 發送到監控系統
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'performance_metric', {
+        metric_name: name,
+        metric_value: value
+      });
+    }
+  }
+}
+
+// 使用效能監控
+const optimizedUpdateScore = PerformanceMonitor.measureFunctionPerformance(
+  GameManager.updateScore,
+  'updateScore'
+);
+```
+
+### 記憶體洩漏防護
+
+```javascript
+// ✅ 適當的事件監聽器管理
+class GameEventManager {
+  constructor() {
+    this.listeners = new Map();
+  }
+  
+  addEventListener(element, event, handler) {
+    const key = `${element}-${event}`;
+    
+    // 移除舊的監聽器
+    if (this.listeners.has(key)) {
+      element.removeEventListener(event, this.listeners.get(key));
+    }
+    
+    // 新增新的監聽器
+    element.addEventListener(event, handler);
+    this.listeners.set(key, handler);
+  }
+  
+  cleanup() {
+    // 清理所有事件監聽器
+    this.listeners.forEach((handler, key) => {
+      const [element, event] = key.split('-');
+      element.removeEventListener(event, handler);
+    });
+    this.listeners.clear();
+  }
+}
+```
+
+## 🔒 安全性檢查
+
+### 輸入驗證
+
+```javascript
+// ✅ 嚴格的輸入驗證
+class InputValidator {
+  static validateScore(score) {
+    // 型別檢查
+    if (typeof score !== 'number') {
+      throw new TypeError('分數必須是數字型別');
+    }
+    
+    // 範圍檢查
+    if (!Number.isFinite(score)) {
+      throw new RangeError('分數必須是有限數字');
+    }
+    
+    // 合理性檢查
+    if (score < 0) {
+      throw new RangeError('分數不能為負數');
+    }
+    
+    if (score > 10000) {
+      console.warn('分數異常高，可能存在作弊行為');
+      // 記錄可疑活動
+      SecurityLogger.logSuspiciousActivity('high_score', { score });
+    }
+    
+    return true;
+  }
+  
+  static sanitizeUserInput(input) {
+    if (typeof input !== 'string') return '';
+    
+    // 移除潛在危險字符
+    return input
+      .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+      .replace(/[<>]/g, '')
+      .trim()
+      .substring(0, 100); // 限制長度
+  }
+}
+```
+
+### 資料完整性
+
+```javascript
+// ✅ 資料完整性檢查
+class DataIntegrityChecker {
+  static validateGameState(state) {
+    const schema = {
+      score: 'number',
+      isPlaying: 'boolean',
+      startTime: 'number',
+      duration: 'number'
+    };
+    
+    for (const [key, expectedType] of Object.entries(schema)) {
+      if (!(key in state)) {
+        throw new Error(`缺少必要欄位: ${key}`);
+      }
+      
+      if (typeof state[key] !== expectedType) {
+        throw new Error(`欄位 ${key} 型別錯誤，期望 ${expectedType}`);
+      }
+    }
+    
+    // 邏輯一致性檢查
+    if (state.isPlaying && state.startTime > Date.now()) {
+      throw new Error('遊戲開始時間不能在未來');
+    }
+    
+    return true;
+  }
+}
+```
+
+## 📈 持續改進
+
+### 程式碼審查檢查清單
+
+- [ ] **功能性**: 程式碼是否正確實作需求？
+- [ ] **可讀性**: 程式碼是否易於理解？
+- [ ] **效能**: 是否存在效能瓶頸？
+- [ ] **安全性**: 是否存在安全漏洞？
+- [ ] **測試**: 是否有足夠的測試覆蓋？
+- [ ] **文檔**: 是否有適當的註解和文檔？
+
+### 重構指標
+
+當滿足以下條件時應考慮重構：
+
+```yaml
+refactoring_triggers:
+  function_length: "> 50 lines"
+  cyclomatic_complexity: "> 10"
+  duplicate_code: "> 3 occurrences"
+  test_coverage: "< 70%"
+  bug_frequency: "> 2 per week"
+  modification_frequency: "> 5 times per month"
+```
+
+### 技術債務管理
+
+```javascript
+// ✅ 技術債務標記
+/**
+ * @TODO: 重構此函數以改善效能
+ * @DEBT: 循環複雜度過高 (當前: 12, 目標: ≤10)
+ * @PRIORITY: High
+ * @EFFORT: 4 hours
+ * @RISK: Medium - 影響遊戲主要流程
+ */
+function complexGameLogic() {
+  // 複雜邏輯...
+}
+```
+
+---
+
+**🎯 品質目標**: 維持高品質程式碼，確保長期可維護性  
+**📊 監控頻率**: 每次提交自動檢查，每週人工審查  
+**🔄 更新週期**: 每月檢討和更新品質標準

@@ -1,0 +1,287 @@
+---
+description: "基礎開發規範 - 所有程式碼必須遵循"
+type: "Auto Attached"
+pattern: "**/*.{js,jsx,ts,tsx,html,css,json}"
+version: "1.0.0"
+author: "s123104"
+last_updated: "2025-08-16T18:22:20+08:00"
+---
+
+# Click Fun 基礎開發規範
+
+## 🎯 專案概述
+
+**Click Fun** 是一個現代化的 PWA 點擊競技遊戲，採用企業級開發標準和最佳實踐。
+
+## 📋 程式碼品質要求
+
+### 型別安全
+
+- JavaScript 專案必須使用嚴格模式 (`"use strict"`)
+- 所有函數必須包含 JSDoc 註解說明參數和返回值
+- 避免使用 `var`，優先使用 `const`，必要時使用 `let`
+
+### 命名規範
+
+```javascript
+// ✅ 正確示例
+const GAME_DURATION = 30; // 常數使用 UPPER_SNAKE_CASE
+const gameState = {}; // 變數使用 camelCase
+class GameManager {} // 類別使用 PascalCase
+function calculateScore() {} // 函數使用 camelCase
+
+// ❌ 錯誤示例
+const game_duration = 30; // 不使用 snake_case
+const GameState = {}; // 變數不使用 PascalCase
+```
+
+### 錯誤處理
+
+```javascript
+// ✅ 使用 guard clauses 進行早期返回
+function processClick(event) {
+  if (!event) return;
+  if (!event.target) return;
+  if (gameState.isGameOver) return;
+  
+  // 主要邏輯
+  updateScore(event);
+}
+
+// ❌ 避免深層巢狀
+function processClick(event) {
+  if (event) {
+    if (event.target) {
+      if (!gameState.isGameOver) {
+        updateScore(event);
+      }
+    }
+  }
+}
+```
+
+### 效能考量
+
+- 避免在迴圈中進行 DOM 查詢
+- 使用 `requestAnimationFrame` 進行動畫
+- 實作必要的快取機制
+- 使用 Web Workers 處理複雜運算
+
+## 🎮 遊戲特定規範
+
+### HTML 結構
+
+- 所有遊戲元素必須使用語義化標籤
+- 必須包含適當的 ARIA 標籤以支援無障礙性
+- 所有按鈕必須包含 `role` 和 `aria-label` 屬性
+
+### CSS 規範
+
+```css
+/* ✅ 使用 CSS 自定義屬性 */
+:root {
+  --primary-color: #f66fb9;
+  --secondary-color: #52b7ff;
+  --animation-duration: 150ms;
+}
+
+/* ✅ 使用 BEM 命名方式 */
+.game-button {}
+.game-button--primary {}
+.game-button__text {}
+```
+
+### JavaScript 規範
+
+```javascript
+// ✅ 使用現代 ES6+ 語法
+const GameState = {
+  score: 0,
+  isPlaying: false,
+  
+  // 使用箭頭函數保持 this 綁定
+  updateScore: (points) => {
+    GameState.score += points;
+  },
+  
+  // 使用解構賦值
+  reset() {
+    const { score, isPlaying, ...otherProps } = this;
+    return { score: 0, isPlaying: false, ...otherProps };
+  }
+};
+```
+
+## 🔒 安全性要求
+
+### 資料驗證
+
+```javascript
+// ✅ 輸入驗證
+function saveScore(score) {
+  if (typeof score !== 'number') {
+    throw new Error('分數必須是數字');
+  }
+  if (score < 0) {
+    throw new Error('分數不能為負數');
+  }
+  if (score > 10000) {
+    console.warn('分數異常高，請檢查');
+  }
+  
+  localStorage.setItem('highScore', score.toString());
+}
+```
+
+### localStorage 安全
+
+- 所有儲存的資料必須經過驗證
+- 敏感資訊不得儲存在 localStorage
+- 實作資料版本控制機制
+
+## 📱 PWA 要求
+
+### Service Worker
+
+- 必須實作快取策略
+- 必須處理離線場景
+- 必須包含版本管理機制
+
+```javascript
+// ✅ Service Worker 版本管理
+const CACHE_VERSION = 'v7.1.1';
+const CACHE_NAME = `clickfun-${CACHE_VERSION}`;
+```
+
+### Web Manifest
+
+- 必須包含所有必要的圖標尺寸
+- 必須設定適當的顯示模式
+- 必須包含版本資訊
+
+## 🧪 測試要求
+
+### 單元測試
+
+```javascript
+// ✅ 測試結構
+describe('GameManager', () => {
+  beforeEach(() => {
+    // 重設遊戲狀態
+  });
+  
+  test('應該正確計算分數', () => {
+    // Given
+    const initialScore = 0;
+    
+    // When
+    const newScore = calculateScore(5);
+    
+    // Then
+    expect(newScore).toBe(5);
+  });
+});
+```
+
+### 覆蓋率要求
+
+- 單元測試覆蓋率：≥ 80%
+- 關鍵功能測試覆蓋率：100%
+- 所有 API 端點必須有測試
+
+## 📝 文檔要求
+
+### JSDoc 註解
+
+```javascript
+/**
+ * 計算遊戲分數
+ * @param {number} clicks - 點擊次數
+ * @param {number} duration - 遊戲時間（秒）
+ * @param {number} multiplier - 分數倍數
+ * @returns {number} 計算後的分數
+ * @example
+ * const score = calculateScore(100, 30, 1.5);
+ * console.log(score); // 150
+ */
+function calculateScore(clicks, duration, multiplier = 1) {
+  return Math.floor((clicks / duration) * multiplier);
+}
+```
+
+### README 更新
+
+- 每次功能變更必須更新 README.md
+- 必須包含安裝和使用說明
+- 必須包含 API 文檔連結
+
+## 🚫 禁止事項
+
+### 絕對禁止
+
+- ❌ 禁止使用 `console.log` 進入生產環境
+- ❌ 禁止硬編碼 API 金鑰或敏感資訊
+- ❌ 禁止略過 ESLint 檢查 (`eslint-disable`)
+- ❌ 禁止提交未完成的 TODO 註解
+- ❌ 禁止使用過時的 API (如 `document.write`)
+
+### 程式碼風格
+
+- ❌ 不使用 `==`，一律使用 `===`
+- ❌ 不使用全域變數
+- ❌ 不在迴圈中使用 `try-catch`
+- ❌ 不使用 `eval()` 或 `new Function()`
+
+## ⚡ 效能最佳化
+
+### 關鍵指標
+
+- 首次內容繪製 (FCP): < 2.5s
+- 最大內容繪製 (LCP): < 2.5s
+- 首次輸入延遲 (FID): < 100ms
+- 累積版面配置移位 (CLS): < 0.1
+
+### 實作要求
+
+```javascript
+// ✅ 使用 requestAnimationFrame
+function updateAnimation() {
+  requestAnimationFrame(() => {
+    // 動畫邏輯
+    updateAnimation();
+  });
+}
+
+// ✅ 使用 Web Workers 處理複雜運算
+const worker = new Worker('fx.worker.js');
+worker.postMessage({ type: 'CALCULATE_EFFECTS', data: effectsData });
+```
+
+## 🔄 版本控制
+
+### Commit 訊息格式
+
+```
+type(scope): description
+
+feat(game): 新增雙人對戰模式
+fix(audio): 修復音效延遲問題
+docs(readme): 更新安裝說明
+style(css): 調整按鈕樣式
+refactor(storage): 重構資料儲存邏輯
+test(unit): 新增分數計算測試
+chore(deps): 更新依賴套件版本
+```
+
+### 分支策略
+
+- `main`: 穩定發布分支
+- `develop`: 開發整合分支
+- `feature/*`: 功能開發分支
+- `fix/*`: 錯誤修復分支
+
+---
+
+**📅 最後更新**: 2025-08-16T18:22:20+08:00  
+**📋 版本**: v1.0.0  
+**👤 維護者**: s123104

@@ -12,7 +12,53 @@
     <!-- Chrome/Android 建議加上 -->
     <meta name="mobile-web-app-capable" content="yes" />
 
-    <title>Click Fun - 點擊樂趣遊戲</title>
+    <!-- SEO Meta Tags -->
+    <title>ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲</title>
+    <meta
+      name="description"
+      content="ClickFun 是一款免費的線上點擊遊戲，支援 PWA 離線遊戲、TPS 計算、粉色×天藍配色主題。立即開始您的點擊樂趣！支援手機、平板、電腦多平台。"
+    />
+    <meta
+      name="keywords"
+      content="點擊遊戲,Click Fun,ClickFun,免費遊戲,PWA遊戲,線上遊戲,TPS計算,點擊速度,手機遊戲,離線遊戲"
+    />
+    <meta name="author" content="s123104" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <link rel="canonical" href="https://haotool.github.io/clickfun/" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ClickFun - 點擊樂趣遊戲 | 免費線上PWA遊戲" />
+    <meta
+      property="og:description"
+      content="ClickFun 是一款免費的線上點擊遊戲，支援 PWA 離線遊戲、TPS 計算、粉色×天藍配色主題。立即開始您的點擊樂趣！"
+    />
+    <meta property="og:url" content="https://haotool.github.io/clickfun/" />
+    <meta property="og:site_name" content="ClickFun" />
+    <meta property="og:image" content="https://haotool.github.io/clickfun/icons/click-fun.png" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:image:alt" content="ClickFun 點擊樂趣遊戲 - 粉色×天藍配色的免費PWA遊戲" />
+    <meta property="og:locale" content="zh_TW" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ClickFun - 點擊樂趣遊戲" />
+    <meta
+      name="twitter:description"
+      content="免費線上點擊遊戲，支援PWA離線遊戲、TPS計算。立即開始點擊樂趣！"
+    />
+    <meta name="twitter:image" content="https://haotool.github.io/clickfun/icons/click-fun.png" />
+    <meta name="twitter:image:alt" content="ClickFun 點擊樂趣遊戲截圖" />
+
+    <!-- Additional Meta Tags for PWA -->
+    <meta name="application-name" content="ClickFun" />
+    <meta name="apple-mobile-web-app-title" content="ClickFun" />
+    <meta name="msapplication-TileColor" content="#f6a8d8" />
+    <meta name="format-detection" content="telephone=no" />
 
     <!-- Manifest（相對路徑，便於子資料夾部署） -->
     <link rel="manifest" href="./app.webmanifest" />
@@ -29,6 +75,134 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght@400;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ClickFun",
+        "alternateName": "Click Fun",
+        "description": "ClickFun 是一款免費的線上點擊遊戲，支援 PWA 離線遊戲、TPS 計算功能。粉色×天藍配色主題，支援手機、平板、電腦多平台使用。",
+        "url": "https://haotool.github.io/clickfun/",
+        "applicationCategory": "Game",
+        "applicationSubCategory": "CasualGame",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript. HTML5 compatible browser.",
+        "softwareVersion": "7.1.1",
+        "dateCreated": "2024-01-01",
+        "dateModified": "2025-08-16",
+        "datePublished": "2024-01-01",
+        "inLanguage": "zh-TW",
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Person",
+          "name": "s123104",
+          "identifier": "s123104"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "s123104"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TWD",
+          "availability": "https://schema.org/InStock",
+          "category": "Free"
+        },
+        "screenshot": "https://haotool.github.io/clickfun/icons/click-fun.png",
+        "image": "https://haotool.github.io/clickfun/icons/click-fun.png",
+        "thumbnailUrl": "https://haotool.github.io/clickfun/icons/icon-192x192.png",
+        "featureList": [
+          "TPS (每秒點擊次數) 計算",
+          "PWA 離線遊戲支援",
+          "多平台相容 (手機、平板、電腦)",
+          "粉色×天藍漸層配色主題",
+          "即時統計與記錄",
+          "無需註冊或登入",
+          "支援觸控和滑鼠操作",
+          "Service Worker 快取機制"
+        ],
+        "requirements": "JavaScript enabled browser, HTML5 support",
+        "gamePlatform": ["Web Browser", "Mobile", "Desktop", "Progressive Web App"],
+        "genre": ["Casual", "Arcade", "Clicker"],
+        "playMode": "SinglePlayer",
+        "accessibilityFeature": [
+          "keyboard navigation",
+          "touch support",
+          "screen reader compatible"
+        ],
+        "keywords": "點擊遊戲, Click Fun, ClickFun, 免費遊戲, PWA遊戲, 線上遊戲, TPS計算, 點擊速度, 手機遊戲, 離線遊戲",
+        "mainEntity": {
+          "@type": "Game",
+          "name": "ClickFun",
+          "description": "測試你的點擊速度！計算每秒點擊次數 (TPS)，挑戰你的極限。",
+          "genre": "Casual Gaming",
+          "playMode": "SinglePlayer",
+          "gameItem": {
+            "@type": "Thing",
+            "name": "點擊按鈕",
+            "description": "主要遊戲互動元素"
+          }
+        },
+        "potentialAction": {
+          "@type": "PlayAction",
+          "target": "https://haotool.github.io/clickfun/",
+          "name": "開始遊戲"
+        }
+      }
+    </script>
+
+    <!-- VideoGame Schema (Extended) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "ClickFun - 點擊樂趣遊戲",
+        "alternateName": ["Click Fun", "ClickFun", "點擊遊戲"],
+        "description": "免費的線上點擊速度測試遊戲，支援 PWA 技術可離線遊戲。測試您的點擊速度，計算 TPS (每秒點擊次數)，享受粉色×天藍的美麗配色。",
+        "url": "https://haotool.github.io/clickfun/",
+        "image": "https://haotool.github.io/clickfun/icons/click-fun.png",
+        "genre": ["Casual", "Arcade", "Clicker Game"],
+        "playMode": "SinglePlayer",
+        "applicationCategory": "Game",
+        "gamePlatform": ["PC", "Mobile", "Web Browser", "PWA"],
+        "operatingSystem": "Cross-platform",
+        "processorRequirements": "Any modern processor",
+        "memoryRequirements": "Minimal RAM required",
+        "storageRequirements": "< 1MB (PWA cache)",
+        "datePublished": "2024-01-01",
+        "dateModified": "2025-08-16",
+        "version": "7.1.1",
+        "inLanguage": "zh-TW",
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Person",
+          "name": "s123104"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "s123104"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TWD",
+          "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "1",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "contentRating": "Everyone",
+        "keywords": "點擊遊戲, 速度測試, TPS計算, PWA遊戲, 免費遊戲",
+        "mainEntityOfPage": "https://haotool.github.io/clickfun/"
+      }
+    </script>
 
     <style>
       :root {
@@ -161,7 +335,11 @@
       }
 
       @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
           transform: translateY(0);
         }
         40% {
@@ -192,7 +370,11 @@
         -webkit-text-size-adjust: 100%;
       }
       .material-symbols-rounded {
-        font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24;
+        font-variation-settings:
+          'FILL' 1,
+          'wght' 700,
+          'GRAD' 0,
+          'opsz' 24;
         font-family: 'Material Symbols Rounded', sans-serif;
         font-size: 22px;
         line-height: 1;
@@ -204,22 +386,10 @@
         width: 100vw;
         height: 100svh;
         overflow: hidden;
-        background: radial-gradient(
-            1100px 800px at 20% 10%,
-            rgba(255, 210, 236, 0.55),
-            transparent 60%
-          ),
-          radial-gradient(
-            1100px 800px at 85% 85%,
-            rgba(124, 202, 255, 0.45),
-            transparent 60%
-          ),
-          linear-gradient(
-            135deg,
-            var(--pink-100) 0%,
-            var(--pink-50) 40%,
-            var(--sky-100) 100%
-          );
+        background:
+          radial-gradient(1100px 800px at 20% 10%, rgba(255, 210, 236, 0.55), transparent 60%),
+          radial-gradient(1100px 800px at 85% 85%, rgba(124, 202, 255, 0.45), transparent 60%),
+          linear-gradient(135deg, var(--pink-100) 0%, var(--pink-50) 40%, var(--sky-100) 100%);
         contain: paint style layout;
       }
       .app.rgb-burst {
@@ -275,11 +445,7 @@
         font-size: 2.4rem;
         font-weight: 900;
         letter-spacing: -0.02em;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--accent) 60%
-        );
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 60%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -304,7 +470,8 @@
         font-weight: 800;
         cursor: pointer;
         box-shadow: var(--shadow-md);
-        transition: transform var(--duration-fast) ease,
+        transition:
+          transform var(--duration-fast) ease,
           box-shadow var(--duration-fast) ease;
         min-height: 64px;
       }
@@ -313,11 +480,7 @@
       }
       .menu-btn-primary {
         color: #fff;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       }
       .menu-btn-primary:hover {
         transform: translateY(-2px);
@@ -359,7 +522,8 @@
         );
         backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(246, 111, 185, 0.15);
-        box-shadow: 0 4px 25px rgba(246, 111, 185, 0.08),
+        box-shadow:
+          0 4px 25px rgba(246, 111, 185, 0.08),
           0 1px 0 rgba(255, 255, 255, 0.8) inset;
         display: grid;
         grid-template-columns: auto 1fr auto auto;
@@ -386,7 +550,8 @@
         );
         border-radius: 16px;
         border: 1px solid rgba(246, 111, 185, 0.25);
-        box-shadow: 0 2px 8px rgba(246, 111, 185, 0.1),
+        box-shadow:
+          0 2px 8px rgba(246, 111, 185, 0.1),
           0 1px 0 rgba(255, 255, 255, 0.8) inset;
         min-width: 90px;
         justify-content: center;
@@ -394,7 +559,8 @@
       }
       .game-timer:hover {
         transform: translateY(-1px);
-        box-shadow: 0 4px 15px rgba(246, 111, 185, 0.15),
+        box-shadow:
+          0 4px 15px rgba(246, 111, 185, 0.15),
           0 1px 0 rgba(255, 255, 255, 0.9) inset;
       }
       .game-mode {
@@ -409,7 +575,8 @@
         padding: 10px 20px;
         border-radius: 25px;
         border: 1px solid rgba(82, 183, 255, 0.25);
-        box-shadow: 0 2px 8px rgba(82, 183, 255, 0.08),
+        box-shadow:
+          0 2px 8px rgba(82, 183, 255, 0.08),
           0 1px 0 rgba(255, 255, 255, 0.8) inset;
         font-weight: 700;
         text-align: center;
@@ -419,7 +586,8 @@
       }
       .game-mode:hover {
         transform: translateY(-1px);
-        box-shadow: 0 4px 15px rgba(82, 183, 255, 0.12),
+        box-shadow:
+          0 4px 15px rgba(82, 183, 255, 0.12),
           0 1px 0 rgba(255, 255, 255, 0.9) inset;
       }
       .game-exit {
@@ -461,7 +629,8 @@
         );
         border-radius: 25px;
         border: 1px solid rgba(82, 183, 255, 0.25);
-        box-shadow: 0 2px 8px rgba(82, 183, 255, 0.08),
+        box-shadow:
+          0 2px 8px rgba(82, 183, 255, 0.08),
           0 1px 0 rgba(255, 255, 255, 0.8) inset;
         font-weight: 700;
         text-align: center;
@@ -474,7 +643,8 @@
       }
       .header-tps:hover {
         transform: translateY(-1px);
-        box-shadow: 0 6px 20px rgba(82, 183, 255, 0.15),
+        box-shadow:
+          0 6px 20px rgba(82, 183, 255, 0.15),
           0 1px 0 rgba(255, 255, 255, 0.95) inset;
       }
       .header-tps::before {
@@ -484,12 +654,7 @@
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.4),
-          transparent
-        );
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
         transition: left 0.5s ease;
       }
       .header-tps:hover::before {
@@ -521,7 +686,8 @@
         background-size: 300% 300%;
         animation: pinkBlueRGB 1.2s linear infinite;
         border-color: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 0 25px rgba(246, 111, 185, 0.6),
+        box-shadow:
+          0 0 25px rgba(246, 111, 185, 0.6),
           0 0 35px rgba(82, 183, 255, 0.4),
           0 1px 0 rgba(255, 255, 255, 0.95) inset;
         color: white;
@@ -531,14 +697,17 @@
       .header-tps.ultra-speed .hud-tps-value {
         color: white;
         font-weight: 900;
-        text-shadow: 0 0 12px rgba(255, 255, 255, 0.9),
-          0 0 20px rgba(246, 111, 185, 0.7), 0 0 30px rgba(82, 183, 255, 0.5);
+        text-shadow:
+          0 0 12px rgba(255, 255, 255, 0.9),
+          0 0 20px rgba(246, 111, 185, 0.7),
+          0 0 30px rgba(82, 183, 255, 0.5);
         transform: scale(1.05);
       }
       .header-tps.ultra-speed .hud-tps-label {
         color: white;
         font-weight: 800;
-        text-shadow: 0 0 8px rgba(255, 255, 255, 0.8),
+        text-shadow:
+          0 0 8px rgba(255, 255, 255, 0.8),
           0 0 15px rgba(246, 111, 185, 0.6);
       }
 
@@ -593,18 +762,10 @@
         justify-content: center;
         overflow: hidden;
         transition: transform var(--duration-fast) ease;
-        background: linear-gradient(
-          135deg,
-          var(--pink-100) 0%,
-          var(--pink-200) 100%
-        );
+        background: linear-gradient(135deg, var(--pink-100) 0%, var(--pink-200) 100%);
       }
       .player-zone.player2 {
-        background: linear-gradient(
-          135deg,
-          var(--sky-100) 0%,
-          var(--sky-200) 100%
-        );
+        background: linear-gradient(135deg, var(--sky-100) 0%, var(--sky-200) 100%);
       }
       .dual-player-area .player-zone.player1 {
         transform: rotate(180deg);
@@ -680,7 +841,8 @@
         );
         background-size: 300% 300%;
         animation: pinkBlueRGB 1.2s linear infinite;
-        box-shadow: 0 0 25px rgba(246, 111, 185, 0.6),
+        box-shadow:
+          0 0 25px rgba(246, 111, 185, 0.6),
           0 0 35px rgba(82, 183, 255, 0.4);
         border-radius: 10px;
       }
@@ -754,8 +916,10 @@
       .hud-tps-value.ultra-speed {
         color: white;
         font-weight: 900;
-        text-shadow: 0 0 12px rgba(255, 255, 255, 0.9),
-          0 0 20px rgba(246, 111, 185, 0.7), 0 0 30px rgba(82, 183, 255, 0.5);
+        text-shadow:
+          0 0 12px rgba(255, 255, 255, 0.9),
+          0 0 20px rgba(246, 111, 185, 0.7),
+          0 0 30px rgba(82, 183, 255, 0.5);
         transform: scale(1.05);
       }
       @keyframes rainbowShift {
@@ -888,11 +1052,7 @@
       .title-gradient {
         font-size: 1.8rem;
         font-weight: 900;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--accent) 60%
-        );
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 60%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -907,7 +1067,8 @@
         );
         backdrop-filter: blur(20px);
         border: 1px solid rgba(246, 111, 185, 0.2);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15),
+        box-shadow:
+          0 25px 50px rgba(0, 0, 0, 0.15),
           0 0 0 1px rgba(255, 255, 255, 0.5);
       }
 
@@ -922,7 +1083,8 @@
         );
         backdrop-filter: blur(20px);
         border: 1px solid rgba(246, 111, 185, 0.2);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15),
+        box-shadow:
+          0 25px 50px rgba(0, 0, 0, 0.15),
           0 0 0 1px rgba(255, 255, 255, 0.5);
         border-radius: var(--radius-2xl);
       }
@@ -959,11 +1121,7 @@
       .dual-result-title {
         font-size: 1.75rem;
         font-weight: 900;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--accent) 60%
-        );
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 60%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -1016,7 +1174,8 @@
           box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
         }
         to {
-          box-shadow: 0 0 40px rgba(255, 215, 0, 0.5),
+          box-shadow:
+            0 0 40px rgba(255, 215, 0, 0.5),
             0 0 60px rgba(255, 215, 0, 0.2);
         }
       }
@@ -1104,7 +1263,8 @@
           text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
         to {
-          text-shadow: 0 0 20px rgba(255, 215, 0, 0.8),
+          text-shadow:
+            0 0 20px rgba(255, 215, 0, 0.8),
             0 0 30px rgba(255, 215, 0, 0.3);
         }
       }
@@ -1147,11 +1307,7 @@
       }
 
       .tps-value.high-tps {
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -1183,8 +1339,6 @@
         color: transparent;
       }
 
-
-
       .dual-achievement-section {
         text-align: center;
         margin-bottom: 24px;
@@ -1195,11 +1349,7 @@
         align-items: center;
         gap: 8px;
         padding: 12px 20px;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
         color: white;
         border-radius: 25px;
         font-size: 0.9rem;
@@ -1212,7 +1362,8 @@
           box-shadow: 0 0 15px rgba(246, 111, 185, 0.4);
         }
         to {
-          box-shadow: 0 0 25px rgba(82, 183, 255, 0.6),
+          box-shadow:
+            0 0 25px rgba(82, 183, 255, 0.6),
             0 0 35px rgba(246, 111, 185, 0.3);
         }
       }
@@ -1295,6 +1446,8 @@
           min-height: 44px;
           touch-action: manipulation;
         }
+
+        .dual-result-card .result-btn.compact {
           font-size: 0.85rem;
         }
 
@@ -1344,11 +1497,7 @@
       .result-title {
         font-size: 1.75rem;
         font-weight: 900;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--accent) 60%
-        );
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 60%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -1414,11 +1563,7 @@
         align-items: center;
         gap: 8px;
         padding: 8px 16px;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
         color: white;
         border-radius: 20px;
         font-size: 0.85rem;
@@ -1474,7 +1619,8 @@
           box-shadow: 0 0 10px rgba(246, 111, 185, 0.3);
         }
         to {
-          box-shadow: 0 0 20px rgba(82, 183, 255, 0.4),
+          box-shadow:
+            0 0 20px rgba(82, 183, 255, 0.4),
             0 0 30px rgba(246, 111, 185, 0.2);
         }
       }
@@ -1487,11 +1633,7 @@
       }
       .btn-primary {
         color: #fff;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--pink-700) 100%
-        );
+        background: linear-gradient(135deg, var(--primary) 0%, var(--pink-700) 100%);
         box-shadow: 0 10px 24px rgba(246, 111, 185, 0.35);
       }
       .btn-secondary {
@@ -1555,11 +1697,7 @@
       .leaderboard-title {
         font-size: 1.5rem;
         font-weight: 900;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--accent) 60%
-        );
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 60%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -1589,11 +1727,7 @@
       }
 
       .tab-btn.active {
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
         color: white;
         box-shadow: 0 2px 8px rgba(246, 111, 185, 0.3);
       }

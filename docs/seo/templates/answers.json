@@ -1,0 +1,26 @@
+{
+  "name": "Click Fun",
+  "canonical_url": "https://your-domain.example/",
+  "short_description": "Click Fun 是一款零門檻、極速載入、支援離線的點擊遊戲（Clicker Game）。",
+  "how_to_play": [
+    "開啟網站即可開始點擊累積分數。",
+    "安裝為 PWA 後可離線遊玩與快速啟動。"
+  ],
+  "highlights": [
+    "極速載入與低延遲操作",
+    "離線可玩（PWA）",
+    "可分享與競榜（若啟用）"
+  ],
+  "faq": [
+    {
+      "q": "Click Fun 是什麼？",
+      "a": "一款零門檻、極速載入、支援離線的點擊遊戲（Clicker Game）。"
+    },
+    {
+      "q": "如何開始？",
+      "a": "打開網站即可開始點擊挑戰；可安裝為 PWA 方便啟動。"
+    }
+  ],
+  "language": ["zh-Hant-TW", "en"]
+}
+

@@ -1,0 +1,596 @@
+---
+description: "安全性要求 - 遊戲安全與資料保護"
+type: "Auto Attached"
+pattern: "**/*.{js,jsx,ts,tsx,html}"
+version: "1.0.0"
+author: "s123104"
+last_updated: "2025-08-16T18:22:20+08:00"
+---
+
+# Click Fun 安全性規範
+
+## 🔒 安全性原則
+
+基於 **零信任架構** 和 **OWASP Top 10** 最佳實踐，確保遊戲安全性。
+
+### 核心安全原則
+
+```yaml
+security_principles:
+  data_validation: "所有輸入都是惡意的，直到證明為止"
+  least_privilege: "最小權限原則"
+  defense_in_depth: "多層安全防護"
+  fail_secure: "安全失敗模式"
+  zero_trust: "零信任架構"
+```
+
+## 🛡️ 前端安全要求
+
+### 輸入驗證與清理
+
+```javascript
+// ✅ 嚴格的輸入驗證
+class SecurityValidator {
+  /**
+   * 驗證分數輸入
+   * @param {any} score - 待驗證的分數
+   * @returns {number} 驗證後的分數
+   */
+  static validateScore(score) {
+    // 型別驗證
+    if (typeof score !== 'number') {
+      throw new SecurityError('INVALID_SCORE_TYPE', '分數必須是數字');
+    }
+    
+    // 範圍驗證
+    if (!Number.isFinite(score) || Number.isNaN(score)) {
+      throw new SecurityError('INVALID_SCORE_VALUE', '分數必須是有效數字');
+    }
+    
+    // 合理性檢查（防止作弊）
+    const MAX_REASONABLE_SCORE = 1000;
+    if (score > MAX_REASONABLE_SCORE) {
+      SecurityLogger.logSuspiciousActivity('UNREASONABLE_SCORE', {
+        score,
+        timestamp: Date.now(),
+        userAgent: navigator.userAgent
+      });
+      throw new SecurityError('SCORE_TOO_HIGH', '分數超出合理範圍');
+    }
+    
+    if (score < 0) {
+      throw new SecurityError('NEGATIVE_SCORE', '分數不能為負數');
+    }
+    
+    return Math.floor(score); // 確保為整數
+  }
+  
+  /**
+   * 清理用戶輸入
+   * @param {string} input - 原始輸入
+   * @returns {string} 清理後的安全輸入
+   */
+  static sanitizeInput(input) {
+    if (typeof input !== 'string') {
+      return '';
+    }
+    
+    return input
+      // 移除 HTML 標籤
+      .replace(/<[^>]*>/g, '')
+      // 移除 JavaScript 協議
+      .replace(/javascript:/gi, '')
+      // 移除 data: 協議
+      .replace(/data:/gi, '')
+      // 移除特殊字符
+      .replace(/[<>'"&]/g, '')
+      // 限制長度
+      .substring(0, 200)
+      .trim();
+  }
+}
+
+// ❌ 危險的直接使用
+function updatePlayerName(name) {
+  document.getElementById('playerName').innerHTML = name; // XSS 風險
+}
+
+// ✅ 安全的使用方式
+function updatePlayerName(name) {
+  const sanitizedName = SecurityValidator.sanitizeInput(name);
+  document.getElementById('playerName').textContent = sanitizedName;
+}
+```
+
+### XSS 防護
+
+```javascript
+// ✅ 防 XSS 的 DOM 操作
+class SafeDOM {
+  /**
+   * 安全設定元素內容
+   * @param {HTMLElement} element - 目標元素
+   * @param {string} content - 內容
+   */
+  static setTextContent(element, content) {
+    if (!element || typeof content !== 'string') return;
+    
+    // 使用 textContent 而非 innerHTML
+    element.textContent = SecurityValidator.sanitizeInput(content);
+  }
+  
+  /**
+   * 安全設定屬性
+   * @param {HTMLElement} element - 目標元素
+   * @param {string} attribute - 屬性名稱
+   * @param {string} value - 屬性值
+   */
+  static setAttribute(element, attribute, value) {
+    if (!element || typeof attribute !== 'string') return;
+    
+    // 白名單屬性
+    const allowedAttributes = [
+      'class', 'id', 'data-score', 'data-player',
+      'aria-label', 'role', 'tabindex'
+    ];
+    
+    if (!allowedAttributes.includes(attribute)) {
+      console.warn(`屬性 ${attribute} 不在白名單中`);
+      return;
+    }
+    
+    const sanitizedValue = SecurityValidator.sanitizeInput(value);
+    element.setAttribute(attribute, sanitizedValue);
+  }
+}
+```
+
+### CSP (Content Security Policy) 配置
+
+```html
+<!-- ✅ 嚴格的 CSP 設定 -->
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: https:;
+  font-src 'self';
+  connect-src 'self' https://api.github.com;
+  worker-src 'self';
+  manifest-src 'self';
+  frame-ancestors 'none';
+  base-uri 'self';
+  form-action 'self';
+">
+```
+
+## 🗃️ 資料安全
+
+### LocalStorage 安全使用
+
+```javascript
+// ✅ 安全的資料儲存
+class SecureStorage {
+  static ENCRYPTION_KEY = 'clickfun-secure-key';
+  
+  /**
+   * 安全儲存遊戲資料
+   * @param {string} key - 儲存鍵值
+   * @param {any} data - 要儲存的資料
+   */
+  static setItem(key, data) {
+    try {
+      // 驗證鍵值
+      if (typeof key !== 'string' || key.length === 0) {
+        throw new SecurityError('INVALID_STORAGE_KEY', '無效的儲存鍵值');
+      }
+      
+      // 驗證資料
+      const validatedData = this.validateStorageData(data);
+      
+      // 添加時間戳和版本資訊
+      const storageObject = {
+        data: validatedData,
+        timestamp: Date.now(),
+        version: '7.1.1',
+        checksum: this.calculateChecksum(validatedData)
+      };
+      
+      // 序列化並儲存
+      const serialized = JSON.stringify(storageObject);
+      localStorage.setItem(`clickfun_${key}`, serialized);
+      
+    } catch (error) {
+      SecurityLogger.logStorageError('SET_ITEM_FAILED', { key, error: error.message });
+      throw error;
+    }
+  }
+  
+  /**
+   * 安全讀取遊戲資料
+   * @param {string} key - 儲存鍵值
+   * @returns {any} 讀取的資料
+   */
+  static getItem(key) {
+    try {
+      const rawData = localStorage.getItem(`clickfun_${key}`);
+      if (!rawData) return null;
+      
+      const storageObject = JSON.parse(rawData);
+      
+      // 驗證資料完整性
+      if (!this.verifyChecksum(storageObject.data, storageObject.checksum)) {
+        SecurityLogger.logSecurityEvent('DATA_INTEGRITY_VIOLATION', { key });
+        throw new SecurityError('DATA_CORRUPTION', '資料完整性驗證失敗');
+      }
+      
+      // 檢查資料時效性（7 天）
+      const maxAge = 7 * 24 * 60 * 60 * 1000; // 7 天
+      if (Date.now() - storageObject.timestamp > maxAge) {
+        SecurityLogger.logEvent('EXPIRED_DATA_ACCESS', { key, age: Date.now() - storageObject.timestamp });
+        this.removeItem(key);
+        return null;
+      }
+      
+      return storageObject.data;
+      
+    } catch (error) {
+      SecurityLogger.logStorageError('GET_ITEM_FAILED', { key, error: error.message });
+      return null;
+    }
+  }
+  
+  /**
+   * 驗證儲存資料的合法性
+   * @param {any} data - 待驗證的資料
+   * @returns {any} 驗證後的資料
+   */
+  static validateStorageData(data) {
+    if (data === null || data === undefined) {
+      return data;
+    }
+    
+    // 遊戲分數驗證
+    if (data.score !== undefined) {
+      data.score = SecurityValidator.validateScore(data.score);
+    }
+    
+    // 排行榜資料驗證
+    if (data.leaderboard && Array.isArray(data.leaderboard)) {
+      data.leaderboard = data.leaderboard
+        .filter(entry => entry && typeof entry === 'object')
+        .slice(0, 100) // 限制排行榜條目數量
+        .map(entry => ({
+          score: SecurityValidator.validateScore(entry.score),
+          mode: SecurityValidator.sanitizeInput(entry.mode),
+          date: entry.date,
+          duration: typeof entry.duration === 'number' ? entry.duration : 30
+        }));
+    }
+    
+    return data;
+  }
+  
+  /**
+   * 計算資料校驗和
+   * @param {any} data - 原始資料
+   * @returns {string} 校驗和
+   */
+  static calculateChecksum(data) {
+    const str = JSON.stringify(data);
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // 轉為 32 位整數
+    }
+    return hash.toString(16);
+  }
+  
+  /**
+   * 驗證校驗和
+   * @param {any} data - 資料
+   * @param {string} checksum - 校驗和
+   * @returns {boolean} 驗證結果
+   */
+  static verifyChecksum(data, checksum) {
+    return this.calculateChecksum(data) === checksum;
+  }
+}
+```
+
+### 敏感資訊處理
+
+```javascript
+// ✅ 敏感資訊處理原則
+class SensitiveDataHandler {
+  // ❌ 禁止儲存的敏感資訊
+  static FORBIDDEN_DATA = [
+    'password', 'token', 'apiKey', 'secretKey',
+    'personalInfo', 'email', 'phoneNumber'
+  ];
+  
+  /**
+   * 檢查是否包含敏感資訊
+   * @param {any} data - 待檢查的資料
+   * @returns {boolean} 是否安全
+   */
+  static isSafeToStore(data) {
+    const dataStr = JSON.stringify(data).toLowerCase();
+    
+    return !this.FORBIDDEN_DATA.some(forbidden => 
+      dataStr.includes(forbidden)
+    );
+  }
+  
+  /**
+   * 清理潛在敏感資訊
+   * @param {any} data - 原始資料
+   * @returns {any} 清理後的資料
+   */
+  static sanitizeData(data) {
+    if (typeof data !== 'object' || data === null) {
+      return data;
+    }
+    
+    const cleaned = { ...data };
+    
+    // 移除敏感欄位
+    this.FORBIDDEN_DATA.forEach(key => {
+      delete cleaned[key];
+    });
+    
+    return cleaned;
+  }
+}
+```
+
+## 🔐 加密與編碼
+
+### 簡單加密實作
+
+```javascript
+// ✅ 基礎加密功能（僅用於混淆，非安全加密）
+class BasicEncryption {
+  /**
+   * 簡單 XOR 編碼（用於資料混淆）
+   * @param {string} text - 原始文字
+   * @param {string} key - 編碼鍵值
+   * @returns {string} 編碼後的文字
+   */
+  static encode(text, key = 'clickfun2025') {
+    let result = '';
+    for (let i = 0; i < text.length; i++) {
+      const textChar = text.charCodeAt(i);
+      const keyChar = key.charCodeAt(i % key.length);
+      result += String.fromCharCode(textChar ^ keyChar);
+    }
+    return btoa(result); // Base64 編碼
+  }
+  
+  /**
+   * 簡單 XOR 解碼
+   * @param {string} encodedText - 編碼後的文字
+   * @param {string} key - 編碼鍵值
+   * @returns {string} 原始文字
+   */
+  static decode(encodedText, key = 'clickfun2025') {
+    try {
+      const decodedBase64 = atob(encodedText);
+      let result = '';
+      for (let i = 0; i < decodedBase64.length; i++) {
+        const textChar = decodedBase64.charCodeAt(i);
+        const keyChar = key.charCodeAt(i % key.length);
+        result += String.fromCharCode(textChar ^ keyChar);
+      }
+      return result;
+    } catch (error) {
+      SecurityLogger.logSecurityEvent('DECODE_FAILED', { error: error.message });
+      return '';
+    }
+  }
+}
+```
+
+## 🚨 安全監控與日誌
+
+### 安全事件記錄
+
+```javascript
+// ✅ 安全日誌系統
+class SecurityLogger {
+  /**
+   * 記錄安全事件
+   * @param {string} eventType - 事件類型
+   * @param {object} details - 事件詳情
+   */
+  static logSecurityEvent(eventType, details = {}) {
+    const securityEvent = {
+      type: 'SECURITY_EVENT',
+      eventType,
+      details,
+      timestamp: new Date().toISOString(),
+      userAgent: navigator.userAgent,
+      url: window.location.href,
+      sessionId: this.getSessionId()
+    };
+    
+    // 記錄到控制台（開發環境）
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('🚨 安全事件:', securityEvent);
+    }
+    
+    // 記錄到分析系統（生產環境）
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'security_incident', {
+        event_category: 'security',
+        event_label: eventType,
+        custom_parameter: JSON.stringify(details)
+      });
+    }
+    
+    // 儲存到本地（用於調試）
+    this.storeSecurityLog(securityEvent);
+  }
+  
+  /**
+   * 記錄可疑活動
+   * @param {string} activity - 活動類型
+   * @param {object} context - 上下文資訊
+   */
+  static logSuspiciousActivity(activity, context = {}) {
+    const suspiciousEvent = {
+      type: 'SUSPICIOUS_ACTIVITY',
+      activity,
+      context,
+      riskLevel: this.assessRiskLevel(activity, context),
+      timestamp: new Date().toISOString(),
+      sessionInfo: this.getSessionInfo()
+    };
+    
+    this.logSecurityEvent('SUSPICIOUS_ACTIVITY', suspiciousEvent);
+    
+    // 高風險活動立即警告
+    if (suspiciousEvent.riskLevel === 'HIGH') {
+      console.error('🚨 高風險活動檢測:', suspiciousEvent);
+    }
+  }
+  
+  /**
+   * 評估風險等級
+   * @param {string} activity - 活動類型
+   * @param {object} context - 上下文
+   * @returns {string} 風險等級
+   */
+  static assessRiskLevel(activity, context) {
+    const highRiskActivities = [
+      'UNREASONABLE_SCORE', 'DATA_CORRUPTION', 'INVALID_INPUT'
+    ];
+    
+    const mediumRiskActivities = [
+      'REPEATED_ERRORS', 'UNUSUAL_BEHAVIOR'
+    ];
+    
+    if (highRiskActivities.includes(activity)) {
+      return 'HIGH';
+    } else if (mediumRiskActivities.includes(activity)) {
+      return 'MEDIUM';
+    } else {
+      return 'LOW';
+    }
+  }
+  
+  /**
+   * 儲存安全日誌
+   * @param {object} logEntry - 日誌條目
+   */
+  static storeSecurityLog(logEntry) {
+    try {
+      const logs = JSON.parse(localStorage.getItem('clickfun_security_logs') || '[]');
+      logs.push(logEntry);
+      
+      // 只保留最近 100 條日誌
+      const recentLogs = logs.slice(-100);
+      localStorage.setItem('clickfun_security_logs', JSON.stringify(recentLogs));
+    } catch (error) {
+      console.error('安全日誌儲存失敗:', error);
+    }
+  }
+  
+  /**
+   * 獲取會話 ID
+   * @returns {string} 會話 ID
+   */
+  static getSessionId() {
+    let sessionId = sessionStorage.getItem('clickfun_session_id');
+    if (!sessionId) {
+      sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      sessionStorage.setItem('clickfun_session_id', sessionId);
+    }
+    return sessionId;
+  }
+}
+```
+
+## 🔍 安全測試
+
+### 安全測試檢查清單
+
+```javascript
+// ✅ 安全測試套件
+describe('安全性測試', () => {
+  describe('輸入驗證', () => {
+    test('應該拒絕非數字分數', () => {
+      expect(() => {
+        SecurityValidator.validateScore('100');
+      }).toThrow('分數必須是數字');
+    });
+    
+    test('應該拒絕負數分數', () => {
+      expect(() => {
+        SecurityValidator.validateScore(-10);
+      }).toThrow('分數不能為負數');
+    });
+    
+    test('應該拒絕過高分數', () => {
+      expect(() => {
+        SecurityValidator.validateScore(99999);
+      }).toThrow('分數超出合理範圍');
+    });
+  });
+  
+  describe('XSS 防護', () => {
+    test('應該清理 HTML 標籤', () => {
+      const maliciousInput = '<script>alert("XSS")</script>Hello';
+      const sanitized = SecurityValidator.sanitizeInput(maliciousInput);
+      expect(sanitized).toBe('Hello');
+      expect(sanitized).not.toContain('<script>');
+    });
+    
+    test('應該清理 JavaScript 協議', () => {
+      const maliciousInput = 'javascript:alert("XSS")';
+      const sanitized = SecurityValidator.sanitizeInput(maliciousInput);
+      expect(sanitized).not.toContain('javascript:');
+    });
+  });
+  
+  describe('資料完整性', () => {
+    test('應該檢測資料篡改', () => {
+      const originalData = { score: 100 };
+      const checksum = SecureStorage.calculateChecksum(originalData);
+      const tamperedData = { score: 999 };
+      
+      expect(SecureStorage.verifyChecksum(tamperedData, checksum)).toBe(false);
+    });
+  });
+});
+```
+
+## 📋 安全檢查清單
+
+### 每次發布前檢查
+
+- [ ] **輸入驗證**: 所有用戶輸入都經過驗證和清理
+- [ ] **XSS 防護**: 不使用 innerHTML，使用 textContent
+- [ ] **CSP 設定**: Content Security Policy 正確配置
+- [ ] **資料加密**: 敏感資料適當處理
+- [ ] **錯誤處理**: 不洩露敏感資訊的錯誤訊息
+- [ ] **日誌記錄**: 安全事件正確記錄
+- [ ] **依賴檢查**: 第三方套件無已知漏洞
+
+### 定期安全審查
+
+```yaml
+security_review_schedule:
+  code_review: "每次 PR"
+  vulnerability_scan: "每週"
+  dependency_audit: "每月"
+  security_testing: "每次發布"
+  penetration_testing: "每季"
+```
+
+---
+
+**🔒 安全目標**: 零已知安全漏洞，保護用戶資料安全  
+**🛡️ 防護等級**: 企業級安全標準  
+**📊 監控覆蓋**: 100% 關鍵功能安全監控

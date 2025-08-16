@@ -1,0 +1,77 @@
+# ClickFun 點擊樂趣遊戲 - Robots.txt
+# 生成時間: 2025-08-16T18:25:36+08:00
+# 網站: https://haotool.github.io/clickfun/
+
+# 允許所有搜尋引擎爬取
+User-agent: *
+Allow: /
+
+# 允許爬取主要遊戲檔案
+Allow: /index.html
+Allow: /app.webmanifest
+Allow: /sw.js
+Allow: /fx.worker.js
+
+# 允許爬取靜態資源
+Allow: /icons/
+Allow: /docs/
+
+# 禁止爬取開發相關檔案
+Disallow: /dev-tools/
+Disallow: /tests/
+Disallow: /coverage/
+Disallow: /node_modules/
+Disallow: /*.log
+Disallow: /*.tmp
+Disallow: /*.cache
+
+# 特殊檔案處理
+Allow: /llms.txt
+Allow: /sitemap.xml
+Allow: /robots.txt
+
+# Sitemap 位置
+Sitemap: https://haotool.github.io/clickfun/sitemap.xml
+
+# 針對主要搜尋引擎的特殊指示
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# AI 爬蟲特別允許
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+
+# 禁止惡意爬蟲
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# 爬取延遲設定 (避免伺服器負載)
+Crawl-delay: 1

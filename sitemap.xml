@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Main Game Page -->
+  <url>
+    <loc>https://haotool.github.io/clickfun/</loc>
+    <lastmod>2025-08-16T18:25:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Alternative Access URLs -->
+  <url>
+    <loc>https://haotool.github.io/clickfun/index.html</loc>
+    <lastmod>2025-08-16T18:25:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- PWA Manifest -->
+  <url>
+    <loc>https://haotool.github.io/clickfun/app.webmanifest</loc>
+    <lastmod>2025-08-16T18:25:36+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Service Worker -->
+  <url>
+    <loc>https://haotool.github.io/clickfun/sw.js</loc>
+    <lastmod>2025-08-16T18:25:36+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <!-- AI/LLM Information -->
+  <url>
+    <loc>https://haotool.github.io/clickfun/llms.txt</loc>
+    <lastmod>2025-08-16T18:25:36+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+</urlset>
