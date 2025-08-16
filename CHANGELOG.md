@@ -1,3 +1,17 @@
+# [2.1.0](https://github.com/haotool/clickfun/compare/v2.0.1...v2.1.0) (2025-08-16)
+
+
+### Bug Fixes
+
+* **ui:** 完美解決底部空隙與圖標顯示問題，優化按鈕體驗 v7.1.4 ([0bace4b](https://github.com/haotool/clickfun/commit/0bace4b5ea7cfa65b5dc378c6bda1e8e06e40310))
+* **ui:** 恢復icon中空格式並完美修正手機界面對稱性 v7.1.2 ([b4137fa](https://github.com/haotool/clickfun/commit/b4137fa09ed42cc38a485dfefad1542bb1066d92))
+
+
+### Features
+
+* **ui:** 恢復中空圖標優雅風格同時保留可愛遊戲字體 v7.1.3 ([200f6c5](https://github.com/haotool/clickfun/commit/200f6c57b598e3afc714819b863bcf8d762f778d))
+* **ui:** 重大UI/UX改進 - 可愛遊戲字體、粗體優化、完美佈局對齊 v7.1.2 ([283cbba](https://github.com/haotool/clickfun/commit/283cbba803991a22621108103167d9e795b5ed4f))
+
 ## [7.1.4] - 2025-08-16
 
 ### ✨ 新功能
