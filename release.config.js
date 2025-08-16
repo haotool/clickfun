@@ -23,7 +23,13 @@ module.exports = {
         publishCmd: 'npm run post-publish',
       },
     ],
-    '@semantic-release/git',
+    [
+      '@semantic-release/git',
+      {
+        assets: ['package.json', 'CHANGELOG.md'],
+        message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+      },
+    ],
     '@semantic-release/github',
   ],
   preset: 'conventionalcommits',
