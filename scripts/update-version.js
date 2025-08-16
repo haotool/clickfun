@@ -5,8 +5,13 @@
  * 根據 package.json 中的版本號，自動更新專案中所有相關檔案的版本號
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// 獲取 __dirname 的 ES 模組等效
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // 讀取 package.json 中的版本號
 const packageJsonPath = path.join(__dirname, '..', 'package.json');
