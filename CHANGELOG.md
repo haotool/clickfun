@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/haotool/clickfun/compare/v1.0.0...v1.0.1) (2025-08-16)
+
+
+### Bug Fixes
+
+* 改善 semantic-release git 插件配置 ([3da9df8](https://github.com/haotool/clickfun/commit/3da9df804704e70c2bb6eb8854cfe44d44e0343b))
+
 # 1.0.0 (2025-08-16)
 
 
