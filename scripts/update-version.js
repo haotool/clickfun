@@ -26,8 +26,12 @@ const filesToUpdate = [
     path: 'index.html',
     patterns: [
       {
-        regex: /const APP_VERSION = '[\d.]+';/,
-        replacement: `const APP_VERSION = '${newVersion}';`,
+        regex: /"softwareVersion": "[\d.]+"/g,
+        replacement: `"softwareVersion": "${newVersion}"`,
+      },
+      {
+        regex: /"version": "[\d.]+"/g,
+        replacement: `"version": "${newVersion}"`,
       },
     ],
   },
