@@ -2,10 +2,15 @@
 
 **點擊樂趣遊戲** - 粉色 × 天藍風格，支援多點觸控、高速點擊效果與 PWA 離線遊玩
 
+<div align="center">
+  <img src="./icons/click-fun.png" alt="Click Fun 遊戲圖標" width="256" height="256" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(246, 111, 185, 0.3);">
+  <p><em>🎯 挑戰你的點擊極限，體驗粉藍漸層的視覺盛宴！</em></p>
+</div>
+
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-brightgreen.svg)](.)
 [![Mobile Optimized](https://img.shields.io/badge/Mobile-Optimized-blue.svg)](.)
 [![Performance](https://img.shields.io/badge/Performance-60fps-orange.svg)](.)
-[![Version](https://img.shields.io/badge/Version-v7.0.0-ff69b4.svg)](.)
+[![Version](https://img.shields.io/badge/Version-v7.1.0-ff69b4.svg)](.)
 [![Audio Effects](https://img.shields.io/badge/Audio%20Effects-Enabled-52b7ff.svg)](.)
 [![Touch Support](https://img.shields.io/badge/Multi--Touch-Supported-f66fb9.svg)](.)
 
@@ -45,6 +50,7 @@
 - **成就系統**: 根據 TPS 表現動態顯示成就徽章
 - **峰值記錄**: 自動追蹤最高 TPS 並在結果頁面顯示
 - **分頁排行榜**: 現代化卡片設計，支援模式切換
+- **🕐 時間分類排行**: 支援 15秒、30秒、60秒三種遊戲時間的獨立排行榜
 - **排名徽章**: 金銀銅分級顯示系統
 - **雙人對戰結果**: 全新對比式界面，獲勝者金牌動畫效果
 - **獲勝者特效**: 金色邊框、3D 旋轉金牌、皇冠浮動動畫
@@ -260,6 +266,15 @@ const TIER = {
 5. 開啟 Pull Request
 
 ## 📜 變更記錄
+
+### v7.1.0 (2025-08-16)
+
+- 🏆 **排行榜時間分類功能**：新增三種遊戲時間（15秒、30秒、60秒）對應的排行榜分類
+- 📱 **完整 PWA 圖標系統**：從 click-fun.png 生成全套 PWA 圖標，支援所有設備尺寸
+- 🎮 **遊戲時間標記**：排行榜記錄現在顯示對應的遊戲時間模式
+- 🎨 排行榜新增時間篩選標籤（全部、15秒、30秒、60秒）
+- 📱 新增完整的圖標尺寸支援，改善 PWA 安裝體驗
+- 🔧 版本號自動化更新系統與語義化版本控制
 
 ### v6.4.0 (2025-08-15)
 

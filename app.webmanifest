@@ -8,7 +8,7 @@
   "background_color": "#ffffff",
   "theme_color": "#f6a8d8",
   "description": "粉色×天藍｜點擊樂趣遊戲，TPS 計算，支援離線 PWA。",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "icons": [
     {
       "src": "./icons/pwa.svg",
