@@ -38,7 +38,7 @@ function analyzeCoverageReport() {
     const coveragePath = path.join(process.cwd(), 'coverage', 'coverage-summary.json');
     if (!fs.existsSync(coveragePath)) {
       console.log(
-        `${colors.yellow}⚠️  覆蓋率報告不存在，請先執行 npm run test:coverage${colors.reset}`
+        `${colors.yellow}⚠️  覆蓋率報告不存在，請先執行 npm run test:coverage${colors.reset}`,
       );
       return null;
     }
@@ -80,7 +80,7 @@ function checkCoverageTargets(coverageData) {
       const color = achieved ? colors.green : colors.red;
 
       console.log(
-        `  ${status} ${metric}: ${color}${actual}%${colors.reset} / ${target}% (${percentage}%)`
+        `  ${status} ${metric}: ${color}${actual}%${colors.reset} / ${target}% (${percentage}%)`,
       );
     }
 
@@ -96,7 +96,7 @@ function checkCoverageTargets(coverageData) {
     totalTargets += pathTargets;
 
     console.log(
-      `   ${colors.cyan}得分: ${pathScore}/${pathTargets} (${pathPercentage.toFixed(1)}%)${colors.reset}\n`
+      `   ${colors.cyan}得分: ${pathScore}/${pathTargets} (${pathPercentage.toFixed(1)}%)${colors.reset}\n`,
     );
   }
 
@@ -104,7 +104,7 @@ function checkCoverageTargets(coverageData) {
 
   console.log(`${colors.bright}${colors.magenta}📈 總體覆蓋率達成狀況${colors.reset}`);
   console.log(
-    `   ${colors.bright}總分: ${overallScore}/${totalTargets} (${overallPercentage.toFixed(1)}%)${colors.reset}`
+    `   ${colors.bright}總分: ${overallScore}/${totalTargets} (${overallPercentage.toFixed(1)}%)${colors.reset}`,
   );
 
   return { results, overallScore, totalTargets, overallPercentage };
@@ -121,14 +121,14 @@ function generateImprovementSuggestions(coverageData, analysis) {
       console.log(`${colors.bright}${path}${colors.reset}`);
 
       for (const [metric, metricData] of Object.entries(pathData)) {
-        if (metric === 'score' || metric === 'total' || metric === 'percentage') continue;
+        if (metric === 'score' || metric === 'total' || metric === 'percentage') {continue;}
 
         if (!metricData.achieved) {
           const shortfall = metricData.target - metricData.actual;
           const improvement = ((shortfall / metricData.target) * 100).toFixed(1);
 
           console.log(
-            `  ${colors.yellow}• ${metric}: 需要提升 ${shortfall}% (${improvement}%)${colors.reset}`
+            `  ${colors.yellow}• ${metric}: 需要提升 ${shortfall}% (${improvement}%)${colors.reset}`,
           );
 
           suggestions.push({
@@ -152,7 +152,7 @@ function generateImprovementSuggestions(coverageData, analysis) {
     console.log(`${colors.bright}${colors.yellow}🚀 優先改善項目${colors.reset}`);
     suggestions.slice(0, 5).forEach((suggestion, index) => {
       console.log(
-        `  ${index + 1}. ${suggestion.path} - ${suggestion.metric}: ${suggestion.current}% → ${suggestion.target}%`
+        `  ${index + 1}. ${suggestion.path} - ${suggestion.metric}: ${suggestion.current}% → ${suggestion.target}%`,
       );
     });
   }
@@ -171,10 +171,10 @@ function generateTestTemplates(suggestions) {
     console.log(`${colors.bright}${suggestion.path}${colors.reset}`);
     console.log(`  測試文件: ${colors.cyan}${testFileName}${colors.reset}`);
     console.log(
-      `  目標: ${suggestion.metric} 從 ${suggestion.current}% 提升到 ${suggestion.target}%`
+      `  目標: ${suggestion.metric} 從 ${suggestion.current}% 提升到 ${suggestion.target}%`,
     );
     console.log(
-      `  改善幅度: ${colors.yellow}${suggestion.improvement.toFixed(1)}%${colors.reset}\n`
+      `  改善幅度: ${colors.yellow}${suggestion.improvement.toFixed(1)}%${colors.reset}\n`,
     );
   }
 }
@@ -204,12 +204,12 @@ function runCoverageCheck() {
     // 如果覆蓋率未達標，返回非零退出碼
     if (analysis.overallPercentage < 80) {
       console.log(
-        `\n${colors.yellow}⚠️  整體覆蓋率未達標 (${analysis.overallPercentage.toFixed(1)}% < 80%)${colors.reset}`
+        `\n${colors.yellow}⚠️  整體覆蓋率未達標 (${analysis.overallPercentage.toFixed(1)}% < 80%)${colors.reset}`,
       );
       process.exit(1);
     } else {
       console.log(
-        `\n${colors.green}🎉 整體覆蓋率已達標 (${analysis.overallPercentage.toFixed(1)}% ≥ 80%)${colors.reset}`
+        `\n${colors.green}🎉 整體覆蓋率已達標 (${analysis.overallPercentage.toFixed(1)}% ≥ 80%)${colors.reset}`,
       );
     }
   } catch (error) {

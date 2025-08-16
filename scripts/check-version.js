@@ -70,7 +70,7 @@ function checkFileVersion(filePath, patterns) {
           console.log(`✅ ${filePath} - ${pattern.name}: v${foundVersion}`);
         } else {
           console.log(
-            `❌ ${filePath} - ${pattern.name}: v${foundVersion} (預期: v${expectedVersion})`
+            `❌ ${filePath} - ${pattern.name}: v${foundVersion} (預期: v${expectedVersion})`,
           );
           allMatch = false;
         }

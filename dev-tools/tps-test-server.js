@@ -77,7 +77,7 @@ wss.on('connection', ws => {
       type: 'welcome',
       message: 'TPS 測試伺服器連接成功',
       timestamp: Date.now(),
-    })
+    }),
   );
 });
 

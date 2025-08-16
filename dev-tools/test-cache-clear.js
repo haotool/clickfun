@@ -74,7 +74,7 @@ class CacheClearTester {
       cachesToDelete.map(async cacheName => {
         console.log(`清除快取: ${cacheName}`);
         return caches.delete(cacheName);
-      })
+      }),
     );
 
     const afterCaches = await caches.keys();

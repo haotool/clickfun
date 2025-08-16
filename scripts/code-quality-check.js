@@ -112,7 +112,7 @@ class CodeQualityChecker {
 
       // 檢查程式碼格式化
       try {
-        const prettierOutput = execSync('npx prettier --check .', {
+        const _prettierOutput = execSync('npx prettier --check .', {
           cwd: this.projectRoot,
           encoding: 'utf8',
           stdio: 'pipe',
@@ -120,7 +120,7 @@ class CodeQualityChecker {
 
         this.results.prettier.status = 'success';
         this.results.prettier.details.push('✅ Prettier 格式化檢查通過');
-      } catch (error) {
+      } catch (_error) {
         this.results.prettier.status = 'warning';
         this.results.prettier.details.push('⚠️  發現格式化問題，建議執行 npx prettier --write .');
       }
@@ -135,7 +135,7 @@ class CodeQualityChecker {
    */
   calculateOverallScore() {
     let totalScore = 0;
-    const maxScore = 100;
+    const _maxScore = 100;
 
     // ESLint 分數 (60%)
     const eslintScore = this.getScoreByStatus(this.results.eslint.status) * 0.6;

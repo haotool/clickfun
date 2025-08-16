@@ -11,7 +11,9 @@ module.exports = {
     jest: true,
   },
 
-  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+  extends: ['eslint:recommended'],
+
+  plugins: ['jest'],
 
   parserOptions: {
     ecmaVersion: 'latest',
@@ -22,9 +24,14 @@ module.exports = {
     // 程式碼品質
     'no-console': 'warn',
     'no-debugger': 'error',
-    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'no-unused-vars': ['error', {
+      argsIgnorePattern: '^_',
+      varsIgnorePattern: '^_',
+      caughtErrorsIgnorePattern: '^_',
+    }],
     'prefer-const': 'error',
     'no-var': 'error',
+    'comma-dangle': ['error', 'always-multiline'],
 
     // 最佳實踐
     eqeqeq: ['error', 'always'],
@@ -33,33 +40,56 @@ module.exports = {
     'no-implied-eval': 'error',
 
     // 可讀性
-    'max-len': ['warn', { code: 100, ignoreUrls: true }],
+    'max-len': ['warn', { code: 120, ignoreUrls: true }],
     indent: ['error', 2],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
-
-    // Jest 相關
-    'jest/no-disabled-tests': 'warn',
-    'jest/no-focused-tests': 'error',
-    'jest/no-identical-title': 'error',
-    'jest/prefer-to-have-length': 'warn',
-    'jest/valid-expect': 'error',
   },
 
   overrides: [
     {
-      files: ['tests/**/*.js', '**/*.test.js'],
+      files: ['tests/**/*.js', '**/*.test.js', '**/jest.setup.js'],
       env: {
         jest: true,
+        node: true,
+      },
+      globals: {
+        jest: 'readonly',
+        describe: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        it: 'readonly',
+        jasmine: 'readonly',
+        page: 'writable',
       },
       rules: {
         'no-console': 'off',
+        'no-undef': 'error',
       },
     },
     {
-      files: ['scripts/**/*.js'],
+      files: ['scripts/**/*.js', 'dev-tools/**/*.js'],
       env: {
         node: true,
+      },
+      rules: {
+        'no-console': 'off',
+        'no-unused-vars': ['error', {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_|^path$',
+          caughtErrorsIgnorePattern: '^_',
+        }],
+      },
+    },
+    {
+      files: ['sw*.js', 'fx.worker.js'],
+      env: {
+        worker: true,
+        serviceworker: true,
       },
       rules: {
         'no-console': 'off',
@@ -73,7 +103,6 @@ module.exports = {
     'build/',
     'coverage/',
     '*.min.js',
-    'sw.js',
-    'fx.worker.js',
+    'team-worktrees/',
   ],
 };

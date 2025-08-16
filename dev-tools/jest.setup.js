@@ -11,7 +11,7 @@ global.waitForElement = async (page, selector, timeout = 5000) => {
   try {
     await page.waitForSelector(selector, { timeout });
     return true;
-  } catch (error) {
+  } catch (_error) {
     console.warn(`Element ${selector} not found within ${timeout}ms`);
     return false;
   }
@@ -49,7 +49,7 @@ afterEach(async () => {
       const screenshotPath = path.join(
         __dirname,
         'screenshots',
-        `${jasmine.currentSpec.description}.png`
+        `${jasmine.currentSpec.description}.png`,
       );
       await page.screenshot({ path: screenshotPath, fullPage: true });
     }

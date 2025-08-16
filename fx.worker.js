@@ -232,7 +232,7 @@ function drawLightning() {
       const width = 1.1 * ((c1.widthMul + c2.widthMul) / 2);
       const amp = Math.min(
         28,
-        len * 0.042 * ((c1.jitterMul + c2.jitterMul) / 2) * (lowPower ? 0.8 : 1)
+        len * 0.042 * ((c1.jitterMul + c2.jitterMul) / 2) * (lowPower ? 0.8 : 1),
       );
       const N = (lowPower ? 8 : 12) + Math.floor(((a.tier + b.tier) / 2 - 1) * 0.5);
       const pts2 = [];
@@ -296,7 +296,7 @@ function drawLightning() {
           ctx.moveTo(base.x, base.y);
           ctx.lineTo(
             base.x + -ny * dir * blen + nx * jitter,
-            base.y + nx * dir * blen + ny * jitter
+            base.y + nx * dir * blen + ny * jitter,
           );
           ctx.strokeStyle = bidx % 2 ? c1.color : c2.color;
           ctx.globalAlpha = 0.7;
@@ -373,7 +373,7 @@ function drawLabels(now) {
 
 let lastFrame = 0,
   targetFps = 60;
-function draw(ts) {
+function draw(_ts) {
   if (!ctx) {
     return;
   }
@@ -425,6 +425,6 @@ self.addEventListener('message', e => {
 
 const requestAnimationFrame = fn => {
   return (self.requestAnimationFrame || (cb => setTimeout(() => cb(performance.now()), 1000 / 60)))(
-    fn
+    fn,
   );
 };

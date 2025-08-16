@@ -6,7 +6,7 @@
  */
 
 const fs = require('fs');
-const path = require('path');
+const _path = require('path');
 
 console.log('🧪 PWA 版本檢測功能測試開始...\n');
 

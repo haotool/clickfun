@@ -232,7 +232,7 @@ function runHealthCheck() {
     };
 
     console.log(
-      `   ${colors.cyan}得分: ${categoryScore}/${checks.length} (${categoryPercentage.toFixed(1)}%)${colors.reset}\n`
+      `   ${colors.cyan}得分: ${categoryScore}/${checks.length} (${categoryPercentage.toFixed(1)}%)${colors.reset}\n`,
     );
   }
 
