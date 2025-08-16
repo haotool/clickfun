@@ -182,8 +182,8 @@ function main() {
 }
 
 // 執行主函數
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   main();
 }
 
-module.exports = { updateFileVersion, updateChangelog };
+export { updateFileVersion, updateChangelog };
