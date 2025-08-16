@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/haotool/clickfun/compare/v1.0.2...v1.1.0) (2025-08-16)
+
+
+### Features
+
+* 建立完整的自動化最佳實踐落地系統 ([fd69438](https://github.com/haotool/clickfun/commit/fd694386edc1fa6077c2f44782562e42991c6585))
+
 ## [1.0.2](https://github.com/haotool/clickfun/compare/v1.0.1...v1.0.2) (2025-08-16)
 
 
