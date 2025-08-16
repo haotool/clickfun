@@ -8,11 +8,18 @@
     />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:;"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self';"
     />
     <meta name="theme-color" content="#f6a8d8" />
     <meta name="referrer" content="no-referrer" />
     <meta http-equiv="x-dns-prefetch-control" content="off" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    
+    <!-- 資源預載入優化 -->
+    <link rel="preload" href="./fonts/MaterialSymbolsRounded.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./fonts/FredokaOne-400.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- iOS 仍需要下面這個，Chrome 可能會提示 deprecated，但不影響功能 -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -364,7 +371,7 @@
     </script>
 
     <style>
-      /* 自託管字體定義 */
+      /* 自託管字體定義 - 優化載入 */
       @font-face {
         font-family: 'Material Symbols Rounded';
         src: url('./fonts/MaterialSymbolsRounded.woff2') format('woff2');
@@ -380,6 +387,8 @@
         font-style: normal;
         font-display: swap;
       }
+
+      /* 關鍵CSS優化 - 首屏內容優先 */
 
       :root {
         --pink-50: #fff1f8;
@@ -4847,14 +4856,16 @@
           document.documentElement.classList.add('save-data');
         }
 
-        // 字體載入檢測，避免首屏看到英文
-        document.fonts
-          .load('1em "Material Symbols Rounded"')
-          .then(() => document.documentElement.classList.add('fonts-ready'))
-          .catch(() => {
-            // 如果載入失敗，3秒後顯示圖標避免永久隱藏
-            setTimeout(() => document.documentElement.classList.add('fonts-ready'), 3000);
-          });
+        // 字體載入檢測優化，避免首屏看到英文
+        Promise.all([
+          document.fonts.load('1em "Material Symbols Rounded"'),
+          document.fonts.load('1em "Fredoka One"')
+        ]).then(() => {
+          document.documentElement.classList.add('fonts-ready');
+        }).catch(() => {
+          // 如果載入失敗，1.5秒後顯示避免永久隱藏
+          setTimeout(() => document.documentElement.classList.add('fonts-ready'), 1500);
+        });
       });
 
       // 全螢幕事件：不要在這裡呼叫 exitGame() 以免遞迴
