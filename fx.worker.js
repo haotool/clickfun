@@ -157,8 +157,7 @@ function resize(w, h, devicePR) {
     canvas.width = Math.floor(w * dpr);
     canvas.height = Math.floor(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.font =
-      '900 24px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial';
+    ctx.font = '900 24px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
   }
@@ -174,10 +173,7 @@ function addTap(t) {
     ultraSpeed: t.ultraSpeed || false,
   });
   const cutoff = now - TRAIL_WINDOW;
-  while (
-    arr.length > 0 &&
-    (arr.length > TRAIL_MAX_POINTS || arr[0].ts < cutoff)
-  ) {
+  while (arr.length > 0 && (arr.length > TRAIL_MAX_POINTS || arr[0].ts < cutoff)) {
     arr.shift();
   }
 
@@ -236,10 +232,9 @@ function drawLightning() {
       const width = 1.1 * ((c1.widthMul + c2.widthMul) / 2);
       const amp = Math.min(
         28,
-        len * 0.042 * ((c1.jitterMul + c2.jitterMul) / 2) * (lowPower ? 0.8 : 1),
+        len * 0.042 * ((c1.jitterMul + c2.jitterMul) / 2) * (lowPower ? 0.8 : 1)
       );
-      const N =
-        (lowPower ? 8 : 12) + Math.floor(((a.tier + b.tier) / 2 - 1) * 0.5);
+      const N = (lowPower ? 8 : 12) + Math.floor(((a.tier + b.tier) / 2 - 1) * 0.5);
       const pts2 = [];
       for (let s = 0; s <= N; s++) {
         const t = s / N,
@@ -292,9 +287,7 @@ function drawLightning() {
       const branchCount = Math.min(3, Math.floor((c1.branch + c2.branch) / 2));
       if (branchCount > 0 && !lowPower) {
         for (let bidx = 0; bidx < branchCount; bidx++) {
-          const mid =
-            1 +
-            Math.floor(((pts2.length - 2) * (bidx + 1)) / (branchCount + 1));
+          const mid = 1 + Math.floor(((pts2.length - 2) * (bidx + 1)) / (branchCount + 1));
           const base = pts2[mid],
             dir = bidx % 2 ? 1 : -1;
           const blen = Math.min(22, 6 + len * 0.08);
@@ -303,7 +296,7 @@ function drawLightning() {
           ctx.moveTo(base.x, base.y);
           ctx.lineTo(
             base.x + -ny * dir * blen + nx * jitter,
-            base.y + nx * dir * blen + ny * jitter,
+            base.y + nx * dir * blen + ny * jitter
           );
           ctx.strokeStyle = bidx % 2 ? c1.color : c2.color;
           ctx.globalAlpha = 0.7;
@@ -431,8 +424,7 @@ self.addEventListener('message', e => {
 });
 
 const requestAnimationFrame = fn => {
-  return (
-    self.requestAnimationFrame ||
-    (cb => setTimeout(() => cb(performance.now()), 1000 / 60))
-  )(fn);
+  return (self.requestAnimationFrame || (cb => setTimeout(() => cb(performance.now()), 1000 / 60)))(
+    fn
+  );
 };

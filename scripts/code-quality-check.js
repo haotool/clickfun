@@ -64,9 +64,7 @@ class CodeQualityChecker {
       } else {
         this.results.eslint.status = 'warning';
         const issues = eslintOutput.split('\n').filter(line => line.trim());
-        this.results.eslint.details.push(
-          `⚠️  發現 ${issues.length} 個 ESLint 問題`,
-        );
+        this.results.eslint.details.push(`⚠️  發現 ${issues.length} 個 ESLint 問題`);
         this.results.eslint.details.push('詳細問題:');
         issues.forEach(issue => {
           this.results.eslint.details.push(`   • ${issue}`);
@@ -87,9 +85,7 @@ class CodeQualityChecker {
           });
       } else {
         this.results.eslint.status = 'error';
-        this.results.eslint.details.push(
-          `❌ ESLint 執行失敗: ${error.message}`,
-        );
+        this.results.eslint.details.push(`❌ ESLint 執行失敗: ${error.message}`);
       }
     }
   }
@@ -126,15 +122,11 @@ class CodeQualityChecker {
         this.results.prettier.details.push('✅ Prettier 格式化檢查通過');
       } catch (error) {
         this.results.prettier.status = 'warning';
-        this.results.prettier.details.push(
-          '⚠️  發現格式化問題，建議執行 npx prettier --write .',
-        );
+        this.results.prettier.details.push('⚠️  發現格式化問題，建議執行 npx prettier --write .');
       }
     } catch (error) {
       this.results.prettier.status = 'error';
-      this.results.prettier.details.push(
-        `❌ Prettier 檢查失敗: ${error.message}`,
-      );
+      this.results.prettier.details.push(`❌ Prettier 檢查失敗: ${error.message}`);
     }
   }
 
@@ -150,8 +142,7 @@ class CodeQualityChecker {
     totalScore += eslintScore;
 
     // Prettier 分數 (40%)
-    const prettierScore =
-      this.getScoreByStatus(this.results.prettier.status) * 0.4;
+    const prettierScore = this.getScoreByStatus(this.results.prettier.status) * 0.4;
     totalScore += prettierScore;
 
     this.results.overall.score = Math.round(totalScore);
@@ -210,12 +201,8 @@ class CodeQualityChecker {
     // 整體評分
     const overallIcon = this.getStatusIcon(this.results.overall.status);
     console.log(`\n${'='.repeat(50)}`);
-    console.log(
-      `🏆 整體品質分數: ${this.results.overall.score}/100 ${overallIcon}`,
-    );
-    console.log(
-      `📈 程式碼品質狀態: ${this.getStatusText(this.results.overall.status)}`,
-    );
+    console.log(`🏆 整體品質分數: ${this.results.overall.score}/100 ${overallIcon}`);
+    console.log(`📈 程式碼品質狀態: ${this.getStatusText(this.results.overall.status)}`);
   }
 
   /**
@@ -228,16 +215,12 @@ class CodeQualityChecker {
     const recommendations = [];
 
     if (this.results.eslint.status === 'error') {
-      recommendations.push(
-        '🔧 修復 ESLint 錯誤: npx eslint . --ext .js,.jsx,.ts,.tsx --fix',
-      );
+      recommendations.push('🔧 修復 ESLint 錯誤: npx eslint . --ext .js,.jsx,.ts,.tsx --fix');
       recommendations.push('📝 檢查 ESLint 配置檔案');
     }
 
     if (this.results.eslint.status === 'warning') {
-      recommendations.push(
-        '🔧 修復 ESLint 警告: npx eslint . --ext .js,.jsx,.ts,.tsx --fix',
-      );
+      recommendations.push('🔧 修復 ESLint 警告: npx eslint . --ext .js,.jsx,.ts,.tsx --fix');
       recommendations.push('📋 檢查並修復程式碼風格問題');
     }
 

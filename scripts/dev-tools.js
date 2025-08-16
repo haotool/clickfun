@@ -65,9 +65,7 @@ class DevTools {
       '@semantic-release/github',
     ];
 
-    const missingDeps = requiredDevDeps.filter(
-      dep => !packageJson.devDependencies?.[dep],
-    );
+    const missingDeps = requiredDevDeps.filter(dep => !packageJson.devDependencies?.[dep]);
 
     if (missingDeps.length > 0) {
       console.log(`⚠️  缺少開發依賴: ${missingDeps.join(', ')}`);
@@ -137,14 +135,10 @@ class DevTools {
    */
   async startDevServerOnPort(port) {
     return new Promise((resolve, reject) => {
-      this.devServer = spawn(
-        'python3',
-        ['-m', 'http.server', port.toString()],
-        {
-          cwd: this.projectRoot,
-          stdio: 'pipe',
-        },
-      );
+      this.devServer = spawn('python3', ['-m', 'http.server', port.toString()], {
+        cwd: this.projectRoot,
+        stdio: 'pipe',
+      });
 
       this.devServer.stdout.on('data', data => {
         const output = data.toString();
@@ -166,12 +160,7 @@ class DevTools {
   startFileWatcher() {
     console.log('👀 啟動檔案監控...');
 
-    const filesToWatch = [
-      'index.html',
-      'sw.js',
-      'sw-enhanced.js',
-      'app.webmanifest',
-    ];
+    const filesToWatch = ['index.html', 'sw.js', 'sw-enhanced.js', 'app.webmanifest'];
 
     filesToWatch.forEach(file => {
       const filePath = path.join(this.projectRoot, file);

@@ -1,27 +1,18 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# 檢查版本號一致性
-echo "🔍 檢查版本號一致性..."
+echo "🔍 執行 pre-commit 檢查..."
 
-# 讀取 package.json 版本號
-PACKAGE_VERSION=$(node -p "require('./package.json').version")
+# 執行 ESLint 檢查
+echo "📝 檢查程式碼品質..."
+npm run lint:check
 
-# 檢查主要檔案中的版本號
-HTML_VERSION=$(grep -o "const APP_VERSION = '[^']*'" index.html | grep -o "'[^']*'" | tr -d "'")
-SW_VERSION=$(grep -o "const APP_VERSION = '[^']*'" sw.js | grep -o "'[^']*'" | tr -d "'")
-MANIFEST_VERSION=$(grep -o '"version": "[^"]*"' app.webmanifest | grep -o '"[^"]*"' | tr -d '"')
+# 執行測試
+echo "🧪 執行測試..."
+npm test
 
-# 檢查版本號是否一致
-if [ "$PACKAGE_VERSION" != "$HTML_VERSION" ] || [ "$PACKAGE_VERSION" != "$SW_VERSION" ] || [ "$PACKAGE_VERSION" != "$MANIFEST_VERSION" ]; then
-    echo "❌ 版本號不一致！"
-    echo "   package.json: $PACKAGE_VERSION"
-    echo "   index.html: $HTML_VERSION"
-    echo "   sw.js: $SW_VERSION"
-    echo "   app.webmanifest: $MANIFEST_VERSION"
-    echo ""
-    echo "請執行 'npm run update-version-files' 來同步版本號"
-    exit 1
-fi
+# 檢查測試覆蓋率
+echo "📊 檢查測試覆蓋率..."
+npm run test:coverage
 
-echo "✅ 版本號檢查通過: v$PACKAGE_VERSION"
+echo "✅ pre-commit 檢查完成！"

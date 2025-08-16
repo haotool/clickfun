@@ -66,7 +66,7 @@ class AdvancedAudioManager {
 // 主要功能
 const config = {
   rippleEnabled: true,
-  lightningEnabled: true
+  lightningEnabled: true,
 };
 
 // 特效類型
@@ -74,7 +74,7 @@ const effects = {
   lightning: [], // 雷電效果
   ripples: [], // 水波紋效果
   trails: {}, // 軌跡效果
-  labels: [] // 文字標籤
+  labels: [], // 文字標籤
 };
 
 // 渲染函數
@@ -115,8 +115,8 @@ const GameState = {
     rippleEnabled: true, // 水波紋開關
     lightningEnabled: true, // 雷電效果開關
     gameDuration: 30, // 遊戲時長
-    showTps: true // TPS 顯示開關
-  }
+    showTps: true, // TPS 顯示開關
+  },
 };
 ```
 
@@ -132,7 +132,7 @@ const tapData = {
   playerId: string, // 玩家 ID
   mode: string, // 遊戲模式
   rippleEligible: boolean, // 是否觸發水波紋
-  ultraSpeed: boolean // 是否超高速模式
+  ultraSpeed: boolean, // 是否超高速模式
 };
 
 // 雷電效果配置
@@ -140,7 +140,7 @@ const TIER = {
   1: { color: '#ffe6f3', widthMul: 1.0, glow: 0.12 },
   2: { color: '#ffd9ef', widthMul: 1.04, glow: 0.14 },
   // ... 10 個等級
-  10: { color: '#52b7ff', widthMul: 1.5, glow: 0.35 }
+  10: { color: '#52b7ff', widthMul: 1.5, glow: 0.35 },
 };
 ```
 

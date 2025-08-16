@@ -31,14 +31,14 @@ global.testUtils = {
     mode: 'single',
     timeLeft: 30,
   }),
-  
+
   // 等待異步操作
-  wait: (ms) => new Promise(resolve => setTimeout(resolve, ms)),
-  
+  wait: ms => new Promise(resolve => setTimeout(resolve, ms)),
+
   // 模擬點擊事件
-  simulateClick: (element) => {
+  simulateClick: element => {
     if (element && typeof element.click === 'function') {
       element.click();
     }
-  }
+  },
 };

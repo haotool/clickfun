@@ -54,7 +54,7 @@ self.addEventListener('install', event => {
         console.error('❌ Service Worker 安裝失敗:', error);
         throw error;
       }
-    })(),
+    })()
   );
 });
 
@@ -72,10 +72,7 @@ self.addEventListener('activate', event => {
         const deletePromises = cacheNames
           .filter(cacheName => {
             // 保留當前版本快取，刪除其他版本
-            if (
-              cacheName.startsWith('clickfun-v') &&
-              cacheName !== SW_VERSION
-            ) {
+            if (cacheName.startsWith('clickfun-v') && cacheName !== SW_VERSION) {
               console.log(`🗑️ 刪除舊版本快取: ${cacheName}`);
               return true;
             }
@@ -100,7 +97,7 @@ self.addEventListener('activate', event => {
       } catch (error) {
         console.error('❌ Service Worker 激活失敗:', error);
       }
-    })(),
+    })()
   );
 });
 
@@ -178,7 +175,9 @@ self.addEventListener('message', event => {
  * 推送通知處理
  */
 self.addEventListener('push', event => {
-  if (!event.data) {return;}
+  if (!event.data) {
+    return;
+  }
 
   const data = event.data.json();
   const options = {
@@ -338,7 +337,7 @@ async function handleDynamicRequest(request) {
 function isAppShellRequest(request) {
   const url = new URL(request.url);
   return CACHE_CONFIG.APP_SHELL.some(
-    path => url.pathname === path || url.pathname === path.replace('./', '/'),
+    path => url.pathname === path || url.pathname === path.replace('./', '/')
   );
 }
 

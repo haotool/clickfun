@@ -1972,44 +1972,20 @@
         </div>
 
         <div class="menu-buttons">
-          <button
-            class="menu-btn menu-btn-primary"
-            id="startSingleBtn"
-            aria-label="單人挑戰模式"
-          >
-            <span class="material-symbols-rounded" aria-hidden="true"
-              >person</span
-            >
+          <button class="menu-btn menu-btn-primary" id="startSingleBtn" aria-label="單人挑戰模式">
+            <span class="material-symbols-rounded" aria-hidden="true">person</span>
             單人挑戰模式
           </button>
-          <button
-            class="menu-btn menu-btn-primary"
-            id="startDualBtn"
-            aria-label="雙人對戰模式"
-          >
-            <span class="material-symbols-rounded" aria-hidden="true"
-              >groups</span
-            >
+          <button class="menu-btn menu-btn-primary" id="startDualBtn" aria-label="雙人對戰模式">
+            <span class="material-symbols-rounded" aria-hidden="true">groups</span>
             雙人對戰模式
           </button>
-          <button
-            class="menu-btn menu-btn-secondary"
-            id="leaderboardBtn"
-            aria-label="排行榜"
-          >
-            <span class="material-symbols-rounded" aria-hidden="true"
-              >leaderboard</span
-            >
+          <button class="menu-btn menu-btn-secondary" id="leaderboardBtn" aria-label="排行榜">
+            <span class="material-symbols-rounded" aria-hidden="true">leaderboard</span>
             排行榜
           </button>
-          <button
-            class="menu-btn menu-btn-secondary"
-            id="settingsBtn"
-            aria-label="遊戲設定"
-          >
-            <span class="material-symbols-rounded" aria-hidden="true"
-              >settings</span
-            >
+          <button class="menu-btn menu-btn-secondary" id="settingsBtn" aria-label="遊戲設定">
+            <span class="material-symbols-rounded" aria-hidden="true">settings</span>
             遊戲設定
           </button>
         </div>
@@ -2020,10 +1996,7 @@
         <!-- 單人頂欄 -->
         <div class="game-header" id="gameHeader">
           <div class="game-timer" aria-live="polite">
-            <span
-              class="material-symbols-rounded"
-              aria-hidden="true"
-              style="font-size: 22px"
+            <span class="material-symbols-rounded" aria-hidden="true" style="font-size: 22px"
               >timer</span
             >
             <span id="gameTimer">30</span>
@@ -2034,31 +2007,19 @@
             <div class="hud-tps-value">0</div>
           </div>
           <button class="game-exit" id="gameExit" aria-label="離開遊戲">
-            <span class="material-symbols-rounded" aria-hidden="true"
-              >close</span
-            >
+            <span class="material-symbols-rounded" aria-hidden="true">close</span>
           </button>
         </div>
 
         <div class="game-area" id="gameArea">
           <canvas id="fxCanvas" class="fx"></canvas>
 
-          <div
-            class="single-player-area"
-            id="singlePlayerArea"
-            style="display: none"
-          >
-            <div class="player-name" id="encouragementText">
-              點擊開始你的挑戰！
-            </div>
+          <div class="single-player-area" id="singlePlayerArea" style="display: none">
+            <div class="player-name" id="encouragementText">點擊開始你的挑戰！</div>
             <div class="score-display" id="singleScore">0</div>
           </div>
 
-          <div
-            class="dual-player-area"
-            id="dualPlayerArea"
-            style="display: none"
-          >
+          <div class="dual-player-area" id="dualPlayerArea" style="display: none">
             <div class="divider"></div>
 
             <div class="player-zone player1" data-player="1">
@@ -2138,17 +2099,11 @@
         </div>
 
         <!-- 雙人模式結果 -->
-        <div
-          class="modal-card dual-result-card"
-          id="dualResult"
-          style="display: none"
-        >
+        <div class="modal-card dual-result-card" id="dualResult" style="display: none">
           <div class="dual-result-header">
             <div class="winner-crown" id="winnerCrown">👑</div>
             <h2 class="dual-result-title" id="dualResultTitle">對戰結果</h2>
-            <div class="dual-result-subtitle" id="dualResultSubtitle">
-              激烈的對決！
-            </div>
+            <div class="dual-result-subtitle" id="dualResultSubtitle">激烈的對決！</div>
           </div>
 
           <div class="players-comparison">
@@ -2221,9 +2176,7 @@
           <div class="leaderboard-header">
             <h2 class="leaderboard-title">🏆 排行榜</h2>
             <div class="leaderboard-tabs">
-              <button class="tab-btn active" data-mode="single">
-                單人模式
-              </button>
+              <button class="tab-btn active" data-mode="single">單人模式</button>
               <button class="tab-btn" data-mode="dual">雙人對戰</button>
             </div>
           </div>
@@ -2261,19 +2214,14 @@
 
       <!-- 設定 -->
       <div class="modal" id="settingsModal" aria-hidden="true" role="dialog">
-        <div
-          class="modal-card"
-          style="max-width: 90vw; width: 560px; text-align: left"
-        >
+        <div class="modal-card" style="max-width: 90vw; width: 560px; text-align: left">
           <h2 class="title-gradient">遊戲設定</h2>
           <div style="margin-top: 12px; display: grid; gap: 10px">
             <div class="settings-row">
-              <span>音效開啟</span
-              ><input type="checkbox" id="soundEnabled" class="toggle" />
+              <span>音效開啟</span><input type="checkbox" id="soundEnabled" class="toggle" />
             </div>
             <div class="settings-row">
-              <span>震動回饋</span
-              ><input type="checkbox" id="vibrationEnabled" class="toggle" />
+              <span>震動回饋</span><input type="checkbox" id="vibrationEnabled" class="toggle" />
             </div>
             <div class="settings-row">
               <span>遊戲時間</span>
@@ -2294,16 +2242,13 @@
               </select>
             </div>
             <div class="settings-row">
-              <span>水波紋動畫</span
-              ><input type="checkbox" id="rippleEnabled" class="toggle" />
+              <span>水波紋動畫</span><input type="checkbox" id="rippleEnabled" class="toggle" />
             </div>
             <div class="settings-row">
-              <span>雷電效果</span
-              ><input type="checkbox" id="lightningEnabled" class="toggle" />
+              <span>雷電效果</span><input type="checkbox" id="lightningEnabled" class="toggle" />
             </div>
             <div class="settings-row">
-              <span>TPS 顯示</span
-              ><input type="checkbox" id="showTps" class="toggle" />
+              <span>TPS 顯示</span><input type="checkbox" id="showTps" class="toggle" />
             </div>
           </div>
           <!-- 版本資訊 -->
@@ -2311,21 +2256,13 @@
             style="
               margin-top: 20px;
               padding: 16px;
-              background: linear-gradient(
-                135deg,
-                var(--pink-50),
-                var(--sky-50)
-              );
+              background: linear-gradient(135deg, var(--pink-50), var(--sky-50));
               border-radius: 12px;
               border: 1px solid var(--sky-200);
               text-align: center;
             "
           >
-            <div
-              style="font-size: 12px; color: var(--sky-600); margin-bottom: 4px"
-            >
-              當前版本
-            </div>
+            <div style="font-size: 12px; color: var(--sky-600); margin-bottom: 4px">當前版本</div>
             <div
               style="
                 font-size: 16px;
@@ -2339,9 +2276,7 @@
             </div>
           </div>
           <div style="display: flex; justify-content: center; margin-top: 18px">
-            <button class="btn btn-primary" id="closeSettingsBtn">
-              儲存設定
-            </button>
+            <button class="btn btn-primary" id="closeSettingsBtn">儲存設定</button>
           </div>
         </div>
       </div>
@@ -2350,14 +2285,10 @@
       <div class="install-banner" id="installBanner">
         <div class="txt">
           <div class="title" id="installTitle">安裝 ClickFun</div>
-          <div class="hint" id="installHint">
-            快速啟動、離線遊玩、全螢幕體驗
-          </div>
+          <div class="hint" id="installHint">快速啟動、離線遊玩、全螢幕體驗</div>
         </div>
         <div class="actions">
-          <button class="btn btn-secondary" id="installDismiss">
-            不再顯示
-          </button>
+          <button class="btn btn-secondary" id="installDismiss">不再顯示</button>
           <button class="btn btn-primary" id="installAction">安裝</button>
         </div>
       </div>
@@ -2366,13 +2297,11 @@
     <script>
       (function () {
         const noop = () => {};
-        ['log', 'warn', 'error', 'info', 'debug', 'time', 'timeEnd'].forEach(
-          m => {
-            try {
-              console[m] = noop;
-            } catch (e) {}
-          }
-        );
+        ['log', 'warn', 'error', 'info', 'debug', 'time', 'timeEnd'].forEach(m => {
+          try {
+            console[m] = noop;
+          } catch (e) {}
+        });
       })();
 
       // ===== 版本管理 =====
@@ -2393,7 +2322,7 @@
         `${SW_ENHANCED_VERSION}-app-shell`,
         `${SW_ENHANCED_VERSION}-static`,
         `${SW_ENHANCED_VERSION}-dynamic`,
-        `${SW_ENHANCED_VERSION}-images`
+        `${SW_ENHANCED_VERSION}-images`,
       ];
 
       // ===== 鼓勵文字系統 =====
@@ -2438,7 +2367,7 @@
         { minTPS: 85, maxTPS: 90, message: '你重新定義了「快」這個字！📚' },
         { minTPS: 90, maxTPS: 95, message: '手指速度已經無法用科學解釋！🔬' },
         { minTPS: 95, maxTPS: 100, message: '你就是點擊宇宙的創造者！🌍' },
-        { minTPS: 100, maxTPS: Infinity, message: '傳說中的點擊之神降臨！👼' }
+        { minTPS: 100, maxTPS: Infinity, message: '傳說中的點擊之神降臨！👼' },
       ];
 
       // 獲取對應 TPS 的鼓勵文字
@@ -2448,8 +2377,7 @@
             return msg.message;
           }
         }
-        return ENCOURAGEMENT_MESSAGES[ENCOURAGEMENT_MESSAGES.length - 1]
-          .message;
+        return ENCOURAGEMENT_MESSAGES[ENCOURAGEMENT_MESSAGES.length - 1].message;
       }
 
       // 版本檢測和自動更新
@@ -2472,8 +2400,7 @@
                   await Promise.all(
                     cacheNames.map(cacheName => {
                       // 檢查是否為當前版本的快取
-                      const isCurrentVersion =
-                        CURRENT_CACHE_PATTERNS.includes(cacheName);
+                      const isCurrentVersion = CURRENT_CACHE_PATTERNS.includes(cacheName);
 
                       if (!isCurrentVersion) {
                         console.log(`清除舊快取: ${cacheName}`);
@@ -2540,7 +2467,7 @@
           gameDuration: 30,
           rippleEnabled: true,
           lightningEnabled: true,
-          showTps: true
+          showTps: true,
         },
         pointers: new Map(),
         activePointers: new Map(),
@@ -2553,12 +2480,11 @@
         inputLockUntil: 0,
         ultraSpeedTimeout: null,
         ultraSpeedTimeout1: null,
-        ultraSpeedTimeout2: null
+        ultraSpeedTimeout2: null,
       };
 
       const SPEED_STEP = 0.5; // 每 0.5 TPS 一級，總共 10 級（越高越炫）
-      const tpsToLevel = tps =>
-        Math.max(1, Math.min(10, Math.floor(tps / SPEED_STEP) + 1));
+      const tpsToLevel = tps => Math.max(1, Math.min(10, Math.floor(tps / SPEED_STEP) + 1));
 
       // 正確的 TPS 計算函數 - 基於滑動窗口
       function calculateRealTPS(playerId) {
@@ -2577,8 +2503,7 @@
       function updateAllTPS() {
         if (!GameState.settings.showTps || !GameState.isPlaying) return;
 
-        const players =
-          GameState.mode === 'single' ? ['single'] : ['player1', 'player2'];
+        const players = GameState.mode === 'single' ? ['single'] : ['player1', 'player2'];
 
         players.forEach(playerId => {
           const realTPS = calculateRealTPS(playerId);
@@ -2597,9 +2522,7 @@
         offscreen = null,
         dpr = 1;
       const isLowPower =
-        ('connection' in navigator &&
-          navigator.connection &&
-          navigator.connection.saveData) ||
+        ('connection' in navigator && navigator.connection && navigator.connection.saveData) ||
         false;
 
       // ===== FX Worker 初始化 =====
@@ -2619,16 +2542,12 @@
         dpr = Math.min(isLowPower ? 1.25 : 1.6, window.devicePixelRatio || 1);
 
         try {
-          if (
-            'OffscreenCanvas' in window &&
-            fxCanvas.transferControlToOffscreen
-          ) {
+          if ('OffscreenCanvas' in window && fxCanvas.transferControlToOffscreen) {
             offscreen = fxCanvas.transferControlToOffscreen();
             fxWorker = new Worker('./fx.worker.js', { type: 'module' });
-            fxWorker.postMessage(
-              { type: 'init', canvas: offscreen, dpr, lowPower: isLowPower },
-              [offscreen]
-            );
+            fxWorker.postMessage({ type: 'init', canvas: offscreen, dpr, lowPower: isLowPower }, [
+              offscreen,
+            ]);
           } else {
             fxWorker = new Worker('./fx.worker.js', { type: 'module' });
             fxWorker.postMessage({ type: 'init-fallback' }, []);
@@ -2653,7 +2572,7 @@
             type: 'resize',
             width: r.width,
             height: r.height,
-            dpr
+            dpr,
           });
         } else {
           fxCanvas.width = Math.floor(r.width * dpr);
@@ -2662,7 +2581,7 @@
             type: 'resize',
             width: r.width,
             height: r.height,
-            dpr
+            dpr,
           });
         }
       }
@@ -2672,7 +2591,7 @@
           fxWorker.postMessage({
             type: 'config',
             rippleEnabled: GameState.settings.rippleEnabled,
-            lightningEnabled: GameState.settings.lightningEnabled
+            lightningEnabled: GameState.settings.lightningEnabled,
           });
       }
 
@@ -2687,15 +2606,13 @@
         async init() {
           if (this.isInitialized) return;
           try {
-            this.audioContext = new (window.AudioContext ||
-              window.webkitAudioContext)({
+            this.audioContext = new (window.AudioContext || window.webkitAudioContext)({
               latencyHint: 'interactive',
-              sampleRate: 44100
+              sampleRate: 44100,
             });
             this.masterGain = this.audioContext.createGain();
             this.masterGain.connect(this.audioContext.destination);
-            if (this.audioContext.state === 'suspended')
-              await this.audioContext.resume();
+            if (this.audioContext.state === 'suspended') await this.audioContext.resume();
             const sr = this.audioContext.sampleRate;
             this.sounds.tap = this.renderTap(sr);
             this.sounds.countdown = this.renderBeep(sr);
@@ -2710,10 +2627,7 @@
             d = b.getChannelData(0);
           for (let i = 0; i < n; i++) {
             const t = i / sr;
-            d[i] =
-              Math.sin(2 * Math.PI * (900 - 400 * t) * t) *
-              Math.exp(-t * 28) *
-              0.35;
+            d[i] = Math.sin(2 * Math.PI * (900 - 400 * t) * t) * Math.exp(-t * 28) * 0.35;
           }
           return b;
         }
@@ -2736,8 +2650,7 @@
             for (let i = 0; i < n; i++) {
               const t = i / sr,
                 idx = Math.floor(t * 6) % m.length;
-              d[i] =
-                Math.sin(2 * Math.PI * m[idx] * t) * Math.max(0, 1 - t) * 0.24;
+              d[i] = Math.sin(2 * Math.PI * m[idx] * t) * Math.max(0, 1 - t) * 0.24;
             }
           }
           return b;
@@ -2803,7 +2716,7 @@
             score2,
             maxTPS,
             date: new Date().toISOString(),
-            ts: Date.now()
+            ts: Date.now(),
           };
           d.leaderboard = d.leaderboard || [];
           d.leaderboard.push(rec);
@@ -2843,95 +2756,69 @@
       class AdvancedUIManager {
         constructor() {
           this.encouragementTimeout = null;
-          document
-            .getElementById('startSingleBtn')
-            .addEventListener('click', async () => {
-              await this.initAudio();
-              gameEngine.startSinglePlayer();
-            });
-          document
-            .getElementById('startDualBtn')
-            .addEventListener('click', async () => {
-              await this.initAudio();
-              gameEngine.startDualPlayer();
-            });
-          document
-            .getElementById('leaderboardBtn')
-            .addEventListener('click', () => {
-              this.currentLeaderboardMode = 'single';
-              this.currentLeaderboardPage = 1;
-              this.updateLeaderboard('single', 1);
-              this.showModal('leaderboardModal');
-              this.updateLeaderboardTabs();
-            });
-          document
-            .getElementById('settingsBtn')
-            .addEventListener('click', () => {
-              this.showSettings();
-            });
+          document.getElementById('startSingleBtn').addEventListener('click', async () => {
+            await this.initAudio();
+            gameEngine.startSinglePlayer();
+          });
+          document.getElementById('startDualBtn').addEventListener('click', async () => {
+            await this.initAudio();
+            gameEngine.startDualPlayer();
+          });
+          document.getElementById('leaderboardBtn').addEventListener('click', () => {
+            this.currentLeaderboardMode = 'single';
+            this.currentLeaderboardPage = 1;
+            this.updateLeaderboard('single', 1);
+            this.showModal('leaderboardModal');
+            this.updateLeaderboardTabs();
+          });
+          document.getElementById('settingsBtn').addEventListener('click', () => {
+            this.showSettings();
+          });
 
           document
             .getElementById('gameExit')
             .addEventListener('click', () => gameEngine.exitGame());
-          document
-            .getElementById('playAgainBtn')
-            .addEventListener('click', () => {
-              this.hideModal('resultModal');
-              if (GameState.mode === 'single') gameEngine.startSinglePlayer();
-              else gameEngine.startDualPlayer();
-            });
-          document
-            .getElementById('backToMenuBtn')
-            .addEventListener('click', () => {
-              this.hideModal('resultModal');
-              gameEngine.exitGame();
-            });
+          document.getElementById('playAgainBtn').addEventListener('click', () => {
+            this.hideModal('resultModal');
+            if (GameState.mode === 'single') gameEngine.startSinglePlayer();
+            else gameEngine.startDualPlayer();
+          });
+          document.getElementById('backToMenuBtn').addEventListener('click', () => {
+            this.hideModal('resultModal');
+            gameEngine.exitGame();
+          });
 
           // 雙人模式按鈕事件監聽器
-          document
-            .getElementById('playAgainDualBtn')
-            .addEventListener('click', () => {
-              this.hideModal('resultModal');
-              gameEngine.startDualPlayer();
-            });
-          document
-            .getElementById('backToMenuDualBtn')
-            .addEventListener('click', () => {
-              this.hideModal('resultModal');
-              gameEngine.exitGame();
-            });
+          document.getElementById('playAgainDualBtn').addEventListener('click', () => {
+            this.hideModal('resultModal');
+            gameEngine.startDualPlayer();
+          });
+          document.getElementById('backToMenuDualBtn').addEventListener('click', () => {
+            this.hideModal('resultModal');
+            gameEngine.exitGame();
+          });
 
           document
             .getElementById('closeLeaderboardBtn')
-            .addEventListener('click', () =>
-              this.hideModal('leaderboardModal')
-            );
-          document
-            .getElementById('clearLeaderboardBtn')
-            .addEventListener('click', () => {
-              if (confirm('確定要清除所有記錄嗎？此操作無法復原。')) {
-                storageManager.clearData();
-                this.updateLeaderboard(
-                  this.currentLeaderboardMode || 'single',
-                  1
-                );
-              }
-            });
+            .addEventListener('click', () => this.hideModal('leaderboardModal'));
+          document.getElementById('clearLeaderboardBtn').addEventListener('click', () => {
+            if (confirm('確定要清除所有記錄嗎？此操作無法復原。')) {
+              storageManager.clearData();
+              this.updateLeaderboard(this.currentLeaderboardMode || 'single', 1);
+            }
+          });
 
           // 排行榜分頁和標籤事件
           this.setupLeaderboardEvents();
 
-          document
-            .getElementById('closeSettingsBtn')
-            .addEventListener('click', () => {
-              this.saveSettings();
-              this.hideModal('settingsModal');
-              sendSettingsToWorker();
-            });
+          document.getElementById('closeSettingsBtn').addEventListener('click', () => {
+            this.saveSettings();
+            this.hideModal('settingsModal');
+            sendSettingsToWorker();
+          });
 
           document.addEventListener('keydown', e => {
-            if (e.code === 'Escape' && GameState.isPlaying)
-              gameEngine.exitGame();
+            if (e.code === 'Escape' && GameState.isPlaying) gameEngine.exitGame();
           });
 
           this.loadSettingsUI();
@@ -2949,8 +2836,7 @@
             document.getElementById('singlePlayerArea').style.display = 'flex';
             document.getElementById('dualPlayerArea').style.display = 'none';
             // 重置鼓勵文字
-            const encouragementEl =
-              document.getElementById('encouragementText');
+            const encouragementEl = document.getElementById('encouragementText');
             if (encouragementEl) {
               encouragementEl.textContent = '點擊開始你的挑戰！';
             }
@@ -2974,13 +2860,10 @@
         }
         updateScoreDisplay() {
           if (GameState.mode === 'single') {
-            document.getElementById('singleScore').textContent =
-              GameState.scores.single;
+            document.getElementById('singleScore').textContent = GameState.scores.single;
           } else {
-            document.getElementById('player1Score').textContent =
-              GameState.scores.player1;
-            document.getElementById('player2Score').textContent =
-              GameState.scores.player2;
+            document.getElementById('player1Score').textContent = GameState.scores.player1;
+            document.getElementById('player2Score').textContent = GameState.scores.player2;
           }
         }
         animateScore(playerId) {
@@ -3138,9 +3021,7 @@
 
             title.textContent = '單人挑戰完成！';
             score.textContent = r.score;
-            tpsDiv.textContent = (
-              Math.round(GameState.maxTPS.single * 10) / 10
-            ).toFixed(1);
+            tpsDiv.textContent = (Math.round(GameState.maxTPS.single * 10) / 10).toFixed(1);
 
             // 根據成績設置成就徽章
             if (GameState.maxTPS.single >= 50) {
@@ -3170,10 +3051,8 @@
             const player1Medal = document.getElementById('player1Medal');
             const player2Medal = document.getElementById('player2Medal');
 
-            const player1ScoreEl =
-              document.getElementById('player1ResultScore');
-            const player2ScoreEl =
-              document.getElementById('player2ResultScore');
+            const player1ScoreEl = document.getElementById('player1ResultScore');
+            const player2ScoreEl = document.getElementById('player2ResultScore');
             const player1TPSEl = document.getElementById('player1ResultTPS');
             const player2TPSEl = document.getElementById('player2ResultTPS');
 
@@ -3182,12 +3061,8 @@
             // 設置分數和TPS
             player1ScoreEl.textContent = r.score;
             player2ScoreEl.textContent = r.score2;
-            player1TPSEl.textContent = (
-              Math.round(GameState.maxTPS.player1 * 10) / 10
-            ).toFixed(1);
-            player2TPSEl.textContent = (
-              Math.round(GameState.maxTPS.player2 * 10) / 10
-            ).toFixed(1);
+            player1TPSEl.textContent = (Math.round(GameState.maxTPS.player1 * 10) / 10).toFixed(1);
+            player2TPSEl.textContent = (Math.round(GameState.maxTPS.player2 * 10) / 10).toFixed(1);
 
             // 重置樣式
             player1Result.classList.remove('winner');
@@ -3195,9 +3070,7 @@
 
             // 設置獲勝者
             if (r.winner) {
-              dualTitle.textContent = `${
-                r.winner === 'player1' ? '玩家 1' : '玩家 2'
-              } 獲勝！`;
+              dualTitle.textContent = `${r.winner === 'player1' ? '玩家 1' : '玩家 2'} 獲勝！`;
               dualSubtitle.textContent = '恭喜獲得勝利！';
               winnerCrown.style.display = 'block';
 
@@ -3219,10 +3092,7 @@
             }
 
             // 設置成就徽章
-            const maxTPS = Math.max(
-              GameState.maxTPS.player1,
-              GameState.maxTPS.player2
-            );
+            const maxTPS = Math.max(GameState.maxTPS.player1, GameState.maxTPS.player2);
             if (maxTPS >= 50) {
               dualBadge.innerHTML =
                 '<div class="badge-icon">👑</div><div class="badge-text">對戰王者</div>';
@@ -3252,52 +3122,35 @@
           m.setAttribute('aria-hidden', 'true');
         }
         showSettings() {
-          document.getElementById('soundEnabled').checked =
-            GameState.settings.soundEnabled;
-          document.getElementById('vibrationEnabled').checked =
-            GameState.settings.vibrationEnabled;
-          document.getElementById('gameDuration').value =
-            GameState.settings.gameDuration;
-          document.getElementById('rippleEnabled').checked =
-            GameState.settings.rippleEnabled;
-          document.getElementById('lightningEnabled').checked =
-            GameState.settings.lightningEnabled;
-          document.getElementById('showTps').checked =
-            GameState.settings.showTps;
+          document.getElementById('soundEnabled').checked = GameState.settings.soundEnabled;
+          document.getElementById('vibrationEnabled').checked = GameState.settings.vibrationEnabled;
+          document.getElementById('gameDuration').value = GameState.settings.gameDuration;
+          document.getElementById('rippleEnabled').checked = GameState.settings.rippleEnabled;
+          document.getElementById('lightningEnabled').checked = GameState.settings.lightningEnabled;
+          document.getElementById('showTps').checked = GameState.settings.showTps;
           this.showModal('settingsModal');
         }
         saveSettings() {
-          GameState.settings.soundEnabled =
-            document.getElementById('soundEnabled').checked;
-          GameState.settings.vibrationEnabled =
-            document.getElementById('vibrationEnabled').checked;
+          GameState.settings.soundEnabled = document.getElementById('soundEnabled').checked;
+          GameState.settings.vibrationEnabled = document.getElementById('vibrationEnabled').checked;
           GameState.settings.gameDuration = parseInt(
             document.getElementById('gameDuration').value,
             10
           );
-          GameState.settings.rippleEnabled =
-            document.getElementById('rippleEnabled').checked;
-          GameState.settings.lightningEnabled =
-            document.getElementById('lightningEnabled').checked;
-          GameState.settings.showTps =
-            document.getElementById('showTps').checked;
+          GameState.settings.rippleEnabled = document.getElementById('rippleEnabled').checked;
+          GameState.settings.lightningEnabled = document.getElementById('lightningEnabled').checked;
+          GameState.settings.showTps = document.getElementById('showTps').checked;
           storageManager.saveSettings();
           this.applyTpsToggle();
           sendSettingsToWorker();
         }
         loadSettingsUI() {
-          document.getElementById('soundEnabled').checked =
-            GameState.settings.soundEnabled;
-          document.getElementById('vibrationEnabled').checked =
-            GameState.settings.vibrationEnabled;
-          document.getElementById('gameDuration').value =
-            GameState.settings.gameDuration;
-          document.getElementById('rippleEnabled').checked =
-            GameState.settings.rippleEnabled;
-          document.getElementById('lightningEnabled').checked =
-            GameState.settings.lightningEnabled;
-          document.getElementById('showTps').checked =
-            GameState.settings.showTps;
+          document.getElementById('soundEnabled').checked = GameState.settings.soundEnabled;
+          document.getElementById('vibrationEnabled').checked = GameState.settings.vibrationEnabled;
+          document.getElementById('gameDuration').value = GameState.settings.gameDuration;
+          document.getElementById('rippleEnabled').checked = GameState.settings.rippleEnabled;
+          document.getElementById('lightningEnabled').checked = GameState.settings.lightningEnabled;
+          document.getElementById('showTps').checked = GameState.settings.showTps;
           this.applyTpsToggle();
         }
         updateLeaderboard(mode = 'single', page = 1) {
@@ -3310,15 +3163,9 @@
 
           // 獲取指定模式的記錄
           const allRecords = storageManager.getLeaderboard(mode, 100);
-          const totalPages = Math.max(
-            1,
-            Math.ceil(allRecords.length / itemsPerPage)
-          );
+          const totalPages = Math.max(1, Math.ceil(allRecords.length / itemsPerPage));
           const startIndex = (page - 1) * itemsPerPage;
-          const records = allRecords.slice(
-            startIndex,
-            startIndex + itemsPerPage
-          );
+          const records = allRecords.slice(startIndex, startIndex + itemsPerPage);
 
           // 更新分頁信息
           currentPageEl.textContent = page;
@@ -3345,7 +3192,7 @@
                 month: 'short',
                 day: 'numeric',
                 hour: '2-digit',
-                minute: '2-digit'
+                minute: '2-digit',
               });
 
               let rankClass = 'rank-other';
@@ -3354,9 +3201,7 @@
               else if (globalRank === 3) rankClass = 'rank-3';
 
               const scoreText =
-                record.score2 != null
-                  ? `${record.score} : ${record.score2}`
-                  : record.score;
+                record.score2 != null ? `${record.score} : ${record.score2}` : record.score;
 
               const tpsText = record.maxTPS ? `最高 TPS: ${record.maxTPS}` : '';
 
@@ -3396,35 +3241,22 @@
           });
 
           // 分頁按鈕
-          document
-            .getElementById('prevPageBtn')
-            .addEventListener('click', () => {
-              if (this.currentLeaderboardPage > 1) {
-                this.currentLeaderboardPage--;
-                this.updateLeaderboard(
-                  this.currentLeaderboardMode,
-                  this.currentLeaderboardPage
-                );
-              }
-            });
+          document.getElementById('prevPageBtn').addEventListener('click', () => {
+            if (this.currentLeaderboardPage > 1) {
+              this.currentLeaderboardPage--;
+              this.updateLeaderboard(this.currentLeaderboardMode, this.currentLeaderboardPage);
+            }
+          });
 
-          document
-            .getElementById('nextPageBtn')
-            .addEventListener('click', () => {
-              this.currentLeaderboardPage++;
-              this.updateLeaderboard(
-                this.currentLeaderboardMode,
-                this.currentLeaderboardPage
-              );
-            });
+          document.getElementById('nextPageBtn').addEventListener('click', () => {
+            this.currentLeaderboardPage++;
+            this.updateLeaderboard(this.currentLeaderboardMode, this.currentLeaderboardPage);
+          });
         }
 
         updateLeaderboardTabs() {
           document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.classList.toggle(
-              'active',
-              btn.dataset.mode === this.currentLeaderboardMode
-            );
+            btn.classList.toggle('active', btn.dataset.mode === this.currentLeaderboardMode);
           });
         }
 
@@ -3438,8 +3270,7 @@
           const DISMISS_KEY = 'etb_install_dismiss_v1';
           if (localStorage.getItem(DISMISS_KEY) === '1') return;
           const isStandalone =
-            window.matchMedia('(display-mode: standalone)').matches ||
-            window.navigator.standalone;
+            window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
           if (isStandalone) return;
           const isiOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
           let deferredPrompt = null;
@@ -3461,8 +3292,7 @@
             };
           } else {
             title.textContent = '加入主畫面（iOS）';
-            hint.innerHTML =
-              '在 Safari 按 <b>分享</b> → <b>加入到主畫面</b>，即可離線全螢幕遊玩';
+            hint.innerHTML = '在 Safari 按 <b>分享</b> → <b>加入到主畫面</b>，即可離線全螢幕遊玩';
             btnInstall.textContent = '知道了';
             banner.classList.add('show');
             btnInstall.onclick = () => banner.classList.remove('show');
@@ -3480,16 +3310,16 @@
           this.gameEngine = gameEngine;
           const area = document.getElementById('gameArea');
           area.addEventListener('pointerdown', this.onDown.bind(this), {
-            passive: false
+            passive: false,
           });
           area.addEventListener('pointermove', this.onMove.bind(this), {
-            passive: false
+            passive: false,
           });
           area.addEventListener('pointerup', this.onUp.bind(this), {
-            passive: false
+            passive: false,
           });
           area.addEventListener('pointercancel', this.onUp.bind(this), {
-            passive: false
+            passive: false,
           });
           area.addEventListener('contextmenu', e => e.preventDefault());
           area.addEventListener('dblclick', e => e.preventDefault());
@@ -3498,7 +3328,7 @@
             if (fxWorker && GameState.tapQueues.length) {
               fxWorker.postMessage({
                 type: 'batch',
-                taps: GameState.tapQueues.splice(0, GameState.tapQueues.length)
+                taps: GameState.tapQueues.splice(0, GameState.tapQueues.length),
               });
             }
             requestAnimationFrame(pump);
@@ -3554,8 +3384,7 @@
           }
 
           // 水波紋觸發條件：每秒點擊 > 20 且每 3 次觸發一次
-          const rippleOk =
-            currentTPS > 20 && GameState.scores[playerId] % 3 === 0;
+          const rippleOk = currentTPS > 20 && GameState.scores[playerId] % 3 === 0;
           // 超高速閃電效果：TPS > 30 (與顯示邏輯保持一致)
           const ultraSpeed = currentTPS > 30;
 
@@ -3567,7 +3396,7 @@
             playerId,
             mode: GameState.mode,
             rippleEligible: rippleOk,
-            ultraSpeed: ultraSpeed
+            ultraSpeed: ultraSpeed,
           });
 
           audioManager.play('tap', 0.5);
@@ -3596,9 +3425,7 @@
               meta.element.releasePointerCapture(e.pointerId);
             } catch (_) {}
             if (GameState.mode === 'dual') {
-              const zone = document.querySelector(
-                `.player-zone.${meta.playerId}`
-              );
+              const zone = document.querySelector(`.player-zone.${meta.playerId}`);
               if (zone) zone.classList.remove('active');
             }
           }
@@ -3633,24 +3460,19 @@
           try {
             const el = document.documentElement;
             if (el.requestFullscreen) await el.requestFullscreen();
-            else if (el.webkitRequestFullscreen)
-              await el.webkitRequestFullscreen();
-            this.isFullscreen = !!(
-              document.fullscreenElement || document.webkitFullscreenElement
-            );
+            else if (el.webkitRequestFullscreen) await el.webkitRequestFullscreen();
+            this.isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement);
           } catch (_) {}
         }
 
         isMobileDevice() {
           // 檢測是否為移動設備（手機或平板）
           const userAgent = navigator.userAgent.toLowerCase();
-          const isMobile =
-            /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
-              userAgent
-            );
+          const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
+            userAgent
+          );
           const isTablet = /ipad|android(?!.*mobile)/i.test(userAgent);
-          const hasTouchScreen =
-            'ontouchstart' in window || navigator.maxTouchPoints > 0;
+          const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
           const isSmallScreen = window.innerWidth <= 1024; // 平板尺寸以下
 
           return isMobile || isTablet || (hasTouchScreen && isSmallScreen);
@@ -3696,16 +3518,13 @@
             clearInterval(GameState.tpsUpdateInterval);
           }
           GameState.tpsUpdateInterval = setInterval(updateAllTPS, 100); // 每100ms更新一次
-          GameState.inputLockUntil =
-            performance.now() + (mode === 'dual' ? delayMs : 0);
+          GameState.inputLockUntil = performance.now() + (mode === 'dual' ? delayMs : 0);
 
           const appEl = document.getElementById('app');
           appEl.classList.toggle('single', mode === 'single');
           appEl.classList.toggle('dual', mode === 'dual');
 
-          document
-            .getElementById('gameHeader')
-            .classList.toggle('hidden', mode === 'dual');
+          document.getElementById('gameHeader').classList.toggle('hidden', mode === 'dual');
           uiManager.showGameScreen(mode);
           uiManager.updateGameUI();
           uiManager.updateScoreDisplay();
@@ -3727,11 +3546,7 @@
             if (!GameState.isPlaying) return;
 
             // 在雙人模式中，於預定開始時間自動啟動計時（避免永不倒數）
-            if (
-              GameState.mode === 'dual' &&
-              !GameState.hasStarted &&
-              ts >= this.startTime
-            ) {
+            if (GameState.mode === 'dual' && !GameState.hasStarted && ts >= this.startTime) {
               GameState.hasStarted = true;
             }
 
@@ -3796,12 +3611,7 @@
           if (GameState.mode === 'single') {
             r.score = GameState.scores.single;
             r.hasWinner = r.score > 0;
-            storageManager.saveScore(
-              'single',
-              r.score,
-              null,
-              GameState.maxTPS.single
-            );
+            storageManager.saveScore('single', r.score, null, GameState.maxTPS.single);
           } else {
             r.score = GameState.scores.player1;
             r.score2 = GameState.scores.player2;
@@ -3812,10 +3622,7 @@
               r.winner = 'player2';
               r.hasWinner = true;
             }
-            const maxTPS = Math.max(
-              GameState.maxTPS.player1,
-              GameState.maxTPS.player2
-            );
+            const maxTPS = Math.max(GameState.maxTPS.player1, GameState.maxTPS.player2);
             storageManager.saveScore(
               'dual',
               Math.max(r.score, r.score2),
@@ -3843,58 +3650,34 @@
             '#ff69b4',
             '#00ff00',
             '#ffd700',
-            '#ff4500'
+            '#ff4500',
           ];
           const count = 24;
           const duration = 5500;
 
           return new Promise(resolve => {
             // Add victory screen flash effect
-            document.getElementById('app').style.animation =
-              'victoryFlash 0.8s ease-out';
+            document.getElementById('app').style.animation = 'victoryFlash 0.8s ease-out';
 
             for (let i = 0; i < count; i++) {
               setTimeout(
                 () => {
                   const cx = Math.random() * window.innerWidth;
-                  const cy =
-                    Math.random() * (window.innerHeight * 0.7) +
-                    window.innerHeight * 0.15;
+                  const cy = Math.random() * (window.innerHeight * 0.7) + window.innerHeight * 0.15;
                   const fireworkType = Math.random();
 
                   if (fireworkType < 0.3) {
                     // Large burst firework
-                    this.createBurstFirework(
-                      container,
-                      cx,
-                      cy,
-                      colors,
-                      18,
-                      180
-                    );
+                    this.createBurstFirework(container, cx, cy, colors, 18, 180);
                   } else if (fireworkType < 0.6) {
                     // Ring firework
                     this.createRingFirework(container, cx, cy, colors, 16, 150);
                   } else if (fireworkType < 0.85) {
                     // Spiral firework
-                    this.createSpiralFirework(
-                      container,
-                      cx,
-                      cy,
-                      colors,
-                      24,
-                      200
-                    );
+                    this.createSpiralFirework(container, cx, cy, colors, 24, 200);
                   } else {
                     // Chain explosion
-                    this.createChainFirework(
-                      container,
-                      cx,
-                      cy,
-                      colors,
-                      12,
-                      120
-                    );
+                    this.createChainFirework(container, cx, cy, colors, 12, 120);
                   }
 
                   // Enhanced audio with random pitch
@@ -3902,10 +3685,7 @@
 
                   // Random victory sound bursts
                   if (Math.random() < 0.3) {
-                    setTimeout(
-                      () => audioManager.play('victory', 0.1),
-                      Math.random() * 300
-                    );
+                    setTimeout(() => audioManager.play('victory', 0.1), Math.random() * 300);
                   }
                 },
                 i * (duration / count) + Math.random() * 200
@@ -3951,12 +3731,12 @@
                     transform: `translate(${Math.cos(ang) * dist}px, ${
                       Math.sin(ang) * dist + Math.random() * 50
                     }px) scale(0)`,
-                    opacity: 0
-                  }
+                    opacity: 0,
+                  },
                 ],
                 {
                   duration: dur,
-                  easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                  easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 }
               )
               .addEventListener('finish', () => dot.remove());
@@ -3988,14 +3768,14 @@
                       Math.sin(ang) * radius
                     }px) scale(0.3)`,
                     opacity: 0.8,
-                    offset: 0.7
+                    offset: 0.7,
                   },
                   {
                     transform: `translate(${Math.cos(ang) * radius * 1.2}px, ${
                       Math.sin(ang) * radius * 1.2
                     }px) scale(0)`,
-                    opacity: 0
-                  }
+                    opacity: 0,
+                  },
                 ],
                 { duration: dur, easing: 'ease-out' }
               )
@@ -4026,14 +3806,14 @@
                 [
                   {
                     transform: 'translate(0,0) rotate(0deg) scale(1)',
-                    opacity: 1
+                    opacity: 1,
                   },
                   {
                     transform: `translate(${Math.cos(spiral) * dist}px, ${
                       Math.sin(spiral) * dist
                     }px) rotate(${(spiral * 180) / Math.PI}deg) scale(0)`,
-                    opacity: 0
-                  }
+                    opacity: 0,
+                  },
                 ],
                 { duration: dur, easing: 'ease-out' }
               )
@@ -4066,8 +3846,8 @@
                       transform: `translate(${Math.cos(ang) * d}px, ${
                         Math.sin(ang) * d
                       }px) scale(0)`,
-                      opacity: 0
-                    }
+                      opacity: 0,
+                    },
                   ],
                   { duration: 800, easing: 'ease-out' }
                 )
@@ -4095,8 +3875,7 @@
               confetti.style.position = 'absolute';
               confetti.style.width = '6px';
               confetti.style.height = '6px';
-              confetti.style.background =
-                colors[Math.floor(Math.random() * colors.length)];
+              confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
               confetti.style.left = Math.random() * window.innerWidth + 'px';
               confetti.style.top = '-10px';
               confetti.style.borderRadius = '2px';
@@ -4110,12 +3889,12 @@
                       transform: `translateY(${
                         window.innerHeight + 50
                       }px) rotate(${Math.random() * 720}deg)`,
-                      opacity: 0
-                    }
+                      opacity: 0,
+                    },
                   ],
                   {
                     duration: 3000 + Math.random() * 2000,
-                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                   }
                 )
                 .addEventListener('finish', () => confetti.remove());
@@ -4210,9 +3989,7 @@
 
       // 全螢幕事件：不要在這裡呼叫 exitGame() 以免遞迴
       document.addEventListener('fullscreenchange', () => {
-        const isFs = !!(
-          document.fullscreenElement || document.webkitFullscreenElement
-        );
+        const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
         gameEngine.isFullscreen = isFs;
         if (!isFs && GameState.isPlaying) {
           GameState.isPlaying = false;

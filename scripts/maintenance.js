@@ -107,9 +107,7 @@ function checkGitStatus() {
       console.log('   ✅ Git 工作區乾淨');
     } else {
       console.log('   ⚠️  Git 工作區有未提交的變更');
-      console.log(
-        '      建議執行 git add . && git commit -m "chore: 更新專案狀態"',
-      );
+      console.log('      建議執行 git add . && git commit -m "chore: 更新專案狀態"');
     }
 
     return true;

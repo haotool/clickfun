@@ -28,14 +28,14 @@
 // 10 級閃電強度系統
 const LIGHTNING_TIERS = {
   1: { intensity: 0.1, color: '#f66fb9' },
-  10: { intensity: 1.0, color: '#52b7ff' }
+  10: { intensity: 1.0, color: '#52b7ff' },
 };
 
 // 動態 RGB 動畫系統
 const RGB_ANIMATION = {
   trigger: 'TPS > 30',
   duration: '1000ms+',
-  effect: 'rainbow-gradient'
+  effect: 'rainbow-gradient',
 };
 ```
 
@@ -139,11 +139,7 @@ document.addEventListener(
   --primary-pink: #f66fb9; /* 主要粉色 */
   --accent-blue: #52b7ff; /* 強調藍色 */
   --success-gold: #ffd700; /* 成功金色 */
-  --gradient-magic: linear-gradient(
-    45deg,
-    var(--primary-pink),
-    var(--accent-blue)
-  );
+  --gradient-magic: linear-gradient(45deg, var(--primary-pink), var(--accent-blue));
 }
 ```
 

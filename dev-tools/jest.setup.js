@@ -45,14 +45,11 @@ beforeEach(async () => {
 afterEach(async () => {
   if (typeof page !== 'undefined') {
     // 截圖用於除錯（測試失敗時）
-    if (
-      jasmine.currentSpec &&
-      jasmine.currentSpec.result.failedExpectations.length > 0
-    ) {
+    if (jasmine.currentSpec && jasmine.currentSpec.result.failedExpectations.length > 0) {
       const screenshotPath = path.join(
         __dirname,
         'screenshots',
-        `${jasmine.currentSpec.description}.png`,
+        `${jasmine.currentSpec.description}.png`
       );
       await page.screenshot({ path: screenshotPath, fullPage: true });
     }

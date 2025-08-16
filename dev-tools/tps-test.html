@@ -12,8 +12,7 @@
       }
 
       body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         min-height: 100vh;
         padding: 20px;
@@ -230,9 +229,7 @@
       <div class="controls">
         <button class="btn btn-primary" onclick="startTest()">開始測試</button>
         <button class="btn btn-secondary" onclick="resetTest()">重置</button>
-        <button class="btn btn-secondary" onclick="exportData()">
-          匯出數據
-        </button>
+        <button class="btn btn-secondary" onclick="exportData()">匯出數據</button>
       </div>
 
       <div class="stats-panel">
@@ -274,7 +271,7 @@
           this.isConnected = false;
           this.testData = {
             zone1: { clicks: [], tps: 0, totalClicks: 0 },
-            zone2: { clicks: [], tps: 0, totalClicks: 0 }
+            zone2: { clicks: [], tps: 0, totalClicks: 0 },
           };
           this.testStartTime = null;
           this.maxTPS = 0;
@@ -329,23 +326,19 @@
           });
 
           // 多點觸控支援
-          document
-            .getElementById('clickZone1')
-            .addEventListener('touchstart', e => {
-              e.preventDefault();
-              for (let touch of e.touches) {
-                this.handleClick('zone1', touch);
-              }
-            });
+          document.getElementById('clickZone1').addEventListener('touchstart', e => {
+            e.preventDefault();
+            for (let touch of e.touches) {
+              this.handleClick('zone1', touch);
+            }
+          });
 
-          document
-            .getElementById('clickZone2')
-            .addEventListener('touchstart', e => {
-              e.preventDefault();
-              for (let touch of e.touches) {
-                this.handleClick('zone2', touch);
-              }
-            });
+          document.getElementById('clickZone2').addEventListener('touchstart', e => {
+            e.preventDefault();
+            for (let touch of e.touches) {
+              this.handleClick('zone2', touch);
+            }
+          });
         }
 
         handleClick(zone, event) {
@@ -353,7 +346,7 @@
           const clickData = {
             timestamp: now,
             x: event.clientX || event.pageX,
-            y: event.clientY || event.pageY
+            y: event.clientY || event.pageY,
           };
 
           this.testData[zone].clicks.push(clickData);
@@ -394,28 +387,21 @@
 
         updateDisplay(zone) {
           const zoneNum = zone === 'zone1' ? '1' : '2';
-          document.getElementById(`tps${zoneNum}`).textContent =
-            this.testData[zone].tps.toFixed(1);
-          document.getElementById(`clicks${zoneNum}`).textContent =
-            this.testData[zone].totalClicks;
+          document.getElementById(`tps${zoneNum}`).textContent = this.testData[zone].tps.toFixed(1);
+          document.getElementById(`clicks${zoneNum}`).textContent = this.testData[zone].totalClicks;
 
           // 更新總統計
           this.updateStats();
         }
 
         updateStats() {
-          const totalClicks =
-            this.testData.zone1.totalClicks + this.testData.zone2.totalClicks;
-          const avgTPS =
-            (this.testData.zone1.tps + this.testData.zone2.tps) / 2;
-          const duration = this.testStartTime
-            ? (performance.now() - this.testStartTime) / 1000
-            : 0;
+          const totalClicks = this.testData.zone1.totalClicks + this.testData.zone2.totalClicks;
+          const avgTPS = (this.testData.zone1.tps + this.testData.zone2.tps) / 2;
+          const duration = this.testStartTime ? (performance.now() - this.testStartTime) / 1000 : 0;
 
           document.getElementById('totalClicks').textContent = totalClicks;
           document.getElementById('avgTPS').textContent = avgTPS.toFixed(1);
-          document.getElementById('testDuration').textContent =
-            duration.toFixed(1);
+          document.getElementById('testDuration').textContent = duration.toFixed(1);
         }
 
         sendTPSData(zone) {
@@ -427,7 +413,7 @@
                 tps: this.testData[zone].tps,
                 totalClicks: this.testData[zone].totalClicks,
                 timestamp: performance.now(),
-                clientId: 'tps-test-tool'
+                clientId: 'tps-test-tool',
               })
             );
           }
@@ -448,9 +434,7 @@
             const fps = 1000 / delta;
             this.fpsCounter = this.fpsCounter * 0.9 + fps * 0.1; // 平滑處理
 
-            document.getElementById('fps').textContent = Math.round(
-              this.fpsCounter
-            );
+            document.getElementById('fps').textContent = Math.round(this.fpsCounter);
 
             requestAnimationFrame(updateFPS);
           };
@@ -475,9 +459,7 @@
               console.log('📨 伺服器訊息:', data.message);
               break;
             case 'server_status':
-              console.log(
-                `📊 伺服器狀態: ${data.connectedClients} 個客戶端連接`
-              );
+              console.log(`📊 伺服器狀態: ${data.connectedClients} 個客戶端連接`);
               break;
           }
         }
@@ -498,7 +480,7 @@
         if (tpsTest) {
           tpsTest.testData = {
             zone1: { clicks: [], tps: 0, totalClicks: 0 },
-            zone2: { clicks: [], tps: 0, totalClicks: 0 }
+            zone2: { clicks: [], tps: 0, totalClicks: 0 },
           };
           tpsTest.testStartTime = null;
           tpsTest.maxTPS = 0;
@@ -525,11 +507,11 @@
             maxTPS: tpsTest.maxTPS,
             duration: tpsTest.testStartTime
               ? (performance.now() - tpsTest.testStartTime) / 1000
-              : 0
+              : 0,
           };
 
           const blob = new Blob([JSON.stringify(data, null, 2)], {
-            type: 'application/json'
+            type: 'application/json',
           });
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');

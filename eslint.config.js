@@ -49,17 +49,20 @@ export default [
     rules: {
       // 程式碼品質規則
       'no-console': 'warn', // 開發工具中允許 console
-      'no-unused-vars': ['warn', {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-        caughtErrorsIgnorePattern: '^_',
-      }],
+      'no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
       'no-undef': 'error',
 
       // 格式規則
-      'indent': ['error', 2, { 'SwitchCase': 1 }],
-      'quotes': ['error', 'single', { 'avoidEscape': true }],
-      'semi': ['error', 'always'],
+      indent: ['error', 2, { SwitchCase: 1 }],
+      quotes: ['error', 'single', { avoidEscape: true }],
+      semi: ['error', 'always'],
       'comma-dangle': ['error', 'always-multiline'],
       'no-trailing-spaces': 'error',
       'eol-last': 'error',
@@ -72,8 +75,8 @@ export default [
       'template-curly-spacing': 'error',
 
       // 錯誤防護
-      'curly': ['error', 'all'],
-      'eqeqeq': ['error', 'always'],
+      curly: ['error', 'all'],
+      eqeqeq: ['error', 'always'],
       'no-eval': 'error',
       'no-implied-eval': 'error',
       'no-new-func': 'error',
@@ -88,8 +91,8 @@ export default [
         ...globals.jest,
         ...globals.mocha,
         ...globals.jasmine,
-        'page': 'readonly',
-        'browser': 'readonly',
+        page: 'readonly',
+        browser: 'readonly',
       },
     },
     rules: {

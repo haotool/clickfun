@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 檢查 commit 訊息格式..."
+
+# 使用 commitlint 檢查 commit 訊息格式
+npx --no-install commitlint --edit "$1"
+
+echo "✅ commit 訊息格式檢查完成！"

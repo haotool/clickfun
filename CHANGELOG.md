@@ -7,37 +7,34 @@
 
 ## [1.0.1](https://github.com/haotool/clickfun/compare/v1.0.0...v1.0.1) (2025-08-16)
 
-
 ### Bug Fixes
 
-* 改善 semantic-release git 插件配置 ([3da9df8](https://github.com/haotool/clickfun/commit/3da9df804704e70c2bb6eb8854cfe44d44e0343b))
+- 改善 semantic-release git 插件配置 ([3da9df8](https://github.com/haotool/clickfun/commit/3da9df804704e70c2bb6eb8854cfe44d44e0343b))
 
 # 1.0.0 (2025-08-16)
 
-
 ### Bug Fixes
 
-* **cache:** 改善快取管理和版本檢測機制 ([263e8ed](https://github.com/haotool/clickfun/commit/263e8eda1ba4144e2ac0d6f5799ccb190af7bc65))
-* **effects:** 修復特效設定變更後未立即生效的問題 ([4287eb8](https://github.com/haotool/clickfun/commit/4287eb878816e7bfaf06c56f443e8e2897ea5bb7))
-* **game:** 修復點擊累加分數功能並優化按鈕佈局 ([bd66dab](https://github.com/haotool/clickfun/commit/bd66dabbf59fce2d535c3be3121bf88e41ea6a59))
-* **UI:** 修復按鈕佈局和分數顯示問題 ([4110571](https://github.com/haotool/clickfun/commit/41105714c300d58a6b5e06b5efb957d25b0655ca))
-* 修正 CI 問題並改善測試配置 ([7b8cadf](https://github.com/haotool/clickfun/commit/7b8cadf0c97395b5123665574008657329295f75))
-* 修正 package.json 中的倉庫 URL 錯誤 ([d7cba4c](https://github.com/haotool/clickfun/commit/d7cba4ce0501ee55a77bc2d14f16f9f2059fa1d7))
-* 完全轉換 update-version.js 為 ES 模組語法 ([0403559](https://github.com/haotool/clickfun/commit/0403559c85570410e8b85558eaff38bfd057192d))
-* 將 update-version.js 從 CommonJS 轉換為 ES 模組語法 ([9f027fe](https://github.com/haotool/clickfun/commit/9f027fe45c9bc0f6ff4e07609932b9fe9e72afd2))
-
+- **cache:** 改善快取管理和版本檢測機制 ([263e8ed](https://github.com/haotool/clickfun/commit/263e8eda1ba4144e2ac0d6f5799ccb190af7bc65))
+- **effects:** 修復特效設定變更後未立即生效的問題 ([4287eb8](https://github.com/haotool/clickfun/commit/4287eb878816e7bfaf06c56f443e8e2897ea5bb7))
+- **game:** 修復點擊累加分數功能並優化按鈕佈局 ([bd66dab](https://github.com/haotool/clickfun/commit/bd66dabbf59fce2d535c3be3121bf88e41ea6a59))
+- **UI:** 修復按鈕佈局和分數顯示問題 ([4110571](https://github.com/haotool/clickfun/commit/41105714c300d58a6b5e06b5efb957d25b0655ca))
+- 修正 CI 問題並改善測試配置 ([7b8cadf](https://github.com/haotool/clickfun/commit/7b8cadf0c97395b5123665574008657329295f75))
+- 修正 package.json 中的倉庫 URL 錯誤 ([d7cba4c](https://github.com/haotool/clickfun/commit/d7cba4ce0501ee55a77bc2d14f16f9f2059fa1d7))
+- 完全轉換 update-version.js 為 ES 模組語法 ([0403559](https://github.com/haotool/clickfun/commit/0403559c85570410e8b85558eaff38bfd057192d))
+- 將 update-version.js 從 CommonJS 轉換為 ES 模組語法 ([9f027fe](https://github.com/haotool/clickfun/commit/9f027fe45c9bc0f6ff4e07609932b9fe9e72afd2))
 
 ### Features
 
-* **game:** 增加雙人模式計時邏輯優化 ([57cec98](https://github.com/haotool/clickfun/commit/57cec9831c72bb535a024cf36d4a2a077714a166))
-* **game:** 實現點擊開始計時和30級幽默鼓勵系統 ([9cc0bde](https://github.com/haotool/clickfun/commit/9cc0bde48d6211354677f75dea87acc9992236fb))
-* implement comprehensive automated versioning system and code quality tools ([67fc578](https://github.com/haotool/clickfun/commit/67fc578c44d7b11805d0597506fe20fd2504b356))
-* optimize ESLint configuration and fix code quality issues ([4f432f0](https://github.com/haotool/clickfun/commit/4f432f069d66628c3d85d1904b72efec31e7836d))
-* **UI:** 優化單人和雙人模式的使用者界面 ([912cf0a](https://github.com/haotool/clickfun/commit/912cf0a183a5b35a6e1bf4acb206293da83388f4))
-* **UI:** 優化雙人模式手機版佈局並修復按鈕響應問題 ([361eeae](https://github.com/haotool/clickfun/commit/361eeae89c8a3de14cf7e349ad64ab1706b02e1e))
-* **品質:** 建立完整的程式碼品質保證系統 ([e613ec5](https://github.com/haotool/clickfun/commit/e613ec5b13298b7f6d1372e9fa3f5f5a19901391))
-* **專案:** 初始化 ClickFun 點擊遊戲專案 ([3261390](https://github.com/haotool/clickfun/commit/326139089be3e768906c6f27572dc06358c55510))
-* **測試:** 建立完整的測試框架與開發工具鏈 ([d4edd3a](https://github.com/haotool/clickfun/commit/d4edd3a0552ca8633d7d0dab50e699314ab8cf02))
+- **game:** 增加雙人模式計時邏輯優化 ([57cec98](https://github.com/haotool/clickfun/commit/57cec9831c72bb535a024cf36d4a2a077714a166))
+- **game:** 實現點擊開始計時和30級幽默鼓勵系統 ([9cc0bde](https://github.com/haotool/clickfun/commit/9cc0bde48d6211354677f75dea87acc9992236fb))
+- implement comprehensive automated versioning system and code quality tools ([67fc578](https://github.com/haotool/clickfun/commit/67fc578c44d7b11805d0597506fe20fd2504b356))
+- optimize ESLint configuration and fix code quality issues ([4f432f0](https://github.com/haotool/clickfun/commit/4f432f069d66628c3d85d1904b72efec31e7836d))
+- **UI:** 優化單人和雙人模式的使用者界面 ([912cf0a](https://github.com/haotool/clickfun/commit/912cf0a183a5b35a6e1bf4acb206293da83388f4))
+- **UI:** 優化雙人模式手機版佈局並修復按鈕響應問題 ([361eeae](https://github.com/haotool/clickfun/commit/361eeae89c8a3de14cf7e349ad64ab1706b02e1e))
+- **品質:** 建立完整的程式碼品質保證系統 ([e613ec5](https://github.com/haotool/clickfun/commit/e613ec5b13298b7f6d1372e9fa3f5f5a19901391))
+- **專案:** 初始化 ClickFun 點擊遊戲專案 ([3261390](https://github.com/haotool/clickfun/commit/326139089be3e768906c6f27572dc06358c55510))
+- **測試:** 建立完整的測試框架與開發工具鏈 ([d4edd3a](https://github.com/haotool/clickfun/commit/d4edd3a0552ca8633d7d0dab50e699314ab8cf02))
 
 # 📋 變更記錄
 

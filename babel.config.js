@@ -10,25 +10,25 @@ export default {
       {
         targets: {
           node: 'current',
-          browsers: ['> 1%', 'last 2 versions']
+          browsers: ['> 1%', 'last 2 versions'],
         },
         useBuiltIns: 'usage',
-        corejs: 3
-      }
-    ]
+        corejs: 3,
+      },
+    ],
   ],
-  
+
   // 插件配置
   plugins: [
     // 如果需要支援裝飾器語法
     // ['@babel/plugin-proposal-decorators', { legacy: true }],
     // ['@babel/plugin-proposal-class-properties', { loose: true }]
   ],
-  
+
   // 環境特定配置
   env: {
     test: {
-      plugins: ['@babel/plugin-transform-modules-commonjs']
-    }
-  }
+      plugins: ['@babel/plugin-transform-modules-commonjs'],
+    },
+  },
 };

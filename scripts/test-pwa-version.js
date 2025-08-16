@@ -63,12 +63,10 @@ function testServiceWorkerConfig() {
 
     // 檢查版本檢測邏輯
     const hasVersionCheck =
-      swEnhanced.includes('checkVersionUpdate') ||
-      swEnhanced.includes('VERSION_CHECK');
+      swEnhanced.includes('checkVersionUpdate') || swEnhanced.includes('VERSION_CHECK');
 
     // 檢查快取清理邏輯
-    const hasCacheCleanup =
-      swEnhanced.includes('clickfun-v') && swEnhanced.includes('delete');
+    const hasCacheCleanup = swEnhanced.includes('clickfun-v') && swEnhanced.includes('delete');
 
     if (hasVersionCheck) {
       console.log('   ✅ 版本檢測邏輯已實現');
@@ -104,8 +102,7 @@ function testVersionUpdateStyles() {
 
     // 檢查 JavaScript 函數
     const hasToastFunction =
-      indexHtml.includes('showVersionUpdateToast') &&
-      indexHtml.includes('版本更新檢測到');
+      indexHtml.includes('showVersionUpdateToast') && indexHtml.includes('版本更新檢測到');
 
     if (hasToastStyles) {
       console.log('   ✅ 版本更新提示樣式已實現');

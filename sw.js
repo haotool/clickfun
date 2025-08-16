@@ -2,13 +2,7 @@
 
 const SW_VERSION = 'clickfun-v7.0.0';
 const APP_VERSION = '7.0.0';
-const APP_SHELL = [
-  './',
-  './index.html',
-  './app.webmanifest',
-  './fx.worker.js',
-  './icons/pwa.svg',
-];
+const APP_SHELL = ['./', './index.html', './app.webmanifest', './fx.worker.js', './icons/pwa.svg'];
 
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -20,7 +14,7 @@ self.addEventListener('install', event => {
         /* 忽略個別加載失敗 */
       }
       await self.skipWaiting();
-    })(),
+    })()
   );
 });
 
@@ -28,11 +22,9 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     (async () => {
       const keys = await caches.keys();
-      await Promise.all(
-        keys.map(k => (k !== SW_VERSION ? caches.delete(k) : null)),
-      );
+      await Promise.all(keys.map(k => (k !== SW_VERSION ? caches.delete(k) : null)));
       await self.clients.claim();
-    })(),
+    })()
   );
 });
 
@@ -51,13 +43,19 @@ self.addEventListener('fetch', event => {
   const url = new URL(req.url);
 
   // 只處理 http/https
-  if (url.protocol !== 'http:' && url.protocol !== 'https:') {return;}
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+    return;
+  }
 
   // 只處理 GET
-  if (req.method !== 'GET') {return;}
+  if (req.method !== 'GET') {
+    return;
+  }
 
   // 規範陷阱：only-if-cached + 非同源
-  if (req.cache === 'only-if-cached' && req.mode !== 'same-origin') {return;}
+  if (req.cache === 'only-if-cached' && req.mode !== 'same-origin') {
+    return;
+  }
 
   if (url.origin === self.location.origin) {
     event.respondWith(
@@ -81,14 +79,10 @@ self.addEventListener('fetch', event => {
             headers: { 'Content-Type': 'text/plain; charset=utf-8' },
           })
         );
-      })(),
+      })()
     );
   } else {
     // 外部資源：直接網路（避免把外掛資源塞進快取）
-    event.respondWith(
-      fetch(req).catch(
-        () => new Response('離線中（外部資源）', { status: 503 }),
-      ),
-    );
+    event.respondWith(fetch(req).catch(() => new Response('離線中（外部資源）', { status: 503 })));
   }
 });

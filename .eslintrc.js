@@ -1,111 +1,63 @@
 /**
- * ESLint 配置檔案
- * 基於 Context7 最新最佳實踐優化
- *
- * @author: @s123104
- * @version: 1.0.0
- * @created: 2025-01-27T15:45:00+08:00
+ * ESLint 配置文件 - ClickFun 專案
+ * 基於現代 JavaScript 最佳實踐
  */
 
 module.exports = {
-  // 使用推薦的 JavaScript 規則
-  extends: ['eslint:recommended'],
-
-  // 環境設定
   env: {
     browser: true,
-    es2024: true,
+    es2022: true,
     node: true,
+    jest: true,
   },
 
-  // 解析器選項
+  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
   },
 
-  // 全域變數
-  globals: {
-    // 遊戲相關全域變數
-    GameState: 'readonly',
-    audioManager: 'readonly',
-    inputManager: 'readonly',
-    gameEngine: 'readonly',
-    storageManager: 'readonly',
-    uiManager: 'readonly',
-
-    // PWA 相關全域變數
-    APP_VERSION: 'readonly',
-    SW_ENHANCED_VERSION: 'readonly',
-    CURRENT_CACHE_PATTERNS: 'readonly',
-
-    // 開發工具全域變數
-    console: 'readonly',
-  },
-
-  // 規則配置
   rules: {
-    // 程式碼品質規則
-    'no-unused-vars': [
-      'warn',
-      {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      },
-    ],
-    'no-undef': 'error',
+    // 程式碼品質
     'no-console': 'warn',
+    'no-debugger': 'error',
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'prefer-const': 'error',
     'no-var': 'error',
 
-    // 程式碼風格規則
-    indent: ['error', 2],
-    quotes: ['error', 'single'],
-    semi: ['error', 'always'],
-    'comma-dangle': ['error', 'never'],
-    'no-trailing-spaces': 'error',
-    'eol-last': 'error',
-
-    // 最佳實踐規則
+    // 最佳實踐
     eqeqeq: ['error', 'always'],
     curly: ['error', 'all'],
     'no-eval': 'error',
     'no-implied-eval': 'error',
-    'no-new-func': 'error',
-    'no-script-url': 'error',
 
-    // 效能相關規則
-    'no-loop-func': 'error',
-    'no-new-object': 'error',
-    'no-new-array': 'error',
-    'no-new-wrappers': 'error',
+    // 可讀性
+    'max-len': ['warn', { code: 100, ignoreUrls: true }],
+    indent: ['error', 2],
+    quotes: ['error', 'single'],
+    semi: ['error', 'always'],
 
-    // 安全性規則
-    'no-implied-eval': 'error',
-    'no-new-func': 'error',
-    'no-script-url': 'error',
+    // Jest 相關
+    'jest/no-disabled-tests': 'warn',
+    'jest/no-focused-tests': 'error',
+    'jest/no-identical-title': 'error',
+    'jest/prefer-to-have-length': 'warn',
+    'jest/valid-expect': 'error',
   },
 
-  // 覆蓋特定檔案的規則
   overrides: [
     {
-      // 測試檔案使用較寬鬆的規則
-      files: ['**/*.test.js', '**/*.spec.js', 'tests/**/*.js'],
+      files: ['tests/**/*.js', '**/*.test.js'],
       env: {
         jest: true,
-        mocha: true,
       },
       rules: {
         'no-console': 'off',
-        'no-undef': 'off',
       },
     },
     {
-      // 設定檔案使用較寬鬆的規則
-      files: ['*.config.js', '*.config.mjs'],
+      files: ['scripts/**/*.js'],
       env: {
         node: true,
       },
@@ -115,7 +67,6 @@ module.exports = {
     },
   ],
 
-  // 忽略特定檔案
   ignorePatterns: [
     'node_modules/',
     'dist/',
@@ -123,6 +74,6 @@ module.exports = {
     'coverage/',
     '*.min.js',
     'sw.js',
-    'sw-enhanced.js',
+    'fx.worker.js',
   ],
 };

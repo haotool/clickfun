@@ -42,7 +42,7 @@ wss.on('connection', ws => {
       // 處理不同類型的訊息
       switch (data.type) {
         case 'tps_data':
-        // 廣播 TPS 數據給所有連接的客戶端
+          // 廣播 TPS 數據給所有連接的客戶端
           broadcastToClients({
             type: 'tps_update',
             tps: data.tps,
@@ -52,12 +52,12 @@ wss.on('connection', ws => {
           break;
 
         case 'performance_data':
-        // 處理效能數據
+          // 處理效能數據
           console.log(`📈 效能數據: FPS=${data.fps}, 記憶體=${data.memory}MB`);
           break;
 
         case 'test_result':
-        // 處理測試結果
+          // 處理測試結果
           console.log(`✅ 測試結果: ${data.testName} - ${data.result}`);
           break;
       }
@@ -77,7 +77,7 @@ wss.on('connection', ws => {
       type: 'welcome',
       message: 'TPS 測試伺服器連接成功',
       timestamp: Date.now(),
-    }),
+    })
   );
 });
 
