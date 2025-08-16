@@ -7,10 +7,9 @@
 
 ## [1.0.2](https://github.com/haotool/clickfun/compare/v1.0.1...v1.0.2) (2025-08-16)
 
-
 ### Bug Fixes
 
-* 移除重複的 Git 操作步驟，讓 semantic-release 完全處理版本管理 ([50c9fb0](https://github.com/haotool/clickfun/commit/50c9fb0dbc766131b7eb648b7cf169ccab038fd4))
+- 移除重複的 Git 操作步驟，讓 semantic-release 完全處理版本管理 ([50c9fb0](https://github.com/haotool/clickfun/commit/50c9fb0dbc766131b7eb648b7cf169ccab038fd4))
 
 ## [1.0.1](https://github.com/haotool/clickfun/compare/v1.0.0...v1.0.1) (2025-08-16)
 

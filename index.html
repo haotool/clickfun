@@ -1603,6 +1603,39 @@
         color: var(--primary);
       }
 
+      .leaderboard-time-tabs {
+        display: flex;
+        background: rgba(82, 183, 255, 0.1);
+        border-radius: 10px;
+        padding: 3px;
+        margin-bottom: 16px;
+        gap: 2px;
+      }
+
+      .time-tab-btn {
+        flex: 1;
+        padding: 6px 12px;
+        border: none;
+        background: transparent;
+        border-radius: 7px;
+        font-weight: 500;
+        font-size: 0.8rem;
+        color: var(--sky-600);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .time-tab-btn.active {
+        background: var(--sky-500);
+        color: white;
+        box-shadow: 0 2px 6px rgba(82, 183, 255, 0.3);
+      }
+
+      .time-tab-btn:hover:not(.active) {
+        background: rgba(82, 183, 255, 0.15);
+        color: var(--sky-700);
+      }
+
       .leaderboard-content {
         flex: 1;
         display: flex;
@@ -2176,8 +2209,14 @@
           <div class="leaderboard-header">
             <h2 class="leaderboard-title">🏆 排行榜</h2>
             <div class="leaderboard-tabs">
-              <button class="tab-btn active" data-mode="single">單人模式</button>
-              <button class="tab-btn" data-mode="dual">雙人對戰</button>
+              <button class="tab-btn active" data-mode="single" data-time="all">單人模式</button>
+              <button class="tab-btn" data-mode="dual" data-time="all">雙人對戰</button>
+            </div>
+            <div class="leaderboard-time-tabs">
+              <button class="time-tab-btn active" data-time="all">全部</button>
+              <button class="time-tab-btn" data-time="15">15秒</button>
+              <button class="time-tab-btn" data-time="30">30秒</button>
+              <button class="time-tab-btn" data-time="60">60秒</button>
             </div>
           </div>
 
@@ -2715,6 +2754,7 @@
             score,
             score2,
             maxTPS,
+            duration: GameState.settings.gameDuration,
             date: new Date().toISOString(),
             ts: Date.now(),
           };
@@ -2724,10 +2764,11 @@
           d.leaderboard = d.leaderboard.slice(0, 100); // 增加到100條記錄
           this.saveData(d);
         }
-        getLeaderboard(mode = null, limit = 10) {
+        getLeaderboard(mode = null, duration = null, limit = 10) {
           const d = this.loadData();
           let r = d.leaderboard || [];
           if (mode) r = r.filter(x => x.mode === mode);
+          if (duration && duration !== 'all') r = r.filter(x => x.duration === parseInt(duration));
           return r.slice(0, limit);
         }
         clearData() {
@@ -2767,9 +2808,11 @@
           document.getElementById('leaderboardBtn').addEventListener('click', () => {
             this.currentLeaderboardMode = 'single';
             this.currentLeaderboardPage = 1;
-            this.updateLeaderboard('single', 1);
+            this.currentLeaderboardDuration = 'all';
+            this.updateLeaderboard('single', 1, 'all');
             this.showModal('leaderboardModal');
             this.updateLeaderboardTabs();
+            this.updateTimeTabsUI();
           });
           document.getElementById('settingsBtn').addEventListener('click', () => {
             this.showSettings();
@@ -2804,7 +2847,7 @@
           document.getElementById('clearLeaderboardBtn').addEventListener('click', () => {
             if (confirm('確定要清除所有記錄嗎？此操作無法復原。')) {
               storageManager.clearData();
-              this.updateLeaderboard(this.currentLeaderboardMode || 'single', 1);
+              this.updateLeaderboard(this.currentLeaderboardMode || 'single', 1, this.currentLeaderboardDuration || 'all');
             }
           });
 
@@ -3153,7 +3196,7 @@
           document.getElementById('showTps').checked = GameState.settings.showTps;
           this.applyTpsToggle();
         }
-        updateLeaderboard(mode = 'single', page = 1) {
+        updateLeaderboard(mode = 'single', page = 1, duration = 'all') {
           const itemsPerPage = 8;
           const list = document.getElementById('leaderboardList');
           const currentPageEl = document.getElementById('currentPage');
@@ -3161,8 +3204,8 @@
           const prevBtn = document.getElementById('prevPageBtn');
           const nextBtn = document.getElementById('nextPageBtn');
 
-          // 獲取指定模式的記錄
-          const allRecords = storageManager.getLeaderboard(mode, 100);
+          // 獲取指定模式和時間的記錄
+          const allRecords = storageManager.getLeaderboard(mode, duration, 100);
           const totalPages = Math.max(1, Math.ceil(allRecords.length / itemsPerPage));
           const startIndex = (page - 1) * itemsPerPage;
           const records = allRecords.slice(startIndex, startIndex + itemsPerPage);
@@ -3211,7 +3254,7 @@
                 <div class="player-info">
                   <div class="player-name">${
                     record.mode === 'single' ? '單人挑戰' : '雙人對戰'
-                  }</div>
+                  }${record.duration ? ` (${record.duration}秒)` : ''}</div>
                   <div class="player-date">${date}</div>
                 </div>
                 <div class="score-info">
@@ -3226,17 +3269,29 @@
           // 存儲當前狀態
           this.currentLeaderboardMode = mode;
           this.currentLeaderboardPage = page;
+          this.currentLeaderboardDuration = duration;
         }
 
         setupLeaderboardEvents() {
-          // 標籤切換
+          // 模式標籤切換
           document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
               const mode = btn.dataset.mode;
               this.currentLeaderboardMode = mode;
               this.currentLeaderboardPage = 1;
-              this.updateLeaderboard(mode, 1);
+              this.updateLeaderboard(mode, 1, this.currentLeaderboardDuration || 'all');
               this.updateLeaderboardTabs();
+            });
+          });
+
+          // 時間標籤切換
+          document.querySelectorAll('.time-tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const duration = btn.dataset.time;
+              this.currentLeaderboardDuration = duration;
+              this.currentLeaderboardPage = 1;
+              this.updateLeaderboard(this.currentLeaderboardMode || 'single', 1, duration);
+              this.updateTimeTabsUI();
             });
           });
 
@@ -3244,19 +3299,25 @@
           document.getElementById('prevPageBtn').addEventListener('click', () => {
             if (this.currentLeaderboardPage > 1) {
               this.currentLeaderboardPage--;
-              this.updateLeaderboard(this.currentLeaderboardMode, this.currentLeaderboardPage);
+              this.updateLeaderboard(this.currentLeaderboardMode, this.currentLeaderboardPage, this.currentLeaderboardDuration);
             }
           });
 
           document.getElementById('nextPageBtn').addEventListener('click', () => {
             this.currentLeaderboardPage++;
-            this.updateLeaderboard(this.currentLeaderboardMode, this.currentLeaderboardPage);
+            this.updateLeaderboard(this.currentLeaderboardMode, this.currentLeaderboardPage, this.currentLeaderboardDuration);
           });
         }
 
         updateLeaderboardTabs() {
           document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.mode === this.currentLeaderboardMode);
+          });
+        }
+
+        updateTimeTabsUI() {
+          document.querySelectorAll('.time-tab-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.time === this.currentLeaderboardDuration);
           });
         }
 

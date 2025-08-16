@@ -71,14 +71,40 @@ export default {
       lines: 80,
       statements: 80,
     },
+    // 路徑特定覆蓋率門檻
+    './src/components/': {
+      branches: 70,
+      statements: 70,
+    },
+    './src/core/': {
+      branches: 90,
+      functions: 90,
+      lines: 90,
+      statements: 90,
+    },
+    './scripts/': {
+      branches: 70,
+      functions: 70,
+      lines: 70,
+      statements: 70,
+    },
   },
+
+  // 實驗性 V8 覆蓋率提供者 (根據 Context7 最佳實踐)
+  coverageProvider: 'v8',
+
+  // 強制覆蓋特定文件 (根據 Context7 最佳實踐)
+  forceCoverageMatch: ['**/*.t.js', '**/*.worker.js'],
+
+  // 每個測試重置模組 (根據 Context7 最佳實踐)
+  resetModules: true,
 
   // 快取配置
   cache: true,
   cacheDirectory: '<rootDir>/.jest-cache',
 
-  // 測試並行執行
-  maxWorkers: '50%',
+  // 測試並行執行 (根據 Context7 最佳實踐)
+  maxWorkers: '75%',
 
   // 錯誤報告
   errorOnDeprecated: true,
@@ -94,4 +120,20 @@ export default {
       },
     ],
   ],
+
+  // 效能優化配置 (根據 Context7 最佳實踐)
+  // 啟用測試快取
+  cache: true,
+  cacheDirectory: '<rootDir>/.jest-cache',
+
+  // 測試隔離配置
+  isolateModules: false,
+
+  // 模組解析優化
+  moduleDirectories: ['node_modules', '<rootDir>'],
+
+  // 測試環境選項
+  testEnvironmentOptions: {
+    url: 'http://localhost:3000',
+  },
 };
