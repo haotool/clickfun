@@ -1,3 +1,26 @@
+# [2.0.0](https://github.com/haotool/clickfun/compare/v1.2.0...v2.0.0) (2025-08-16)
+
+
+### Bug Fixes
+
+* **csp:** 修正Google Fonts CSP載入問題並統一品牌名稱為Click Fun ([3f8cb33](https://github.com/haotool/clickfun/commit/3f8cb33ce430a8b8e50728950cce0437f761ae6a))
+* **git:** 完全移除 team-worktrees 子模組引用並重新初始化 ([62a065d](https://github.com/haotool/clickfun/commit/62a065d4ace746ddbc1fda1033bf70e9a88c3466))
+* **git:** 移除 team-worktrees 子模組引用並轉為常規目錄 ([7199122](https://github.com/haotool/clickfun/commit/71991226a4b2dc9fa691921bad99c439a7699265))
+* **jest:** 根據 Context7 最佳實踐修復 Jest 配置問題 ([cf70f0b](https://github.com/haotool/clickfun/commit/cf70f0b23900e2c673018db86a9e08d83d2e156a))
+* **lint:** 解決 ESLint 程式碼品質問題並排除 team-worktrees ([5db71d7](https://github.com/haotool/clickfun/commit/5db71d7c99ff7a29945cccaf17b8745ecfb19bdb))
+* **ui:** 修正遊戲說明模態窗口手機響應式設計和按鈕佈局 ([bc38eb2](https://github.com/haotool/clickfun/commit/bc38eb2ba1dfce965bccdd59110720cce31e250e))
+
+
+### Features
+
+* **infrastructure:** 實作 2025 年最佳實踐全面升級 ([98d8289](https://github.com/haotool/clickfun/commit/98d8289ab52099427f7341b04472e53b784c0a27))
+* **ui:** 優化首頁UI簡潔性並改用高級Material Icons ([312047c](https://github.com/haotool/clickfun/commit/312047c69f3d48248c019c4c24705f0ba32fa645))
+
+
+### BREAKING CHANGES
+
+* **infrastructure:** Jest 配置結構重新設計，需要更新 team-worktrees 配置
+
 # [1.2.0](https://github.com/haotool/clickfun/compare/v1.1.0...v1.2.0) (2025-08-16)
 
 
