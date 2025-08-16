@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
@@ -84,6 +84,92 @@
         --font-size-2xl: 1.5rem;
         --font-size-4xl: 2.25rem;
         --font-size-6xl: 3.6rem;
+      }
+
+      /* 版本更新提示樣式 */
+      .version-update-toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 10000;
+        background: linear-gradient(135deg, #f66fb9, #52b7ff);
+        color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        animation: slideInRight 0.5s ease-out;
+        max-width: 350px;
+      }
+
+      .toast-content {
+        display: flex;
+        align-items: center;
+        padding: 16px;
+        gap: 12px;
+      }
+
+      .toast-icon {
+        font-size: 24px;
+        animation: bounce 2s infinite;
+      }
+
+      .toast-text {
+        flex: 1;
+      }
+
+      .toast-title {
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+
+      .toast-subtitle {
+        font-size: 12px;
+        opacity: 0.9;
+      }
+
+      .toast-close {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s;
+      }
+
+      .toast-close:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
       }
       * {
         box-sizing: border-box;
@@ -2220,6 +2306,38 @@
               ><input type="checkbox" id="showTps" class="toggle" />
             </div>
           </div>
+          <!-- 版本資訊 -->
+          <div
+            style="
+              margin-top: 20px;
+              padding: 16px;
+              background: linear-gradient(
+                135deg,
+                var(--pink-50),
+                var(--sky-50)
+              );
+              border-radius: 12px;
+              border: 1px solid var(--sky-200);
+              text-align: center;
+            "
+          >
+            <div
+              style="font-size: 12px; color: var(--sky-600); margin-bottom: 4px"
+            >
+              當前版本
+            </div>
+            <div
+              style="
+                font-size: 16px;
+                font-weight: 600;
+                color: var(--sky-400);
+                font-family: 'Courier New', monospace;
+              "
+              id="versionDisplay"
+            >
+              v7.0.0
+            </div>
+          </div>
           <div style="display: flex; justify-content: center; margin-top: 18px">
             <button class="btn btn-primary" id="closeSettingsBtn">
               儲存設定
@@ -2258,8 +2376,16 @@
       })();
 
       // ===== 版本管理 =====
-      const APP_VERSION = '6.4.0';
+      const APP_VERSION = '7.0.0';
       const SW_ENHANCED_VERSION = 'clickfun-enhanced-v1.1.0';
+
+      // 更新版本號顯示
+      function updateVersionDisplay() {
+        const versionDisplay = document.getElementById('versionDisplay');
+        if (versionDisplay) {
+          versionDisplay.textContent = `v${APP_VERSION}`;
+        }
+      }
 
       // 當前版本的所有快取名稱模式
       const CURRENT_CACHE_PATTERNS = [
@@ -2336,6 +2462,10 @@
               const storedVersion = localStorage.getItem('app_version');
               if (storedVersion && storedVersion !== APP_VERSION) {
                 console.log(`版本更新：${storedVersion} → ${APP_VERSION}`);
+
+                // 顯示版本更新提示
+                showVersionUpdateToast(storedVersion, APP_VERSION);
+
                 // 清除舊版本快取
                 if ('caches' in window) {
                   const cacheNames = await caches.keys();
@@ -2356,8 +2486,11 @@
                 }
                 // 更新版本號
                 localStorage.setItem('app_version', APP_VERSION);
-                // 重新載入頁面以使用新版本
-                window.location.reload();
+
+                // 延遲重新載入，讓用戶看到更新提示
+                setTimeout(() => {
+                  window.location.reload();
+                }, 3000);
                 return;
               }
               // 首次安裝或版本相同
@@ -2367,6 +2500,31 @@
             console.log('版本檢測失敗:', error);
           }
         }
+      }
+
+      // 顯示版本更新提示
+      function showVersionUpdateToast(oldVersion, newVersion) {
+        const toast = document.createElement('div');
+        toast.className = 'version-update-toast';
+        toast.innerHTML = `
+          <div class="toast-content">
+            <div class="toast-icon">🎉</div>
+            <div class="toast-text">
+              <div class="toast-title">版本更新檢測到！</div>
+              <div class="toast-subtitle">從 v${oldVersion} 更新至 v${newVersion}</div>
+            </div>
+            <button class="toast-close" onclick="this.parentElement.parentElement.remove()">×</button>
+          </div>
+        `;
+
+        document.body.appendChild(toast);
+
+        // 3秒後自動消失
+        setTimeout(() => {
+          if (toast.parentElement) {
+            toast.remove();
+          }
+        }, 3000);
       }
 
       // ===== 遊戲狀態 =====
@@ -3696,38 +3854,62 @@
               'victoryFlash 0.8s ease-out';
 
             for (let i = 0; i < count; i++) {
-              setTimeout(() => {
-                const cx = Math.random() * window.innerWidth;
-                const cy =
-                  Math.random() * (window.innerHeight * 0.7) +
-                  window.innerHeight * 0.15;
-                const fireworkType = Math.random();
+              setTimeout(
+                () => {
+                  const cx = Math.random() * window.innerWidth;
+                  const cy =
+                    Math.random() * (window.innerHeight * 0.7) +
+                    window.innerHeight * 0.15;
+                  const fireworkType = Math.random();
 
-                if (fireworkType < 0.3) {
-                  // Large burst firework
-                  this.createBurstFirework(container, cx, cy, colors, 18, 180);
-                } else if (fireworkType < 0.6) {
-                  // Ring firework
-                  this.createRingFirework(container, cx, cy, colors, 16, 150);
-                } else if (fireworkType < 0.85) {
-                  // Spiral firework
-                  this.createSpiralFirework(container, cx, cy, colors, 24, 200);
-                } else {
-                  // Chain explosion
-                  this.createChainFirework(container, cx, cy, colors, 12, 120);
-                }
+                  if (fireworkType < 0.3) {
+                    // Large burst firework
+                    this.createBurstFirework(
+                      container,
+                      cx,
+                      cy,
+                      colors,
+                      18,
+                      180
+                    );
+                  } else if (fireworkType < 0.6) {
+                    // Ring firework
+                    this.createRingFirework(container, cx, cy, colors, 16, 150);
+                  } else if (fireworkType < 0.85) {
+                    // Spiral firework
+                    this.createSpiralFirework(
+                      container,
+                      cx,
+                      cy,
+                      colors,
+                      24,
+                      200
+                    );
+                  } else {
+                    // Chain explosion
+                    this.createChainFirework(
+                      container,
+                      cx,
+                      cy,
+                      colors,
+                      12,
+                      120
+                    );
+                  }
 
-                // Enhanced audio with random pitch
-                audioManager.play('firework', 0.3 + Math.random() * 0.4);
+                  // Enhanced audio with random pitch
+                  audioManager.play('firework', 0.3 + Math.random() * 0.4);
 
-                // Random victory sound bursts
-                if (Math.random() < 0.3) {
-                  setTimeout(
-                    () => audioManager.play('victory', 0.1),
-                    Math.random() * 300
-                  );
-                }
-              }, i * (duration / count) + Math.random() * 200);
+                  // Random victory sound bursts
+                  if (Math.random() < 0.3) {
+                    setTimeout(
+                      () => audioManager.play('victory', 0.1),
+                      Math.random() * 300
+                    );
+                  }
+                },
+                i * (duration / count) + Math.random() * 200
+              );
             }
 
             // Grand finale
@@ -3996,6 +4178,9 @@
           uiManager = new AdvancedUIManager();
           inputManager = new AdvancedInputManager(gameEngine);
           setupWorker();
+
+          // 更新版本號顯示
+          updateVersionDisplay();
 
           // 暴露到全局作用域以便調試
           window.gameEngine = gameEngine;
