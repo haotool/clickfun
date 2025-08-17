@@ -23,7 +23,7 @@
     "test-pwa": "node scripts/test-pwa-version.js",
     "health-check": "node scripts/project-health-monitor.js",
     "post-publish": "echo 'Post-publish tasks completed'",
-    "postversion": "git add . && git commit -m \"chore: bump version to %s\" && git tag v%s",
+    "postversion": "git add . && git commit -m \"chore: bump version to $npm_package_version\" && (git tag v$npm_package_version || echo 'Tag already exists')",
     "dev:start": "node scripts/dev-tools.js start",
     "dev:build": "node scripts/dev-tools.js build",
     "dev:clean": "node scripts/dev-tools.js clean",

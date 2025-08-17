@@ -8,7 +8,7 @@ const path = require('path');
 
 class CacheCleaner {
   constructor() {
-    this.cacheNames = ['clickfun-v7.2.1', 'workbox-precache', 'workbox-runtime'];
+    this.cacheNames = ['clickfun-v7.2.2', 'workbox-precache', 'workbox-runtime'];
   }
 
   async clearBrowserCache() {

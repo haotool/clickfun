@@ -15,7 +15,7 @@
     <!-- 資源預載入優化 -->
     <link
       rel="preload"
-      href="./fonts/MaterialSymbolsRounded-original.woff2"
+      href="./fonts/MaterialSymbolsRounded-subset.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -115,7 +115,7 @@
         "applicationSubCategory": "CasualGame",
         "operatingSystem": "Any",
         "browserRequirements": "Requires JavaScript. HTML5 compatible browser.",
-        "softwareVersion": "7.2.1",
+        "softwareVersion": "7.2.2",
         "dateCreated": "2024-01-01",
         "dateModified": "2025-08-16",
         "datePublished": "2024-01-01",
@@ -290,7 +290,7 @@
         "storageRequirements": "< 1MB (PWA cache)",
         "datePublished": "2024-01-01",
         "dateModified": "2025-08-16",
-        "version": "7.2.1",
+        "version": "7.2.2",
         "inLanguage": "zh-TW",
         "isAccessibleForFree": true,
         "author": {
@@ -379,7 +379,7 @@
       /* 自託管字體定義 - 優化載入 */
       @font-face {
         font-family: 'Material Symbols Rounded';
-        src: url('./fonts/MaterialSymbolsRounded-original.woff2') format('woff2');
+        src: url('./fonts/MaterialSymbolsRounded-subset.woff2') format('woff2');
         font-weight: 100 700;
         font-style: normal;
         font-display: swap;
@@ -391,6 +391,11 @@
         font-weight: 400;
         font-style: normal;
         font-display: swap;
+        /* 字型度量覆蓋以減少CLS */
+        size-adjust: 108%;
+        ascent-override: 92%;
+        descent-override: 22%;
+        line-gap-override: 0%;
       }
 
       /* 關鍵CSS優化 - 首屏內容優先 */
@@ -1058,6 +1063,9 @@
         display: grid;
         grid-template-rows: 1fr 1fr;
         height: 100%;
+        /* 性能優化 - 避免首屏渲染 */
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 600px;
       }
       .player-zone {
         position: relative;
@@ -1330,6 +1338,9 @@
         opacity: 0;
         visibility: hidden;
         transition: all var(--duration-normal) ease;
+        /* 性能優化 - 避免首屏渲染 */
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 1000px;
       }
       .modal.show {
         display: flex;
@@ -2877,9 +2888,7 @@
                 font-family: 'Courier New', monospace;
               "
               id="versionDisplay"
-            >
-              v7.2.1
-            </div>
+            >v7.2.2</div>
           </div>
           <div style="display: flex; justify-content: center; margin-top: 18px">
             <button class="btn btn-primary" id="closeSettingsBtn">儲存設定</button>
@@ -3140,7 +3149,7 @@
       })();
 
       // ===== 版本管理 =====
-      const APP_VERSION = '7.2.1';
+      const APP_VERSION = '7.2.2';
       const SW_ENHANCED_VERSION = 'clickfun-enhanced-v1.1.0';
 
       // 更新版本號顯示
@@ -3596,10 +3605,14 @@
         constructor() {
           this.encouragementTimeout = null;
           document.getElementById('startSingleBtn').addEventListener('click', async () => {
+            // 延遲初始化重型效果
+            setupWorker();
             await this.initAudio();
             gameEngine.startSinglePlayer();
           });
           document.getElementById('startDualBtn').addEventListener('click', async () => {
+            // 延遲初始化重型效果
+            setupWorker();
             await this.initAudio();
             gameEngine.startDualPlayer();
           });
@@ -4847,7 +4860,7 @@
           gameEngine = new AdvancedGameEngine();
           uiManager = new AdvancedUIManager();
           inputManager = new AdvancedInputManager(gameEngine);
-          setupWorker();
+          // Worker 延遲初始化 - 遊戲開始時才載入
 
           // 更新版本號顯示
           updateVersionDisplay();
