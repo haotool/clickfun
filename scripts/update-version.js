@@ -33,6 +33,14 @@ const filesToUpdate = [
         regex: /"version": "[\d.]+"/g,
         replacement: `"version": "${newVersion}"`,
       },
+      {
+        regex: />\s*v[\d.]+\s*</g,
+        replacement: `>v${newVersion}<`,
+      },
+      {
+        regex: /const APP_VERSION = '[\d.]+';/g,
+        replacement: `const APP_VERSION = '${newVersion}';`,
+      },
     ],
   },
   {
@@ -73,6 +81,50 @@ const filesToUpdate = [
         regex:
           /\[!\[Version\]\(https:\/\/img\.shields\.io\/badge\/Version-v[\d.]+-ff69b4\.svg\)\]\(\.\)/,
         replacement: `[![Version](https://img.shields.io/badge/Version-v${newVersion}-ff69b4.svg)](.)`,
+      },
+    ],
+  },
+  {
+    path: 'dev-tools/package.json',
+    patterns: [
+      {
+        regex: /"version": "[\d.]+"/,
+        replacement: `"version": "${newVersion}"`,
+      },
+    ],
+  },
+  {
+    path: 'dev-tools/clear-cache.js',
+    patterns: [
+      {
+        regex: /'clickfun-v[\d.]+'/g,
+        replacement: `'clickfun-v${newVersion}'`,
+      },
+    ],
+  },
+  {
+    path: 'dev-tools/cache-test.html',
+    patterns: [
+      {
+        regex: /const APP_VERSION = '[\d.]+';/,
+        replacement: `const APP_VERSION = '${newVersion}';`,
+      },
+      {
+        regex: /'clickfun-v[\d.]+'/g,
+        replacement: `'clickfun-v${newVersion}'`,
+      },
+    ],
+  },
+  {
+    path: 'dev-tools/test-cache-clear.js',
+    patterns: [
+      {
+        regex: /'clickfun-v[\d.]+'/g,
+        replacement: `'clickfun-v${newVersion}'`,
+      },
+      {
+        regex: /const currentVersion = '[\d.]+';/,
+        replacement: `const currentVersion = '${newVersion}';`,
       },
     ],
   },

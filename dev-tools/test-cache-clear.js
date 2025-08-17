@@ -25,7 +25,7 @@ class CacheClearTester {
     console.log('📦 測試 1: 創建測試快取...');
 
     // 創建一些測試快取
-    const testCaches = ['clickfun-v7.0.0', 'clickfun-v7.0.0', 'clickfun-v6.1.0', 'old-cache-test'];
+    const testCaches = ['clickfun-v7.2.1', 'clickfun-v7.2.1', 'clickfun-v6.1.0', 'old-cache-test'];
 
     for (const cacheName of testCaches) {
       const cache = await caches.open(cacheName);
@@ -50,7 +50,7 @@ class CacheClearTester {
 
     // 檢查版本差異
     const storedVersion = localStorage.getItem('app_version');
-    const currentVersion = '7.0.0';
+    const currentVersion = '7.2.1';
     const needsUpdate = storedVersion !== currentVersion;
 
     this.testResults.push({
@@ -67,7 +67,7 @@ class CacheClearTester {
     console.log('清除前的快取:', beforeCaches);
 
     // 執行快取清除邏輯
-    const currentCacheName = 'clickfun-v7.0.0';
+    const currentCacheName = 'clickfun-v7.2.1';
     const cachesToDelete = beforeCaches.filter(name => name !== currentCacheName);
 
     await Promise.all(
