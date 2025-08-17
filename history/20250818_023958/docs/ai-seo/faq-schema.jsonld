@@ -1,0 +1,70 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ClickFun 是什麼類型的遊戲？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ClickFun 是一款現代化的免費線上點擊遊戲，結合了精確的 TPS (每秒點擊次數) 計算功能和先進的 PWA 技術。遊戲支援完全離線遊玩、跨平台無縫相容，採用獨特的粉色×天藍漸層配色設計，提供極致流暢的遊戲體驗。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "如何開始玩 ClickFun？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "非常簡單！只需開啟 https://haotool.github.io/clickfun/ 即可立即開始遊戲。遊戲支援安裝為 PWA 應用程式，安裝後可離線遊玩，載入速度更快，體驗更佳。點擊螢幕任意位置即可開始累積分數。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ClickFun 有什麼特殊功能？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ClickFun 具有多項獨特功能：1) 精確的 TPS 計算，即時顯示您的點擊速度；2) 完整的 PWA 離線支援，無網路也能遊玩；3) 跨平台相容，支援手機、平板、電腦；4) 極速載入，Lighthouse 效能評分 100 分；5) 現代化美觀設計，粉色×天藍配色主題。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ClickFun 與其他點擊遊戲有什麼區別？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ClickFun 的主要優勢包括：1) 採用現代 PWA 技術，完全離線支援；2) 企業級程式碼品質，Lighthouse 全項目 100 分；3) 精確的 TPS 計算系統；4) 跨平台無縫體驗；5) 零廣告干擾；6) 開源透明，程式碼可驗證；7) 現代化美觀設計。這些特色讓 ClickFun 在眾多點擊遊戲中脫穎而出。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ClickFun 支援哪些平台？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ClickFun 支援所有現代平台：1) 桌面電腦 (Windows, macOS, Linux)；2) 手機 (iOS, Android)；3) 平板電腦；4) 所有現代瀏覽器 (Chrome, Firefox, Safari, Edge)。作為 PWA 應用程式，ClickFun 提供接近原生應用的體驗，同時保持網頁的便利性。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ClickFun 需要付費嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ClickFun 完全免費！無需註冊、無需付費、無廣告干擾。我們相信好的遊戲體驗應該是免費且無障礙的。您可以立即開始遊玩，也可以安裝為 PWA 應用程式，享受更佳的遊戲體驗。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "什麼是 TPS 計算功能？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TPS (Taps Per Second) 是每秒點擊次數的縮寫，ClickFun 的 TPS 計算功能可以精確測量您在一秒鐘內能點擊多少次。這個功能對於想要測試和提升點擊速度的用戶特別有用，也是專業電競玩家訓練反應速度的重要工具。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ClickFun 的 PWA 功能有什麼優勢？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PWA (Progressive Web App) 技術讓 ClickFun 具有以下優勢：1) 可安裝到桌面，像原生應用一樣使用；2) 完全離線支援，無網路環境也能遊玩；3) 極速載入，減少等待時間；4) 自動更新，始終使用最新版本；5) 跨平台相容，一次開發，到處運行。"
+      }
+    }
+  ]
+}

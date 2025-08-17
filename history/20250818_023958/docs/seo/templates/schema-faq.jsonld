@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Click Fun 是什麼？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Click Fun 是一款零門檻、極速載入、支援離線的點擊遊戲（Clicker Game）。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "如何開始遊玩？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "打開網站即可立即開始點擊挑戰；可安裝為 PWA 以便離線遊玩。"
+      }
+    }
+  ]
+}
+
