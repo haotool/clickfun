@@ -2,6 +2,17 @@
 
 所有重要變更都會記錄在此文件中。
 
+## [8.0.0](https://github.com/haotool/clickfun/compare/v7.2.3...v8.0.0) (2025-08-17)
+
+### ⚠ BREAKING CHANGES
+
+* **tag-management:** 新增了 Git hooks 系統，會在推送時檢查標籤衝突，
+可能會阻止包含衝突標籤的推送，需要先運行 npm run tag-sync 修復
+
+### Features
+
+* **tag-management:** 實作完整的 Git 標籤同步與衝突防護系統 ([fb8d7f3](https://github.com/haotool/clickfun/commit/fb8d7f3f20338deb44e38e049518535ecb38cc3c))
+
 ## [7.2.3](https://github.com/haotool/clickfun/compare/v7.2.2...v7.2.3) (2025-08-17)
 
 ### Bug Fixes
