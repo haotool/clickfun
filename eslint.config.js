@@ -23,6 +23,7 @@ export default [
       '*.bundle.js',
       'dev-tools/cache-test.html',
       'dev-tools/tps-test.html',
+      'app.js', // JSON-LD 結構化數據，非 JavaScript 代碼
     ],
   },
 
