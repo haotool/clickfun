@@ -4,7 +4,7 @@
  */
 
 const SW_VERSION = `clickfun-v${APP_VERSION}`;
-const APP_VERSION = '7.2.0';
+const APP_VERSION = '7.2.1';
 
 // 快取策略配置
 const CACHE_CONFIG = {
