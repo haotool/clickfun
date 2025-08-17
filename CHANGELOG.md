@@ -1,3 +1,18 @@
+# 📋 更新記錄
+
+所有重要變更都會記錄在此文件中。
+
+## [7.2.3](https://github.com/haotool/clickfun/compare/v7.2.2...v7.2.3) (2025-08-17)
+
+### Bug Fixes
+
+* **eslint:** 修復 JSON-LD 結構化數據語法錯誤問題 ([92d1a18](https://github.com/haotool/clickfun/commit/92d1a18d789f5686fec6e3a1f747e2b0e7b547d2))
+* **icons:** 修復Material Symbols系統，恢復正確的中空樣式顯示 ([02fad77](https://github.com/haotool/clickfun/commit/02fad7742dc76d88bfd30168afb344711c3cdcf4))
+
+### Performance Improvements
+
+* **lighthouse:** 實施Lighthouse性能優化最佳實踐 ([209ba21](https://github.com/haotool/clickfun/commit/209ba2175f87b4a6d4de6f083e15265a16988246))
+
 ## [7.2.3] - 2025-08-17
 
 ### ✨ 新功能
