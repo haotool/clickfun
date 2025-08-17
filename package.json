@@ -38,7 +38,11 @@
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "maintenance": "node scripts/maintenance.js"
+    "maintenance": "node scripts/maintenance.js",
+    "tag-sync": "node scripts/tag-sync-check.cjs",
+    "git-hooks:install": "node scripts/setup-git-hooks.cjs install",
+    "git-hooks:remove": "node scripts/setup-git-hooks.cjs remove",
+    "git-hooks:status": "node scripts/setup-git-hooks.cjs status"
   },
   "keywords": [
     "game",
@@ -62,6 +66,7 @@
     "@semantic-release/github": "^10.0.6",
     "@semantic-release/release-notes-generator": "^14.0.1",
     "babel-jest": "^29.7.0",
+    "chalk": "^4.1.2",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "core-js": "^3.45.0",
     "csso": "^5.0.5",

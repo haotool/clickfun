@@ -34,6 +34,9 @@ jobs:
       - name: 📦 安裝依賴
         run: npm ci
 
+      - name: 🏷️ 檢查標籤同步狀態
+        run: npm run tag-sync
+
       - name: 🧪 執行測試
         run: npm test
 
@@ -65,6 +68,9 @@ jobs:
 
       - name: 📦 安裝依賴
         run: npm clean-install
+
+      - name: 🏷️ 發布前標籤檢查
+        run: npm run tag-sync
 
       - name: 🔍 驗證依賴完整性
         run: npm audit signatures
