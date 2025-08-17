@@ -15,7 +15,7 @@
     <!-- 資源預載入優化 -->
     <link
       rel="preload"
-      href="./fonts/MaterialSymbolsRounded-subset.woff2"
+      href="./fonts/MaterialSymbolsRounded-original.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -379,7 +379,7 @@
       /* 自託管字體定義 - 優化載入 */
       @font-face {
         font-family: 'Material Symbols Rounded';
-        src: url('./fonts/MaterialSymbolsRounded-subset.woff2') format('woff2');
+        src: url('./fonts/MaterialSymbolsRounded-original.woff2') format('woff2');
         font-weight: 100 700;
         font-style: normal;
         font-display: swap;
@@ -569,6 +569,16 @@
         display: inline-block;
         vertical-align: middle;
         text-align: center;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: 'liga';
+        font-variant-ligatures: normal;
         font-variation-settings:
           'FILL' 0,
           'wght' 600,
