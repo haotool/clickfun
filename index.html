@@ -12,14 +12,13 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
-    <!-- 資源預載入優化 -->
+    <!-- Material Symbols from Google Fonts -->
     <link
-      rel="preload"
-      href="./fonts/MaterialSymbolsRounded-subset.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+      rel="stylesheet"
     />
+    
+    <!-- 資源預載入優化 -->
     <link
       rel="preload"
       href="./fonts/FredokaOne-400.woff2"
@@ -376,14 +375,7 @@
     </script>
 
     <style>
-      /* 自託管字體定義 - 優化載入 */
-      @font-face {
-        font-family: 'Material Symbols Rounded';
-        src: url('./fonts/MaterialSymbolsRounded-subset.woff2') format('woff2');
-        font-weight: 100 700;
-        font-style: normal;
-        font-display: swap;
-      }
+      /* 字體定義 - 使用 Google Fonts CDN */
 
       @font-face {
         font-family: 'Fredoka One';
@@ -594,6 +586,32 @@
 
       .fonts-ready .material-symbols-rounded {
         visibility: visible;
+      }
+
+      /* Material Symbols 實心樣式控制 */
+      .material-symbols-rounded.fill {
+        font-variation-settings:
+          'FILL' 1,
+          'wght' 600,
+          'GRAD' 0,
+          'opsz' 24;
+      }
+
+      /* Material Symbols 不同粗細控制 */
+      .material-symbols-rounded.light {
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 300,
+          'GRAD' 0,
+          'opsz' 24;
+      }
+
+      .material-symbols-rounded.bold {
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 700,
+          'GRAD' 0,
+          'opsz' 24;
       }
 
       .app {
@@ -2888,7 +2906,7 @@
                 font-family: 'Courier New', monospace;
               "
               id="versionDisplay"
-            >v7.2.2</div>
+            >v7.2.1</div>
           </div>
           <div style="display: flex; justify-content: center; margin-top: 18px">
             <button class="btn btn-primary" id="closeSettingsBtn">儲存設定</button>
@@ -3149,7 +3167,7 @@
       })();
 
       // ===== 版本管理 =====
-      const APP_VERSION = '7.2.2';
+      const APP_VERSION = '7.2.1';
       const SW_ENHANCED_VERSION = 'clickfun-enhanced-v1.1.0';
 
       // 更新版本號顯示
