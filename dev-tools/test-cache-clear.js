@@ -25,7 +25,7 @@ class CacheClearTester {
     console.log('📦 測試 1: 創建測試快取...');
 
     // 創建一些測試快取
-    const testCaches = ['clickfun-v7.2.1', 'clickfun-v7.2.1', 'clickfun-v6.1.0', 'old-cache-test'];
+    const testCaches = ['clickfun-v7.2.1', 'clickfun-v7.2.1', 'clickfun-v7.2.1', 'old-cache-test'];
 
     for (const cacheName of testCaches) {
       const cache = await caches.open(cacheName);
