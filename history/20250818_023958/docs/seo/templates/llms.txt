@@ -1,0 +1,13 @@
+# LLMs/Answer Engines Discovery File (llms.txt)
+# Purpose: Help LLMs discover canonical content, FAQ, and machine-readable endpoints.
+
+User-agent: *
+Allow: /
+
+Canonical: https://your-domain.example/
+FAQ: https://your-domain.example/faq
+Answers-JSON: https://your-domain.example/api/answers.json
+Sitemap: https://your-domain.example/sitemap.xml
+Policies: https://your-domain.example/legal/terms
+Contact: mailto:hello@your-domain.example
+

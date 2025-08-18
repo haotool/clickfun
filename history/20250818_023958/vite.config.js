@@ -11,8 +11,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig({
   plugins: [
     VitePWA({
-      // 註冊類型：提示用戶更新 (基於 Context7 最佳實踐)
-      registerType: 'prompt',
+      // 註冊類型：自動更新
+      registerType: 'autoUpdate',
 
       // 開發選項
       devOptions: {
@@ -61,9 +61,9 @@ export default defineConfig({
         // 最大檔案大小限制 (3MB)
         maximumFileSizeToCacheInBytes: 3000000,
 
-        // 運行時快取策略 - 基於 Context7 最佳實踐
+        // 運行時快取策略
         runtimeCaching: [
-          // Google Fonts 快取策略 - 1年快取
+          // 字體快取策略
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
             handler: 'CacheFirst',
@@ -71,7 +71,7 @@ export default defineConfig({
               cacheName: 'google-fonts-cache',
               expiration: {
                 maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365, // 365 天
+                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 年
               },
               cacheableResponse: {
                 statuses: [0, 200],
@@ -85,7 +85,7 @@ export default defineConfig({
               cacheName: 'gstatic-fonts-cache',
               expiration: {
                 maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365, // 365 天
+                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 年
               },
               cacheableResponse: {
                 statuses: [0, 200],
@@ -93,7 +93,7 @@ export default defineConfig({
             },
           },
 
-          // 頁面導航快取策略 - Network First
+          // 頁面快取策略 - Network First
           {
             urlPattern: ({ request }) => request.mode === 'navigate',
             handler: 'NetworkFirst',
@@ -107,9 +107,9 @@ export default defineConfig({
             },
           },
 
-          // 圖片資源快取策略 - Cache First，30天
+          // 靜態資源快取策略 - Cache First
           {
-            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|ico)$/,
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
             handler: 'CacheFirst',
             options: {
               cacheName: 'images-cache',
@@ -117,13 +117,10 @@ export default defineConfig({
                 maxEntries: 100,
                 maxAgeSeconds: 60 * 60 * 24 * 30, // 30 天
               },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
             },
           },
 
-          // JS/CSS 檔案快取 - Stale While Revalidate，1週
+          // JS/CSS 檔案快取 - Stale While Revalidate
           {
             urlPattern: /\.(?:js|css)$/,
             handler: 'StaleWhileRevalidate',
@@ -131,22 +128,6 @@ export default defineConfig({
               cacheName: 'static-cache',
               expiration: {
                 maxEntries: 60,
-                maxAgeSeconds: 60 * 60 * 24 * 7, // 1 週
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-            },
-          },
-
-          // Web Worker 檔案快取
-          {
-            urlPattern: /\.worker\.js$/,
-            handler: 'StaleWhileRevalidate',
-            options: {
-              cacheName: 'worker-cache',
-              expiration: {
-                maxEntries: 10,
                 maxAgeSeconds: 60 * 60 * 24 * 7, // 1 週
               },
             },
@@ -167,7 +148,7 @@ export default defineConfig({
         // 檔案命名策略
         chunkFileNames: 'js/[name]-[hash].js',
         entryFileNames: 'js/[name]-[hash].js',
-        assetFileNames: ({ name }) => {
+        assetFileNames: ({name}) => {
           if (/\.(gif|jpe?g|png|svg)$/.test(name ?? '')) {
             return 'assets/images/[name]-[hash][extname]';
           }
