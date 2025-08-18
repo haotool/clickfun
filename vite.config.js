@@ -167,7 +167,7 @@ export default defineConfig({
         // 檔案命名策略
         chunkFileNames: 'js/[name]-[hash].js',
         entryFileNames: 'js/[name]-[hash].js',
-        assetFileNames: ({name}) => {
+        assetFileNames: ({ name }) => {
           if (/\.(gif|jpe?g|png|svg)$/.test(name ?? '')) {
             return 'assets/images/[name]-[hash][extname]';
           }

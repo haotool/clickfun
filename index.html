@@ -4955,18 +4955,16 @@
     </script>
 
     <!-- PWA 更新提示組件 - 基於 Context7 最佳實踐 -->
-    <div id="pwa-reload-prompt" class="pwa-reload-container" style="display: none;">
+    <div id="pwa-reload-prompt" class="pwa-reload-container" style="display: none">
       <div class="pwa-reload-toast">
         <div class="pwa-reload-message">
           <span id="pwa-message-text">應用程式有新版本可用</span>
         </div>
         <div class="pwa-reload-actions">
-          <button id="pwa-reload-btn" class="pwa-btn pwa-btn-primary" style="display: none;">
+          <button id="pwa-reload-btn" class="pwa-btn pwa-btn-primary" style="display: none">
             重新載入
           </button>
-          <button id="pwa-close-btn" class="pwa-btn pwa-btn-secondary">
-            關閉
-          </button>
+          <button id="pwa-close-btn" class="pwa-btn pwa-btn-secondary">關閉</button>
         </div>
       </div>
     </div>
@@ -5097,7 +5095,7 @@
           try {
             // 動態導入 PWA 註冊模組 (vite-plugin-pwa 提供)
             const { registerSW } = await import('virtual:pwa-register');
-            
+
             this.updateSW = registerSW({
               immediate: true,
               onNeedRefresh: () => {
@@ -5108,18 +5106,21 @@
                 console.log('📱 PWA: 應用程式已準備離線使用');
                 this.showOfflinePrompt();
               },
-              onRegistered: (registration) => {
+              onRegistered: registration => {
                 console.log('✅ PWA: Service Worker 註冊成功', registration);
                 // 每小時檢查更新
                 if (registration) {
-                  setInterval(() => {
-                    registration.update();
-                  }, 60 * 60 * 1000);
+                  setInterval(
+                    () => {
+                      registration.update();
+                    },
+                    60 * 60 * 1000
+                  );
                 }
               },
-              onRegisterError: (error) => {
+              onRegisterError: error => {
                 console.error('❌ PWA: Service Worker 註冊失敗', error);
-              }
+              },
             });
           } catch (error) {
             console.warn('⚠️ PWA: virtual:pwa-register 模組未找到，可能在開發模式');
@@ -5130,7 +5131,8 @@
 
         fallbackServiceWorkerRegistration() {
           if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js', { scope: '/' })
+            navigator.serviceWorker
+              .register('/sw.js', { scope: '/' })
               .then(registration => {
                 console.log('✅ PWA: Service Worker 註冊成功 (fallback)', registration);
               })
@@ -5150,7 +5152,7 @@
           this.messageElement.textContent = '應用程式已準備離線使用';
           this.reloadBtn.style.display = 'none';
           this.promptElement.style.display = 'block';
-          
+
           // 3秒後自動隱藏離線提示
           setTimeout(() => {
             this.hidePrompt();
